@@ -1,50 +1,73 @@
-<nav class="relative flex w-full bg-gradient-to-b from-gray to-transparent z-50 py-2">
-
-    <div class="w-1/3">
-        <img class="relative block left-1/2 transform -translate-x-1/2 w-32" src="{{ asset('images/logo.png') }}" alt="wide logo">
+<nav id="nav" class="sticky top-0 group/logo hover:bg-opacity-80 duration-500 flex w-full bg-white bg-opacity-50 z-10 shadow-lg">
+    <div class="flex w-3/6">
+        <button onclick="window.location.href='/'" class="m-auto hover:bg-gray hover:bg-opacity-40 duration-300 text-center w-1/2 h-full flex items-center justify-center">
+            <h1 class="m-0">Home</h1>
+        </button>
+        <div class="m-auto group/story hover:bg-gray hover:bg-opacity-40 duration-300 text-center w-1/2 h-full flex items-center justify-center">
+            <h1 class="m-0">Our Story</h1>
+            <div class="absolute hidden group-hover/story:block top-full w-1/4 block bg-white bg-opacity-80">
+                <a href="#">
+                    <button onclick="window.location.href='/story'" class="w-full hover:text-darkblue">
+                        Who We are
+                    </button>
+                </a>
+                <a href="#">
+                    <button class="w-full hover:text-darkblue">
+                        Second Option
+                    </button>
+                </a>
+            </div>
+        </div>
     </div>
 
-    
-    <!-- Menu for Desktop -->
-    <div class="relative flex w-2/3 text-center">
-        <a href="{{ url('/') }}" class="block m-auto py-1 text-gray rounded-md hover:text-black ml-2">Home</a>
-        <a href="{{ url('/sell') }}" class="block m-auto py-1 text-gray rounded-md hover:text-black">What we sell</a>
-        <a href="{{ url('/buy') }}" class="block m-auto py-1 text-gray rounded-md hover:text-black">What we buy</a>
-        <a href="{{ url('/contact') }}" class="block m-auto py-1 text-gray rounded-md hover:text-black">Contact Us</a>
-    </div>    
-    
-    <!-- burger -->
-    <div class="absolute lg:hidden mr-4 right-0 top-1/2 transform -translate-y-1/2">
-        <button id="burg" onclick="dropdown()">
-            <img class="mx-auto w-12" src="{{ asset('images/logo.png') }}" alt="mob_burger">
+
+    <div class="">
+        <a href="{{ '/' }}">
+            <img class="relative block w-32 group-hover/logo:w-32 transform translate-y-1/2 scale-150 duration-300" src="{{ asset('images/logo.png') }}" alt="wide logo">
+        </a>
+    </div>
+
+    <div class="flex w-3/6">
+        <button onclick="window.location.href='/sell'" class="m-auto hover:bg-gray hover:bg-opacity-40 duration-300 text-center w-1/2 h-full flex items-center justify-center">
+            <h1 class="m-0">What we Sell</h1>
+        </button>
+        <button onclick="window.location.href='/buy'" class="m-auto hover:bg-gray hover:bg-opacity-40 duration-300 text-center w-1/2 h-full flex items-center justify-center">
+            <h1 class="m-0">What we Buy</h1>
         </button>
     </div>
-
-    <!-- Dropdown Menu for Mobile -->
-    <div id="dropdownMenu" class="absolute hidden bg-white text-center shadow-lg mt-[71px] w-full">
-        <a href="{{ url('/') }}">
-            <button class=" py-4 bg-white">Home</button>
-        </a>
-
-        <a href="{{ url('/sell') }}">
-            <button class=" py-4 bg-white">What we sell</button>
-        </a>
-
-        <a href="{{ url('/buy') }}">
-            <button class=" py-4 bg-white">What we buy</button>
-        </a>
-
-        <a href="{{ url('/contact') }}">
-            <button class=" py-4 bg-white">Contact Us</button>
-        </a>
-    </div>
-
 </nav>
 
 <script>
-    function dropdown(){
-        var dropdownMenu = document.getElementById('dropdownMenu');
+    function dropdown(div){
+        var dropdownMenu = document.getElementById(div);
         console.log("test");
         dropdownMenu.classList.toggle('hidden');
     }
+
+    // Select the image element
+    const logoImage = document.querySelector('img');
+
+    // Add scroll event listener
+    if(window.location.href.includes("/sell") || window.location.href.includes("/buy") || window.location.href.includes("/story")){
+        logoImage.classList.remove('translate-y-1/2');
+        logoImage.classList.remove('scale-150');
+    }else{
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Remove the class when scrolling wn
+                logoImage.classList.remove('translate-y-1/2');
+                logoImage.classList.remove('scale-150');
+                logoImage.classList.remove('w-32');
+                logoImage.classList.add('w-20');
+    
+            } else {
+                // Add the class back when at the top
+                logoImage.classList.add('translate-y-1/2');
+                logoImage.classList.add('scale-150');
+                logoImage.classList.remove('w-20');
+                logoImage.classList.add('w-32');
+            }
+        });
+    }
+
 </script>

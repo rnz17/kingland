@@ -16,8 +16,10 @@ export default {
                 faustina: ['Faustina', ...defaultTheme.fontFamily.serif],
             },
             colors: {
+                darkblue: '#000099',
                 blue: '#0000FF',
                 cyan: '#00FFFF',
+                darkcyan: '#00CCCC',
                 gray: '#4D4D4D',
                 black: '#000000',
             },

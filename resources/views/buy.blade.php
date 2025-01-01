@@ -1,7 +1,9 @@
-@include('partials.header')
+@include('partials.head')
 
 <body>
 
     @include('partials.nav')
+
+@include('partials.footer')
 
 </body>

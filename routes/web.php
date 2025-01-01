@@ -15,8 +15,8 @@ Route::get('/buy', function () {
     return view('buy');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
+Route::get('/story', function () {
+    return view('story');
 });
 
 Route::get('/dashboard', function () {

@@ -1,4 +1,4 @@
-@include('partials.header')
+@include('partials.head')
 
 <body>
 
@@ -8,5 +8,7 @@
 
 
     </main>
+
+@include('partials.footer')
 
 </body>
