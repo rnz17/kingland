@@ -15,6 +15,10 @@ Route::get('/buy', function () {
     return view('buy');
 });
 
+Route::get('/history', function () {
+    return view('history');
+});
+
 Route::get('/story', function () {
     return view('story');
 });

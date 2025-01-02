@@ -22,6 +22,7 @@ export default {
                 cyan: '#00FFFF',
                 darkcyan: '#00CCCC',
                 gray: '#4D4D4D',
+                dadrkgray: '#3A3A3A',
                 black: '#000000',
             },
             backgroundImage: {

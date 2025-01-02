@@ -9,8 +9,13 @@
             <h1 class="m-0">Our Story</h1>
             <!-- dropdown -->
             <div id="storyDD" class="absolute hidden group-hover/dd:block top-16 w-[22.8vw] h-auto py-4">
-                <div class="bg-white rounded-lg m-auto py-2 w-[12rem] h-auto hover:text-darkblue">
-                    <a href="{{ '/story' }}">Who We Are</a>
+                <div class="m-auto rounded-lg overflow-hidden bg-red-300 w-[12rem]">
+                    <div class="bg-white m-auto py-2 w-[12rem] h-auto hover:bg-gray hover:text-white">
+                        <a href="{{ '/story' }}">Who We Are</a>
+                    </div>
+                    <div class="bg-white m-auto py-2 w-[12rem] h-auto hover:bg-gray hover:text-white">
+                        <a href="{{ '/history' }}">Our History</a>
+                    </div>
                 </div>
             </div>
         </button>
@@ -47,12 +52,7 @@
     
 
     // Add scroll event listener
-    if(window.location.href.includes("/sell") || window.location.href.includes("/buy") || window.location.href.includes("/story")){
-        logoImage.classList.remove('translate-y-1/2');
-        logoImage.classList.remove('scale-150');
-        nav.classList.remove('text-blue')
-        nav.classList.add('text-gray')
-    }else{
+    if(window.location.href === "http://kmci.local/"){
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 // Remove the class when scrolling wn
@@ -73,6 +73,11 @@
                 nav.classList.remove('text-gray')
             }
         });
+    }else{
+        logoImage.classList.remove('translate-y-1/2');
+        logoImage.classList.remove('scale-150');
+        nav.classList.remove('text-blue')
+        nav.classList.add('text-gray')
     }
 
 </script>
