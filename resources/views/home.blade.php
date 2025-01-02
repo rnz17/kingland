@@ -17,8 +17,7 @@
         <div class="w-full flex-shrink-0">
           <img src="{{ asset('images/sample3.jpg') }}" alt="Slide 3" class="w-full h-[86vh] object-cover object-bottom-50">
         </div>
-    </div>
-
+      </div>
     </div>
     
     <div class="block flex justify-center space-x-4 mt-2 z-0" id="indicators">

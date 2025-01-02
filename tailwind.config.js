@@ -17,11 +17,17 @@ export default {
             },
             colors: {
                 darkblue: '#000099',
+                tdblue: 'rgba(4, 4, 31, 0.93)',
                 blue: '#0000FF',
                 cyan: '#00FFFF',
                 darkcyan: '#00CCCC',
                 gray: '#4D4D4D',
                 black: '#000000',
+            },
+            backgroundImage: {
+                'sample1': "url('images/sample1.jpg')",
+                'sample2': "url('images/sample2.jpg')",
+                'sample3': "url('images/sample3.jpg')",
             },
         },
     },
