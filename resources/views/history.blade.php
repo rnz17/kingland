@@ -10,7 +10,7 @@
             <div class="w-full h-full bg-gradient-to-r from-tdblue to-transparent">
                 <!-- text container -->
                 <div class="relative block w-2/3 top-1/2 transform -translate-y-1/2">
-                    <h1 class="text-white font-black text-7xl ml-28 tracking-wide">Making Every Day, Beyond the Ordinary.</h1>
+                    <h1 class="text-white font-black text-7xl ml-28 leading-[4.8rem] tracking-wide">Making Every Day, <span class="text-blue">Beyond the Ordinary.</span></h1>
                     <h1 class="text-white font-semibold text-2xl ml-28 mt-4">Kingland’s story is one of passion, vision, and collaboration.</h1>
                     <p class="text-white font-light text-lg ml-28 mt-4 pr-42 tracking-wide">It all started with Richard Abanilla, <span class="font-semibold">the President and CEO</span> and Katrina Abanilla, <span class="font-semibold">the Vice President and COO</span>, who believed in the power of business to change lives and make a real difference in the world. Their vision was clear: create a company that not only thrived in the marketplace but also put people first, embraced innovation, and contributed positively to society. But they didn’t stop there—they knew that true success came from collaboration.</p>
                 </div>

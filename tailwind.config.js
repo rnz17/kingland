@@ -16,14 +16,16 @@ export default {
                 faustina: ['Faustina', ...defaultTheme.fontFamily.serif],
             },
             colors: {
+                notwhite: '#F2F2F2',
                 darkblue: '#000099',
                 tdblue: 'rgba(4, 4, 31, 0.93)',
                 blue: '#0000FF',
                 cyan: '#00FFFF',
                 darkcyan: '#00CCCC',
                 gray: '#4D4D4D',
-                dadrkgray: '#3A3A3A',
+                darkgray: '#3A3A3A',
                 black: '#000000',
+                tblack: 'rgba(0, 0, 0, 0.75)',
             },
             backgroundImage: {
                 'sample1': "url('images/sample1.jpg')",

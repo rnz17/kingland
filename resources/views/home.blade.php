@@ -42,27 +42,135 @@
     <div class="relative block text-center w-full mt-2 py-2 h-auto mb-2">
         <h1 class="font-black text-darkblue text-2xl">OUR SERVICES</h1>
         <h1 class="mt-2 font-medium text-darkblue text-2xl">Services and Products we provide</h1>
-        <div class="flex flex-wrap justify-center items-center gap-20 mt-20">
-            <button class="openModalBtn w-52 h-52 rounded-full mx-0 text-white -my-8 bg-blue border border-transparent border-opacity-50 hover:border-gray mx-auto transform duration-300 hover:shadow-2xl hover:scale-110">service 1
-            </button>
-            <button class="openModalBtn w-52 h-52 rounded-full mx-0 text-white -my-8 bg-blue border border-transparent border-opacity-50 hover:border-gray mx-auto transform duration-300 hover:shadow-2xl hover:scale-110">service 2
-            </button>
-            <button class="openModalBtn w-52 h-52 rounded-full mx-0 text-white -my-8 bg-blue border border-transparent border-opacity-50 hover:border-gray mx-auto transform duration-300 hover:shadow-2xl hover:scale-110">service 3
-            </button>
-            <button class="openModalBtn w-52 h-52 rounded-full mx-0 text-white -my-8 bg-blue border border-transparent border-opacity-50 hover:border-gray mx-auto transform duration-300 hover:shadow-2xl hover:scale-110">service 4
-            </button>
-            <button class="openModalBtn w-52 h-52 rounded-full mx-0 text-white -my-8 bg-blue border border-transparent border-opacity-50 hover:border-gray mx-auto transform duration-300 hover:shadow-2xl hover:scale-110">service 5
-            </button>
-        </div>
-        <div class="flex flex-wrap justify-center items-center w-[83vw] mx-auto gap-20 mt-20">
-            <button class="openModalBtn w-52 h-52 rounded-full mx-4 text-white -my-8 bg-blue border border-transparent border-opacity-50 hover:border-gray mx-auto transform duration-300 hover:shadow-2xl hover:scale-110">service 6
-            </button>
-            <button class="openModalBtn w-52 h-52 rounded-full mx-4 text-white -my-8 bg-blue border border-transparent border-opacity-50 hover:border-gray mx-auto transform duration-300 hover:shadow-2xl hover:scale-110">service 7
-            </button>
-            <button class="openModalBtn w-52 h-52 rounded-full mx-4 text-white -my-8 bg-blue border border-transparent border-opacity-50 hover:border-gray mx-auto transform duration-300 hover:shadow-2xl hover:scale-110">service 8
-            </button>
-            <button class="openModalBtn w-52 h-52 rounded-full mx-4 text-white -my-8 bg-blue border border-transparent border-opacity-50 hover:border-gray mx-auto transform duration-300 hover:shadow-2xl hover:scale-110">service 9
-            </button>
+        <!-- card container -->
+        <div class="flex flex-wrap justify-center items-center gap-20 mt-20"> 
+          <!-- card -->
+          <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg rounded-2xl overflow-hidden duration-300">
+            <!-- circle -->
+            <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 group-hover:-translate-x-32  group-hover:-translate-y-20 transition-all duration-500">
+              <img src="{{ asset('images/placeholder.png') }}" class="w-full rounded-full mx-auto" alt="service icon">
+            </div>
+            <div class="block z-10 group-hover:-translate-y-24 transition-all duration-500">
+              <h1 class="text-2xl font-semibold">Service</h1>
+              <button class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+          <!-- card end -->
+          <!-- card -->
+          <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg rounded-2xl overflow-hidden duration-300">
+            <!-- circle -->
+            <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 group-hover:-translate-x-32  group-hover:-translate-y-20 transition-all duration-500">
+              <img src="{{ asset('images/placeholder.png') }}" class="w-full rounded-full mx-auto" alt="service icon">
+            </div>
+            <div class="block z-10 group-hover:-translate-y-24 transition-all duration-500">
+              <h1 class="text-2xl font-semibold">Service</h1>
+              <button class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+          <!-- card end -->
+          <!-- card -->
+          <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg rounded-2xl overflow-hidden duration-300">
+            <!-- circle -->
+            <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 group-hover:-translate-x-32  group-hover:-translate-y-20 transition-all duration-500">
+              <img src="{{ asset('images/placeholder.png') }}" class="w-full rounded-full mx-auto" alt="service icon">
+            </div>
+            <div class="block z-10 group-hover:-translate-y-24 transition-all duration-500">
+              <h1 class="text-2xl font-semibold">Service</h1>
+              <button class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+          <!-- card end -->
+          <!-- card -->
+          <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg rounded-2xl overflow-hidden duration-300">
+            <!-- circle -->
+            <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 group-hover:-translate-x-32  group-hover:-translate-y-20 transition-all duration-500">
+              <img src="{{ asset('images/placeholder.png') }}" class="w-full rounded-full mx-auto" alt="service icon">
+            </div>
+            <div class="block z-10 group-hover:-translate-y-24 transition-all duration-500">
+              <h1 class="text-2xl font-semibold">Service</h1>
+              <button class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+          <!-- card end -->
+          <!-- card -->
+          <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg rounded-2xl overflow-hidden duration-300">
+            <!-- circle -->
+            <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 group-hover:-translate-x-32  group-hover:-translate-y-20 transition-all duration-500">
+              <img src="{{ asset('images/placeholder.png') }}" class="w-full rounded-full mx-auto" alt="service icon">
+            </div>
+            <div class="block z-10 group-hover:-translate-y-24 transition-all duration-500">
+              <h1 class="text-2xl font-semibold">Service</h1>
+              <button class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+          <!-- card end -->
+           <!-- card -->
+          <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg rounded-2xl overflow-hidden duration-300">
+            <!-- circle -->
+            <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 group-hover:-translate-x-32  group-hover:-translate-y-20 transition-all duration-500">
+              <img src="{{ asset('images/placeholder.png') }}" class="w-full rounded-full mx-auto" alt="service icon">
+            </div>
+            <div class="block z-10 group-hover:-translate-y-24 transition-all duration-500">
+              <h1 class="text-2xl font-semibold">Service</h1>
+              <button class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+          <!-- card end -->
+          <!-- card -->
+          <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg rounded-2xl overflow-hidden duration-300">
+            <!-- circle -->
+            <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 group-hover:-translate-x-32  group-hover:-translate-y-20 transition-all duration-500">
+              <img src="{{ asset('images/placeholder.png') }}" class="w-full rounded-full mx-auto" alt="service icon">
+            </div>
+            <div class="block z-10 group-hover:-translate-y-24 transition-all duration-500">
+              <h1 class="text-2xl font-semibold">Service</h1>
+              <button class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+          <!-- card end -->
+          <!-- card -->
+          <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg rounded-2xl overflow-hidden duration-300">
+            <!-- circle -->
+            <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 group-hover:-translate-x-32  group-hover:-translate-y-20 transition-all duration-500">
+              <img src="{{ asset('images/placeholder.png') }}" class="w-full rounded-full mx-auto" alt="service icon">
+            </div>
+            <div class="block z-10 group-hover:-translate-y-24 transition-all duration-500">
+              <h1 class="text-2xl font-semibold">Service</h1>
+              <button class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+          <!-- card end -->
+          <!-- card -->
+          <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg rounded-2xl overflow-hidden duration-300">
+            <!-- circle -->
+            <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 group-hover:-translate-x-32  group-hover:-translate-y-20 transition-all duration-500">
+              <img src="{{ asset('images/placeholder.png') }}" class="w-full rounded-full mx-auto" alt="service icon">
+            </div>
+            <div class="block z-10 group-hover:-translate-y-24 transition-all duration-500">
+              <h1 class="text-2xl font-semibold">Service</h1>
+              <button class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+          <!-- card end -->
+          
         </div>
     </div>
     
