@@ -37,6 +37,29 @@
             </div>
             <!-- CEO END -->
         </div>
+        <div class="flex mt-2">
+            <!-- CEO -->
+            <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
+                <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
+                    <div class="text-gray-500 group-hover:scale-105 transition-all">
+                        <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
+                            <img src="{{ asset('images/kat.jpg') }}" alt="CEO" class="w-full h-full object-cover object-top">
+                        </div>
+                    </div>
+                    <div class="group-hover:pb-10 transition-all duration-500 delay-200">
+                        <h1 class="font-semibold text-gray-700 text-2xl">Katrina Abanilla</h1>
+                        <p class="text-gray-500 text-lg">Vice President</p>
+                        <p class="text-gray-500 text-lg">Chief Operating Officer</p>
+                    </div>
+                    <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
+                        <div class="flex gap-3 text-md px-4 bg-gray text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
+                            Contact
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- CEO END -->
+        </div>
 
         <!-- SECOND ROW -->
         <div class="flex mt-16">
@@ -51,27 +74,6 @@
                     <div class="group-hover:pb-10 transition-all duration-500 delay-200">
                         <h1 class="font-semibold text-gray-700 text-2xl">Nino Feland Mendoza</h1>
                         <p class="text-gray-500 text-lg">Chief Financial Officer</p>
-                    </div>
-                    <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
-                        <div class="flex gap-3 text-md px-4 bg-gray text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
-                            Contact
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- CEO END -->
-            <!-- CEO -->
-            <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
-                <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
-                    <div class="text-gray-500 group-hover:scale-105 transition-all">
-                        <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
-                            <img src="{{ asset('images/kat.jpg') }}" alt="CEO" class="w-full h-full object-cover object-top">
-                        </div>
-                    </div>
-                    <div class="group-hover:pb-10 transition-all duration-500 delay-200">
-                        <h1 class="font-semibold text-gray-700 text-2xl">Katrina Abanilla</h1>
-                        <p class="text-gray-500 text-lg">Vice President</p>
-                        <p class="text-gray-500 text-lg">Chief Operating Officer</p>
                     </div>
                     <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
                         <div class="flex gap-3 text-md px-4 bg-gray text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
@@ -155,7 +157,7 @@
                     </div>
                     <div class="group-hover:pb-10 transition-all duration-500 delay-200">
                         <h1 class="font-semibold text-gray-700 text-2xl">Mark Seno</h1>
-                        <p class="text-gray-500 text-lg">Marketing Officer</p>
+                        <p class="text-gray-500 text-lg">Chief Strategy Officer</p>
                     </div>
                     <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
                         <div class="flex gap-3 text-md px-4 bg-gray text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
