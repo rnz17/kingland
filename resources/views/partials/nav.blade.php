@@ -16,6 +16,9 @@
                     <div class="bg-white m-auto py-2 w-[12rem] h-auto hover:bg-gray hover:text-white">
                         <a href="{{ '/history' }}">Our History</a>
                     </div>
+                    <div class="bg-white m-auto py-2 w-[12rem] h-auto hover:bg-gray hover:text-white">
+                        <a href="{{ '/founders' }}">Leadership</a>
+                    </div>
                 </div>
             </div>
         </button>

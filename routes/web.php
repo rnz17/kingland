@@ -23,6 +23,10 @@ Route::get('/story', function () {
     return view('story');
 });
 
+Route::get('/founders', function () {
+    return view('founders');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

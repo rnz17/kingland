@@ -20,7 +20,7 @@
         <!-- WHITE -->
         <div class="flex w-full py-2 mt-12">
             <div class="w-1/3 px-22 m-auto text-center">
-                <h1 class="text-black font-light text-2xl tracking-normal leading-loose"><span class="tracking-wide font-semibold px-24">To bring their vision to life,</span> they invited six additional <a href="#" class="text-darkblue underline underline-offest-4">founders</a>, each bringing their own unique expertise and experiences.</h1>
+                <h1 class="text-black font-light text-2xl tracking-normal leading-loose"><span class="tracking-wide font-semibold px-24">To bring their vision to life,</span> they invited six additional <a href="{{ '/founders' }}" class="text-darkblue underline underline-offest-4">founders</a>, each bringing their own unique expertise and experiences.</h1>
             </div>
         </div>
 
