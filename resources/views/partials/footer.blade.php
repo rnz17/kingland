@@ -11,11 +11,11 @@
             <a href="#">Sample Text 4</a>
         </div>
         <div class="flex flex-col text-white">
-            <h3 class="font-bold mb-2">Column 2</h3>
-            <a href="#">Sample Text 1</a>
-            <a href="#">Sample Text 2</a>
-            <a href="#">Sample Text 3</a>
-            <a href="#">Sample Text 4</a>
+            <h3 class="font-bold mb-2">Our Company</h3>
+            <a href="{{ '/founders' }}">Leaders</a>
+            <a href="{{ '/sng' }}">Structure and Governance</a>
+            <a href="#"></a>
+            <a href="#"></a>
         </div>
         <div class="flex flex-col text-white">
             <h3 class="font-bold mb-2">Column 3</h3>

@@ -23,8 +23,44 @@ Route::get('/story', function () {
     return view('story');
 });
 
-Route::get('/founders', function () {
-    return view('founders');
+Route::prefix('sng')->group(function () {
+    Route::get('/', function () {
+        return view('sng');
+    });
+});
+
+Route::prefix('founders')->group(function () {
+    Route::get('/', function () {
+        return view('founders');
+    });
+
+    Route::get('/ceo', function () {
+        return view('founders.ceo');
+    });
+
+    Route::get('/coo', function () {
+        return view('founders.coo');
+    });
+
+    Route::get('/cfo', function () {
+        return view('founders.cfo');
+    });
+
+    Route::get('/chro', function () {
+        return view('founders.chro');
+    });
+
+    Route::get('/cmo', function () {
+        return view('founders.cmo');
+    });
+
+    Route::get('/cso', function () {
+        return view('founders.cso');
+    });
+
+    Route::get('/vpms', function () {
+        return view('founders.vpms');
+    });
 });
 
 Route::get('/dashboard', function () {
