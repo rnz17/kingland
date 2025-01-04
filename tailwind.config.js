@@ -22,6 +22,7 @@ export default {
                 blue: '#0000FF',
                 cyan: '#00FFFF',
                 darkcyan: '#00CCCC',
+                lightgray: 'rgba(77, 77, 77, 0.5)',
                 gray: '#4D4D4D',
                 darkgray: '#3A3A3A',
                 black: '#000000',

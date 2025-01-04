@@ -27,6 +27,14 @@ Route::prefix('sng')->group(function () {
     Route::get('/', function () {
         return view('sng');
     });
+
+    Route::get('/cso', function () {
+        return view('governance.cso');
+    });
+
+    Route::get('/cg', function () {
+        return view('governance.cg');
+    });
 });
 
 Route::prefix('founders')->group(function () {
