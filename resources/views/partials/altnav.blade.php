@@ -18,12 +18,6 @@
 </nav>
 
 <script>
-    function dropdown(div){
-        var dropdownMenu = document.getElementById(div);
-        console.log("test");
-        dropdownMenu.classList.toggle('hidden');
-    }
-
     // Select the image element
     const logoImage = document.getElementById('centerLogo');
     const navBar = document.getElementById('nav');

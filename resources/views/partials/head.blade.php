@@ -8,3 +8,4 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/shared.js'])
 
 </head>
+<body class="overflow-x-hidden">

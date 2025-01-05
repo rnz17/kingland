@@ -1,6 +1,6 @@
 @include('partials.head')
 
-<body>
+
 
     @include('partials.nav')
 
@@ -10,8 +10,8 @@
             <div class="w-full h-full bg-gradient-to-r from-transparent from-1% via-tblack via-99% to-transparent">
                 <!-- text container -->
                 <div class="relative block w-full top-1/2 transform -translate-y-1/2">
-                    <h1 class="text-white text-center font-black text-7xl px-12 tracking-wide">Dedicated Services,</h1> 
-                    <h1 class="text-blue text-center font-black text-7xl px-12 tracking-wide">Beyond the Ordinary.</h1>
+                    <h1 class="text-white text-center font-black text-2xl lg:text-7xl px-12 tracking-wide">Dedicated Services,</h1> 
+                    <h1 class="text-blue text-center font-black text-2xl lg:text-7xl px-12 tracking-wide">Beyond the Ordinary.</h1>
                 </div>
             </div>
         </div>
@@ -158,16 +158,16 @@
         </div>
 
         <!-- MISSION & VISION -->
-        <div class="flex w-full mt-12 mb-4 py-2">
-            <div class="w-1/3 px-22 mx-auto text-justify">
-                <h1 class="w-full text-center text-4xl font-semibold tracking-wide mb-2">
+        <div class="flex flex-wrap gap-y-12 w-full mt-12 mb-4 py-2">
+            <div class="w-3/4 lg:w-1/3 px-22 mx-auto text-justify">
+                <h1 class="w-full text-center text-4xl font-semibold tracking-normal lg:tracking-wide mb-2">
                     MISSION
                 </h1>
                 <h1 class="text-black font-light text-2xl tracking-normal leading-loose">Our mission is to provide reliable, innovative products and services that make everyday life easier and better. We are committed to delivering high-quality solutions across various industries, from electronics and communication to logistics, agriculture, IT, and more. We aim to improve lives by offering practical, impactful solutions that our customers can trust.</h1>
             </div>
 
-            <div class="w-1/3 px-22 mx-auto text-justify">
-                <h1 class="w-full text-center text-4xl font-semibold tracking-wide mb-2">
+            <div class="w-3/4 lg:w-1/3 px-22 mx-auto text-justify">
+                <h1 class="w-full text-center text-4xl font-semibold tracking-normal lg:tracking-wide mb-2">
                     VISION
                 </h1>
                 <h1 class="text-black font-light text-2xl tracking-normal leading-loose">We envision a future where our products and services are at the heart of every community, helping people live better, more efficient lives. Through continuous innovation, a focus on quality, and a commitment to customer satisfaction, we strive to be a company that people rely on to make meaningful improvements in their daily lives.
@@ -178,7 +178,7 @@
         <div class="w-full h-auto text-center mt-32">
             <h1 class="font-black text-4xl px-12 tracking-wider">GROWING TOGETHER WITH <span class="text-blue">KINGLAND.</span></h1>
 
-            <div class="w-1/2 mx-auto mt-12">
+            <div class="w-3/4 lg:w-1/2 mx-auto mt-12">
                 <p class="text-center text-lg px-12 mt-8">
                     At Kingland, we understand that success looks different for each person. Every employee's journey is unique, and we embrace that diversity because we believe it drives loyalty and achievement. Just as we aim to provide a great experience for our customers, we also strive to offer our employees meaningful opportunities for growth, recognition, and fulfillment.  
                 </p>

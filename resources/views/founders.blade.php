@@ -2,19 +2,19 @@
 <body>
     @include('partials.nav')
 
-    <div class="flex w-full text-center mt-32 px-4">
-        <div class="m-auto w-1/2 text-left pl-24">
+    <div class="flex flex-wrap w-full text-center mt-32 px-4">
+        <div class="m-auto w-full lg:w-1/2 text-left lg:pl-24"> 
             <h1 class="text-7xl font-bold tracking-wide">The Founders.</h1>
             <h1 class="text-2xl font-medium ml-2 text-blue">A team focused on <span class="text-darkblue font-bold">The future.</span></h1>
         </div>
-        <p class="m-auto w-1/2 mt-6 text-justify tracking-wide text-lg font-normal leading-loose pl-4 pr-12">At Kingland, our leadership stands out because we take a focused and hands-on approach. We’re dedicated to building strong leaders and driving growth in every part of our business, no matter the region or level. With a diverse team bringing a wide range of skills and experience, we’re not just meeting today’s needs—we’re creating solutions that make life better now and set the stage for an even brighter future.</p>
+        <p class="m-auto w-full lg:w-1/2 mt-24 lg:mt-6 text-justify tracking-wide text-lg font-normal leading-loose pl-4 pr-4 lg:pr-12">At Kingland, our leadership stands out because we take a focused and hands-on approach. We’re dedicated to building strong leaders and driving growth in every part of our business, no matter the region or level. With a diverse team bringing a wide range of skills and experience, we’re not just meeting today’s needs—we’re creating solutions that make life better now and set the stage for an even brighter future.</p>
     
     </div>
 
     <!-- CHART -->
     <div class="block mt-44">
         <!-- FIRST ROW -->
-        <div class="flex">
+        <div class="flex flex-wrap">
             <!-- CARD CONTAINER -->
             <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
                 <!-- CARD -->
@@ -45,7 +45,7 @@
             <!-- CARD CONTAINER END -->
         </div>
         <!-- SECOND ROW -->
-        <div class="flex mt-2">
+        <div class="flex flex-wrap mt-2">
             <!-- CARD CONTAINER -->
             <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
                 <!-- CARD -->
@@ -75,9 +75,9 @@
             <!-- CARD CONTAINER END -->
         </div>
         <!-- THIRD ROW -->
-        <div class="flex w-3/4 mx-auto mt-16">
+        <div class="flex flex-wrap gap-y-2 w-3/4 mx-auto mt-2 lg:mt-16">
             <!-- CARD CONTAINER -->
-            <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
+            <div class="flex w-3/4 lg:w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
                 <!-- CARD -->
                 <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
                     <!-- IMAGE CONTAINER -->
@@ -103,7 +103,7 @@
             </div>
             <!-- CARD CONTAINER END -->
             <!-- CARD CONTAINER -->
-            <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
+            <div class="flex w-3/4 lg:w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
                 <!-- CARD -->
                 <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
                     <!-- IMAGE CONTAINER -->
@@ -130,9 +130,9 @@
             <!-- CARD CONTAINER END -->
         </div>
         <!-- FOURTH ROW -->
-        <div class="flex mt-16">
+        <div class="flex flex-wrap gap-y-2 mt-2 lg:mt-16">
             <!-- CARD CONTAINER -->
-            <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
+            <div class="flex w-3/4 lg:w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
                 <!-- CARD -->
                 <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
                     <!-- IMAGE CONTAINER -->
@@ -158,7 +158,7 @@
             </div>
             <!-- CARD CONTAINER END -->
             <!-- CARD CONTAINER -->
-            <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
+            <div class="flex w-3/4 lg:w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
                 <!-- CARD -->
                 <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
                     <!-- IMAGE CONTAINER -->
@@ -185,7 +185,7 @@
             </div>
             <!-- CARD CONTAINER END -->
             <!-- CARD CONTAINER -->
-            <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
+            <div class="flex w-3/4 lg:w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
                 <!-- CARD -->
                 <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
                     <!-- IMAGE CONTAINER -->
