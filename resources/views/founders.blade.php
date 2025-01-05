@@ -75,7 +75,7 @@
         </div>
 
         <!-- SECOND ROW -->
-        <div class="flex mt-16">
+        <div class="flex w-3/4 mx-auto mt-16">
             <!-- CARD CONTAINER -->
             <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
                 <!-- CARD -->
