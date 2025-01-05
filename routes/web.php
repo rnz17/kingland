@@ -2,18 +2,23 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/sell', function () {
-    return view('sell');
-});
+// Route::get('/sell', function () {
+//     return view('sell');
+// });
+
+Route::get('/sell', [ProductController::class, 'index'])->name('sell');
 
 Route::get('/buy', function () {
     return view('buy');
 });
+
+
 
 Route::get('/history', function () {
     return view('history');

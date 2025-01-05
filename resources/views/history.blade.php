@@ -14,7 +14,7 @@
                     <h1 class="text-blue font-black text-2xl lg:text-7xl lg:ml-28 lg:leading-[4.8rem] tracking-wide">Beyond The Ordinary </h1>
 
                     <h1 class="text-white font-semibold lg:text-2xl lg:ml-28 mt-4">Kingland’s story is one of passion, vision, and collaboration.</h1>
-                    <p class="text-white font-light lg:text-lg lg:ml-28 mt-4 pr-42 tracking-wide">It all started with Richard Abanilla, <span class="font-semibold">the President/CEO</span> and Katrina Abanilla, <span class="font-semibold">the Vice President/COO</span>, who believed in the power of business to change lives and make a real difference in the world. Their vision was clear: create a company that not only thrived in the marketplace but also put people first, embraced innovation, and contributed positively to society. But they didn’t stop there—they knew that true success came from collaboration.</p>
+                    <p class="text-white font-light lg:text-lg lg:ml-28 mt-4 pr-42 tracking-wide">It all started with Richard Abanilla, <span class="font-semibold">the President/CEO and Chairman of the Board</span><br> and Katrina Abanilla, <span class="font-semibold">the Vice President/COO</span>, who believed in the power of business to change lives and make a real difference in the world. Their vision was clear: create a company that not only thrived in the marketplace but also put people first, embraced innovation, and contributed positively to society. But they didn’t stop there—they knew that true success came from collaboration.</p>
                 </div>
             </div>
         </div>

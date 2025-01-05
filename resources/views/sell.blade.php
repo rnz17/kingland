@@ -64,33 +64,17 @@
         <!-- Product Display -->
         <div class="flex flex-wrap justify-center gap-[2vw] w-5/6 p-4">
 
-            <div class="openModalBtn cursor-pointer relative group text-center py-4 w-[17vw] h-[38vh] border border-black rounded-md hover:shadow-lg hover:transform hover:scale-[1.05] duration-300">
-                <div class="w-full duration-300 overflow-hidden">
-                    <img class="block mx-auto w-1/2 mb-6" src="{{ asset('images/placeholder.png') }}" alt="Item image">
-                    <h1 class="text-lg font-medium mt-16">item_name</h1>
+            @foreach($products as $product)
+                <div class="openModalBtn cursor-pointer relative group text-center p-4 w-[17vw] h-[38vh] border border-black rounded-md hover:shadow-lg hover:transform hover:scale-[1.05] duration-300">
+                    <div class="w-full duration-300 overflow-hidden">
+                        <img class="block mx-auto w-1/2 mb-6" src="{{ asset('images/placeholder.png') }}" alt="Item image">
+                        <h1 class="text-lg font-medium mt-16">{{$product->name}}</h1>
+                    </div>
                 </div>
-            </div>
-            <div class="openModalBtn cursor-pointer relative group text-center py-4 w-[17vw] h-[38vh] border border-black rounded-md hover:shadow-lg hover:transform hover:scale-[1.05] duration-300">
-                <div class="w-full duration-300 overflow-hidden">
-                    <img class="block mx-auto w-1/2 mb-6" src="{{ asset('images/placeholder.png') }}" alt="Item image">
-                    <h1 class="text-lg font-medium mt-16">item_name</h1>
-                </div>
-            </div>
-            <div class="openModalBtn cursor-pointer relative group text-center py-4 w-[17vw] h-[38vh] border border-black rounded-md hover:shadow-lg hover:transform hover:scale-[1.05] duration-300">
-                <div class="w-full duration-300 overflow-hidden">
-                    <img class="block mx-auto w-1/2 mb-6" src="{{ asset('images/placeholder.png') }}" alt="Item image">
-                    <h1 class="text-lg font-medium mt-16">item_name</h1>
-                </div>
-            </div>
-            <div class="openModalBtn cursor-pointer relative group text-center py-4 w-[17vw] h-[38vh] border border-black rounded-md hover:shadow-lg hover:transform hover:scale-[1.05] duration-300">
-                <div class="w-full duration-300 overflow-hidden">
-                    <img class="block mx-auto w-1/2 mb-6" src="{{ asset('images/placeholder.png') }}" alt="Item image">
-                    <h1 class="text-lg font-medium mt-16">item_name</h1>
-                </div>
-            </div>
+            @endforeach
 
         </div>
-
+        
         <!-- MODAL -->
         <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
         <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-auto bg-white shadow-2xl p-8 rounded">
