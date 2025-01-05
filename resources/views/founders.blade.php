@@ -44,6 +44,7 @@
             </div>
             <!-- CARD CONTAINER END -->
         </div>
+        <!-- SECOND ROW -->
         <div class="flex mt-2">
             <!-- CARD CONTAINER -->
             <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
@@ -73,8 +74,7 @@
             </div>
             <!-- CARD CONTAINER END -->
         </div>
-
-        <!-- SECOND ROW -->
+        <!-- THIRD ROW -->
         <div class="flex w-3/4 mx-auto mt-16">
             <!-- CARD CONTAINER -->
             <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
@@ -129,7 +129,7 @@
             </div>
             <!-- CARD CONTAINER END -->
         </div>
-        <!-- THIRD ROW -->
+        <!-- FOURTH ROW -->
         <div class="flex mt-16">
             <!-- CARD CONTAINER -->
             <div class="flex w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
