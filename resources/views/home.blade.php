@@ -5,7 +5,7 @@
     @include('partials.nav')
 
     <!-- Slideshow container -->
-    <div class="block overflow-hidden relative z-0 h-auto">
+    <div class="block overflow-hidden relative h-auto">
       <!-- Slides -->
       <div class="flex transition-transform duration-500" id="slides">
         <div class="w-full flex-shrink-0">

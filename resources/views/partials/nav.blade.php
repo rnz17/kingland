@@ -1,46 +1,50 @@
-<nav id="nav" class="sticky top-0 group/logo font-medium text-blue hover:text-blue hover:bg-opacity-80 duration-500 flex w-full max-h-[65px] bg-white bg-opacity-50 z-50 shadow-lg">
-    <div class="flex w-3/6">
+<nav id="nav" class="fixed z-50 flex h-16 duration-500 bg-white w-full">
 
-        <button onclick="window.location.href='/'" class="m-auto hover:bg-gray hover:bg-opacity-40 duration-300 text-center w-1/2 h-full flex items-center justify-center">
-            <h1 class="m-0">Home</h1>
-        </button>
-
-        <button onclick="toggleHIDE('storyDD')" class="m-auto group/dd hover:bg-gray hover:bg-opacity-40 duration-300 text-center w-1/2 h-full max-h-[65px] flex items-center justify-center">
-            <h1 class="m-0">Our Story</h1>
-            <!-- dropdown -->
-            <div id="storyDD" class="absolute hidden group-hover/dd:block top-16 w-[22.8vw] h-auto py-4">
-                <div class="m-auto rounded-lg overflow-hidden shadow-xl bg-red-300 w-[12rem]">
-                    <div class="bg-white m-auto py-2 w-[12rem] h-auto hover:bg-gray hover:text-white">
-                        <a href="{{ '/story' }}">Who We Are</a>
-                    </div>
-                    <div class="bg-white m-auto py-2 w-[12rem] h-auto hover:bg-gray hover:text-white">
-                        <a href="{{ '/history' }}">Our History</a>
-                    </div>
-                    <div class="bg-white m-auto py-2 w-[12rem] h-auto hover:bg-gray hover:text-white">
-                        <a href="{{ '/founders' }}">Leadership</a>
-                    </div>
-                </div>
-            </div>
-        </button>
-
+    <div class="my-auto ml-4 text-xl font-bold tracking-wide">
+        <h1>KINGLAND MARKETING COMPANY INC.</h1>
     </div>
 
-
-    <div class="">
-        <a href="{{ '/' }}">
-            <img id="centerLogo" class="relative block w-32 group-hover/logo:w-32 transform translate-y-1/2 scale-150 duration-300" src="{{ asset('images/logo.png') }}" alt="wide logo">
-        </a>
+    <!-- / for root but no / for other views -->
+    <div class="flex mx-auto my-0 p-auto items-center w-32  
+    {{ request()->is('/') ? 'border-b-2 border-blue' : '' }}">
+        <a href="{{ '/' }}" class="text-center w-full">Home</a>
     </div>
 
-    <div class="flex w-3/6">
-        <button onclick="window.location.href='/sell'" class="m-auto hover:bg-gray hover:bg-opacity-40 duration-300 text-center w-1/2 h-full flex items-center justify-center">
-            <h1 class="m-0">What we Sell</h1>
-        </button>
-        <button onclick="window.location.href='/buy'" class="m-auto hover:bg-gray hover:bg-opacity-40 duration-300 text-center w-1/2 h-full flex items-center justify-center">
-            <h1 class="m-0">What we Buy</h1>
-        </button>
+    <div class="block group/dd mx-auto my-0 py-auto items-center w-32 overflow-hidden 
+    {{ request()->is('dashboard') ? 'border-b-2 border-blue' : '' }}">
+     
+        <div class="relative transform top-1/2 -translate-y-1/2 w-full text-center group-hover/dd:opacity-0 group-hover/dd:translate-y-[200%] duration-500">Our Story</div>
+
+        <div class="relative flex flex-wrap transform w-full h-full text-center group-hover/dd:opacity-100 -translate-y-[200%] group-hover/dd:-translate-y-[37.5%] opacity-0 duration-500">
+            <a href="{{ '/story' }}" class="w-full text-sm hover:text-darkblue hover:scale-105 hover:scale-x-110 duration-300">Who we Are</a>
+            <a href="{{ '/history' }}" class="w-full text-sm hover:text-darkblue hover:scale-105 hover:scale-x-110 duration-300">Our History</a>
+            <a href="{{ '/founders' }}" class="w-full text-sm hover:text-darkblue hover:scale-105 hover:scale-x-110 duration-300">Leadership</a>
+        </div>
+
     </div>
+    
+    <div class="flex mx-auto my-0 p-auto items-center w-32 hover:border-b-2 hover:border-blue duration-300 
+    {{ request()->is('sell') ? 'border-b-2 border-blue' : '' }}">
+        <a href="{{ '/sell' }}" class="text-center w-full">What we Sell</a>
+    </div>
+    
+    <div class="flex mx-auto my-0 p-auto items-center w-32 hover:border-b-2 hover:border-blue duration-300 
+    {{ request()->is('buy') ? 'border-b-2 border-blue' : '' }}">
+        <a href="{{ '/buy' }}" class="text-center w-full">What we Buy</a>
+    </div>
+    
+    <div class="flex mx-auto my-0 p-auto items-center w-32 hover:border-b-2 hover:border-blue duration-300 
+    {{ request()->is('dashboard') ? 'border-b-2 border-blue' : '' }}">
+        <a href="{{ '/dashboard' }}" class="text-center w-full">Dashboard</a>
+    </div>
+    
+    
+
 </nav>
+
+<div class="h-16">
+    
+</div>
 
 <script>
     
@@ -50,39 +54,19 @@
         console.log('test');
     }
     
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function() {
+        let nav = document.getElementById("nav");
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            // Scroll down
+            nav.classList.add("opacity-0");
+        } else {
+            // Scroll up
+            nav.classList.remove("opacity-0");
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    }, false);
 
-    // Select the image element
-    const logoImage = document.getElementById('centerLogo');
-    const navBar = document.getElementById('nav');
-    
-
-    // Add scroll event listener
-    if(window.location.href === "http://kmci.local/"){
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                // Remove the class when scrolling wn
-                logoImage.classList.remove('translate-y-1/2');
-                logoImage.classList.remove('scale-150');
-                logoImage.classList.remove('w-32');
-                logoImage.classList.add('w-20');
-                nav.classList.remove('text-blue')
-                nav.classList.add('text-gray')
-    
-            } else {
-                // Add the class back when at the top
-                logoImage.classList.add('translate-y-1/2');
-                logoImage.classList.add('scale-150');
-                logoImage.classList.remove('w-20');
-                logoImage.classList.add('w-32');
-                nav.classList.add('text-blue')
-                nav.classList.remove('text-gray')
-            }
-        });
-    }else{
-        logoImage.classList.remove('translate-y-1/2');
-        logoImage.classList.remove('scale-150');
-        nav.classList.remove('text-blue')
-        nav.classList.add('text-gray')
-    }
 
 </script>
