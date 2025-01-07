@@ -1,7 +1,5 @@
 @include('partials.head')
 
-
-
     @include('partials.nav')
 
     <main class="flex p-2 h-[92vh] w-full mx-auto h-auto pb-32">
