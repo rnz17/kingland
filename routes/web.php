@@ -12,7 +12,7 @@ Route::get('/', function () {
 //     return view('sell');
 // });
 
-Route::get('/sell', [ProductController::class, 'index'])->name('sell');
+Route::get('/sell', [ProductController::class, 'getProduct'])->name('sell');
 
 Route::get('/buy', function () {
     return view('buy');
@@ -91,6 +91,10 @@ Route::prefix('founders')->group(function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/dashboard/createProd', [ProductController::class, 'createProduct'])->name('createProduct');
+Route::post('/dashboard', [ProductController::class, 'store'])->name('storeProduct');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
