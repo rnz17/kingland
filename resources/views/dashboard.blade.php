@@ -33,6 +33,9 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-lightgray">
                 <tr>
+                    <th scope="col" class="border border-black px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+    
+                    </th>
                 @foreach ($columns as $column)
                     <th scope="col" class="border border-black px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                         {{ $column }}
