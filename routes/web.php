@@ -8,16 +8,11 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-// Route::get('/sell', function () {
-//     return view('sell');
-// });
-
 Route::get('/sell', [ProductController::class, 'getProduct'])->name('sell');
 
 Route::get('/buy', function () {
     return view('buy');
 });
-
 
 
 Route::get('/history', function () {

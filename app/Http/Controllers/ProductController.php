@@ -7,11 +7,12 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function getProduct()
+    public function getProduct(Request $request)
     {
         $products = Product::all();
         return view('sell', ['products' => $products]);
     }
+
 
     public function createProduct(Request $request)
     {
@@ -24,6 +25,7 @@ class ProductController extends Controller
         $data = $request->validate([
             'code' => 'required',
             'name' => 'required',
+            'category' => 'required|in:school,cctv,appliances,agriculture,ict,lighting,it,electronics,logistic',
             'supplier' => 'nullable',
             'spec' => 'nullable',
             'unit' => 'required',

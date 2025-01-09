@@ -13,6 +13,21 @@
 </div>
 
 <div>
+    <label for="category">Category</label>
+    <select id="category" name="category" required>
+        <option value="">Category</option>
+        <option value="school">School</option>
+        <option value="cctv">CCTV</option>
+        <option value="appliances">Appliances</option>
+        <option value="agriculture">Agriculture</option>
+        <option value="ict">ICT</option>
+        <option value="lighting">Lighting</option>
+        <option value="it">IT</option>
+        <option value="electronics">Electronics</option>
+        <option value="logistic">Logistic</option>
+    </select>
+
+<div>
     <label for="supplier">Supplier</label>
     <input type="text" id="supplier" name="supplier">
 </div>

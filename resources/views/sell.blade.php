@@ -75,31 +75,30 @@
         
         <!-- MODAL -->
         <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
-        <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-auto bg-white shadow-2xl p-8 rounded">
-            <img src="{{ asset('images/placeholder.png') }}" class="w-40 my-4 shadow-md mx-auto">
-            <div class="items-center">
-                <div class="flex w-full border-b border-black border-opacity-50">
-                    <h1 class="text-xl font-medium mx-auto w-1/2 text-left pl-20">Item:</h1>
-                    <h1 class="text-xl font-medium mx-auto w-1/2 text-center">item_name</h1>
-                </div>
-                <div class="flex w-full border-b border-black border-opacity-50">
-                    <h1 class="text-xl font-medium mx-auto w-1/2 text-left pl-20">Item Code:</h1>
-                    <h1 class="text-xl font-medium mx-auto w-1/2 text-center">item_code</h1>
-                </div>
-                <div class="flex w-full border-b border-black border-opacity-50">
-                    <h1 class="text-xl font-medium mx-auto w-1/2 text-left pl-20">Item Category:</h1>
-                    <h1 class="text-xl font-medium mx-auto w-1/2 text-center">item_category</h1>
-                </div>
-                <div class="flex w-full border-b border-black border-opacity-50">
-                    <h1 class="text-xl font-medium mx-auto w-1/2 text-left pl-20">UOM:</h1>
-                    <h1 class="text-xl font-medium mx-auto w-1/2 text-center">item_uom</h1>
-                    <!-- by box or per piece -->
-                </div>
+            <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-auto bg-white shadow-2xl p-8 rounded">
+                <img src="{{ asset('images/placeholder.png') }}" class="w-40 my-4 shadow-md mx-auto">
+                <div class="items-center">
+                    <div class="flex w-full border-b border-black border-opacity-50">
+                        <h1 class="text-xl font-medium mx-auto w-1/2 text-left pl-20">Item:</h1>
+                        <h1 class="text-xl font-medium mx-auto w-1/2 text-center">item_name</h1>
+                    </div>
+                    <div class="flex w-full border-b border-black border-opacity-50">
+                        <h1 class="text-xl font-medium mx-auto w-1/2 text-left pl-20">Item Code:</h1>
+                        <h1 class="text-xl font-medium mx-auto w-1/2 text-center">item_code</h1>
+                    </div>
+                    <div class="flex w-full border-b border-black border-opacity-50">
+                        <h1 class="text-xl font-medium mx-auto w-1/2 text-left pl-20">Item Category:</h1>
+                        <h1 class="text-xl font-medium mx-auto w-1/2 text-center">item_category</h1>
+                    </div>
+                    <div class="flex w-full border-b border-black border-opacity-50">
+                        <h1 class="text-xl font-medium mx-auto w-1/2 text-left pl-20">UOM:</h1>
+                        <h1 class="text-xl font-medium mx-auto w-1/2 text-center">item_uom</h1>
+                    </div>
 
+                </div>
+                <button id="closeModalBtn" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md">Close</button>
             </div>
-            <button id="closeModalBtn" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md">Close</button>
-        </div>
-    </div>  
+        </div>  
 
     </main>
 
