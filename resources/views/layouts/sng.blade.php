@@ -6,7 +6,7 @@
     <main>
         <div class="flex w-full h-[92vh] -mb-32">
             <button onclick="toggleHIDE('sngOpt')" class="absolute z-50 left-6 top-16">
-                <img src="/images/burger.png" alt="nav" class="w-10">
+                <img src="/images/burger.png" alt="nav" class="lg:hidden w-10">
             </button>
             <div id="sngOpt" class="hidden absolute lg:relative lg:block mx-auto w-full bg-white h-full lg:w-1/4 p-4">
                 <h1 class="text-center font-bold text-2xl my-4">Structure and Governance</h1>     
