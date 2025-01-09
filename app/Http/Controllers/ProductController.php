@@ -7,14 +7,14 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function getProduct(Request $request)
+    public function getProduct()
     {
         $products = Product::all();
         return view('sell', ['products' => $products]);
     }
 
 
-    public function createProduct(Request $request)
+    public function createProduct()
     {
         $products = Product::all();
         return view('dashboard.createProduct', ['products' => $products]);

@@ -24,4 +24,9 @@ class Product extends Model
         'low_alert',
         'prod_note'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Filter::class);
+    }
 }
