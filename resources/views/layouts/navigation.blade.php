@@ -23,7 +23,8 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     
-                    <x-nav-link :href="route('createProduct')" :active="request()->routeIs('createProduct')">
+                    <!-- route('createProduct') -->
+                    <x-nav-link :href="" :active="request()->routeIs('createProduct')">
                         {{ __('Insert new Product') }}
                     </x-nav-link>
                     

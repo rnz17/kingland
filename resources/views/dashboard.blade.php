@@ -48,9 +48,9 @@
                     @foreach ($products as $product)
                         <tr>
                             <td class="border border-gray px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
-                                <button id="{{ $product->code }}" class="bg-blue text-xs text-white rounded-lg py-1 px-2">
+                                <a href="{{ url('dashboard/editProd') . '?code=' . $product->code }}" class="bg-blue text-xs text-white rounded-lg py-1 px-2">
                                     Edit
-                                </button>
+                                </a>
                             </td>
                             @foreach ($product->toArray() as $key => $value)
                                 <td class="border border-gray px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">

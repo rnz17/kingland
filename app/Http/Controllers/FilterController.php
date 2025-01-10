@@ -61,5 +61,21 @@ class FilterController extends Controller
         // Pass the columns, products, and filters to the view
         return view('dashboard', compact('columns', 'products', 'filters'));
     }
+
+    public function showItemByCode(Request $request)
+    {
+        $filters = Filter::all();
+        $code = $request->query('code'); //get code from URL
+
+        // Assuming Product is your model
+        $item = Product::where('code', $code)->first(); //compare $code into code from model:Product
+
+        if (!$item) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+
+        return view('dashboard.editProduct', compact('item','filters'));
+    }
+
     
 }
