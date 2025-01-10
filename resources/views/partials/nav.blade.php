@@ -17,8 +17,13 @@
         </div>
 
         <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
-        {{ request()->is('dashboard/createProd') ? 'border-b-2 border-blue' : '' }}">
+        {{ request()->is('createProd') ? 'border-b-2 border-blue' : '' }}">
             <a href="{{ route('createProduct') }}" class="text-center w-full">Add Product</a>
+        </div>
+
+        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
+        {{ request()->is('requests') ? 'border-b-2 border-blue' : '' }}">
+            <a href="{{ route('requests') }}" class="text-center w-full">Requests</a>
         </div>
 
         <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 

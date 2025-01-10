@@ -93,24 +93,34 @@ use Illuminate\Http\Request;
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-// EMAIL TEST
+    // REQUESTS ROUTES
+        
+    Route::get('/requests', [ProfileController::class, 'viewReqs'] )->name('requests');
 
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
-
-
- 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-    return redirect('/home');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+    Route::put('/users/{id}/admit', [ProfileController::class, 'admit'])->name('users.admit');
+    Route::delete('/users/{id}/reject', [ProfileController::class, 'reject'])->name('users.reject');
 
 
- 
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+    // EMAIL ROUTES
+
+        Route::get('/email/verify', function () {
+            return view('auth.verify-email');
+        })->middleware('auth')->name('verification.notice');
+
+
+        
+        Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+            $request->fulfill();
+            return redirect('/home');
+        })->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+        
+        Route::post('/email/verification-notification', function (Request $request) {
+            $request->user()->sendEmailVerificationNotification();
+            return back()->with('message', 'Verification link sent!');
+        })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
 
 require __DIR__.'/auth.php';

@@ -41,16 +41,44 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        // Attempt to validate the email and password first
+        $credentials = $this->only('email', 'password');
+        $user = \App\Models\User::where('email', $this->input('email'))->first();
+
+        if (!$user || !Auth::validate($credentials)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => trans('auth.failed'), // Invalid credentials
+            ]);
+        }
+
+        // Check if email is verified
+        if (is_null($user->email_verified_at)) {
+            throw ValidationException::withMessages([
+                'email' => 'Your email address is not verified.',
+            ]);
+        }
+
+        // Check if admin has verified the user
+        if (is_null($user->admin_verified_at)) {
+            throw ValidationException::withMessages([
+                'email' => 'Your account has not been verified by an admin.',
+            ]);
+        }
+
+        // If all checks pass, attempt login
+        if (!Auth::attempt($credentials, $this->boolean('remember'))) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed'), // This should rarely occur as we validated earlier
             ]);
         }
 
         RateLimiter::clear($this->throttleKey());
     }
+
 
     /**
      * Ensure the login request is not rate limited.

@@ -21,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'admin_verified_at', // Add this line
     ];
 
     /**
@@ -43,6 +44,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'admin_verified_at' => 'datetime', // Add this line
         ];
     }
 }
+

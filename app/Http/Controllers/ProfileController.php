@@ -8,9 +8,35 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
+
+    public function viewReqs(){
+        $requests = User::whereNull('admin_verified_at')->get();
+        return view('dashboard.request', ['requests' => $requests]);
+    }
+
+    // Admit user (set admin_verified_at timestamp)
+    public function admit($id)
+    {
+        $user = User::findOrFail($id);
+        $user->admin_verified_at = now(); // Set current timestamp
+        $user->save();
+
+        return redirect()->back()->with('success', 'User admitted successfully!');
+    }
+
+    // Reject user (delete account)
+    public function reject($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->back()->with('success', 'User rejected and deleted successfully!');
+    }
+
     /**
      * Display the user's profile form.
      */
