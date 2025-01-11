@@ -6,7 +6,7 @@
 
     <main class="">
         <!-- static bg for error workaround -->
-        <div class="w-full h-[86vh] bg-cover bg-center" style="background-image: url('/images/sample2.jpg');">
+        <div class="w-full h-[86vh] bg-cover bg-center" style="background-image: url('/images/kingland/sample2.jpg');">
             <div class="w-full h-full bg-gradient-to-r from-tdblue to-transparent">
                 <!-- text container -->
                 <div class="relative block w-3/4 mx-auto text-center lg:text-left lg:ml-0 lg:w-2/3 top-1/2 transform -translate-y-1/2">
@@ -36,13 +36,13 @@
             <!-- Slides -->
             <div class="flex transition-transform duration-500" id="slides">
                 <div class="w-full flex-shrink-0">
-                <img src="{{ asset('images/sample1.jpg') }}" alt="Slide 1" class="w-full h-[22rem] object-cover object-top">
+                <img src="{{ asset('images/kingland/sample1.jpg') }}" alt="Slide 1" class="w-full h-[22rem] object-cover object-top">
                 </div>
                 <div class="w-full flex-shrink-0">
-                <img src="{{ asset('images/sample2.jpg') }}" alt="Slide 2" class="w-full h-[22rem] object-cover object-center">
+                <img src="{{ asset('images/kingland/sample2.jpg') }}" alt="Slide 2" class="w-full h-[22rem] object-cover object-center">
                 </div>
                 <div class="w-full flex-shrink-0">
-                <img src="{{ asset('images/sample3.jpg') }}" alt="Slide 3" class="w-full h-[22rem] object-cover object-bottom-50">
+                <img src="{{ asset('images/kingland/sample3.jpg') }}" alt="Slide 3" class="w-full h-[22rem] object-cover object-bottom-50">
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
         <!-- slideshow end -->
 
 
-        <div class="relative flex w-full h-auto bg-cover mt-24" style="background-image: url('/images/sample3.jpg');">
+        <div class="relative flex w-full h-auto bg-cover mt-24" style="background-image: url('/images/kingland/sample3.jpg');">
             <div id="changeBG" class="w-full p-12 h-[46rem] bg-gradient-to-b from-white from-1% to-transparent">
                 <p class="text-black font-light text-2xl text-center tracking-normal leading-normal">
                 The founders shared a common belief: success is about more than just profits. It’s about transforming lives, offering innovative solutions, and creating a sustainable future. They understood that by working together, they could achieve more—by introducing revolutionary technologies, developing products that make life easier, and taking a stand for social and environmental responsibility.

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -93,12 +94,14 @@ use Illuminate\Http\Request;
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
+// OTHERS
+
     // REQUESTS ROUTES
         
-    Route::get('/requests', [ProfileController::class, 'viewReqs'] )->name('requests');
+        Route::get('/requests', [ProfileController::class, 'viewReqs'] )->name('requests');
 
-    Route::put('/users/{id}/admit', [ProfileController::class, 'admit'])->name('users.admit');
-    Route::delete('/users/{id}/reject', [ProfileController::class, 'reject'])->name('users.reject');
+        Route::put('/users/{id}/admit', [ProfileController::class, 'admit'])->name('users.admit');
+        Route::delete('/users/{id}/reject', [ProfileController::class, 'reject'])->name('users.reject');
 
 
     // EMAIL ROUTES
@@ -121,6 +124,9 @@ use Illuminate\Http\Request;
             return back()->with('message', 'Verification link sent!');
         })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+    // BLOG ROUTES
 
+        Route::view('/blog','dashboard.blog')->name('blogEditor');
+        Route::post('/blog', [BlogController::class,'store'])->name('blogStore');
 
-require __DIR__.'/auth.php';
+        require __DIR__.'/auth.php';

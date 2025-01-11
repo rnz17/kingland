@@ -6,7 +6,7 @@
 
     <main class="">
         <!-- static bg for error workaround -->
-        <div class="w-full h-[86vh] bg-cover bg-center" style="background-image: url('/images/sample3.jpg');">
+        <div class="w-full h-[86vh] bg-cover bg-center" style="background-image: url('/images/kingland/sample3.jpg');">
             <div class="w-full h-full bg-gradient-to-r from-transparent from-1% via-tblack via-99% to-transparent">
                 <!-- text container -->
                 <div class="relative block w-full top-1/2 transform -translate-y-1/2">
@@ -29,7 +29,7 @@
                 
                 <!-- card -->
                 <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/sample3.jpg');">
+                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
                     </div>
                     <div class="p-6">
                         <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
@@ -44,7 +44,7 @@
 
                 <!-- card -->
                 <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/sample3.jpg');">
+                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
                     </div>
                     <div class="p-6">
                         <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
@@ -59,7 +59,7 @@
 
                 <!-- card -->
                 <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/sample3.jpg');">
+                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
                     </div>
                     <div class="p-6">
                         <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
@@ -74,7 +74,7 @@
 
                 <!-- card -->
                 <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/sample3.jpg');">
+                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
                     </div>
                     <div class="p-6">
                         <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
@@ -89,7 +89,7 @@
 
                 <!-- card -->
                 <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/sample3.jpg');">
+                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
                     </div>
                     <div class="p-6">
                         <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
@@ -104,7 +104,7 @@
 
                 <!-- card -->
                 <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/sample3.jpg');">
+                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
                     </div>
                     <div class="p-6">
                         <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
@@ -119,7 +119,7 @@
 
                 <!-- card -->
                 <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/sample3.jpg');">
+                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
                     </div>
                     <div class="p-6">
                         <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
@@ -134,7 +134,7 @@
 
                 <!-- card -->
                 <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/sample3.jpg');">
+                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
                     </div>
                     <div class="p-6">
                         <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">

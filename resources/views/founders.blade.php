@@ -22,7 +22,7 @@
                     <!-- IMAGE CONTAINER -->
                     <div class="text-gray-500 group-hover:scale-105 transition-all">
                         <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
-                            <img src="{{ asset('images/richard.jpg') }}" class="w-full h-full object-cover object-center">
+                            <img src="{{ asset('images/founders/richard.jpg') }}" class="w-full h-full object-cover object-center">
                         </div>
                     </div>
                     <!-- TEXTS CONTAINER -->
@@ -53,7 +53,7 @@
                     <!-- IMAGE CONTAINER -->
                     <div class="text-gray-500 group-hover:scale-105 transition-all">
                         <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
-                            <img src="{{ asset('images/kat.jpg') }}" class="w-full h-full object-cover object-top">
+                            <img src="{{ asset('images/founders/kat.jpg') }}" class="w-full h-full object-cover object-top">
                         </div>
                     </div>
                     <!-- TEXTS CONTAINER -->
@@ -83,7 +83,7 @@
                     <!-- IMAGE CONTAINER -->
                     <div class="text-gray-500 group-hover:scale-105 transition-all">
                         <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
-                            <img src="{{ asset('images/nino.jpg') }}" class="w-full h-full object-cover object-center">
+                            <img src="{{ asset('images/founders/nino.jpg') }}" class="w-full h-full object-cover object-center">
                         </div>
                     </div>
                     <!-- TEXTS CONTAINER -->
@@ -109,7 +109,7 @@
                     <!-- IMAGE CONTAINER -->
                     <div class="text-gray-500 group-hover:scale-105 transition-all">
                         <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
-                            <img src="{{ asset('images/marlon.jpg') }}" class="w-full h-full object-cover object-center">
+                            <img src="{{ asset('images/founders/marlon.jpg') }}" class="w-full h-full object-cover object-center">
                         </div>
                     </div>
                     <!-- TEXTS CONTAINER -->
@@ -138,7 +138,7 @@
                     <!-- IMAGE CONTAINER -->
                     <div class="text-gray-500 group-hover:scale-105 transition-all">
                         <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
-                            <img src="{{ asset('images/aileen.jpg') }}" class="w-full h-full object-cover object-center">
+                            <img src="{{ asset('images/founders/aileen.jpg') }}" class="w-full h-full object-cover object-center">
                         </div>
                     </div>
                     <!-- TEXTS CONTAINER -->
@@ -164,7 +164,7 @@
                     <!-- IMAGE CONTAINER -->
                     <div class="text-gray-500 group-hover:scale-105 transition-all">
                         <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
-                            <img src="{{ asset('images/patrice.jpg') }}" class="w-full h-full object-cover object-center">
+                            <img src="{{ asset('images/founders/patrice.jpg') }}" class="w-full h-full object-cover object-center">
                         </div>
                     </div>
                     <!-- TEXTS CONTAINER -->
@@ -191,7 +191,7 @@
                     <!-- IMAGE CONTAINER -->
                     <div class="text-gray-500 group-hover:scale-105 transition-all">
                         <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
-                            <img src="{{ asset('images/mark.jpg') }}" class="w-full h-full object-cover object-center">
+                            <img src="{{ asset('images/founders/mark.jpg') }}" class="w-full h-full object-cover object-center">
                         </div>
                     </div>
                     <!-- TEXTS CONTAINER -->

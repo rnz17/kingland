@@ -2,13 +2,13 @@
     <!-- Slides -->
     <div class="flex transition-transform duration-500" id="slides">
         <div class="w-full flex-shrink-0">
-        <img src="{{ asset('images/sample1.jpg') }}" alt="Slide 1" class="w-full h-[22rem] object-cover object-top">
+        <img src="{{ asset('images/kingland/sample1.jpg') }}" alt="Slide 1" class="w-full h-[22rem] object-cover object-top">
         </div>
         <div class="w-full flex-shrink-0">
-        <img src="{{ asset('images/sample2.jpg') }}" alt="Slide 2" class="w-full h-[22rem] object-cover object-center">
+        <img src="{{ asset('images/kingland/sample2.jpg') }}" alt="Slide 2" class="w-full h-[22rem] object-cover object-center">
         </div>
         <div class="w-full flex-shrink-0">
-        <img src="{{ asset('images/sample3.jpg') }}" alt="Slide 3" class="w-full h-[22rem] object-cover object-bottom-50">
+        <img src="{{ asset('images/kingland/sample3.jpg') }}" alt="Slide 3" class="w-full h-[22rem] object-cover object-bottom-50">
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-@if (Str::contains(request()->path(), ['dashboard','profile','createProduct','editProduct']))
+@if (Str::contains(request()->path(), ['dashboard','profile','createProduct','editProduct','blog']))
     <nav id="nav" class="fixed z-50 flex h-16 duration-500 bg-white w-full shadow-xl">
 
         <div class="my-auto ml-4 text-xl font-bold tracking-wide">
@@ -19,6 +19,11 @@
         <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
         {{ request()->is('createProd') ? 'border-b-2 border-blue' : '' }}">
             <a href="{{ route('createProduct') }}" class="text-center w-full">Add Product</a>
+        </div>
+
+        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
+        {{ request()->is('blogEditor') ? 'border-b-2 border-blue' : '' }}">
+            <a href="{{ route('blogEditor') }}" class="text-center w-full">Create Blog</a>
         </div>
 
         <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  

@@ -29,9 +29,9 @@ export default {
                 tblack: 'rgba(0, 0, 0, 0.75)',
             },
             backgroundImage: {
-                'sample1': "url('images/sample1.jpg')",
-                'sample2': "url('images/sample2.jpg')",
-                'sample3': "url('images/sample3.jpg')",
+                'sample1': "url('images/kingland/sample1.jpg')",
+                'sample2': "url('images/kingland/sample2.jpg')",
+                'sample3': "url('images/kingland/sample3.jpg')",
             },
         },
     },
