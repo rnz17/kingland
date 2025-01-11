@@ -13,8 +13,14 @@ use Illuminate\Http\Request;
     Route::view('/', 'home')->name('home');
     Route::view('/story', 'story')->name('story');
     Route::view('/history', 'history')->name('history');
-    Route::get('/sell', [FilterController::class, 'filters'])->name('sell');
+
+    // sell
+    Route::get('/sell', [FilterController::class, 'filAndModal'])->name('sell');
+
+    // Route::get('/sell', [FilterController::class, 'filAndModal'])->name('sell');
+
     Route::view('/buy','buy')->name('buy');
+
     Route::prefix('founders')->group(function () {
         Route::get('/', function () {
             return view('founders');

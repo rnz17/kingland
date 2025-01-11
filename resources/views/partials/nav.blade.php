@@ -88,8 +88,35 @@
         {{ request()->is('dashboard') ? 'border-b-2 border-blue' : '' }}">
             <a href="{{ '/dashboard' }}" class="text-center w-full">Dashboard</a>
         </div>
+
+        @if (Str::contains(request()->path(), ['sell']))
+            <button onclick="toggleBasket()" class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
+            {{ request()->is('dashboard') ? 'border-b-2 border-blue' : '' }}">
+                <img src="{{ asset('images/products/placeholder.png') }}" class="m-auto h-1/2">
+            </button>
+        @endif
+        
     </nav>
     <div class="h-16">
+
+    </div>
+
+    <div id="basket" class="fixed left-full top-0 w-1/4 bg-notwhite h-screen z-50 duration-500 shadow-xl border-l border-gray border-opacity-50 shadow-xl">
+        <div class="flex w-full overflow-hidden">
+            <div class="w-16">
+            </div>
+            <h1 class="m-auto">Inquiry Basket</h1>
+            <button onclick="toggleBasket()" class="w-16">
+                <img src="{{ asset('images/products/placeholder.png') }}" class="m-auto h-1/2">
+            </button>
+        </div>
+        <div id="basketCont" class="block border-y border-gray border-opacity-50">
+
+        </div>
+        
+        <div class="flex w-full overflow-hidden">
+            <button onclick="sendEmail('basket')" class="mt-4 mx-auto px-2 min-w-24 py-2 bg-green-400 text-white rounded-md shadow-lg border border-gray border-opacity-20 hover:scale-105 duration-300">Inquire</button>
+        </div>
 
     </div>
 @endif
@@ -101,7 +128,15 @@
         dropdownMenu.classList.toggle('hidden');
         console.log('test');
     }
+
+    function toggleBasket(){
+        const basket = document.getElementById('basket');
+
+        basket.classList.toggle('-translate-x-full');
+
+    }
     
+// scroll listener
     let lastScrollTop = 0;
     window.addEventListener("scroll", function() {
         let nav = document.getElementById("nav");

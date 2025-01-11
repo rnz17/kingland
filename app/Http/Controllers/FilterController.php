@@ -31,7 +31,6 @@ class FilterController extends Controller
         return view('sell', compact('products', 'filters'));
     }
 
-    
     public function dashboard(Request $request)
     {
         // Fetch the filters
@@ -75,6 +74,27 @@ class FilterController extends Controller
         }
 
         return view('dashboard.editProduct', compact('item','filters'));
+    }
+
+    public function filAndModal(Request $request)
+    {
+        $filters = Filter::all();
+
+        $query = Product::query();
+
+        if(isset($request->search) && ($request->search !== NULL)){
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        if(isset($request->category) && ($request->category !== NULL)){
+            $query->whereHas(relation: 'category', callback: function($q){
+                $q->where('category_id', request('category'));
+            });
+        }
+
+        $products = $query->get();
+
+        return view('sell', compact('products', 'filters'));
     }
 
     
