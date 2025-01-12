@@ -1,8 +1,11 @@
 @if (Str::contains(request()->path(), ['dashboard','profile','createProduct','editProduct','blog']))
     <nav id="nav" class="fixed z-50 flex h-16 duration-500 bg-white w-full shadow-xl">
 
-        <div class="my-auto ml-4 text-xl font-bold tracking-wide">
-            <h1>KINGLAND MARKETING COMPANY INC.</h1>
+        
+        <div class="my-auto ml-8 text-xl font-bold tracking-wide h-full py-2">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('images/kingland/text_color.png') }}" class="h-full" >
+            </a>
         </div>
 
         <!-- / for root but no / for other views -->
@@ -52,8 +55,10 @@
 @else
     <nav id="nav" class="fixed z-50 flex h-16 duration-500 bg-white w-full shadow-xl">
 
-        <div class="my-auto ml-4 text-xl font-bold tracking-wide">
-            <h1>KINGLAND MARKETING COMPANY INC.</h1>
+        <div class="my-auto ml-8 text-xl font-bold tracking-wide h-full py-2">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('images/kingland/text_color.png') }}" class="h-full" >
+            </a>
         </div>
 
         <!-- / for root but no / for other views -->

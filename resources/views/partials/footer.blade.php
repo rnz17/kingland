@@ -1,6 +1,6 @@
 <div class="absolute -z-10 mt-32 flex w-full bg-darkblue h-auto py-8 shadow-inner">
-    <div class="w-1/3">
-        <img src="{{ asset('images/kingland/logo.png') }}" class="w-2/3 mx-auto">
+    <div class="w-1/3 flex px-4">
+        <img src="{{ asset('images/kingland/logo_wide.png') }}" class="w-full m-auto">
     </div>
     <div class="w-2/3 flex justify-around text-xl">
 

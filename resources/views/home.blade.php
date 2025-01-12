@@ -26,22 +26,41 @@
           <button class="w-3 h-3 rounded-full bg-gray bg-opacity-50" data-slide="2"></button>
       </div>
 
+    <!-- BLOG -->
+
+      @foreach($blogs as $blog)
+        <!-- Blog Container -->
+          <div class="block my-12 px-6">
+            <!-- Title Container -->
+              <div class="flex text-xl font-semibold text-center">
+                <h1 class="m-auto">Sample Blog: {{ $blog->title }}</h1>
+              </div>
+
+            <!-- Body Container -->
+              <div class="flex text-lg text-left leading-loose w-full h-[50vh]">
+                <p class="p-4 my-auto w-1/2">
+                  {{ $blog->content }}
+                </p>
+                <img src="{{ asset('images/kingland/logo_wide.png') }}" class="w-1/2 py-12">
+              </div>
+          </div>
+      @endforeach
     <!-- SERVICES -->
 
-    <!-- Services modal -->
-      <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
-          <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-white shadow-2xl p-8 rounded">
-              <img id="modalImg" src="" class="w-40 my-4 shadow-xl border border-gray border-opacity-50 mx-auto">
-              <div class="flex w-full">
-                <p id="modalContText" class="m-auto w-1/3 text-lg font-medium text-center">
-                
-                </p>
-              </div>
-              <button id="closeModalBtn" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md">Close</button>
-          </div>
-      </div>    
+      <!-- Services modal -->
+        <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
+            <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-white shadow-2xl p-8 rounded">
+                <img id="modalImg" src="" class="w-40 my-4 shadow-xl border border-gray border-opacity-50 mx-auto">
+                <div class="flex w-full">
+                  <p id="modalContText" class="m-auto w-1/3 text-lg font-medium text-center">
+                  
+                  </p>
+                </div>
+                <button id="closeModalBtn" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md">Close</button>
+            </div>
+        </div>    
 
-    <!-- Services -->
+      <!-- Services -->
 
       <div class="relative block text-center w-full mt-2 py-2 h-auto mb-2">
           <h1 class="font-black text-darkblue text-2xl">OUR SERVICES</h1>

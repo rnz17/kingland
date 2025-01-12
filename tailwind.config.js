@@ -12,18 +12,21 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['DMSans', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
                 faustina: ['Faustina', ...defaultTheme.fontFamily.serif],
             },
             colors: {
                 notwhite: '#F2F2F2',
-                darkblue: '#000099',
+                lightblue: '#63a9e8',
+                blue: '#17469d',
+                darkblue: '#0f2f70',
+                tblue: 'rgba(23, 70, 157, 0.71)',
                 tdblue: 'rgba(4, 4, 31, 0.93)',
-                blue: '#0000FF',
                 cyan: '#00FFFF',
                 darkcyan: '#00CCCC',
-                lightgray: 'rgba(77, 77, 77, 0.5)',
-                gray: '#4D4D4D',
+                lightgray: '#656568',
+                tlightgray: 'rgba(77, 77, 77, 0.5)',
+                gray: '#353435',
                 darkgray: '#3A3A3A',
                 black: '#000000',
                 tblack: 'rgba(0, 0, 0, 0.75)',

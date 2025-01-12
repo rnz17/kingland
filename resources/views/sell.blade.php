@@ -2,60 +2,61 @@
 
     @include('partials.nav')
 
-    <main class="flex p-2 h-[92vh] w-full mx-auto h-auto pb-32">
+    <main class="flex h-[92vh] w-full mx-auto h-auto pb-32">
 
         <!-- Filters -->
-        <form action="{{ route('sell') }}" method="GET">
-            <div class="block w-full pt-20 pl-4 text-center overflow-y-auto">
-
-                    <input type="text" name="search" placeholder="Search..." class="w-full p-2 border rounded-md">
-    
-                <!-- Categories -->
-                <h1 href="{{ url('/sell') }}" class="font-[500] font-faustina text-lg">Categories</h1>
-    
-                @foreach($filters as $filter)
-                <div class="flex text-left ml-2 items-center py-2 mt-1">
-                    <input type="checkbox" id="{{ $filter->id }}" class="w-5 h-5 border rounded-md" name="category[]" value="{{ $filter->id }}">
-                    <label for="{{ $filter->id }}" class="ml-2 text-sm font-medium px-2 py-1">{{ $filter->name }}</label>
+            <form action="{{ route('sell') }}" method="GET" class="flex w-1/4 h-screen px-4">
+                <div class="block w-full m-auto mt-[9vh] text-center rounded-lg border border-lightgray overflow-hidden py-2">
+                        <div class="px-2">
+                            <input type="text" name="search" placeholder="Search..." class="w-full p-2 border rounded-md shadow-xl">
+                        </div>
+        
+                    <!-- Categories -->
+                    <h1 href="{{ url('/sell') }}" class="font-[500] text-xl py-4">Categories</h1>
+        
+                    @foreach($filters as $filter)
+                    <div class="flex text-left items-center">
+                        <input type="checkbox" id="{{ $filter->id }}" class="peer w-5 h-5 hidden border rounded-md" name="category[]" value="{{ $filter->id }}">
+                        <label for="{{ $filter->id }}" class="w-full border-y border-gray active:bg-lightblue peer-checked:bg-blue peer-checked:text-white text-md font-medium px-2 py-1">{{ $filter->name }}</label>
+                    </div>
+                    @endforeach
+                    
+                    <button type="submit" class="p-2 mt-6 text-md bg-lightblue border border-darkblue border-opacity-20 mb-2 text-black rounded-md shadow-xl">Apply Filters</button>
                 </div>
-                @endforeach
-                
-                <button type="submit" class="p-2 mt-6 text-md bg-cyan text-black rounded-md">Apply Filters</button>
-            </div>
 
-        </form>
+            </form>
 
         <!-- Product Display -->
-        <div class="flex flex-wrap justify-center gap-[2vw] w-5/6 p-4">
-            @if (count($products) > 0)
-                @foreach($products as $product)
-                    <button id="{{ $product->code }}" class="openModalBtn cursor-pointer relative group text-center p-4 w-[17vw] h-[38vh] border border-black rounded-md hover:shadow-lg hover:transform hover:scale-[1.05] duration-300">
-                        <div class="w-full duration-300 overflow-hidden">
-                            <img class="block mx-auto w-1/2 mb-6" src="{{ asset('images/products/placeholder.png') }}" alt="Item image">
-                            <h1 class="text-lg font-medium mt-16">{{$product->name}}</h1>
-                        </div>
-                    </button>
-                @endforeach
-            @else
-                <h1 class="text-center mt-32">No items found</h1>
-            @endif
+            <div class="flex flex-wrap justify-center gap-[2vw] w-5/6 p-4">
+                @if (count($products) > 0)
+                    @foreach($products as $product)
+                        <button id="{{ $product->code }}" class="openModalBtn cursor-pointer relative group text-center p-4 w-[15vw] h-[35vh] border border-black rounded-md hover:shadow-lg hover:transform hover:scale-[1.05] duration-300">
+                            <div class="w-full duration-300 overflow-hidden">
+                                <img class="block mx-auto w-1/2 mb-6" src="{{ asset('images/products/placeholder.png') }}" alt="Item image">
+                                <h1 class="text-lg font-medium mt-16">{{$product->name}}</h1>
+                            </div>
+                        </button>
+                    @endforeach
+                @else
+                    <h1 class="text-center mt-32">No items found</h1>
+                @endif
 
-            
-        </div>
-        
-        <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
-            <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-auto bg-white shadow-2xl p-8 rounded">
-                <div id="modCont">
-
-                </div>
-                <div class="flex w-full">
-
-                    <button onclick="sendEmail('item')" class="mt-4 mx-auto px-2 min-w-24 py-2 bg-darkblue text-white rounded-md shadow-lg border border-gray border-opacity-20 hover:scale-105 duration-300">Inquire</button>
-                    <button onclick="addToBasket()" class="closeModalBtn mt-4 mx-auto px-2 min-w-24 py-2 bg-green-400 text-black rounded-md shadow-lg border border-gray border-opacity-20 hover:scale-105 duration-300">Add to Basket</button>
-                    <button class="closeModalBtn mt-4 mx-auto px-2 min-w-24 py-2 bg-red-500 text-white rounded-md shadow-lg border border-gray border-opacity-20 hover:scale-105 duration-300">Close</button>
-                </div>
+                
             </div>
-        </div>  
+            
+            <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
+                <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-auto bg-white shadow-2xl p-8 rounded">
+                    <div id="modCont">
+
+                    </div>
+                    <div class="flex w-full">
+
+                        <button onclick="sendEmail('item')" class="mt-4 mx-auto px-2 min-w-24 py-2 bg-darkblue text-white rounded-md shadow-lg border border-gray border-opacity-20 hover:scale-105 duration-300">Inquire</button>
+                        <button onclick="addToBasket()" class="closeModalBtn mt-4 mx-auto px-2 min-w-24 py-2 bg-green-400 text-black rounded-md shadow-lg border border-gray border-opacity-20 hover:scale-105 duration-300">Add to Basket</button>
+                        <button class="closeModalBtn mt-4 mx-auto px-2 min-w-24 py-2 bg-red-500 text-white rounded-md shadow-lg border border-gray border-opacity-20 hover:scale-105 duration-300">Close</button>
+                    </div>
+                </div>
+            </div>  
 
     </main>
 

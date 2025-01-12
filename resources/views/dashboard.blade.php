@@ -22,7 +22,7 @@
 
                 </div>
                 
-                <button type="submit" class="p-2 mt-6 text-md bg-cyan text-black rounded-md">Apply Filters</button>
+                <button type="submit" class="p-2 mt-6 text-md bg-lightblue text-black rounded-md">Apply Filters</button>
             </div>
 
         </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Filter;
+use App\Models\Blog;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -13,6 +14,7 @@ class ProductController extends Controller
     {
         $filters = Filter::all();
         $products = Product::all();
+        $blogs = Blog::all();
 
         // Properly execute the raw query to get ENUM values
         $enumValues = DB::select("SHOW COLUMNS FROM products WHERE Field = 'unit'");
@@ -39,7 +41,8 @@ class ProductController extends Controller
         return view('home', [
             'products' => $products,
             'filters' => $filters,
-            'units' => $units
+            'units' => $units,
+            'blogs' => $blogs
         ]);
     }
 
