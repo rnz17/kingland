@@ -1,7 +1,7 @@
 @extends('layouts.founders')
 
 @section('img')
-    <img src="{{ asset('images/patrice.jpg') }}" class="object-top object-cover">
+    <img src="{{ asset('images/founders/patrice.jpg') }}" class="object-top object-cover">
 @endsection
 
 @section('name')

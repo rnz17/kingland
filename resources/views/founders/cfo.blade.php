@@ -2,7 +2,7 @@
 
 
 @section('img')
-    <img src="{{ asset('images/nino.jpg') }}" class="object-cover">
+    <img src="{{ asset('images/founders/nino.jpg') }}" class="object-cover">
 @endsection
 
 @section('name')

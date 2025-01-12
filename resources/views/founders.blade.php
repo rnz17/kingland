@@ -4,8 +4,8 @@
 
     <div class="flex flex-wrap w-full text-center mt-32 px-4">
         <div class="m-auto w-full lg:w-1/2 text-left lg:pl-24"> 
-            <h1 class="text-7xl font-bold tracking-wide">The Founders.</h1>
-            <h1 class="text-2xl font-medium ml-2 text-blue">A team focused on <span class="text-darkblue font-bold">The future.</span></h1>
+            <h1 class="text-7xl font-bold text-textblue tracking-wide">The Founders.</h1>
+            <h1 class="text-2xl font-medium ml-2 text-blue">A team focused on <span class="text-blue underline font-bold">The future.</span></h1>
         </div>
         <p class="m-auto w-full lg:w-1/2 mt-24 lg:mt-6 text-justify tracking-wide text-lg font-normal leading-loose pl-4 pr-4 lg:pr-12">At Kingland, our leadership stands out because we take a focused and hands-on approach. We’re dedicated to building strong leaders and driving growth in every part of our business, no matter the region or level. With a diverse team bringing a wide range of skills and experience, we’re not just meeting today’s needs—we’re creating solutions that make life better now and set the stage for an even brighter future.</p>
     

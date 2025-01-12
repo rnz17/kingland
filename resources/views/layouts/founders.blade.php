@@ -26,9 +26,9 @@
                     </div>
                     <div class="w-2/3 my-auto pl-6">
                         <h1 class="font-bold text-5xl my-1 mb-4 tracking-wider">@yield('name')</h1>
-                        <h1 class="font-medium text-darkblue text-3xl my-1 tracking-wide">@yield('title1')</h1>
-                        <h1 class="font-medium text-darkblue text-3xl my-1 tracking-wide">@yield('title2')</h1>
-                        <h1 class="font-medium text-darkblue text-3xl my-1 tracking-wide">@yield('title3')</h1>
+                        <h1 class="font-medium text-textblue text-3xl my-1 tracking-wide">@yield('title1')</h1>
+                        <h1 class="font-medium text-textblue text-3xl my-1 tracking-wide">@yield('title2')</h1>
+                        <h1 class="font-medium text-textblue text-3xl my-1 tracking-wide">@yield('title3')</h1>
                     </div>
                 </div>
             </div>
