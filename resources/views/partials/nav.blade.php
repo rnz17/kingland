@@ -1,108 +1,110 @@
 @if (Str::contains(request()->path(), ['dashboard','profile','createProduct','editProduct','blog']))
-    <nav id="nav" class="fixed z-50 flex h-16 duration-500 bg-white w-full shadow-xl">
+    <nav id="nav" class="fixed z-50 flex h-20 duration-500 bg-white w-full shadow-xl">
 
         
-        <div class="my-auto ml-8 text-xl font-bold tracking-wide h-full py-2">
+        <div class="my-auto ml-8 text-xl font-bold tracking-wide h-full py-1">
             <a href="{{ route('home') }}">
-                <img src="{{ asset('images/kingland/text_color.png') }}" class="h-full" >
+                <img src="{{ asset('images/kingland/logo_wide.png') }}" class="h-full hidden lg:block" >
+                <img src="{{ asset('images/kingland/logo.png') }}" class="h-full block lg:hidden" >
             </a>
         </div>
 
         <!-- / for root but no / for other views -->
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue  
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue  
         {{ request()->is('/') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ '/' }}" class="text-center w-full">Home</a>
+            <a href="{{ '/' }}" class="text-center w-full text-lg">Home</a>
         </div>
 
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue  
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue  
         {{ request()->is('dashboard') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ route('dashboard') }}" class="text-center w-full">Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="text-center w-full text-lg">Dashboard</a>
         </div>
 
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
         {{ request()->is('createProd') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ route('createProduct') }}" class="text-center w-full">Add Product</a>
+            <a href="{{ route('createProduct') }}" class="text-center w-full text-lg">Add Product</a>
         </div>
 
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
         {{ request()->is('blogEditor') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ route('blogEditor') }}" class="text-center w-full">Create Blog</a>
+            <a href="{{ route('blogEditor') }}" class="text-center w-full text-lg">Create Blog</a>
         </div>
 
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400  
         {{ request()->is('requests') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ route('requests') }}" class="text-center w-full">Requests</a>
+            <a href="{{ route('requests') }}" class="text-center w-full text-lg">Requests</a>
         </div>
 
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
         {{ request()->is('profile') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ route('profile.edit') }}" class="text-center w-full">{{ Auth::user()->name }}</a>
+            <a href="{{ route('profile.edit') }}" class="text-center w-full text-lg">{{ Auth::user()->name }}</a>
         </div>
 
         
 
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-red-500 duration-300">
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-red-500 duration-300">
             <form method="POST" action="{{ route('logout') }}" class="w-full">
                 @csrf
-            <button type="submit" class="text-center w-full h-full flex items-center justify-center">Log out</button>
+            <button type="submit" class="text-center w-full text-lg h-full flex items-center justify-center">Log out</button>
             </form>
         </div>
 
     </nav>
-    <div class="h-16">
+    <div class="h-20">
 
     </div>
 @else
-    <nav id="nav" class="fixed z-50 flex h-16 duration-500 bg-white w-full shadow-xl">
+    <nav id="nav" class="fixed z-50 flex h-20 duration-500 bg-white w-full shadow-xl">
 
-        <div class="my-auto ml-8 text-xl font-bold tracking-wide h-full py-2">
+        <div class="my-auto ml-8 text-xl font-bold tracking-wide h-full py-1">
             <a href="{{ route('home') }}">
-                <img src="{{ asset('images/kingland/text_color.png') }}" class="h-full" >
+                <img src="{{ asset('images/kingland/logo_wide.png') }}" class="h-full hidden lg:block" >
+                <img src="{{ asset('images/kingland/logo.png') }}" class="h-full block lg:hidden" >
             </a>
         </div>
 
         <!-- / for root but no / for other views -->
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue  
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue  
         {{ request()->is('/') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ '/' }}" class="text-center w-full">Home</a>
+            <a href="{{ '/' }}" class="text-center w-full text-lg">Home</a>
         </div>
 
         <div class="block group/dd mx-auto my-0 py-auto items-center w-32 overflow-hidden">
         
-            <div class="relative transform top-1/2 -translate-y-1/2 w-full text-center group-hover/dd:opacity-0 group-hover/dd:translate-y-[200%] duration-500">Our Story</div>
+            <div class="relative transform top-1/2 -translate-y-1/2 text-lg w-full text-center group-hover/dd:opacity-0 group-hover/dd:translate-y-[200%] duration-500">Our Story</div>
 
-            <div class="relative flex flex-wrap transform w-full h-full text-center group-hover/dd:opacity-100 -translate-y-[200%] group-hover/dd:-translate-y-[37.5%] opacity-0 duration-500">
-                <a href="{{ '/story' }}" class="w-full text-sm hover:text-darkblue hover:scale-105 hover:scale-x-110 duration-300">Who we Are</a>
-                <a href="{{ '/history' }}" class="w-full text-sm hover:text-darkblue hover:scale-105 hover:scale-x-110 duration-300">Our History</a>
-                <a href="{{ '/founders' }}" class="w-full text-sm hover:text-darkblue hover:scale-105 hover:scale-x-110 duration-300">Leadership</a>
+            <div class="relative flex flex-wrap transform w-full h-full text-center group-hover/dd:opacity-100 -translate-y-[200%] group-hover/dd:-translate-y-[28%] opacity-0 duration-500">
+                <a href="{{ '/story' }}" class="w-full text-md hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Who we Are</a>
+                <a href="{{ '/history' }}" class="w-full text-md hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Our History</a>
+                <a href="{{ '/founders' }}" class="w-full text-md hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Leadership</a>
             </div>
 
         </div>
 
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
         {{ request()->is('sell') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ '/sell' }}" class="text-center w-full">What we Sell</a>
+            <a href="{{ '/sell' }}" class="text-center w-full text-lg">What we Sell</a>
         </div>
 
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
         {{ request()->is('buy') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ '/buy' }}" class="text-center w-full">What we Buy</a>
+            <a href="{{ '/buy' }}" class="text-center w-full text-lg">What we Buy</a>
         </div>
 
-        <div class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
         {{ request()->is('dashboard') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ '/dashboard' }}" class="text-center w-full">Dashboard</a>
+            <a href="{{ '/dashboard' }}" class="text-center w-full text-lg">Dashboard</a>
         </div>
 
         @if (Str::contains(request()->path(), ['sell']))
-            <button onclick="toggleBasket()" class="flex mx-auto my-0 p-auto items-center w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
+            <button onclick="toggleBasket()" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
             {{ request()->is('dashboard') ? 'border-b-2 border-blue' : '' }}">
                 <img src="{{ asset('images/products/placeholder.png') }}" class="m-auto h-1/2">
             </button>
         @endif
         
     </nav>
-    <div class="h-16">
+    <div class="h-20">
 
     </div>
 

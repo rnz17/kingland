@@ -20,6 +20,7 @@ export default {
                 lightblue: '#63a9e8',
                 blue: '#17469d',
                 darkblue: '#0f2f70',
+                textblue: '#081b4d',
                 tblue: 'rgba(23, 70, 157, 0.71)',
                 tdblue: 'rgba(4, 4, 31, 0.93)',
                 cyan: '#00FFFF',
