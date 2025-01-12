@@ -27,21 +27,25 @@
       </div>
 
     <!-- BLOG -->
-
+     <div class="flex w-full">
+       <div class="m-auto text-center py-6">
+         <h1 class="text-3xl text-darkblue tracking-wider font-bold">Our Latest Stories</h1>
+       </div>
+     </div>
       @foreach($blogs as $blog)
         <!-- Blog Container -->
           <div class="block my-12 px-6">
             <!-- Title Container -->
               <div class="flex text-xl font-semibold text-center">
-                <h1 class="m-auto">Sample Blog: {{ $blog->title }}</h1>
+                <h1 class="m-auto">{{ $blog->title }}</h1>
               </div>
 
             <!-- Body Container -->
               <div class="flex text-lg text-left leading-loose w-full h-[50vh]">
-                <p class="p-4 my-auto w-1/2">
+                <p class="p-4 my-auto w-2/3">
                   {{ $blog->content }}
                 </p>
-                <img src="{{ asset('images/kingland/logo_wide.png') }}" class="w-1/2 py-12">
+                <img src="{{ asset('storage/' . $blog->image_url) }}" class="w-1/3 py-12">
               </div>
           </div>
       @endforeach

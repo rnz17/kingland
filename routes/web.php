@@ -133,6 +133,8 @@ use Illuminate\Http\Request;
     // BLOG ROUTES
 
         Route::view('/blog','dashboard.blog')->name('blogEditor');
-        Route::post('/blog', [BlogController::class,'store'])->name('blogStore');
+
+        Route::post('/blog', [BlogController::class, 'store'])->name('blogs.store');
+
 
         require __DIR__.'/auth.php';

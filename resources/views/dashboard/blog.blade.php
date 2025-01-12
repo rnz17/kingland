@@ -2,31 +2,77 @@
 
 @include('partials.nav')
 
-<form>
+
+
+<form action="/blog" method="POST" enctype="multipart/form-data">
+    @csrf
     <div class="flex w-full py-12 px-2">
-        <div class="m-auto w-3/4 h-auto bg-red-200">
-            <!-- Image upload -->
-                <div class="flex">
-                    <input class="m-auto bg-lightblue p-4" type="file" accept="image/*">
+        <div class="m-auto w-3/4 h-auto">
+            
+            <!-- Image Input -->
+                <div class="flex mb-4">
+                    <input id="fileInput" class="m-auto bg-lightblue p-4" type="file" accept="image/*" name="image_url">
+                    <img id="preview" class="hidden m-auto p-4 w-1/2" />
                 </div>
-            <!-- blog editor container -->
-                <form>
-                    <div id="editor" class="p-2">
-                        <p>Hello World!</p>
-                        <p>Some initial <strong>bold</strong> text</p>
-                        <p><br /></p>
+
+            <!-- Title Input -->
+                <div class="relativeblock mb-4 w-full">
+                    <input id="title" class="m-auto p-4 w-1/3 border border-black border-opacity-10 text-xl bg-notwhite tracking-wider focus:placeholder-none duration-500" type="text" name="title" placeholder="Title" required>
+                </div>
+
+            <!-- Blog Content Text -->
+                <div class="relativeblock mb-4 w-full">
+                    <textarea name="content" id="content" class="w-full h-60 border p-4 text-xl" placeholder="Write your blog content here..." required></textarea>
+                </div>
+                
+            <!-- Submit Button -->
+                @if(session('success'))
+                    <div class="flex mt-4">
+                        <div class="m-auto">
+                                {{ session('success') }}
+                        </div>
                     </div>
-                </form>
+                @endif
+
+            <!-- Submit Button -->
+                <div class="flex mt-4">
+                    <button type="submit" class="m-auto text-gray border border-blue border-opacity-50 bg-lightblue font-medium tracking-wider px-4 py-2 rounded-md shadow-xl">SUBMIT</button>
+                </div>
         </div>
     </div>
 </form>
 
+
+
 <!-- Include the Quill library -->
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
-<!-- Initialize Quill editor -->
 <script>
-  const quill = new Quill('#editor', {
-    theme: 'snow'
-  });
+    
+    // Image Input 
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+
+        fileInput.addEventListener('change', function() {
+            const file = fileInput.files[0];
+
+            if (file) {
+                // Create a FileReader object to read the file
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // Set the src of the image to the result from FileReader
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // Show the image
+                };
+
+                // Read the file as a data URL (base64 encoded string)
+                reader.readAsDataURL(file);
+                fileInput.classList.add('hidden')
+            } else {
+                
+                preview.classList.add('hidden') // Hide the image if no file is selected
+            }
+        });
+
 </script>
