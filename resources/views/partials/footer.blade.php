@@ -1,28 +1,30 @@
-<div class="absolute -z-10 mt-32 flex w-full bg-darkblue h-auto py-4 shadow-inner">
+<div class="absolute -z-10 mt-32 flex w-full bg-darkblue h-auto py-8 shadow-inner">
     <div class="w-1/3">
-        <img src="{{ asset('images/logo.png') }}" class="w-2/3 mx-auto">
+        <img src="{{ asset('images/kingland/logo.png') }}" class="w-2/3 mx-auto">
     </div>
-    <div class="w-2/3 flex justify-around">
-        <div class="flex flex-col text-white">
-            <h3 class="font-bold mb-2">Column 1</h3>
-            <a href="#">Sample Text 1</a>
-            <a href="#">Sample Text 2</a>
-            <a href="#">Sample Text 3</a>
-            <a href="#">Sample Text 4</a>
+    <div class="w-2/3 flex justify-around text-xl">
+
+        <div class="flex flex-col text-white text-center">
+            <h3 class="font-medium mb-2">Contact Us</h3>
+            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">09#########</a>
+            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">09#########</a>
         </div>
-        <div class="flex flex-col text-white">
+        
+        <div class="flex flex-col text-white text-center">
             <h3 class="font-bold mb-2">Our Company</h3>
-            <a href="{{ '/founders' }}">Leaders</a>
-            <a href="{{ '/sng' }}">Structure and Governance</a>
-            <a href="#"></a>
-            <a href="#"></a>
+            <a href="{{ '/founders' }}" class="font-thin text-lg hover:scale-x-105 duration-200">Leaders</a>
+            <a href="{{ '/sng' }}" class="font-thin text-lg hover:scale-x-105 duration-200">Structure and Governance</a>
+            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200"></a>
+            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200"></a>
         </div>
-        <div class="flex flex-col text-white">
+        
+        <div class="flex flex-col text-white text-center">
             <h3 class="font-bold mb-2">Column 3</h3>
-            <a href="#">Sample Text 1</a>
-            <a href="#">Sample Text 2</a>
-            <a href="#">Sample Text 3</a>
-            <a href="#">Sample Text 4</a>
+            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">Sample Text 1</a>
+            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">Sample Text 2</a>
+            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">Sample Text 3</a>
+            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">Sample Text 4</a>
         </div>
+
     </div>
 </div>

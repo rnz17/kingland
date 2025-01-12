@@ -5,15 +5,80 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Filter;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+    public function home()
+    {
+        $filters = Filter::all();
+        $products = Product::all();
+
+        // Properly execute the raw query to get ENUM values
+        $enumValues = DB::select("SHOW COLUMNS FROM products WHERE Field = 'unit'");
+
+        // Ensure we have a result
+        if (empty($enumValues)) {
+            abort(500, "Could not retrieve column details for 'unit'.");
+        }
+
+        // Extract the ENUM type
+        $type = $enumValues[0]->Type ?? null;
+
+        if (!$type) {
+            abort(500, "Could not determine the ENUM type for 'unit'.");
+        }
+
+        // Parse ENUM values
+        preg_match("/^enum\((.*)\)$/", $type, $matches);
+        $units = array_map(function ($value) {
+            return trim($value, "'");
+        }, explode(',', $matches[1]));
+
+        // Pass data to the view
+        return view('home', [
+            'products' => $products,
+            'filters' => $filters,
+            'units' => $units
+        ]);
+    }
+
     public function index()
     {
         $filters = Filter::all();
         $products = Product::all();
-        return view('dashboard.createProduct', ['products' => $products, 'filters' => $filters]);
+
+        // Properly execute the raw query to get ENUM values
+        $enumValues = DB::select("SHOW COLUMNS FROM products WHERE Field = 'unit'");
+
+        // Ensure we have a result
+        if (empty($enumValues)) {
+            abort(500, "Could not retrieve column details for 'unit'.");
+        }
+
+        // Extract the ENUM type
+        $type = $enumValues[0]->Type ?? null;
+
+        if (!$type) {
+            abort(500, "Could not determine the ENUM type for 'unit'.");
+        }
+
+        // Parse ENUM values
+        preg_match("/^enum\((.*)\)$/", $type, $matches);
+        $units = array_map(function ($value) {
+            return trim($value, "'");
+        }, explode(',', $matches[1]));
+
+        // Pass data to the view
+        return view('dashboard.createProduct', [
+            'products' => $products,
+            'filters' => $filters,
+            'units' => $units
+        ]);
     }
+
+
+
     
     public function store(Request $request)
     {

@@ -19,7 +19,7 @@
                 <label class="w-full pl-4 mb-2" for="category">Category</label>
                 <select class="rounded-lg m-auto w-3/4" id="category_id" name="category_id" required>
                 @foreach($filters as $filter)
-                        <option value="{{ $filter->id }}">{{ $filter->name }}{{ $filter->id }}</option>
+                        <option value="{{ $filter->id }}">{{ $filter->name }}</option>
                 @endforeach
                 </select>
             </div>
@@ -33,11 +33,16 @@
                 <label class="w-full pl-4 mb-2" for="spec">Specification</label>
                 <input class="rounded-lg m-auto w-3/4" type="text" id="spec" name="spec">
             </div>
-        
+
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="unit">Unit</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" id="unit" name="unit" required >
+                <label class="w-full pl-4 mb-2" for="unit">Category</label>
+                <select class="rounded-lg m-auto w-3/4" id="unit" name="unit" required>
+                @foreach($units as $unit)
+                        <option value="{{ $unit }}">{{ $unit }}</option>
+                @endforeach
+                </select>
             </div>
+
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="pcs_unit">Pieces per Unit</label>

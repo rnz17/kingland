@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 // CLIENT PAGES
-    Route::view('/', 'home')->name('home');
+    Route::get('/', [ProductController::class, 'home'])->name('home');
     Route::view('/story', 'story')->name('story');
     Route::view('/history', 'history')->name('history');
 
