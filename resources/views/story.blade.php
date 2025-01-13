@@ -27,125 +27,23 @@
             <!-- CARD CONTAINER -->
             <div class="flex flex-wrap w-11/12 mx-auto h-auto mt-6 gap-0"> 
                 
+                @foreach($filters as $filter)
                 <!-- card -->
                 <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
+                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover">
+                    <img src="{{ asset('images/categories/' . $filter->id . '.png') }}" class="h-full rounded-full mx-auto" alt="{{ $filter->name }} icon">
                     </div>
                     <div class="p-6">
                         <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Service
+                        {{ $filter->name }}
                         </h5>
                         <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
+                        {{ $filter->descriptions }} 
                         </p>
                     </div>
                 </div>
                 <!-- card end -->
-
-                <!-- card -->
-                <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
-                    </div>
-                    <div class="p-6">
-                        <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Service
-                        </h5>
-                        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                        </p>
-                    </div>
-                </div>
-                <!-- card end -->
-
-                <!-- card -->
-                <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
-                    </div>
-                    <div class="p-6">
-                        <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Service
-                        </h5>
-                        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                        </p>
-                    </div>
-                </div>
-                <!-- card end -->
-
-                <!-- card -->
-                <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
-                    </div>
-                    <div class="p-6">
-                        <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Service
-                        </h5>
-                        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                        </p>
-                    </div>
-                </div>
-                <!-- card end -->
-
-                <!-- card -->
-                <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
-                    </div>
-                    <div class="p-6">
-                        <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Service
-                        </h5>
-                        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                        </p>
-                    </div>
-                </div>
-                <!-- card end -->
-
-                <!-- card -->
-                <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
-                    </div>
-                    <div class="p-6">
-                        <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Service
-                        </h5>
-                        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                        </p>
-                    </div>
-                </div>
-                <!-- card end -->
-
-                <!-- card -->
-                <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
-                    </div>
-                    <div class="p-6">
-                        <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Service
-                        </h5>
-                        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                        </p>
-                    </div>
-                </div>
-                <!-- card end -->
-
-                <!-- card -->
-                <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover"  style="background-image: url('/images/kingland/sample3.jpg');">
-                    </div>
-                    <div class="p-6">
-                        <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Service
-                        </h5>
-                        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula. 
-                        </p>
-                    </div>
-                </div>
-                <!-- card end -->
+                @endforeach
 
             </div>
 

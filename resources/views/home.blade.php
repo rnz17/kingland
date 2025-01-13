@@ -28,36 +28,46 @@
 
     <!-- BLOG -->
      <div class="flex w-full">
-       <div class="m-auto text-center py-6">
+       <div class="m-auto text-center py-12">
          <h1 class="text-3xl text-darkblue tracking-wider font-bold">Our Latest Stories</h1>
        </div>
      </div>
-      @foreach($blogs as $blog)
-        <!-- Blog Container -->
-          <div class="block my-12 px-6">
-            <!-- Title Container -->
-              <div class="flex text-xl font-semibold text-center">
-                <h1 class="m-auto">{{ $blog->title }}</h1>
+      <div class="m-auto flex flex-wrap py-12 w-full gap-x-0">
+        @foreach($blogs as $blog) 
+          <div class="relative flex m-auto w-[45%] flex-col rounded-xl bg-gradient-to-br from-white to-notwhite bg-clip-border border border-lightgray border-opacity-10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative mx-4 -mt-6 h-64 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 opacity-90">
               </div>
-
-            <!-- Body Container -->
-              <div class="flex text-lg text-left leading-loose w-full h-[50vh]">
-                <p class="p-4 my-auto w-2/3">
-                  {{ $blog->content }}
-                </p>
-                <img src="{{ asset('storage/' . $blog->image_url) }}" class="w-1/3 py-12">
+              <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] animate-pulse">
               </div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <img src="{{ asset('storage/' . $blog->image_url) }}" class="w-full">
+              </div>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-gray antialiased group-hover:text-blue transition-colors duration-300">
+                {{ $blog->title }}
+              </h5>
+              <p class="block font-sans text-lg h-auto font-light leading-relaxed text-gray-700 antialiased">
+                {{ $blog->content }}
+              </p>
+            </div>
           </div>
-      @endforeach
+ 
+       @endforeach 
+     </div>
     <!-- SERVICES -->
 
       <!-- Services modal -->
         <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
-            <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-white shadow-2xl p-8 rounded">
-                <img id="modalImg" src="" class="w-40 my-4 shadow-xl border border-gray border-opacity-50 mx-auto">
+            <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-white shadow-2xl p-8 rounded-xl">
+                <img id="modalImg" src="" class="w-40 my-4 mx-auto">
                 <div class="flex w-full">
-                  <p id="modalContText" class="m-auto w-1/3 text-lg font-medium text-center">
-                  
+                  <h1 id="modalContTitle" class="m-auto w-1/3 text-4xl py-4 font-bold text-center">
+                  </h1>
+                </div>
+                <div class="flex w-full">
+                  <p id="modalContText" class="m-auto w-2/3 text-xl py-4 font-semibold text-center">
                   </p>
                 </div>
                 <button id="closeModalBtn" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md">Close</button>
@@ -66,32 +76,32 @@
 
       <!-- Services -->
 
-      <div class="relative block text-center w-full mt-2 py-2 h-auto mb-2">
-          <h1 class="font-black text-darkblue text-2xl">OUR SERVICES</h1>
-          <h1 class="mt-2 font-medium text-darkblue text-2xl">Services and Products we provide</h1>
-          <!-- card container -->
-            <div class="flex flex-wrap justify-center items-center gap-20 mt-20"> 
-            
-            @foreach($filters as $filter)
-              <!-- card -->
-                <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center hover:shadow-2xl hover:pb-10 hover:shadow-black hover:shadow-opacity-10 rounded-2xl border border-gray border-opacity-20 overflow-hidden hover:scale-105 px-2 duration-300">
-                  <!-- circle -->
-                  <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 transition-all duration-500">
-                    <img src="{{ asset('images/categories/' . $filter->id . '.png') }}" class="w-full rounded-full mx-auto" alt="{{ $filter->name }} icon">
+        <div class="relative block text-center w-full mt-2 py-2 h-auto mb-2">
+            <h1 class="font-black text-darkblue text-2xl">OUR SERVICES</h1>
+            <h1 class="mt-2 font-medium text-darkblue text-2xl">Services and Products we provide</h1>
+            <!-- card container -->
+              <div class="flex flex-wrap justify-center items-center gap-20 mt-20"> 
+              
+              @foreach($filters as $filter)
+                <!-- card -->
+                  <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center hover:shadow-2xl hover:pb-10 hover:shadow-black hover:shadow-opacity-10 rounded-2xl border border-gray border-opacity-20 overflow-hidden hover:scale-105 px-2 duration-300">
+                    <!-- circle -->
+                    <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 transition-all duration-500">
+                      <img src="{{ asset('images/categories/' . $filter->id . '.png') }}" class="w-full rounded-full mx-auto" alt="{{ $filter->name }} icon">
+                    </div>
+                    <div class="block z-10 px-0 transition-all duration-500">
+                      <h1 id="{{ $filter->id }}" class="text-2xl font-semibold">{{ $filter->name }}</h1>
+                      <h1 id="{{ $filter->id }}Text" class="hidden">{{ $filter->descriptions }}</h1>
+                      <button id="{{ $filter->id }}" class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300 mx-auto">
+                        Learn More
+                      </button>
+                    </div>
                   </div>
-                  <div class="block z-10 px-0 transition-all duration-500">
-                    <h1 class="text-2xl font-semibold">{{ $filter->name }}</h1>
-                    <h1 id="{{ $filter->id }}Text" class="hidden">{{ $filter->descriptions }}</h1>
-                    <button id="{{ $filter->id }}" class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300 mx-auto">
-                      Learn More
-                    </button>
-                  </div>
-                </div>
-              <!-- card end -->
-            @endforeach
-            
-            </div>
-      </div>
+                <!-- card end -->
+              @endforeach
+              
+              </div>
+        </div>
     
 @include('partials.footer')
 
@@ -133,7 +143,6 @@
     const modal = document.getElementById('modal');
     const openModalBtns = document.querySelectorAll('.openModalBtn');
     const modalImg = document.getElementById('modalImg');
-    const modalCont = document.getElementById('modalCont');
     const closeModalBtn = document.getElementById('closeModalBtn');
     const nav = document.getElementById('nav');
 
@@ -143,7 +152,9 @@
         modal.classList.remove('hidden');
         nav.classList.add('hidden');
         modalImg.src = `{{ asset('images/categories/${btn.id}.png') }}`;
-        var content = document.getElementById(`${btn.id}Text`);
+        var title = document.getElementById(`${btn.id}`); 
+        var content = document.getElementById(`${btn.id}Text`); 
+        modalContTitle.innerHTML = title.innerHTML;
         modalContText.innerHTML = content.innerHTML;
       });
     });

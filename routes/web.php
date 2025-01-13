@@ -11,13 +11,14 @@ use Illuminate\Http\Request;
 
 // CLIENT PAGES
     Route::get('/', [ProductController::class, 'home'])->name('home');
-    Route::view('/story', 'story')->name('story');
     Route::view('/history', 'history')->name('history');
+    
+    // story
+
+        Route::get('/story', [FilterController::class, 'story'])->name('story');
 
     // sell
-    Route::get('/sell', [FilterController::class, 'filAndModal'])->name('sell');
-
-    // Route::get('/sell', [FilterController::class, 'filAndModal'])->name('sell');
+        Route::get('/sell', [FilterController::class, 'filAndModal'])->name('sell');
 
     Route::view('/buy','buy')->name('buy');
 

@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Schema;
 
 class FilterController extends Controller
 {
+
+    public function story(){
+        $filters = Filter::all();
+
+        return view('story', compact('filters'));
+    }
+
     public function filters(Request $request)
     {
         $filters = Filter::all();
