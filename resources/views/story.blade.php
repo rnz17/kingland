@@ -23,31 +23,7 @@
                     We offer a wide range of products and services across various industries, including electronics, office supplies, appliances, furniture, and wireless communication services. Our expertise also extends to cargo logistics, electrical systems, lighting, educational materials, IT solutions, agricultural land management, and real estate services. Additionally, we run restaurants and catering services.
                 </p>
             </div>
-
-            <!-- CARD CONTAINER -->
-            <div class="flex flex-wrap w-11/12 mx-auto h-auto mt-6 gap-0"> 
-                
-                @foreach($filters as $filter)
-                <!-- card -->
-                <div class="relative hover:scale-105 flex mx-auto mt-12 w-80 flex-col rounded-xl bg-white bg-clip-border border border-gray border-opacity-20 text-gray-700 shadow-md hover:shadow-xl duration-200">
-                    <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl text-white shadow-xl shadow-blue-gray-500/40 bg-cover">
-                    <img src="{{ asset('images/categories/' . $filter->id . '.png') }}" class="h-full rounded-full mx-auto" alt="{{ $filter->name }} icon">
-                    </div>
-                    <div class="p-6">
-                        <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        {{ $filter->name }}
-                        </h5>
-                        <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        {{ $filter->descriptions }} 
-                        </p>
-                    </div>
-                </div>
-                <!-- card end -->
-                @endforeach
-
-            </div>
-
-            <div class="w-full h-auto p-12">
+            <div class="w-full h-auto p-6">
                 <p class="text-black text-lg mb-2">
                     We are the team behind the trusted products and services you rely on, committed to improving lives with simple yet meaningful solutions. Focused on innovation, quality, and customer satisfaction, we strive to make a positive impact in everyday life and contribute to a better world.
                 </p>
@@ -76,7 +52,7 @@
         <div class="w-full h-auto text-center mt-32">
             <h1 class="font-black text-4xl px-12 tracking-wider">GROWING TOGETHER WITH <span class="text-blue">KINGLAND.</span></h1>
 
-            <div class="w-3/4 lg:w-1/2 mx-auto mt-12">
+            <div class="w-full lg:w-1/2 mx-auto mt-12">
                 <p class="text-center text-lg px-12 mt-8">
                     At Kingland, we understand that success looks different for each person. Every employee's journey is unique, and we embrace that diversity because we believe it drives loyalty and achievement. Just as we aim to provide a great experience for our customers, we also strive to offer our employees meaningful opportunities for growth, recognition, and fulfillment.  
                 </p>

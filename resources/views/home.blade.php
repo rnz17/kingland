@@ -3,27 +3,18 @@
 
 
     @include('partials.nav')
+    <!-- SLIDESHOW -->
+      <div class="h-[86vh] bg-darkblue flex overflow-hidden">
 
-    <!-- Slideshow container -->
-      <div class="block overflow-hidden relative h-auto">
-        <!-- Slides -->
-        <div class="flex transition-transform duration-500" id="slides">
-          <div class="w-full flex-shrink-0">
-            <img src="{{ asset('images/kingland/sample1.jpg') }}" alt="Slide 1" class="w-full h-[86vh] object-cover object-top">
-          </div>
-          <div class="w-full flex-shrink-0">
-            <img src="{{ asset('images/kingland/sample2.jpg') }}" alt="Slide 2" class="w-full h-[86vh] object-cover object-center">
-          </div>
-          <div class="w-full flex-shrink-0">
-            <img src="{{ asset('images/kingland/sample3.jpg') }}" alt="Slide 3" class="w-full h-[86vh] object-cover object-bottom-50">
-          </div>
+        <div id="img1" class="absolute left-1/2 top-[53.2%] active h-[86vh] w-full transform -translate-x-1/2 -translate-y-1/2 duration-1000 ease-linear bg-cover bg-center z-10 opacity-100" style="background-image: url('/images/kingland/sample1.jpg');">
         </div>
-      </div>
-      
-      <div class="block flex justify-center space-x-4 mt-2 z-0" id="indicators">
-          <button class="w-3 h-3 rounded-full bg-gray bg-opacity-50" data-slide="0"></button>
-          <button class="w-3 h-3 rounded-full bg-gray bg-opacity-50" data-slide="1"></button>
-          <button class="w-3 h-3 rounded-full bg-gray bg-opacity-50" data-slide="2"></button>
+        <div id="img2" class="absolute left-1/2 top-[53.2%] h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-20 opacity-0" style="background-image: url('/images/kingland/sample2.jpg');">
+        </div>
+        <div id="img3" class="absolute left-1/2 top-[53.2%] h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-20 opacity-0" style="background-image: url('/images/kingland/sample2.jpg');">
+        </div>
+        <div id="img4" class="absolute left-1/2 top-[53.2%] h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-30 opacity-0" style="background-image: url('/images/kingland/sample3.jpg');">
+        </div>
+
       </div>
 
     <!-- BLOG -->
@@ -34,7 +25,7 @@
      </div>
       <div class="m-auto flex flex-wrap py-12 w-full gap-x-0">
         @foreach($blogs as $blog) 
-          <div class="relative flex m-auto w-[45%] flex-col rounded-xl bg-gradient-to-br from-white to-notwhite bg-clip-border border border-lightgray border-opacity-10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="relative flex mx-auto mb-24 w-[95%] lg:w-[45%] flex-col rounded-xl bg-gradient-to-br from-white to-notwhite bg-clip-border border border-lightgray border-opacity-10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <div class="relative mx-4 -mt-6 h-64 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
               <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 opacity-90">
               </div>
@@ -56,52 +47,24 @@
  
        @endforeach 
      </div>
-    <!-- SERVICES -->
+    
+    <!-- SERVICE REDIRECT -->
+      <div class="flex">
 
-      <!-- Services modal -->
-        <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
-            <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-white shadow-2xl p-8 rounded-xl">
-                <img id="modalImg" src="" class="w-40 my-4 mx-auto">
-                <div class="flex w-full">
-                  <h1 id="modalContTitle" class="m-auto w-1/3 text-4xl py-4 font-bold text-center">
-                  </h1>
-                </div>
-                <div class="flex w-full">
-                  <p id="modalContText" class="m-auto w-2/3 text-xl py-4 font-semibold text-center">
-                  </p>
-                </div>
-                <button id="closeModalBtn" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md">Close</button>
-            </div>
-        </div>    
+        <button class="m-auto relative inline-flex items-center justify-center px-8 py-2.5 overflow-hidden tracking-tighter text-white bg-transparent rounded-md group">
+          <span class="absolute w-0 h-0 transition-all duration-1000 ease-out bg-darkblue  group-hover:w-[27vw] group-hover:h-[27vw]"></span>
+          <span class="absolute top-0 right-0 w-12 h-[86vh] -mr-3">
+          </span>
+          <span class="absolute inset-0 w-full h-[86vh] -mt-1 rounded-lg opacity-30 bg-transparent">
+          </span>
+          <a href="{{ route('services') }}"><span class="relative text-3xl text-textblue group-hover:text-white tracking-widest duration-300 text-decoration underline font-bold">
+            Services Offered
+          </span></a>
+        </button>
+      </div>
 
-      <!-- Services -->
-
-        <div class="relative block text-center w-full mt-2 py-2 h-auto mb-2">
-            <h1 class="font-black text-darkblue text-2xl">OUR SERVICES</h1>
-            <h1 class="mt-2 font-medium text-darkblue text-2xl">Services and Products we provide</h1>
-            <!-- card container -->
-              <div class="flex flex-wrap justify-center items-center gap-20 mt-20"> 
-              
-              @foreach($filters as $filter)
-                <!-- card -->
-                  <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center hover:shadow-2xl hover:pb-10 hover:shadow-black hover:shadow-opacity-10 rounded-2xl border border-gray border-opacity-20 overflow-hidden hover:scale-105 px-2 duration-300">
-                    <!-- circle -->
-                    <div class="w-28 h-28 mt-8 rounded-full bg-transparent z-10 transition-all duration-500">
-                      <img src="{{ asset('images/categories/' . $filter->id . '.png') }}" class="w-full rounded-full mx-auto" alt="{{ $filter->name }} icon">
-                    </div>
-                    <div class="block z-10 px-0 transition-all duration-500">
-                      <h1 id="{{ $filter->id }}" class="text-2xl font-semibold">{{ $filter->name }}</h1>
-                      <h1 id="{{ $filter->id }}Text" class="hidden">{{ $filter->descriptions }}</h1>
-                      <button id="{{ $filter->id }}" class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300 mx-auto">
-                        Learn More
-                      </button>
-                    </div>
-                  </div>
-                <!-- card end -->
-              @endforeach
-              
-              </div>
-        </div>
+    
+    
     
 @include('partials.footer')
 
@@ -109,68 +72,81 @@
 
 <script>
 
-  // SLIDESHOW SCRIPT
-    const slides = document.getElementById('slides');
-    const indicators = document.querySelectorAll('#indicators button');
-    let currentIndex = 0;
+  // carousel
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+    const img3 = document.getElementById('img3');
+    const img4 = document.getElementById('img4');
+    const arr = [img1,img2,img3,img4];
 
-    function updateSlide(index) {
-      slides.style.transform = `translateX(-${index * 100}%)`;
-      indicators.forEach((indicator, i) => {
-        indicator.classList.toggle('bg-gray-800', i === index);
-        indicator.classList.toggle('bg-gray-400', i !== index);
-      });
+    function changeImg() {
+      console.log("change image!!");
+      var current;
+      var next;
+
+      for(let img of arr){
+        if(img.classList.contains('active')){
+          current = arr.indexOf(img);
+          next = (current + 1) % arr.length;
+          img.classList.remove('active');
+          arr[next].classList.add('active');
+          break
+        }
+      }
+
+      if(next == 0){
+        arr[0].classList.add('z-40');
+      }else if((next !== 0) || (current !== 0)){
+        arr[0].classList.remove('z-40');
+      }
+
+      setTimeout(() => {
+        arr[next].classList.add('active');
+        arr[next].classList.add('h-[86vh]');
+        arr[next].classList.add('opacity-100');
+        arr[next].classList.remove('h-0');
+        arr[next].classList.remove('opacity-0');
+      }, 1000);
+
+
+      setTimeout(() => {
+        arr[current].classList.remove('active');
+        arr[current].classList.remove('h-[86vh]');
+        arr[current].classList.remove('opacity-100');
+        arr[current].classList.add('h-0');
+        arr[current].classList.add('opacity-0');
+        
+      }, 2000);
+
     }
 
-    indicators.forEach((indicator, i) => {
-      indicator.addEventListener('click', () => {
-        currentIndex = i;
-        updateSlide(currentIndex);
-      });
-    });
+    function handleScrollAndFocus() {
+      if (window.scrollY <= 799 && document.hasFocus()) {
+        if (!window.intervalId) {
+          window.intervalId = setInterval(changeImg, 5000);
+        }
+      } else {
+        if (window.intervalId) {
+          clearInterval(window.intervalId);
+          window.intervalId = null;
+        }
+      }
+    }
 
-    setInterval(() => {
-    currentIndex = (currentIndex + 1) % indicators.length;
-    updateSlide(currentIndex);
-    }, 3000);
+    // Event listener for scrolling
+    window.addEventListener('scroll', handleScrollAndFocus);
 
-    // Initialize the first slide as active
-    updateSlide(currentIndex);
-
-
-  // MODAL SCRIPT
-    // Get modal and buttons
-    const modal = document.getElementById('modal');
-    const openModalBtns = document.querySelectorAll('.openModalBtn');
-    const modalImg = document.getElementById('modalImg');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const nav = document.getElementById('nav');
-
-    // Open modal when any button with the 'openModalBtn' class is clicked
-    openModalBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        modal.classList.remove('hidden');
-        nav.classList.add('hidden');
-        modalImg.src = `{{ asset('images/categories/${btn.id}.png') }}`;
-        var title = document.getElementById(`${btn.id}`); 
-        var content = document.getElementById(`${btn.id}Text`); 
-        modalContTitle.innerHTML = title.innerHTML;
-        modalContText.innerHTML = content.innerHTML;
-      });
-    });
-
-    // Close modal when the close button is clicked
-    closeModalBtn.addEventListener('click', () => {
-      modal.classList.add('hidden');
-      nav.classList.remove('hidden');
-    });
-
-    // Optional: Close modal if clicked outside the modal content
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        nav.classList.remove('hidden');
+    // Event listeners for focus and blur
+    window.addEventListener('blur', function () {
+      if (window.intervalId) {
+        clearInterval(window.intervalId);
+        window.intervalId = null;
       }
     });
+
+    window.addEventListener('focus', handleScrollAndFocus);
+
+
+
 </script>
 </html>

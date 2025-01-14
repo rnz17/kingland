@@ -1,4 +1,4 @@
-@if (Str::contains(request()->path(), ['dashboard','profile','createProduct','editProduct','blog']))
+@if (Str::contains(request()->path(), ['dashboard','profile','createProduct','editProduct','blog', 'requests']))
     <nav id="nav" class="fixed z-50 flex h-20 duration-500 bg-white w-full shadow-xl">
 
         
@@ -73,13 +73,19 @@
         
             <div class="relative transform top-1/2 -translate-y-1/2 text-lg w-full text-center group-hover/dd:opacity-0 group-hover/dd:translate-y-[200%] duration-500">Our Story</div>
 
-            <div class="relative flex flex-wrap transform w-full h-full text-center group-hover/dd:opacity-100 -translate-y-[200%] group-hover/dd:-translate-y-[28%] opacity-0 duration-500">
+            <div class="relative flex flex-wrap transform w-full h-full text-center group-hover/dd:opacity-100 -translate-y-[200%] group-hover/dd:-translate-y-[3.4vh] opacity-0 duration-500">
                 <a href="{{ '/story' }}" class="w-full text-md hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Who we Are</a>
                 <a href="{{ '/history' }}" class="w-full text-md hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Our History</a>
                 <a href="{{ '/founders' }}" class="w-full text-md hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Leadership</a>
             </div>
 
         </div>
+
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue  
+        {{ request()->is('services') ? 'border-b-2 border-blue' : '' }}">
+            <a href="{{ '/services' }}" class="text-center w-full text-lg">What we Offer</a>
+        </div>
+
 
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
         {{ request()->is('sell') ? 'border-b-2 border-blue' : '' }}">
@@ -89,11 +95,6 @@
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
         {{ request()->is('buy') ? 'border-b-2 border-blue' : '' }}">
             <a href="{{ '/buy' }}" class="text-center w-full text-lg">What we Buy</a>
-        </div>
-
-        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 
-        {{ request()->is('dashboard') ? 'border-b-2 border-blue' : '' }}">
-            <a href="{{ '/dashboard' }}" class="text-center w-full text-lg">Dashboard</a>
         </div>
 
         @if (Str::contains(request()->path(), ['sell']))

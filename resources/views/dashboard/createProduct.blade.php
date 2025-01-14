@@ -95,6 +95,7 @@
         </form>
     </div>
 </div>
+</body>
 <script>
 
     // to check if code is unique

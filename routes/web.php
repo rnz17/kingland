@@ -13,9 +13,14 @@ use Illuminate\Http\Request;
     Route::get('/', [ProductController::class, 'home'])->name('home');
     Route::view('/history', 'history')->name('history');
     
+    
     // story
 
         Route::get('/story', [FilterController::class, 'story'])->name('story');
+
+    // services
+        
+        Route::get('/services', [FilterController::class, 'services'])->name('services');
 
     // sell
         Route::get('/sell', [FilterController::class, 'filAndModal'])->name('sell');

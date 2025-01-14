@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
         $filters = Filter::all();
         $products = Product::all();
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('id', 'desc')->get();
 
         // Properly execute the raw query to get ENUM values
         $enumValues = DB::select("SHOW COLUMNS FROM products WHERE Field = 'unit'");

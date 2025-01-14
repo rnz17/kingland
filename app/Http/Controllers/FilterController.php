@@ -17,6 +17,12 @@ class FilterController extends Controller
         return view('story', compact('filters'));
     }
 
+    public function services(){
+        $filters = Filter::all();
+
+        return view('services', compact('filters'));
+    }
+
     public function filters(Request $request)
     {
         $filters = Filter::all();

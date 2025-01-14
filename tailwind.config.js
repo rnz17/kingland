@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -33,12 +34,14 @@ export default {
                 tblack: 'rgba(0, 0, 0, 0.75)',
             },
             backgroundImage: {
-                'sample1': "url('images/kingland/sample1.jpg')",
-                'sample2': "url('images/kingland/sample2.jpg')",
-                'sample3': "url('images/kingland/sample3.jpg')",
+                'sample1': "url('/images/kingland/sample1.jpg')",
+                'sample2': "url('/images/kingland/sample2.jpg')",
+                'sample3': "url('/images/kingland/sample3.jpg')",
             },
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms
+    ],
 };
