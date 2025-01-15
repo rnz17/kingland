@@ -119,7 +119,7 @@
     </nav>
 
     <!-- mobile dashboard dropdown -->
-        <div id="dashboard" class="absolute hidden sticky top-20 bg-notwhite w-full p-4 z-40 text-lg text-textblue font-medium">
+        <div id="dashboard" class="absolute hidden sticky top-20 bg-notwhite w-full p-4 z-40 text-lg text-textblue font-medium shadow-xl">
 
             <div class="flex">
                 <a href="{{ route('home') }}" class="text-center w-full py-4 active:bg-darkblue active:text-white">Home</a>
@@ -130,9 +130,9 @@
                     <button onclick="toggleHIDE('story')" class="text-center w-full py-4 active:bg-darkblue active:text-white">Our Story</button>
                 </div>
                 <div id="story" class="hidden flex flex-wrap bg-lightgray">
-                    <a href="{{ route('home') }}" class="text-center w-full py-4 active:bg-darkblue active:text-white">Who we are</a>
-                    <a href="{{ route('home') }}" class="text-center w-full py-4 active:bg-darkblue active:text-white">Our History</a>
-                    <a href="{{ route('home') }}" class="text-center w-full py-4 active:bg-darkblue active:text-white">Leadership</a>
+                    <a href="{{ route('story') }}" class="text-center w-full py-4 active:bg-darkblue active:text-white">Who we are</a>
+                    <a href="{{ route('history') }}" class="text-center w-full py-4 active:bg-darkblue active:text-white">Our History</a>
+                    <a href="/founders" class="text-center w-full py-4 active:bg-darkblue active:text-white">Leadership</a>
                 </div>
             </div>
             
@@ -154,7 +154,7 @@
 
     <!-- basket -->
         <div id="basket" class="fixed left-full top-0 w-full lg:w-1/4 bg-notwhite h-screen z-50 duration-500 shadow-xl border-l border-gray border-opacity-50 shadow-xl">
-            <div class="flex w-full overflow-hidden">
+            <div class="flex w-full h-16 overflow-hidden">
                 <div class="w-16">
                 </div>
                 <h1 class="m-auto">Inquiry Basket</h1>

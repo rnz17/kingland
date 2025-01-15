@@ -5,7 +5,7 @@
 
     <!-- Services modal -->
       <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
-            <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-auto bg-white shadow-2xl p-8 rounded-xl">
+            <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-5/6 lg:w-1/2 h-auto bg-white shadow-2xl p-8 rounded-xl">
                 <img id="modalImg" src="" class="w-40 my-4 mx-auto">
                 <div class="flex w-full">
                   <h1 id="modalContTitle" class="m-auto w-auto text-4xl p-4 font-bold text-center">
