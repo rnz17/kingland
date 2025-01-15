@@ -90,6 +90,7 @@ use Illuminate\Http\Request;
     Route::get('/register', function () {return view('auth.register');})->name('register');
 
     Route::get('/dashboard', [FilterController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+    
     Route::get('/dashboard/editProd', [FilterController::class, 'showItemByCode'])->name('editProduct');
 
     Route::get('/createProduct', [ProductController::class, 'index'] )->name('createProduct');

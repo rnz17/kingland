@@ -4,10 +4,6 @@
 
     <main class="flex h-[92vh] w-full mx-auto h-auto pb-32">
 
-    <button id="burger" onclick="toggleFilter()" class="fixed left-2 top-[10vh] md:hidden h-16 w-16 bg-gray mb-12 p-2 z-50">
-        <img src="{{ asset('images/products/placeholder.png') }}" class="h-full">
-    </button>
-
         <!-- Filters -->
             <form id="filters" action="{{ route('sell') }}" method="GET" class="fixed hidden md:block -top-16 pt-44 md:top-0 md:pt-0 pb-32 md:relative flex w-full z-40 md:z-20 md:z-40 md:w-1/4 bg-white md:h-screen md:px-4">
                 <div class="block w-full m-auto mt-[9vh] text-center rounded-md md:border md:border-lightgray overflow-hidden py-2">

@@ -4,7 +4,7 @@
 
     @include('partials.nav')
     <!-- SLIDESHOW -->
-      <div class="h-[86vh] bg-darkblue flex overflow-hidden">
+      <div class="h-[86vh] flex overflow-hidden">
 
         <div id="img1" class="absolute left-1/2 top-[51%] active h-[86vh] w-full transform -translate-x-1/2 -translate-y-1/2 duration-1000 ease-linear bg-cover bg-center z-10 opacity-100" style="background-image: url('/images/kingland/sample1.jpg');">
         </div>
