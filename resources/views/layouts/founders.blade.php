@@ -24,19 +24,19 @@
             </div>
 
             <div class="block">
-                <p class="text-justify py-6 px-8 md:px-32 font-medium text-lg">
+                <p class="text-justify py-6 px-12 md:px-32 font-medium text-lg">
                 @yield('p1')
                 </p>
 
-                <p class="text-justify py-6 px-8 md:px-32 font-medium text-lg">
+                <p class="text-justify py-6 px-12 md:px-32 font-medium text-lg">
                 @yield('p2')
                 </p>
 
-                <p class="text-justify py-6 px-8 md:px-32 font-medium text-lg">
+                <p class="text-justify py-6 px-12 md:px-32 font-medium text-lg">
                 @yield('p3')
                 </p>
 
-                <p class="text-justify py-6 px-8 md:px-32 font-medium text-lg">
+                <p class="text-justify py-6 px-12 md:px-32 font-medium text-lg">
                 @yield('p4')
                 </p>
 

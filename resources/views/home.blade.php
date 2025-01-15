@@ -6,13 +6,13 @@
     <!-- SLIDESHOW -->
       <div class="h-[86vh] bg-darkblue flex overflow-hidden">
 
-        <div id="img1" class="absolute left-1/2 top-[53.2%] active h-[86vh] w-full transform -translate-x-1/2 -translate-y-1/2 duration-1000 ease-linear bg-cover bg-center z-10 opacity-100" style="background-image: url('/images/kingland/sample1.jpg');">
+        <div id="img1" class="absolute left-1/2 top-[51%] active h-[86vh] w-full transform -translate-x-1/2 -translate-y-1/2 duration-1000 ease-linear bg-cover bg-center z-10 opacity-100" style="background-image: url('/images/kingland/sample1.jpg');">
         </div>
-        <div id="img2" class="absolute left-1/2 top-[53.2%] h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-20 opacity-0" style="background-image: url('/images/kingland/sample2.jpg');">
+        <div id="img2" class="absolute left-1/2 top-[51%] h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-20 opacity-0" style="background-image: url('/images/kingland/sample2.jpg');">
         </div>
-        <div id="img3" class="absolute left-1/2 top-[53.2%] h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-20 opacity-0" style="background-image: url('/images/kingland/sample2.jpg');">
+        <div id="img3" class="absolute left-1/2 top-[51%] h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-20 opacity-0" style="background-image: url('/images/kingland/sample2.jpg');">
         </div>
-        <div id="img4" class="absolute left-1/2 top-[53.2%] h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-30 opacity-0" style="background-image: url('/images/kingland/sample3.jpg');">
+        <div id="img4" class="absolute left-1/2 top-[51%] h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-30 opacity-0" style="background-image: url('/images/kingland/sample3.jpg');">
         </div>
 
       </div>
