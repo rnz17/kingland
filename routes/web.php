@@ -25,7 +25,9 @@ use Illuminate\Http\Request;
     // sell
         Route::get('/sell', [FilterController::class, 'filAndModal'])->name('sell');
 
-    Route::view('/buy','buy')->name('buy');
+
+    // buy
+    Route::get('/buy', [ProductController::class, 'table'])->name('buy');
 
     Route::prefix('founders')->group(function () {
         Route::get('/', function () {

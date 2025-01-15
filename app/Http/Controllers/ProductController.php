@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Filter;
 use App\Models\Blog;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class ProductController extends Controller
 {
@@ -80,8 +81,34 @@ class ProductController extends Controller
         ]);
     }
 
+    public function table(Request $request)
+    {
+        // Define the specific columns you want to display
+        $columns = ['code', 'name', 'category', 'spec', 'unit'];
 
+        // Fetch the filters
+        $filters = Filter::all();
 
+        // Fetch the products, selecting only the specified columns
+        $query = Product::select($columns);
+
+        // Apply search filter if provided
+        if ($request->search) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        // Apply category filter if provided
+        if ($request->category) {
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('category_id', $request->category);
+            });
+        }
+
+        // Fetch the products
+        $products = $query->get();
+
+        return view('buy', compact('columns', 'products', 'filters'));
+    }
     
     public function store(Request $request)
     {
