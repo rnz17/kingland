@@ -84,7 +84,7 @@
             <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
                 <a href="{{ '/' }}" class="text-center w-full text-lg">Home</a>
             </div>
-
+            
             <div class="block group/dd mx-auto my-0 py-auto items-center w-32 overflow-hidden">
             
                 <div class="relative transform top-1/2 -translate-y-1/2 text-lg w-full text-center group-hover/dd:opacity-0 group-hover/dd:translate-y-[200%] duration-500">Our Story</div>

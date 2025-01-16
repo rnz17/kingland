@@ -1,8 +1,8 @@
-<div class="absolute -z-10 mt-32 flex w-full bg-lightblue h-auto py-8 shadow-inner">
-    <div class="w-1/3 flex px-4">
+<div class="absolute -z-10 mt-32 lg:flex w-full bg-lightblue h-auto px-8 lg:px-0 py-8 pb-12 shadow-inner">
+    <div class="w-full lg:w-1/3 flex px-4 pb-12 lg:py-0">
         <img src="{{ asset('images/kingland/logo_wide.png') }}" class="w-full m-auto">
     </div>
-    <div class="w-2/3 flex justify-around text-xl">
+    <div class="w-full lg:w-2/3 flex justify-around text-xl">
 
         <div class="flex flex-col text-textblue text-center">
             <h3 class="font-medium mb-2">Contact Us</h3>
