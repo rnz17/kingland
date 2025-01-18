@@ -52,7 +52,7 @@
       <div class="flex">
 
         <button class="m-auto relative inline-flex items-center justify-center px-8 py-2.5 overflow-hidden tracking-tighter text-white bg-transparent rounded-md group">
-          <span class="absolute w-0 h-0 transition-all duration-1000 ease-out bg-darkblue  group-hover:w-[27vw] group-hover:h-[27vw]"></span>
+          <span class="absolute w-0 h-0 transition-all duration-1000 ease-out bg-darkblue group-hover:w-[27vw] group-hover:h-[27vw]"></span>
           <span class="absolute top-0 right-0 w-12 h-[86vh] -mr-3">
           </span>
           <span class="absolute inset-0 w-full h-[86vh] -mt-1 rounded-lg opacity-30 bg-transparent">

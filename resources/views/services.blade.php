@@ -48,6 +48,7 @@
               </div>
         </div>
 </body>
+
 <script>
     // MODAL SCRIPT
     // Get modal and buttons
@@ -62,7 +63,7 @@
       btn.addEventListener('click', () => {
         modal.classList.remove('hidden');
         nav.classList.add('hidden');
-        modalImg.src = `{{ asset('images/categories/${btn.id}.png') }}`;
+        modalImg.src = `{{ asset('images/services/${btn.id}.png') }}`;
         var title = document.getElementById(`${btn.id}`); 
         var content = document.getElementById(`${btn.id}Text`); 
         modalContTitle.innerHTML = title.innerHTML;
@@ -84,3 +85,5 @@
       }
     });
 </script>
+
+@include('partials.footer')
