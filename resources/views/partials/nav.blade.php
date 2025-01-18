@@ -97,7 +97,7 @@
 
             </div>
 
-            <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-">
+            <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
                 <a href="{{ '/services' }}" class="text-center w-full text-lg">What we Offer</a>
             </div>
 
