@@ -6,8 +6,8 @@
 
         <div class="flex flex-col text-textblue text-center">
             <h3 class="font-medium mb-2">Contact Us</h3>
-            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">09#########</a>
-            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">09#########</a>
+            <a href="#" class="copyLink font-thin text-lg hover:scale-x-105 duration-200" data-text="09">09#########</a>
+            <a href="#" class="copyLink font-thin text-lg hover:scale-x-105 duration-200" data-text="09564572521">09564572521</a>
         </div>
         
         <div class="flex flex-col text-textblue text-center">
@@ -17,14 +17,25 @@
             <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200"></a>
             <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200"></a>
         </div>
-        
-        <div class="flex flex-col text-textblue text-center">
-            <h3 class="font-bold mb-2">Column 3</h3>
-            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">Sample Text 1</a>
-            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">Sample Text 2</a>
-            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">Sample Text 3</a>
-            <a href="#" class="font-thin text-lg hover:scale-x-105 duration-200">Sample Text 4</a>
-        </div>
 
     </div>
 </div>
+
+<script>
+    // Select all links with the class "copyLink"
+    const copyLinks = document.querySelectorAll(".copyLink");
+
+    copyLinks.forEach(link => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Get the text to copy from the data-text attribute
+        const textToCopy = this.getAttribute("data-text");
+
+        // Use the Clipboard API to copy the text
+        navigator.clipboard.writeText(textToCopy)
+          .then(() => alert(`Text copied: ${textToCopy}`))
+          .catch(err => console.error("Failed to copy text:", err));
+      });
+    });
+</script>
