@@ -6,7 +6,7 @@
 
         <div class="flex flex-col text-textblue text-center">
             <h3 class="font-medium mb-2">Contact Us</h3>
-            <a href="#" class="copyLink font-thin text-lg hover:scale-x-105 duration-200" data-text="09">09#########</a>
+            <a href="#" class="copyLink font-thin text-lg hover:scale-x-105 duration-200" data-text="09999913432">09999913432</a>
             <a href="#" class="copyLink font-thin text-lg hover:scale-x-105 duration-200" data-text="09564572521">09564572521</a>
         </div>
         
