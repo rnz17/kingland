@@ -45,7 +45,7 @@
                     @foreach($products as $product)
                         <button id="{{ $product->code }}" class="openModalBtn cursor-pointer relative group text-center p-4 w-full md:w-[15vw] h-32 md:h-[35vh] border border-black rounded-md hover:shadow-md hover:transform hover:scale-[1.05] duration-300">
                             <div class="flex md:block w-full h-full duration-300 overflow-hidden">
-                                <img class="block m-auto md:mx-auto w-1/4 md:w-1/2 mb-6" src="{{ asset('storage/images/products/'. $product->code .'.png') }}" alt="Item image">
+                                <img class="block m-auto md:mx-auto h-1/2 mb-6" src="{{ asset('storage/images/products/'. $product->code .'.png') }}" alt="Item image">
                                 <h1 class="m-auto w-3/4 text-md font-medium md:mt-16">{{$product->name}}</h1>
                             </div>
                         </button>
