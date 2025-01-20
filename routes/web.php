@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\FilterController;
+use App\Http\Controllers\ServiceController;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -16,14 +18,14 @@ use Illuminate\Http\Request;
     
     // story
 
-        Route::get('/story', [FilterController::class, 'story'])->name('story');
+        Route::get('/story', [ServiceController::class, 'story'])->name('story');
 
     // services
         
-        Route::get('/services', [FilterController::class, 'services'])->name('services');
+        Route::get('/services', [ServiceController::class, 'offers'])->name('services');
 
     // sell
-        Route::get('/sell', [FilterController::class, 'filAndModal'])->name('sell');
+        Route::get('/sell', [ServiceController::class, 'filAndModal'])->name('sell');
 
 
     // buy
@@ -91,17 +93,21 @@ use Illuminate\Http\Request;
 // ADMIN DASHBOARD
     Route::get('/register', function () {return view('auth.register');})->name('register');
 
-    Route::get('/dashboard', [FilterController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/dashboard', [ServiceController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
     
-    Route::get('/dashboard/editProd', [FilterController::class, 'showItemByCode'])->name('editProduct');
+    Route::get('/dashboard/editProd', [ServiceController::class, 'showItemByCode'])->name('editProduct');
 
     Route::get('/createProduct', [ProductController::class, 'index'] )->name('createProduct');
     Route::post('/createProduct', [ProductController::class, 'store'])->name('createProduct.store');
 
 
-    Route::get('/editProduct', [FilterController::class, 'showItemByCode'] )->name('editProduct');
+    Route::get('/editProduct', [ServiceController::class, 'showItemByCode'] )->name('editProduct');
     Route::post('/editProduct', [ProductController::class, 'update'])->name('editProduct.update');
     Route::delete('/editProduct', [ProductController::class, 'delete'])->name('editProduct.delete');
+
+    Route::get('/categories', [ServiceController::class, 'categories'] )->name('editCategories');
+
+    Route::post('/categories', [CategoryController::class, 'store'] )->name('store.category');
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

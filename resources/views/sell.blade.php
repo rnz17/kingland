@@ -5,26 +5,39 @@
     <main class="flex h-[92vh] w-full mx-auto h-auto pb-32">
 
         <!-- Filters -->
-            <form id="filters" action="{{ route('sell') }}" method="GET" class="fixed hidden md:block -top-16 pt-44 md:top-0 md:pt-0 pb-32 md:relative flex w-full z-40 md:z-20 md:z-40 md:w-1/4 bg-white md:h-screen md:px-4">
-                <div class="block w-full m-auto mt-[9vh] text-center rounded-md md:border md:border-lightgray overflow-hidden py-2">
-                    <div class="px-6 md:px-2">
-                        <input type="text" name="search" placeholder="Search..." class="w-full p-2 border rounded-md shadow-xl">
+            <div class="w-full md:w-1/4 p-4">
+                <form id="filters" action="{{ route('sell') }}" method="GET">
+                    <div class="mb-4">
+                        <label for="search" class="block text-lg font-medium text-gray-700">Search</label>
+                        <input type="text" id="search" name="search" class="mt-1 block w-full p-2 border border-gray rounded-md shadow-sm focus:ring-blue focus:border-blue sm:text-sm" placeholder="Search products...">
                     </div>
-        
-                    <!-- Categories -->
-                    <h1 href="{{ url('/sell') }}" class="font-[500] text-xl py-4">Categories</h1>
-        
-                    @foreach($filters as $filter)
-                    <div class="flex text-left items-center">
-                        <input type="checkbox" id="{{ $filter->id }}" class="peer w-5 h-5 hidden border rounded-md" name="category[]" value="{{ $filter->id }}">
-                        <label for="{{ $filter->id }}" class="w-full border-y border-gray active:bg-lightblue peer-checked:bg-blue peer-checked:text-white text-md font-medium px-2 py-4 md:py-1">{{ $filter->name }}</label>
-                    </div>
-                    @endforeach
-                    
-                    <button type="submit" class="p-2 mt-6 text-md bg-lightblue border border-darkblue border-opacity-20 mb-2 text-black rounded-md shadow-xl">Apply Filters</button>
-                </div>
+                    <label for="servCat" class="block text-lg font-medium text-gray-700">Category</label>
+                        <div class="flex flex-col mb-4 rounded-lg overflow-hidden gap-y-2 text-md">
+                        @foreach($filters as $item)
+                            <div class="flex items-center border border-gray border-opacity-50 rounded-lg overflow-hidden">
+                                <input class="ml-2 peer hidden" type="checkbox" id="filter_service_{{ $item->id }}" name="filters[]" value="{{ $item->id }}">
+                                <label class="pl-4 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_service_{{ $item->id }}">{{ $item->name }}</label>
+                            </div>
+                            @foreach($item->category as $subitem)
+                                <div class="flex items-center border border-gray border-opacity-50 rounded-lg overflow-hidden">
+                                    <input class="ml-2 peer hidden" type="checkbox" id="filter_category_{{ $subitem->id }}" name="filters[]" value="{{ $subitem->id }}">
+                                    <label class="pl-12 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_category_{{ $subitem->id }}">{{ $subitem->name }}</label>
+                                </div>
+                                @foreach($subitem->subcategories as $subcatitem)
+                                    <div class="flex items-center border border-gray border-opacity-50 rounded-lg overflow-hidden">
+                                        <input class="ml-2 peer hidden" type="checkbox" id="filter_subcategory_{{ $subcatitem->id }}" name="filters[]" value="{{ $subcatitem->id }}">
+                                        <label class="pl-20 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_subcategory_{{ $subcatitem->id }}">{{ $subcatitem->name }}</label>
+                                    </div>
+                                @endforeach
+                            @endforeach
+                        @endforeach
 
-            </form>
+                    </div>
+                    <div class="flex">
+                        <button type="submit" class="mt-4 m-auto px-4 py-2 bg-blue text-white rounded-md shadow-md hover:bg-blue-600">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
 
         <!-- Product Display -->
             <div class="flex flex-wrap justify-center gap-[2vw] w-full md:w-5/6 p-4">
@@ -32,7 +45,7 @@
                     @foreach($products as $product)
                         <button id="{{ $product->code }}" class="openModalBtn cursor-pointer relative group text-center p-4 w-full md:w-[15vw] h-32 md:h-[35vh] border border-black rounded-md hover:shadow-md hover:transform hover:scale-[1.05] duration-300">
                             <div class="flex md:block w-full h-full duration-300 overflow-hidden">
-                                <img class="block m-auto md:mx-auto w-1/4 md:w-1/2 mb-6" src="{{ asset('images/products/placeholder.png') }}" alt="Item image">
+                                <img class="block m-auto md:mx-auto w-1/4 md:w-1/2 mb-6" src="{{ asset('storage/images/products/'. $product->code .'.png') }}" alt="Item image">
                                 <h1 class="m-auto w-3/4 text-md font-medium md:mt-16">{{$product->name}}</h1>
                             </div>
                         </button>
@@ -45,7 +58,7 @@
             </div>
             
             <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center md:p-4">
-                <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2 h-auto bg-white shadow-2xl p-8 rounded">
+                <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 rounded-lg overflow-hidden transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2 h-auto bg-white shadow-2xl p-8 rounded">
                     <div id="modCont">
 
                     </div>
@@ -121,8 +134,12 @@
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.code}<h1>
                         </div>
                         <div class="flex w-full border-b border-black border-opacity-50">
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Service Category:</h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.service.name}; ${item.category.name}<h1>
+                        </div>
+                        <div class="flex w-full border-b border-black border-opacity-50">
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Item Category:</h1>
-                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.category}<h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.subcategory.name}<h1>
                         </div>
                         <div class="flex w-full border-b border-black border-opacity-50">
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">pcs_unit:</h1>

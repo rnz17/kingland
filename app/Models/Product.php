@@ -10,8 +10,9 @@ class Product extends Model
     protected $fillable = [
         'code',
         'name',
+        'service_id',
         'category_id',
-        'category',
+        'subcategory_id',
         'supplier',
         'spec',
         'unit',
@@ -26,8 +27,21 @@ class Product extends Model
         'prod_note'
     ];
 
+    // Define the relationship to Category
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+   
+    // Define the relationship to Category
     public function category()
     {
-        return $this->belongsTo(Filter::class);
+        return $this->belongsTo(Category::class);
+    }
+
+    // Define the relationship to Subcategory
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class);
     }
 }

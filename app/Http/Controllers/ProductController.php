@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Filter;
+use App\Models\Service;
 use App\Models\Blog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function home()
     {
-        $filters = Filter::all();
+        $filters = Service::all();
         $products = Product::all();
         $blogs = Blog::orderBy('id', 'desc')->get();
 
@@ -49,7 +49,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $filters = Filter::all();
+        $filters = Service::all();
         $products = Product::all();
 
         // Properly execute the raw query to get ENUM values
@@ -87,7 +87,7 @@ class ProductController extends Controller
         $columns = ['code', 'name', 'category', 'spec', 'unit'];
 
         // Fetch the filters
-        $filters = Filter::all();
+        $filters = Service::all();
 
         // Fetch the products, selecting only the specified columns
         $query = Product::select($columns);
@@ -131,7 +131,7 @@ class ProductController extends Controller
         ]);
 
         // Manually define category
-        $filter = Filter::find($data['category_id']);
+        $filter = Service::find($data['category_id']);
         if ($filter) {
             $data['category'] = $filter->name;
         }
@@ -171,7 +171,7 @@ class ProductController extends Controller
         ]);
 
         // Manually define category
-        $filter = Filter::find($data['category_id']);
+        $filter = Service::find($data['category_id']);
         if ($filter) {
             $data['category'] = $filter->name;
         }
