@@ -1,7 +1,4 @@
 @include('partials.head')
-
-
-
     @include('partials.nav')
     <!-- SLIDESHOW -->
       <div class="h-[86vh] flex overflow-hidden">
@@ -16,7 +13,24 @@
         </div>
 
       </div>
-
+    <!-- PARTNERS -->
+      <div class="flex flex-col py-12">
+        <h1 class="m-auto text-3xl text-darkblue tracking-wider font-bold">Our Partners</h1>
+        <div class="flex flex-wrap py-32">
+          <div class="flex m-auto rounded-full w-64 h-64 overflow-hidden border-2 border-blue shadow-xl">
+            <img src="{{ asset('images/partners/credo.png') }}" class="w-full m-auto">
+          </div>
+          <div class="flex m-auto rounded-full w-64 h-64 overflow-hidden border-2 border-blue shadow-xl">
+            <img src="{{ asset('images/partners/mei.jpg') }}" class="w-full m-auto">
+          </div>
+          <div class="flex m-auto rounded-full w-64 h-64 overflow-hidden border-2 border-blue shadow-xl">
+            <img src="{{ asset('images/partners/deped.jpg') }}" class="w-full m-auto">
+          </div>
+          <div class="flex m-auto rounded-full w-64 h-64 overflow-hidden border-2 border-blue shadow-xl">
+            <img src="{{ asset('images/partners/twinpack.png') }}" class="w-full m-auto">
+          </div>
+        </div>
+      </div>
     <!-- BLOG -->
      <div class="flex w-full">
        <div class="m-auto text-center py-12">
@@ -26,16 +40,18 @@
       <div class="m-auto flex flex-wrap py-12 w-full gap-x-0">
         @foreach($blogs as $blog) 
           <div class="relative flex mx-auto mb-24 w-[95%] lg:w-[45%] flex-col rounded-xl bg-gradient-to-br from-white to-notwhite bg-clip-border border border-lightgray border-opacity-10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div class="relative mx-4 -mt-6 h-64 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
-              <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 opacity-90">
+            @if($blog->image_url)
+              <div class="relative mx-4 -mt-6 h-64 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 opacity-90">
+                </div>
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] animate-pulse">
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <img src="{{ asset('storage/' . $blog->image_url) }}" class="w-full">
+                </div>
               </div>
-              <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] animate-pulse">
-              </div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <img src="{{ asset('storage/' . $blog->image_url) }}" class="w-full">
-              </div>
-            </div>
-            <div class="p-6">
+            @endif
+            <div class="p-6 @if(!$blog->image_url) m-auto @endif">
               <h5 class="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-gray antialiased group-hover:text-blue transition-colors duration-300">
                 {{ $blog->title }}
               </h5>
