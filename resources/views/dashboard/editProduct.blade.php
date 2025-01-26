@@ -7,88 +7,115 @@
         <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('editProduct.update') }}">
             @csrf
             @method('POST')
-            <div class="flex flex-wrap w-[32%]">
+        <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="code">Code</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->code }}" id="code" name="code" required>
+                <input onblur="checkCode(value)" class="rounded-lg m-auto w-3/4"  value="{{ $item->code }}" type="text" id="code" name="code" required>
             </div>
-        
+        <!-- hide -->
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="name">Name</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->name }}" id="name" name="name" required>
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->name }}" type="text" id="name" name="name" required>
             </div>
         
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="category">Category</label>
-                <select class="rounded-lg m-auto w-3/4" id="category_id" name="category_id" required>
-                    <option value="{{ $item->category_id }}">{{ $item->category }}</option>
+            </div>
 
-                    @foreach($filters as $filter)
-                        @if($filter->name !== $item->category)
-                            <option value="{{ $filter->id }}">{{ $filter->name }}</option>
-                        @endif
+            <div class="flex flex-wrap w-[32%]">
+                <label class="w-full pl-4 mb-2" for="category">Service Category</label>
+                <select class="rounded-lg m-auto w-3/4" id="service_id" name="service_id" required>
+                    <option value="{{ $item->service_id }}">{{ $services->where('id',$item->service_id)->first()->name }}</option>
+
+                    @foreach($services->reject(fn($service) => $service->id === $item->service_id) as $service)
+                            <option value="{{ $service->id }}">{{ $service->name }}</option>
                     @endforeach
-                    
+                </select>
+            </div>
+
+            <div class="flex flex-wrap w-[32%]">
+                <label class="w-full pl-4 mb-2" for="category">Main Category</label>
+                <select class="rounded-lg m-auto w-3/4" id="category_id" name="category_id" required>
+                    <option value="{{ $item->category_id }}">{{ $cat->where('id',$item->category_id)->first()->name }}</option>
+
+                    @foreach($cat->reject(fn($opt) => $opt->id === $item->category_id) as $opt)
+                            <option value="{{ $opt->id }}">{{ $opt->name }}</option>
+                    @endforeach 
+                </select>
+            </div>
+
+            <div class="flex flex-wrap w-[32%]">
+                <label class="w-full pl-4 mb-2" for="category">Item Category</label>
+                <select class="rounded-lg m-auto w-3/4" id="subcategory_id" name="subcategory_id" required>
+                <option value="{{ $item->subcategory_id }}">{{ $subcat->where('id',$item->subcategory_id)->first()->name }}</option>
+
+                    @foreach($subcat->reject(fn($opt) => $opt->id === $item->category_id) as $opt)
+                            <option value="{{ $opt->id }}">{{ $opt->name }}</option>
+                    @endforeach 
                 </select>
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="supplier">Supplier</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->supplier }}" id="supplier" name="supplier">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->supplier }}" type="text" id="supplier" name="supplier" required>
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="spec">Specification</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->spec }}" id="spec" name="spec">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->spec }}" type="text" id="spec" name="spec" required>
             </div>
-        
+
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="unit">Unit</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->unit }}" id="unit" name="unit" required >
+                <select class="rounded-lg m-auto w-3/4" id="unit" name="unit" required>
+                @foreach($units as $unit)
+                        <option value="{{ $unit }}">{{ $unit }}</option>
+                @endforeach
+                </select>
             </div>
+
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="pcs_unit">Pieces per Unit</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->pcs_unit }}" id="pcs_unit" name="pcs_unit">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->pcs_unit }}" type="text" id="pcs_unit" name="pcs_unit">
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="unit_price">Unit Price</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->unit_price }}" id="unit_price" name="unit_price" required pattern="^\d+(\.\d{1,2})?$">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->unit_price }}" type="text" id="unit_price" name="unit_price" required pattern="^\d+(\.\d{1,2})?$">
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="value_ratio">Value Ratio</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->value_ratio }}" id="value_ratio" name="value_ratio">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->value_ratio }}" type="text" id="value_ratio" name="value_ratio">
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="status">Status</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->status }}" id="status" name="status">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->status }}" type="text" id="status" name="status">
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="available">Available</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->available }}" id="available" name="available">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->available }}" type="text" id="available" name="available">
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="needed">Needed</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->needed }}" id="needed" name="needed">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->needed }}" type="text" id="needed" name="needed">
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="to_buy">To Buy</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->to_buy }}" id="to_buy" name="to_buy">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->to_buy }}" type="text" id="to_buy" name="to_buy">
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="low_alert">Low Alert</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->low_alert }}" id="low_alert" name="low_alert">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->low_alert }}" type="text" id="low_alert" name="low_alert">
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="prod_note">Product Note</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" value="{{ $item->prod_note }}" id="prod_note" name="prod_note">
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->prod_note }}" type="text" id="prod_note" name="prod_note">
             </div>
         
             <div class="m-auto flex flex-wrap items-center justify-center text-center h-16">

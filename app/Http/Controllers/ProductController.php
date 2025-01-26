@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Service;
+use App\Models\Category;
+use App\Models\Subcategory;
 use App\Models\Blog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -49,7 +51,9 @@ class ProductController extends Controller
 
     public function index()
     {
-        $filters = Service::all();
+        $services = Service::all();
+        $cat = Category::all();
+        $subcat = Subcategory::all();
         $products = Product::all();
 
         // Properly execute the raw query to get ENUM values
@@ -76,7 +80,9 @@ class ProductController extends Controller
         // Pass data to the view
         return view('dashboard.createProduct', [
             'products' => $products,
-            'filters' => $filters,
+            'services' => $services,
+            'cat' => $cat,
+            'subcat' => $subcat,
             'units' => $units
         ]);
     }
@@ -84,7 +90,7 @@ class ProductController extends Controller
     public function table(Request $request)
     {
         // Define the specific columns you want to display
-        $columns = ['code', 'name', 'category', 'spec', 'unit'];
+        $columns = ['code', 'name', 'spec', 'unit'];
 
         // Fetch the filters
         $filters = Service::all();
@@ -112,12 +118,15 @@ class ProductController extends Controller
     
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'code' => 'required',
             'name' => 'required',
-            'category_id' => 'required|integer|between:1,9',
-            'supplier' => 'nullable',
-            'spec' => 'nullable',
+            'service_id' => 'required|integer|between:1,9',
+            'category_id' => 'required|integer',
+            'subcategory_id' => 'required|integer',
+            'supplier' => 'required',
+            'spec' => 'required',
             'unit' => 'required',
             'pcs_unit' => 'nullable',
             'unit_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
@@ -129,12 +138,6 @@ class ProductController extends Controller
             'low_alert' => 'nullable',
             'prod_note' => 'nullable'
         ]);
-
-        // Manually define category
-        $filter = Service::find($data['category_id']);
-        if ($filter) {
-            $data['category'] = $filter->name;
-        }
 
         $newProduct = Product::create($data);
 
@@ -148,6 +151,7 @@ class ProductController extends Controller
 
     public function update(Request $request)
     {
+
         // Get the code from the form input
         $code = $request->input('code');  // Use input() for form data
 
@@ -155,9 +159,11 @@ class ProductController extends Controller
         $data = $request->validate([
             'code' => 'required',
             'name' => 'required',
-            'category_id' => 'required|integer|between:1,9',
-            'supplier' => 'nullable',
-            'spec' => 'nullable',
+            'service_id' => 'required|integer|between:1,9',
+            'category_id' => 'required|integer',
+            'subcategory_id' => 'required|integer',
+            'supplier' => 'required',
+            'spec' => 'required',
             'unit' => 'required',
             'pcs_unit' => 'nullable',
             'unit_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
@@ -169,12 +175,6 @@ class ProductController extends Controller
             'low_alert' => 'nullable',
             'prod_note' => 'nullable'
         ]);
-
-        // Manually define category
-        $filter = Service::find($data['category_id']);
-        if ($filter) {
-            $data['category'] = $filter->name;
-        }
 
         // Find the product by code
         try {
@@ -192,8 +192,7 @@ class ProductController extends Controller
 
     public function delete(Request $request)
     {
-        $product = 
-        Product::where('code', $request->query('code'))->firstOrFail();
+        $product = Product::where('code', $request->query('code'))->firstOrFail();
         // Delete the product
         $product->delete();
 

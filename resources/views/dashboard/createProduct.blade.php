@@ -7,7 +7,7 @@
             @csrf
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="code">Code</label>
-                <input onblur="checkCode(value)" class="rounded-lg m-auto w-3/4" type="text" id="code" name="code">
+                <input onblur="checkCode(value)" class="rounded-lg m-auto w-3/4" type="text" id="code" name="code" required>
             </div>
         <!-- hide -->
             <div class="flex flex-wrap w-[32%]">
@@ -16,26 +16,47 @@
             </div>
         
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="category">Category</label>
+            </div>
+
+            <div class="flex flex-wrap w-[32%]">
+                <label class="w-full pl-4 mb-2" for="category">Service Category</label>
+                <select class="rounded-lg m-auto w-3/4" id="service_id" name="service_id" required>
+                @foreach($services as $service)
+                        <option value="{{ $service->id }}">{{ $service->name }}</option>
+                @endforeach
+                </select>
+            </div>
+
+            <div class="flex flex-wrap w-[32%]">
+                <label class="w-full pl-4 mb-2" for="category">Main Category</label>
                 <select class="rounded-lg m-auto w-3/4" id="category_id" name="category_id" required>
-                @foreach($filters as $filter)
-                        <option value="{{ $filter->id }}">{{ $filter->name }}</option>
+                @foreach($cat as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+                </select>
+            </div>
+
+            <div class="flex flex-wrap w-[32%]">
+                <label class="w-full pl-4 mb-2" for="category">Item Category</label>
+                <select class="rounded-lg m-auto w-3/4" id="subcategory_id" name="subcategory_id" required>
+                @foreach($subcat as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
                 </select>
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="supplier">Supplier</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" id="supplier" name="supplier">
+                <input class="rounded-lg m-auto w-3/4" type="text" id="supplier" name="supplier" required>
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="spec">Specification</label>
-                <input class="rounded-lg m-auto w-3/4" type="text" id="spec" name="spec">
+                <input class="rounded-lg m-auto w-3/4" type="text" id="spec" name="spec" required>
             </div>
 
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="unit">Category</label>
+                <label class="w-full pl-4 mb-2" for="unit">Unit</label>
                 <select class="rounded-lg m-auto w-3/4" id="unit" name="unit" required>
                 @foreach($units as $unit)
                         <option value="{{ $unit }}">{{ $unit }}</option>

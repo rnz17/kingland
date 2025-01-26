@@ -34,7 +34,6 @@
             <thead class="text-xs text-gray-700 uppercase bg-lightgray">
                 <tr>
                     <th scope="col" class="border border-black px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
-    
                     </th>
                 @foreach ($columns as $column)
                     <th scope="col" class="border border-black px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
@@ -54,7 +53,15 @@
                             </td>
                             @foreach ($product->toArray() as $key => $value)
                                 <td class="border border-gray px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
-                                    {{ $value }}
+                                    @if($key == 'service_id')
+                                        {{ $services->where('id',$value)->first()->name }}
+                                    @elseif($key == 'category_id')
+                                        {{ $cat->where('id',$value)->first()->name }}
+                                    @elseif($key == 'subcategory_id')
+                                        {{ $subcat->where('id',$value)->first()->name }}
+                                    @else
+                                        {{ $value }}
+                                    @endif
                                 </td>
                             @endforeach
                         </tr>

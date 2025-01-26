@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
@@ -114,6 +115,11 @@ use Illuminate\Http\Request;
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
+
+    
+    Route::get('/announcements', [AnnouncementController::class, 'index'] )->name('announcements');
+    Route::post('/announcements', [AnnouncementController::class, 'store'] )->name('announcements.store');
+    Route::delete('/announcements', [AnnouncementController::class, 'delete'] )->name('announcements.delete');
 
 // OTHERS
 

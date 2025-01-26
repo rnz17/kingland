@@ -74,6 +74,7 @@
     </main>
 
 @include('partials.footer')
+@include('partials.marquee')
 
 </body>
 <script>
@@ -175,7 +176,7 @@
 
     // email
         function sendEmail(type) {
-            var recipient = "renzogregorio0517@gmail.com";
+            var recipient = "raabanilla@kingland.ph";
             console.log(type);
             if(type === 'item'){
                 

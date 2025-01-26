@@ -6,6 +6,8 @@ use App\Models\Service;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
+use App\Models\Announcement;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -80,14 +82,42 @@ class ServiceController extends Controller
         // Fetch the products based on the query
         $products = $query->get();
 
+        $services = Service::all();
+        $cat = Category::all();
+        $subcat = Subcategory::all();
+
         // Pass the columns, products, and filters to the view
-        return view('dashboard', compact('columns', 'products', 'filters'));
+        return view('dashboard', compact('columns', 'products', 'filters', 'services', 'cat', 'subcat'));
     }
 
     public function showItemByCode(Request $request)
     {
-        $filters = Service::all();
+        $services = Service::all();
+        $cat = Category::all();
+        $subcat = Subcategory::all();
         $code = $request->query('code'); //get code from URL
+
+        
+        // Properly execute the raw query to get ENUM values
+        $enumValues = DB::select("SHOW COLUMNS FROM products WHERE Field = 'unit'");
+
+        // Ensure we have a result
+        if (empty($enumValues)) {
+            abort(500, "Could not retrieve column details for 'unit'.");
+        }
+
+        // Extract the ENUM type
+        $type = $enumValues[0]->Type ?? null;
+
+        if (!$type) {
+            abort(500, "Could not determine the ENUM type for 'unit'.");
+        }
+
+        // Parse ENUM values
+        preg_match("/^enum\((.*)\)$/", $type, $matches);
+        $units = array_map(function ($value) {
+            return trim($value, "'");
+        }, explode(',', $matches[1]));
 
         // Assuming Product is your model
         $item = Product::where('code', $code)->first(); //compare $code into code from model:Product
@@ -96,11 +126,14 @@ class ServiceController extends Controller
             return response()->json(['message' => 'Product not found'], 404);
         }
 
-        return view('dashboard.editProduct', compact('item','filters'));
+        return view('dashboard.editProduct', compact('item','services','cat','subcat','units'));
     }
 
     public function filAndModal(Request $request)
     {
+
+        // dd($request);
+
         // Get all services
         $filters = Service::all();
 
@@ -141,7 +174,9 @@ class ServiceController extends Controller
             });
         });
 
-        return view('sell', compact('products', 'filters'));
+        $marq = Announcement::all();
+
+        return view('sell', compact('products', 'filters', 'marq'));
     }
 
 

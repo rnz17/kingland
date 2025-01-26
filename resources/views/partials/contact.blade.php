@@ -1,13 +1,13 @@
 
 <div class="flex flex-col w-full bg-gradient-to-b from-lightblue">
     <!-- contact number -->
-    <div class="flex flex-wrap pt-24 pb-6">
-        <h1 class="text-center lg:text-right text-6xl lg:text-8xl font-black m-auto m-auto lg:mr-4">Contact Us</h1>
-        <div class="m-auto lg:mx-4 py-6">
-            <p class="text-left text-textblue text-3xl tracking-widest font-semibold m-auto">09999913432</p>
-            <p class="text-left text-textblue text-3xl tracking-widest font-semibold m-auto">09564572521</p>
+    <div class="flex flex-col pt-24 pb-6">
+        <h1 class="text-center lg:text-right text-6xl lg:text-8xl font-black m-auto">Contact Us</h1>
+        <div class="m-auto py-6">
+            <p class="text-left text-textblue text-3xl tracking-widest font-semibold m-auto py-1">09999913432</p>
+            <p class="text-left text-textblue text-3xl tracking-widest font-semibold m-auto py-1">09564572521</p>
         </div>
-        <p class="text-left text-textblue text-3xl tracking-widest font-semibold m-auto lg:ml-4">email@gmail.com</p>
+        <p class="text-left text-textblue text-3xl py-2 tracking-widest font-semibold m-auto">raabanilla@kingland.ph</p>
     </div>
 
     <!-- location -->

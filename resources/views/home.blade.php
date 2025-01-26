@@ -14,9 +14,9 @@
 
       </div>
     <!-- PARTNERS -->
-      <div class="flex flex-col py-12">
+      <div class="hidden flex flex-col py-12">
         <h1 class="m-auto text-3xl text-darkblue tracking-wider font-bold">Our Partners</h1>
-        <div class="flex flex-wrap py-32">
+        <div class="flex flex-wrap py-32 gap-y-12">
           <div class="flex m-auto rounded-full w-64 h-64 overflow-hidden border-2 border-blue shadow-xl">
             <img src="{{ asset('images/partners/credo.png') }}" class="w-full m-auto">
           </div>

@@ -10,8 +10,7 @@
             <div class="w-full h-full bg-gradient-to-r from-transparent from-1% via-tblack via-99% to-transparent">
                 <!-- text container -->
                 <div class="relative block w-full top-1/2 transform -translate-y-1/2">
-                    <h1 class="text-white text-center font-black text-2xl lg:text-7xl px-12 tracking-wide">Dedicated Services,</h1> 
-                    <h1 class="text-blue text-center font-black text-2xl lg:text-7xl px-12 tracking-wide">Beyond the Ordinary.</h1>
+                    <h1 class="text-white text-center font-black text-2xl lg:text-7xl px-12 tracking-wide">Elevating Service to <span class="text-lightblue">New Heights.<span></h1>
                 </div>
             </div>
         </div>

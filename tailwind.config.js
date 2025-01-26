@@ -16,6 +16,15 @@ export default {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
                 faustina: ['Faustina', ...defaultTheme.fontFamily.serif],
             },
+            keyframes: {
+                marquee: {
+                  '0%': { transform: 'translateX(100%)' },
+                  '100%': { transform: 'translateX(-100%)' },
+                },
+            },
+            animation: {
+                marquee: 'marquee 30s linear infinite', // Adjust the duration here for speed
+            },
             colors: {
                 notwhite: '#F2F2F2',
                 lightblue: '#63a9e8',
