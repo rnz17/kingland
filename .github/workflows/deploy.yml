@@ -35,7 +35,7 @@ jobs:
         username: ${{ secrets.FTPUSERNAME }}  # Use the GitHub secret for username
         password: ${{ secrets.FTPPASSWORD }}  # Use the GitHub secret for password
         server-dir: /public_html/  # Directory where files need to be uploaded
-        local-dir: ./public  # Local directory to sync (from your GitHub workspace)
+        local-dir: ./public/  # Local directory to sync (from your GitHub workspace)
         exclude: |
           .env
           .git*
@@ -44,7 +44,6 @@ jobs:
           storage/
           tests/
           *.lock
-        timeout: 600  # Optional: Increase timeout if needed for large uploads
 
     # Step 4: Fix permissions (optional)
     - name: 🔧 Fix file permissions on FTP server
