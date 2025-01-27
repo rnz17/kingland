@@ -31,10 +31,14 @@ jobs:
     - name: 🔧 Install lftp
       run: sudo apt-get install lftp
 
-    - name: Print FTP credentials (debugging)
+    - name: Test Secrets
       run: |
-        echo "FTPUSERNAME=${{ secrets.FTPUSERNAME }}" 
-        echo "FTPPASSWORD=${{ secrets.FTPPASSWORD }}"
+        echo "FTP Username is ${FTPUSERNAME}"
+        echo "FTP Password is ${FTPPASSWORD}"
+      env:
+        FTPUSERNAME: ${{ secrets.FTPUSERNAME }}
+        FTPPASSWORD: ${{ secrets.FTPPASSWORD }}
+
 # retest
     # Step 4: Sync files to FTP using lftp / re-add secret
     - name: 📂 Sync files to FTP
