@@ -27,16 +27,15 @@ jobs:
     - name: 📦 Install Laravel dependencies
       run: composer install --no-dev --optimize-autoloader
 
-    # Step 3: Sync files to FTP using appleboy/ftp-action
+    # Step 3: Sync files to FTP
     - name: 📂 Sync files to FTP
-      uses: appleboy/ftp-action@v0.1.0
+      uses: ad-m/github-push-action@v0.6
       with:
-        host: ftp.kingland.ph
+        server: ftp.kingland.ph
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
-        port: 21  # Adjust if needed (usually 21 for FTP)
-        source: "public/"  # The directory you want to upload (public directory)
-        target: "/public_html"  # The target directory on the FTP server
+        remote-dir: /public_html  # Target directory on your FTP server
+        local-dir: public  # Local directory you want to upload (public directory)
         keepalive: 600  # Keep connection alive for 10 minutes
         timeout: 1200  # Timeout after 20 minutes if no activity
         exclude: |
