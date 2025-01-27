@@ -43,6 +43,7 @@ jobs:
         server-dir: public_html/
         local-dir: public/ # Upload your prebuilt files
         timeout: 600
+        debug: true
         exclude: |
           .env
           .git*
