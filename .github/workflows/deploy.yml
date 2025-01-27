@@ -38,9 +38,9 @@ jobs:
         set net:timeout 30;  # Set timeout for connection
         mirror -R ./public /public_html --exclude .env --exclude .git* --exclude node_modules/ --exclude vendor/ --exclude storage/ --exclude tests/;
         bye
-        " ftp://ftp.kingland.ph
+        " ftp://184.168.113.220
 
     # Step 5: Fix permissions (optional)
     - name: 🔧 Fix permissions (Optional)
       run: |
-        ssh ${{ secrets.FTPUSERNAME }}@ftp.kingland.ph "chmod -R 755 public_html && chmod -R 777 public_html/storage/"
+        ssh ${{ secrets.FTPUSERNAME }}@184.168.113.220 "chmod -R 755 public_html && chmod -R 777 public_html/storage/"
