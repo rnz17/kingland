@@ -31,14 +31,14 @@ jobs:
     - name: 🔧 Install lftp
       run: sudo apt-get install lftp -y
 
-    # Step 4: Sync files to FTP server using Penguibird's FTP-Deploy-Action
-    - name: 📂 Sync files to FTP
+    # Step 4: Sync public directory to public_html (for public assets like images, JS, CSS)
+    - name: 📂 Sync public directory to public_html
       uses: Penguibird/FTP-Deploy-Action@4.2.0
       with:
         server: ftp.kingland.ph  # Replace with your actual FTP server
         username: ${{ secrets.FTPUSERNAME }}  # Use the GitHub secret for username
         password: ${{ secrets.FTPPASSWORD }}  # Use the GitHub secret for password
-        server-dir: /public_html/  # Directory where files need to be uploaded
+        server-dir: /public_html/  # Directory where public assets will be uploaded
         local-dir: ./public/  # Local directory to sync (from your GitHub workspace)
         exclude: |
           .env
@@ -49,9 +49,28 @@ jobs:
           tests/
           *.lock
 
-    # Step 5: Fix file permissions via SSH (Optional) RECOMMIT
-    - name: 🔧 Fix file permissions (Optional)
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.FTPUSERNAME }}@ftp.kingland.ph "chmod -R 755 public_html && chmod -R 777 public_html/storage/"
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # Use the SSH private key for authentication
+    # Step 5: Sync the rest of the files to root directory on FTP server
+    - name: 📂 Sync other project files to root directory
+      uses: Penguibird/FTP-Deploy-Action@4.2.0
+      with:
+        server: ftp.kingland.ph  # Replace with your actual FTP server
+        username: ${{ secrets.FTPUSERNAME }}  # Use the GitHub secret for username
+        password: ${{ secrets.FTPPASSWORD }}  # Use the GitHub secret for password
+        server-dir: /  # Root directory of the FTP server
+        local-dir: ./  # Local directory to sync, excluding the public/ directory
+        exclude: |
+          public/
+          .env
+          .git*
+          node_modules/
+          vendor/
+          storage/
+          tests/
+          *.lock
+
+    # # Step 6: Fix file permissions via SSH (Optional) RECOMMIT
+    # - name: 🔧 Fix file permissions (Optional)
+    #   run: |
+    #     ssh -o StrictHostKeyChecking=no ${{ secrets.FTPUSERNAME }}@ftp.kingland.ph "chmod -R 755 /public_html && chmod -R 777 /public_html/storage/"
+    #   env:
+    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # Use the SSH private key for authentication
