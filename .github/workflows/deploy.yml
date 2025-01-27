@@ -27,31 +27,51 @@ jobs:
     - name: 📦 Install Laravel dependencies
       run: composer install --no-dev --optimize-autoloader
 
-    # Step 3: Install lftp
-    - name: 🔧 Install lftp
-      run: sudo apt-get install lftp -y
+    - name: 🔨 Build Project
+      run: |
+        npm install
+        npm run build
 
     # Step 4: Sync public directory to public_html (for public assets like images, JS, CSS)
-    - name: 📂 Sync public directory to public_html (new and changed files only)
-      run: |
-        lftp -u ${{ secrets.FTPUSERNAME }},${{ secrets.FTPPASSWORD }} -e "
-        set net:timeout 60;  # Increase timeout for connection
-        set ftp:passive-mode on;  # Enable passive mode
-        mirror -R ./public /public_html --exclude .env --exclude .git* --exclude node_modules/ --exclude vendor/ --exclude storage/ --exclude tests/ --only-newer;
-        bye
-        " ftp://ftp.kingland.ph
+    - name: 📂 Sync public directory to public_html
+      uses: SamKirkland/FTP-Deploy-Action@4.3.5
+      with:
+        server: ftp.kingland.ph  # Replace with your actual FTP server
+        username: ${{ secrets.FTPUSERNAME }}  # Use the GitHub secret for username
+        password: ${{ secrets.FTPPASSWORD }}  # Use the GitHub secret for password
+        server-dir: /public_html/  # Directory where public assets will be uploaded
+        local-dir: ./public/  # Local directory to sync (from your GitHub workspace)
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          .env
+          vendor/
+          storage/
+          tests/
+          *.lock
 
-    # Step 5: Sync the rest of the files to root directory on FTP server (new and changed files only)
-    - name: 📂 Sync other project files to root directory (new and changed files only)
-      run: |
-        lftp -u ${{ secrets.FTPUSERNAME }},${{ secrets.FTPPASSWORD }} -e "
-        set net:timeout 60;  # Increase timeout for connection
-        set ftp:passive-mode on;  # Enable passive mode
-        mirror -R ./ /kingland/ --exclude public/ --exclude .env --exclude .git* --exclude node_modules/ --exclude vendor/ --exclude storage/ --exclude tests/ --only-newer;
-        bye
-        " ftp://ftp.kingland.ph
+    # Step 5: Sync the rest of the files to root directory on FTP server
+    - name: 📂 Sync other project files to root directory
+      uses: SamKirkland/FTP-Deploy-Action@4.3.5
+      with:
+        server: ftp.kingland.ph  # Replace with your actual FTP server
+        username: ${{ secrets.FTPUSERNAME }}  # Use the GitHub secret for username
+        password: ${{ secrets.FTPPASSWORD }}  # Use the GitHub secret for password
+        server-dir: /kingland/  # Root directory of the FTP server
+        local-dir: ./  # Local directory to sync, excluding the public/ directory
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          public/
+          .env
+          vendor/
+          storage/
+          tests/
+          *.lock
 
-    # # Step 6: Optional: Fix file permissions (if needed)
+    # # Step 6: Fix file permissions via SSH (Optional) RECOMMIT
     # - name: 🔧 Fix file permissions (Optional)
     #   run: |
     #     ssh -o StrictHostKeyChecking=no ${{ secrets.FTPUSERNAME }}@ftp.kingland.ph "chmod -R 755 /public_html && chmod -R 777 /public_html/storage/"
