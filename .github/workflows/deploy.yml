@@ -3,7 +3,7 @@ name: 🚀 Deploy Laravel App on Push
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the 'main' branch
+      - master  # Trigger push to master
 
 jobs:
   deploy:
