@@ -27,9 +27,9 @@ jobs:
     - name: 📦 Install Laravel dependencies
       run: composer install --no-dev --optimize-autoloader
 
-    # Step 3: Build front-end assets (if applicable)
-    - name: ⚡ Build assets
-      run: npx vite build
+    # # Step 3: Build front-end assets (if applicable)
+    # - name: ⚡ Build assets
+    #   run: npx vite build
 
     # Step 4: Sync files to FTP
     # Sync files to FTP without building
