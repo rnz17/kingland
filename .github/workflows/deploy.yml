@@ -32,12 +32,12 @@ jobs:
       run: sudo apt-get install lftp
 
     - name: Test Secrets
-      run: |
-        echo "FTP Username is ${FTPUSERNAME}"
-        echo "FTP Password is ${FTPPASSWORD}"
       env:
         FTPUSERNAME: ${{ secrets.FTPUSERNAME }}
         FTPPASSWORD: ${{ secrets.FTPPASSWORD }}
+      run: |
+        echo "FTP Username is ${FTPUSERNAME}"
+        echo "FTP Password is ${FTPPASSWORD}"
 
 # retest
     # Step 4: Sync files to FTP using lftp / re-add secret
