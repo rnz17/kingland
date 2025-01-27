@@ -30,7 +30,7 @@ jobs:
     - name: 🔨 Build Project
       run: |
         npm install
-        npm run build
+        npm run prod
 
     # Step 4: Sync public directory to public_html (for public assets like images, JS, CSS)
     - name: 📂 Sync public directory to public_html
