@@ -33,9 +33,9 @@ jobs:
 
     - name: Print FTP credentials (debugging)
       run: |
-        echo "FTPUSERNAME=${{ secrets.FTPUSERNAME }}"
+        echo "FTPUSERNAME=${{ secrets.FTPUSERNAME }}" 
         echo "FTPPASSWORD=${{ secrets.FTPPASSWORD }}"
-
+# retest
     # Step 4: Sync files to FTP using lftp / re-add secret
     - name: 📂 Sync files to FTP
       run: |
