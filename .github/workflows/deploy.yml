@@ -3,7 +3,7 @@ name: 🚀 Deploy Laravel App on Push
 on:
   push:
     branches:
-      - master  # Trigger push to master
+      - master  # Trigger on push to master
 
 jobs:
   deploy:
@@ -20,29 +20,25 @@ jobs:
     - name: 🛠️ Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2' # Adjust the PHP version to match your Laravel app
+        php-version: '8.2' # Adjust PHP version if needed
         tools: composer
         coverage: none
 
     - name: 📦 Install Laravel dependencies
       run: composer install --no-dev --optimize-autoloader
 
-    # # Step 3: Build front-end assets (if applicable)
-    # - name: ⚡ Build assets
-    #   run: npx vite build
-
-    # Step 4: Sync files to FTP
-    # Sync files to FTP without building
+    # Step 3: Sync files to FTP using appleboy/ftp-action
     - name: 📂 Sync files to FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      uses: appleboy/ftp-action@v1.0.0
       with:
-        server: 184.168.113.220
+        host: ftp.kingland.ph
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
-        protocol: ftps
-        server-dir: public_html/
-        local-dir: public/ # Upload your prebuilt files
-        timeout: 600
+        port: 21  # Adjust if needed (usually 21 for FTP)
+        source: "public/"  # The directory you want to upload (public directory)
+        target: "/public_html"  # The target directory on the FTP server
+        keepalive: 600  # Keep connection alive for 10 minutes
+        timeout: 1200  # Timeout after 20 minutes if no activity
         exclude: |
           .env
           .git*
@@ -52,8 +48,7 @@ jobs:
           tests/
           *.lock
 
-
-    # Step 5: Fix permissions (optional)
+    # Step 4: Fix permissions (optional)
     - name: 🔧 Fix permissions (Optional)
       run: |
         chmod -R 755 public_html/
