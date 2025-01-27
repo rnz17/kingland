@@ -49,7 +49,7 @@ jobs:
           tests/
           *.lock
 
-    # Step 5: Fix file permissions via SSH (Optional)
+    # Step 5: Fix file permissions via SSH (Optional) RECOMMIT
     - name: 🔧 Fix file permissions (Optional)
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.FTPUSERNAME }}@ftp.kingland.ph "chmod -R 755 public_html && chmod -R 777 public_html/storage/"
