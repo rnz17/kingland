@@ -27,7 +27,11 @@ jobs:
     - name: 📦 Install Laravel dependencies
       run: composer install --no-dev --optimize-autoloader
 
-    # Step 3: Sync files to FTP server using Penguibird's FTP-Deploy-Action
+    # Step 3: Install lftp
+    - name: 🔧 Install lftp
+      run: sudo apt-get install lftp -y
+
+    # Step 4: Sync files to FTP server using Penguibird's FTP-Deploy-Action
     - name: 📂 Sync files to FTP
       uses: Penguibird/FTP-Deploy-Action@4.2.0
       with:
@@ -35,7 +39,7 @@ jobs:
         username: ${{ secrets.FTPUSERNAME }}  # Use the GitHub secret for username
         password: ${{ secrets.FTPPASSWORD }}  # Use the GitHub secret for password
         server-dir: /public_html/  # Directory where files need to be uploaded
-        local-dir: ./public/  # Local directory to sync (from your GitHub workspace)
+        local-dir: ./public  # Local directory to sync (from your GitHub workspace)
         exclude: |
           .env
           .git*
@@ -44,13 +48,11 @@ jobs:
           storage/
           tests/
           *.lock
+        timeout: 600  # Optional: Increase timeout if needed for large uploads
 
-    # Step 4: Fix permissions (optional)
-    - name: 🔧 Fix file permissions on FTP server
+    # Step 5: Fix file permissions via SSH (Optional)
+    - name: 🔧 Fix file permissions (Optional)
       run: |
-        lftp -u ${{ secrets.FTPUSERNAME }},${{ secrets.FTPPASSWORD }} -e "
-        set ftp:passive-mode on;
-        ssh ftp.kingland.ph 'chmod -R 755 public_html && chmod -R 777 public_html/storage/';
-        bye
-        " ftp://ftp.kingland.ph
-
+        ssh -o StrictHostKeyChecking=no ${{ secrets.FTPUSERNAME }}@ftp.kingland.ph "chmod -R 755 public_html && chmod -R 777 public_html/storage/"
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # Use the SSH private key for authentication
