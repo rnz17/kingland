@@ -36,7 +36,7 @@ jobs:
     - name: 📂 Sync files to FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: 184.168.113.220
+        server: ftp.kingland.ph
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
         protocol: ftps
