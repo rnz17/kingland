@@ -35,7 +35,7 @@ jobs:
     - name: 📂 Sync files to FTP
       run: |
         lftp -u ${{ secrets.FTPUSERNAME }},${{ secrets.FTPPASSWORD }} -e "
-        mirror -R ./public /public_html --exclude .env --exclude .git* --exclude node_modules/ --exclude vendor/ --exclude storage/ --exclude tests/ --exclude '*.lock';
+        mirror -R ./public /public_html --exclude .env --exclude .git* --exclude node_modules/ --exclude vendor/ --exclude storage/ --exclude tests/;
         bye
         " ftp://ftp.kingland.ph
 
