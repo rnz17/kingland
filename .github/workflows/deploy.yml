@@ -29,7 +29,7 @@ jobs:
 
     # Step 3: Sync files to FTP using appleboy/ftp-action
     - name: 📂 Sync files to FTP
-      uses: appleboy/ftp-action@v1.0.0
+      uses: appleboy/ftp-action@v0.1.0
       with:
         host: ftp.kingland.ph
         username: ${{ secrets.FTPUSERNAME }}
