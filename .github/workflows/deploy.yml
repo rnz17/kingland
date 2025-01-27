@@ -31,7 +31,7 @@ jobs:
     - name: 🔧 Install lftp
       run: sudo apt-get install lftp
 
-    # Step 4: Sync files to FTP using lftp
+    # Step 4: Sync files to FTP using lftp / re-add secret
     - name: 📂 Sync files to FTP
       run: |
         lftp -u ${{ secrets.FTPUSERNAME }},${{ secrets.FTPPASSWORD }} -e "
