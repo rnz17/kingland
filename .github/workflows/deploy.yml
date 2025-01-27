@@ -34,7 +34,7 @@ jobs:
 
     # Step 4: Sync public directory to public_html (for public assets like images, JS, CSS)
     - name: 📂 Sync public directory to public_html
-      uses: SamKirkland/FTP-Deploy-Action@4.3.5
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         server: ftp.kingland.ph  # Replace with your actual FTP server
         username: ${{ secrets.FTPUSERNAME }}  # Use the GitHub secret for username
@@ -53,7 +53,7 @@ jobs:
 
     # Step 5: Sync the rest of the files to root directory on FTP server
     - name: 📂 Sync other project files to root directory
-      uses: SamKirkland/FTP-Deploy-Action@4.3.5
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         server: ftp.kingland.ph  # Replace with your actual FTP server
         username: ${{ secrets.FTPUSERNAME }}  # Use the GitHub secret for username
