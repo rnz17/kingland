@@ -56,7 +56,7 @@ jobs:
         server: ftp.kingland.ph  # Replace with your actual FTP server
         username: ${{ secrets.FTPUSERNAME }}  # Use the GitHub secret for username
         password: ${{ secrets.FTPPASSWORD }}  # Use the GitHub secret for password
-        server-dir: /  # Root directory of the FTP server
+        server-dir: /kingland/  # Root directory of the FTP server
         local-dir: ./  # Local directory to sync, excluding the public/ directory
         exclude: |
           public/
