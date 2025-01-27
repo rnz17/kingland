@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     name: 🎉 Deploy Laravel App
-    if: contains(github.event.head_commit.message, '[deploy]')
+    if: contains(github.event.head_commit.message, '[deploy]')  # Only trigger when commit message contains '[deploy]'
     runs-on: ubuntu-latest
 
     steps:
@@ -16,41 +16,41 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
 
-    # Step 2: Install PHP and dependencies
+    # Step 2: Set up PHP environment and install dependencies
     - name: 🛠️ Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2' # Adjust PHP version if needed
+        php-version: '8.2'  # Adjust PHP version if needed
         tools: composer
         coverage: none
 
     - name: 📦 Install Laravel dependencies
       run: composer install --no-dev --optimize-autoloader
 
-    # Step 3: Install lftp
+    # Step 3: Install lftp for FTP deployment
     - name: 🔧 Install lftp
-      run: sudo apt-get install lftp
+      run: sudo apt-get install -y lftp  # Make sure lftp is installed
 
-    - name: Test Secrets
-      env:
-        FTPUSERNAME: ${{ secrets.FTPUSERNAME }}
-        FTPPASSWORD: ${{ secrets.FTPPASSWORD }}
-      run: |
-        echo "FTP Username is ${FTPUSERNAME}"
-        echo "FTP Password is ${FTPPASSWORD}"
-
-# retest
-    # Step 4: Sync files to FTP using lftp / re-add secret
+    # Step 4: Sync files to FTP server using lftp
     - name: 📂 Sync files to FTP
       run: |
         lftp -u ${{ secrets.FTPUSERNAME }},${{ secrets.FTPPASSWORD }} -e "
-        set net:timeout 60;  # Increase timeout for connection
-        set ftp:passive-mode on;  # Enable passive mode
+        set net:timeout 120;  # Increase timeout for connection
+        set ftp:passive-mode on;  # Enable passive mode for better compatibility
         mirror -R ./public /public_html --exclude .env --exclude .git* --exclude node_modules/ --exclude vendor/ --exclude storage/ --exclude tests/;
         bye
         " ftp://ftp.kingland.ph
 
-    # Step 5: Fix permissions (optional)
-    - name: 🔧 Fix permissions (Optional)
+    # Step 5: Set correct permissions for files after upload (optional, only if needed)
+    - name: 🔧 Fix file permissions
       run: |
-        ssh ${{ secrets.FTPUSERNAME }}@ftp.kingland.ph "chmod -R 755 public_html && chmod -R 777 public_html/storage/"
+        # Fix permissions on remote FTP server (if needed)
+        lftp -u ${{ secrets.FTPUSERNAME }},${{ secrets.FTPPASSWORD }} -e "
+        ssh ftp.kingland.ph 'chmod -R 755 public_html && chmod -R 777 public_html/storage/'
+        bye
+        " ftp://ftp.kingland.ph
+
+    # Optional: Step 6: Notify of successful deployment (if desired)
+    - name: ✅ Deployment Success Notification
+      run: echo "Deployment completed successfully to FTP server."
+
