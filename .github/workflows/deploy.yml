@@ -42,7 +42,7 @@ jobs:
         protocol: ftps
         server-dir: public_html/
         local-dir: public/ # Upload your prebuilt files
-        timeout: 300
+        timeout: 600
         exclude: |
           .env
           .git*
