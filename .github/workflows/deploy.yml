@@ -36,14 +36,13 @@ jobs:
     - name: 📂 Sync files to FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ftp.kingland.ph
+        server: 184.168.113.220
         username: ${{ secrets.FTPUSERNAME }}
         password: ${{ secrets.FTPPASSWORD }}
         protocol: ftps
         server-dir: public_html/
         local-dir: public/ # Upload your prebuilt files
         timeout: 600
-        keepalive: 600
         exclude: |
           .env
           .git*
