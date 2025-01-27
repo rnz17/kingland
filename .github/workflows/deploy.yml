@@ -27,28 +27,19 @@ jobs:
     - name: 📦 Install Laravel dependencies
       run: composer install --no-dev --optimize-autoloader
 
-    # Step 3: Sync files to FTP
-    - name: 📂 Sync files to FTP
-      uses: ad-m/github-push-action@v0.6
-      with:
-        server: ftp.kingland.ph
-        username: ${{ secrets.FTPUSERNAME }}
-        password: ${{ secrets.FTPPASSWORD }}
-        remote-dir: /public_html  # Target directory on your FTP server
-        local-dir: public  # Local directory you want to upload (public directory)
-        keepalive: 600  # Keep connection alive for 10 minutes
-        timeout: 1200  # Timeout after 20 minutes if no activity
-        exclude: |
-          .env
-          .git*
-          node_modules/
-          vendor/
-          storage/
-          tests/
-          *.lock
+    # Step 3: Install lftp
+    - name: 🔧 Install lftp
+      run: sudo apt-get install lftp
 
-    # Step 4: Fix permissions (optional)
+    # Step 4: Sync files to FTP using lftp
+    - name: 📂 Sync files to FTP
+      run: |
+        lftp -u ${{ secrets.FTPUSERNAME }},${{ secrets.FTPPASSWORD }} -e "
+        mirror -R ./public /public_html --exclude .env --exclude .git* --exclude node_modules --exclude vendor --exclude storage --exclude tests --exclude *.lock;
+        bye
+        " ftp://ftp.kingland.ph
+
+    # Step 5: Fix permissions (optional)
     - name: 🔧 Fix permissions (Optional)
       run: |
-        chmod -R 755 public_html/
-        chmod -R 777 public_html/storage/
+        ssh ${{ secrets.FTPUSERNAME }}@ftp.kingland.ph "chmod -R 755 public_html && chmod -R 777 public_html/storage/"
