@@ -131,53 +131,84 @@ class ServiceController extends Controller
 
     public function filAndModal(Request $request)
     {
-
         // dd($request);
-
+    
         // Get all services
         $filters = Service::all();
-
+    
         // Get categories related to services
         $categories = Category::whereIn('service_id', $filters->pluck('id'))->get();
-
+    
         // Get subcategories related to categories
         $subcategories = Subcategory::whereIn('category_id', $categories->pluck('id'))->get();
-
+    
         // Build the query for products
         $query = Product::query();
-
+    
         // Apply search filter if present
         if (isset($request->search) && !empty($request->search)) {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
+    
+        // dd($request);
 
         // Apply filters from the checkboxes
         if (isset($request->filters) && !empty($request->filters)) {
             $query->where(function($q) use ($request) {
-                $q->whereIn('service_id', $request->filters)
-                ->orWhereIn('category_id', $request->filters)
-                ->orWhereIn('subcategory_id', $request->filters);
+                // Handle filters based on service_id
+                $serviceFilters = collect($request->filters)->filter(function($filter) {
+                    return strpos($filter, 'cat') === 0 && strpos($filter, 'subcat') === 0;
+                })->values();
+                if ($serviceFilters->isNotEmpty()) {
+                    $q->whereIn('service_id', $serviceFilters);
+                    dd($q);
+                }
+                // Handle filters based on category_id
+                $categoryFilters = collect($request->filters)->filter(function($filter) {
+                    return strpos($filter, 'cat') !== false;
+                })->values();
+                if ($categoryFilters->isNotEmpty()) {
+                    $categoryIds = collect($categoryFilters)->map(function($filter) {
+                        return str_replace('cat', '', $filter);  // Remove 'cat' prefix
+                    });
+                    $q->whereIn('category_id', $categoryIds);
+                }
+    
+                // Handle filters based on subcategory_id
+                $subcategoryFilters = collect($request->filters)->filter(function($filter) {
+                    return strpos($filter, 'sub') !== false;
+                })->values();
+                if ($subcategoryFilters->isNotEmpty()) {
+                    $subcategoryIds = collect($subcategoryFilters)->map(function($filter) {
+                        return str_replace('sub', '', $filter);  // Remove 'subcat' prefix
+                    });
+                    $q->whereIn('subcategory_id', $subcategoryIds);
+                }
             });
         }
-
+    
         // Get products with eager loading for related service, category, and subcategory models
         $products = $query->with(['service', 'category', 'subcategory'])->get();
-
+    
         // Merge categories and subcategories into products
         $products->each(function($product) use ($categories, $subcategories) {
             // Get categories for this product's service
             $product->categories = $categories->where('service_id', $product->service_id)->values();
-
+    
             // Get subcategories for each category
             $product->categories->each(function($category) use ($subcategories) {
                 $category->subcategories = $subcategories->where('category_id', $category->id)->values();
             });
         });
-
+    
+        // Load announcements
         $marq = Announcement::all();
-
+    
+        // Return the view with the filtered products and other data
         return view('sell', compact('products', 'filters', 'marq'));
     }
+    
+    
 
 
     

@@ -2,7 +2,7 @@
 
     @include('partials.nav')
 
-    <main class="flex h-[92vh] w-full mx-auto h-auto pb-32">
+    <main class="flex w-full mx-auto pb-32">
 
         <!-- Filters -->
             <div class="w-full md:w-1/4 p-4">
@@ -12,35 +12,47 @@
                         <input type="text" id="search" name="search" class="mt-1 block w-full p-2 border border-gray rounded-md shadow-sm focus:ring-blue focus:border-blue sm:text-sm" placeholder="Search products...">
                     </div>
                     <label for="servCat" class="block text-lg font-medium text-gray-700">Category</label>
-                        <div class="flex flex-col mb-4 rounded-lg overflow-hidden gap-y-2 text-md">
+                    <div class="flex flex-col mb-4 rounded-lg overflow-hidden gap-y-2 text-md">
                         @foreach($filters as $item)
                             <div class="flex items-center border border-gray border-opacity-50 rounded-lg overflow-hidden">
+                                <button type="button" onclick="toggleDropdown('catDD{{ $item->id }}', 'img{{ $item->id }}')" class="w-1/12 h-full relative bg-red-300" data-id="{{ $item->id }}">
+                                    <img src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2">
+                                    <img id="img{{ $item->id }}" src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2 transform rotate-90 duration-300">
+                                </button>
                                 <input class="ml-2 peer hidden" type="checkbox" id="filter_service_{{ $item->id }}" name="filters[]" value="{{ $item->id }}">
                                 <label class="pl-4 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_service_{{ $item->id }}">{{ $item->name }}</label>
                             </div>
-                            @foreach($item->category as $subitem)
-                                <div class="flex items-center border border-gray border-opacity-50 rounded-lg overflow-hidden">
-                                    <input class="ml-2 peer hidden" type="checkbox" id="filter_category_{{ $subitem->id }}" name="filters[]" value="{{ $subitem->id }}">
-                                    <label class="pl-12 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_category_{{ $subitem->id }}">{{ $subitem->name }}</label>
-                                </div>
-                                @foreach($subitem->subcategories as $subcatitem)
-                                    <div class="flex items-center border border-gray border-opacity-50 rounded-lg overflow-hidden">
-                                        <input class="ml-2 peer hidden" type="checkbox" id="filter_subcategory_{{ $subcatitem->id }}" name="filters[]" value="{{ $subcatitem->id }}">
-                                        <label class="pl-20 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_subcategory_{{ $subcatitem->id }}">{{ $subcatitem->name }}</label>
+                            <div id="catDD{{ $item->id }}" class="h-0 flex flex-col gap-y-2 overflow-hidden transition-all duration-500">
+                                @foreach($item->category as $subitem)
+                                    <div class="flex items-center m-auto mr-0 w-11/12 border border-gray border-opacity-50 rounded-lg overflow-hidden">
+                                        <button type="button" onclick="toggleDropdown('subcatDD{{ $subitem->id }}', 'subimg{{ $subitem->id }}')" class="w-1/12 h-full relative bg-red-300" data-id="{{ $subitem->id }}">
+                                            <img src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2">
+                                            <img id="subimg{{ $subitem->id }}" src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2 transform rotate-90 duration-500">
+                                        </button>
+                                        <input class="ml-2 peer hidden" type="checkbox" id="filter_category_{{ $subitem->id }}" name="filters[]" value="cat{{ $subitem->id }}">
+                                        <label class="pl-4 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_category_{{ $subitem->id }}">{{ $subitem->name }}</label>
+                                    </div>
+                                    <div id="subcatDD{{ $subitem->id }}" class="h-0 flex flex-col gap-y-2 overflow-hidden transition-all duration-500">
+                                        @foreach($subitem->subcategories as $subcatitem)
+                                            <div class="flex items-center m-auto mr-0 w-5/6 border border-gray border-opacity-50 rounded-lg overflow-hidden">
+                                                <input class="ml-2 peer hidden" type="checkbox" id="filter_subcategory_{{ $subcatitem->id }}" name="filters[]" value="sub{{ $subcatitem->id }}">
+                                                <label class="pl-12 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_subcategory_{{ $subcatitem->id }}">{{ $subcatitem->name }}</label>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 @endforeach
-                            @endforeach
+                            </div>
                         @endforeach
-
                     </div>
                     <div class="flex">
-                        <button type="submit" class="mt-4 m-auto px-4 py-2 bg-blue text-white rounded-md shadow-md hover:bg-blue-600">Apply Filters</button>
+                        <button type="button" onclick="clearFilters()" class="mt-4 m-auto px-4 py-2 bg-notwhite text-black rounded-md shadow-md hover:bg-green-200 duration-300">Clear Filters</button>
+                        <button type="submit" class="mt-4 m-auto px-4 py-2 bg-blue text-white rounded-md shadow-md hover:bg-textblue duration-300">Apply Filters</button>
                     </div>
                 </form>
             </div>
 
         <!-- Product Display -->
-            <div class="flex flex-wrap justify-center gap-[2vw] w-full md:w-5/6 p-4">
+            <div class="flex flex-wrap justify-center gap-[2vw] w-full h-[90vh] overflow-y-scroll md:w-5/6 p-4">
                 @if (count($products) > 0)
                     @foreach($products as $product)
                         <button id="{{ $product->code }}" class="openModalBtn cursor-pointer relative group text-center p-4 w-full md:w-[15vw] h-32 md:h-[35vh] border border-black rounded-md hover:shadow-md hover:transform hover:scale-[1.05] duration-300">
@@ -64,9 +76,9 @@
                     </div>
                     <div class="flex flex-wrap w-full">
 
+                        <button class="closeModalBtn mt-4 mx-auto px-2 min-w-24 w-3/4 md:w-auto py-2 bg-red-500 text-white rounded-md shadow-md border border-gray border-opacity-20 hover:scale-105 duration-300">Close</button>
                         <button onclick="sendEmail('item')" class="mt-4 mx-auto px-2 min-w-24 w-3/4 md:w-auto py-2 bg-darkblue text-white rounded-md shadow-md border border-gray border-opacity-20 hover:scale-105 duration-300">Inquire</button>
                         <button onclick="addToBasket()" class="closeModalBtn mt-4 mx-auto px-2 min-w-24 w-3/4 md:w-auto py-2 bg-green-400 text-black rounded-md shadow-md border border-gray border-opacity-20 hover:scale-105 duration-300">Add to Basket</button>
-                        <button class="closeModalBtn mt-4 mx-auto px-2 min-w-24 w-3/4 md:w-auto py-2 bg-red-500 text-white rounded-md shadow-md border border-gray border-opacity-20 hover:scale-105 duration-300">Close</button>
                     </div>
                 </div>
             </div>  
@@ -78,6 +90,40 @@
 
 </body>
 <script>
+// Toggle visibility of the dropdown and rotate the button icon
+function toggleDropdown(divID, imgID) {
+    const div = document.getElementById(divID);
+    const img = document.getElementById(imgID);
+    const isClosed = div.classList.contains('h-0');
+    
+    // Toggle the class to open/close the dropdown
+    if (isClosed) {
+        div.classList.remove('h-0');
+        img.classList.remove('rotate-90');
+        localStorage.setItem(divID, 'open');  // Save the open state
+    } else {
+        div.classList.add('h-0');
+        img.classList.add('rotate-90');
+        localStorage.setItem(divID, 'closed');  // Save the closed state
+    }
+}
+
+    function clearFilters() {
+        // Reset the search input
+        document.getElementById('search').value = '';
+
+        // Uncheck all checkboxes
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+
+        // Submit the form to reset the filters
+        document.getElementById('filters').submit();
+    }
+
+
+
     const modal = document.getElementById('modal');
     const openModalBtns = document.querySelectorAll('.openModalBtn');
     const closeModalBtn = document.querySelectorAll('.closeModalBtn');
@@ -124,7 +170,7 @@
                 }
             }
 
-            var content = `<img src="{{ asset('images/products/placeholder.png') }}" class="w-40 my-4 shadow-md mx-auto">
+            var content = `<img src="{{ asset('storage/images/products/${item.code}.png') }}" class="w-1/2 my-4 shadow-md mx-auto">
                     <div class="items-center">
                         <div class="flex w-full border-b border-black border-opacity-50">
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Item:</h1>

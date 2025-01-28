@@ -115,10 +115,10 @@ class ProductController extends Controller
 
         return view('buy', compact('columns', 'products', 'filters'));
     }
-    
+
     public function store(Request $request)
     {
-
+        // Validate the request, excluding the image file for now
         $data = $request->validate([
             'code' => 'required',
             'name' => 'required',
@@ -128,7 +128,7 @@ class ProductController extends Controller
             'supplier' => 'required',
             'spec' => 'required',
             'unit' => 'required',
-            'pcs_unit' => 'nullable',
+            'pcs_unit' => 'required',
             'unit_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'value_ratio' => 'nullable',
             'status' => 'nullable',
@@ -136,18 +136,31 @@ class ProductController extends Controller
             'needed' => 'nullable',
             'to_buy' => 'nullable',
             'low_alert' => 'nullable',
-            'prod_note' => 'nullable'
+            'prod_note' => 'nullable',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Add validation for the image
         ]);
-
+    
+        // Check if an image was uploaded
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+    
+            // Generate a file name using the 'code' field
+            $fileName = $request->input('code') . '.' . $image->getClientOriginalExtension();
+    
+            // Move the uploaded image to the public folder
+            $image->move(public_path('storage/images/products'), $fileName);
+        }
+    
+        // Create the product record without the image URL field (since it's not being saved in the database)
         $newProduct = Product::create($data);
-
+    
         if ($newProduct) {
             return redirect()->route('dashboard')->with('success', 'Product created successfully.');
         } else {
             return redirect()->route('dashboard')->with('error', 'Failed to create product.');
         }
-
     }
+    
 
     public function update(Request $request)
     {
@@ -192,12 +205,26 @@ class ProductController extends Controller
 
     public function delete(Request $request)
     {
+        // Find the product by code
         $product = Product::where('code', $request->query('code'))->firstOrFail();
-        // Delete the product
+        
+        // Construct the file name pattern (e.g., 'code.*' to match any extension)
+        $filePattern = public_path('storage/images/products/' . $product->code . '.*');
+    
+        // Find the file based on the pattern (e.g., '12345.jpg', '12345.png')
+        $files = glob($filePattern);
+    
+        // If the file exists, delete it
+        if ($files) {
+            unlink($files[0]);  // Delete the first matched file
+        }
+    
+        // Delete the product record
         $product->delete();
-
+    
         // Redirect with a success message
         return redirect(route('dashboard'))->with('success', 'Product deleted successfully.');
     }
+    
 
 }

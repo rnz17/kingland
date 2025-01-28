@@ -69,32 +69,3 @@
 
 </div>
 </body>
-<script>
-
-var cat = @json($categories);
-var subcat = @json($subcategories);
-
-function serviceDD(value) {
-    var category2 = document.getElementById('category2');
-    category2.innerHTML = '<option value="">Select an option</option>';
-    cat.forEach(function(category) {
-        if (category.service_id == value) {
-            category2.innerHTML += '<option value="' + category.id + '">' + category.name + '</option>';
-        }
-    });
-}
-
-function mainDD(value) {
-    var category3 = document.getElementById('category3');
-    category3.innerHTML = '<option value="">Select an option</option>';
-    subcat.forEach(function(subcategory) {
-        if (subcategory.category_id == value) {
-            category3.innerHTML += '<option value="' + subcategory.id + '">' + subcategory.name + '</option>';
-        }
-    });
-}
-
-
-
-    
-</script>
