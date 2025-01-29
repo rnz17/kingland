@@ -21,14 +21,6 @@ class ServiceController extends Controller
         return view('story', compact('filters'));
     }
 
-    public function categories(){
-        $services = Service::all();
-        $categories = Category::all();
-        $subcategories = Subcategory::all();
-
-        return view('dashboard.categories', compact('services', 'categories', 'subcategories'));
-    }
-
     public function offers(){
         $filters = Service::all();
 

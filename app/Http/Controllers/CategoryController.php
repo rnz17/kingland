@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Service;
 use App\Models\Category;
 use App\Models\Subcategory;
 
@@ -27,5 +28,31 @@ class CategoryController extends Controller
             
             return redirect()->back()->with('success', 'Subcategory created successfully.');
         }
+    }
+
+    public function categories(){
+        $services = Service::all();
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+
+        $serv = Service::with('category')->get();
+        // dd($serv->toArray());
+        $categories = Category::with('subcategories')->get();
+
+        return view('dashboard.categories', compact('services', 'categories', 'subcategories', 'serv'));
+    }
+
+    public function deleteCategory($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('editCategories')->with('success', 'Category deleted successfully.');
+    }
+
+    public function deleteSubcategory($id)
+    {
+        $subcategory = Subcategory::findOrFail($id);
+        $subcategory->delete();
+        return redirect()->route('editCategories')->with('success', 'Subcategory deleted successfully.');
     }
 }

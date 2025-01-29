@@ -2,9 +2,48 @@
 @include('partials.nav')
 
 <div class="flex flex-col gap-y-12 w-full pt-12">
+<!-- edit modal -->
 
 <!-- add category -->
     <div class="m-auto w-3/4 text-md font-normal border border-gray border-opacity-20 p-12 rounded-xl shadow-xl bg-notwhite">
+        <!-- Table 1: Service and Categories -->
+        <table class="min-w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="border border-gray px-6 py-4 text-center">Category Name</th>
+                        <th class="border border-gray px-6 py-4 text-center">Subcategories</th>
+                        <th class="border border-gray px-6 py-4 text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($serv as $service)
+                        @if($service->category->isNotEmpty())
+                            <tr>
+                                <td class="border border-gray px-6 py-4 text-center">
+                                    {{ $service->name }}
+                                </td>
+                                <td class="border border-gray px-6 py-4 text-center">
+                                    @foreach($service->category as $category)
+                                        <p>{{ $category->name }}</p>
+                                    @endforeach
+                                </td>
+                                <td class="border border-gray px-6 py-4 text-center">
+                                    <!-- Delete Category -->
+                                    <button>
+
+                                    </button>
+                                    <form action="{{ route('category.delete', $category->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+
         <h1 class="text-4xl pb-4 font-semibold">Add Category</h1>
         <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('store.category') }}">
             @csrf
@@ -37,6 +76,42 @@
 
 <!-- add subcategory -->
     <div class="m-auto w-3/4 text-md font-normal border border-gray border-opacity-20 p-12 rounded-xl shadow-xl bg-notwhite">
+
+            <!-- Table 2: Category and Subcategories -->
+            <table class="min-w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="border border-gray px-6 py-4 text-center">Category Name</th>
+                        <th class="border border-gray px-6 py-4 text-center">Subcategories</th>
+                        <th class="border border-gray px-6 py-4 text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($categories as $category)
+                        @if($category->subcategories->isNotEmpty())
+                            <tr>
+                                <td class="border border-gray px-6 py-4 text-center">
+                                    {{ $category->name }}
+                                </td>
+                                <td class="border border-gray px-6 py-4 text-center">
+                                    @foreach($category->subcategories as $subcategory)
+                                        <p>{{ $subcategory->name }}</p>
+                                    @endforeach
+                                </td>
+                                <td class="border border-gray px-6 py-4 text-center">
+                                    <!-- Delete Category -->
+                                    <button>
+                                    <form action="{{ route('subcategory.delete', $subcategory->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
     <h1 class="text-4xl pb-4 font-semibold">Add Sub-Category</h1>
         <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('store.category') }}">
             @csrf

@@ -56,9 +56,9 @@
                                     @if($key == 'service_id')
                                         {{ $services->where('id',$value)->first()->name }}
                                     @elseif($key == 'category_id')
-                                        {{ $cat->where('id',$value)->first()->name }}
+                                        {{ $cat->where('id', $value)->first()?->name }}
                                     @elseif($key == 'subcategory_id')
-                                        {{ $subcat->where('id',$value)->first()->name }}
+                                        {{ $subcat->where('id', $value)->first()?->name }}
                                     @else
                                         {{ $value }}
                                     @endif

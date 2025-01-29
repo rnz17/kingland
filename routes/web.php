@@ -106,9 +106,13 @@ use Illuminate\Http\Request;
     Route::post('/editProduct', [ProductController::class, 'update'])->name('editProduct.update');
     Route::delete('/editProduct', [ProductController::class, 'delete'])->name('editProduct.delete');
 
-    Route::get('/categories', [ServiceController::class, 'categories'] )->name('editCategories');
+    Route::get('/categories', [CategoryController::class, 'categories'] )->name('editCategories');
 
     Route::post('/categories', [CategoryController::class, 'store'] )->name('store.category');
+
+    Route::delete('/categories/category/{id}', [CategoryController::class, 'deleteCategory'])->name('category.delete');
+    Route::delete('/categories/subcategory/{id}', [CategoryController::class, 'deleteSubcategory'])->name('subcategory.delete');
+
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
