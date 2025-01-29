@@ -30,7 +30,7 @@
               
               @foreach($filters as $filter)
                 <!-- card -->
-                  <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center hover:shadow-2xl hover:pb-10 hover:shadow-black hover:shadow-opacity-10 rounded-2xl border border-gray border-opacity-20 overflow-hidden hover:scale-105 px-2 duration-300">
+                  <div class="group bg-notwhite w-80 h-72 relative flex flex-col items-center justify-center gap-2 text-center shadow-lg hover:shadow-2xl hover:pb-10 hover:shadow-black hover:shadow-opacity-10 rounded-2xl border border-gray border-opacity-20 overflow-hidden hover:scale-105 px-2 duration-300">
                     <!-- circle -->
                     <div class="w-28 h-28 mt-8 z-10 transition-all duration-500 overflow-hidden">
                       <img src="{{ asset('images/services/' . $filter->id . '.png') }}" class="h-full m-auto" alt="{{ $filter->name }} icon">

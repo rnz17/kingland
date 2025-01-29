@@ -10,7 +10,9 @@
             <div class="flex w-3/4">
                 <div class="block justify-center px-32 m-auto">
 
-                    <h1 class="text-2xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h1>
+                    <h1 class="text-2xl mb-2 text-textblue font-semibold">Kingland Marketing Company Inc. Corporate Structure & Governance</h1>
+                    <h1 class="text-2xl mb-2 mt-2 pl-12">At Kingland Marketing Company Inc., we uphold the highest standards of corporate governance, ensuring transparency, accountability, and strategic growth. Our structured leadership fosters innovation and operational excellence.</h1>
+                    <h1 class="text-xl mb-2 mt-6">Click to learn more about each topic..</h1>
                         
                         <div class="flex flex-wrap justify-center mt-12 gap-x-2 gap-y-6">
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\OfferController;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ use Illuminate\Http\Request;
 
     // services
         
-        Route::get('/services', [ServiceController::class, 'offers'])->name('services');
+        Route::get('/services', [OfferController::class, 'offers'])->name('services');
 
     // sell
         Route::get('/sell', [ServiceController::class, 'filAndModal'])->name('sell');

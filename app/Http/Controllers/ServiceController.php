@@ -21,12 +21,6 @@ class ServiceController extends Controller
         return view('story', compact('filters'));
     }
 
-    public function offers(){
-        $filters = Service::all();
-
-        return view('services', compact('filters'));
-    }
-
     public function filters(Request $request)
     {
         $filters = Service::all();
