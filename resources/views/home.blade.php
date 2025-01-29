@@ -13,7 +13,7 @@
         </div>
 
       </div>
-    <!-- PARTNERS -->
+    <!-- PARTNERS (HIDDEN) -->
       <div class="hidden flex flex-col py-12">
         <h1 class="m-auto text-3xl text-darkblue tracking-wider font-bold">Our Partners</h1>
         <div class="flex flex-wrap py-32 gap-y-12">
@@ -39,7 +39,7 @@
      </div>
       <div class="m-auto flex flex-wrap py-12 w-full gap-x-0">
         @foreach($blogs as $blog) 
-          <div class="relative flex mx-auto mb-24 w-[95%] lg:w-[45%] flex-col rounded-xl bg-gradient-to-br from-white to-notwhite bg-clip-border border border-lightgray border-opacity-10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="relative flex pb-4 mx-auto mb-24 w-[95%] max-h-[30vh] hover:max-h-[40vh] lg:w-[45%] flex-col rounded-xl bg-gradient-to-br from-white to-notwhite bg-clip-border border border-lightgray border-opacity-10 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
             @if($blog->image_url)
               <div class="relative mx-4 -mt-6 h-64 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 opacity-90">
@@ -51,14 +51,18 @@
                 </div>
               </div>
             @endif
-            <div class="p-6 @if(!$blog->image_url) m-auto @endif">
-              <h5 class="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-gray antialiased group-hover:text-blue transition-colors duration-300">
-                {{ $blog->title }}
+            <div class="p-6 @if(!$blog->image_url) m-auto @endif overflow-hidden">
+              <h5 class="mb-2 block text-2xl font-semibold leading-snug tracking-normal text-gray antialiased group-hover:text-blue transition-colors duration-300">
+                <a href="{{ route('blog.show', $blog->id) }}" class="text-blue underline">
+                  {{ $blog->title }}
+                </a>
+
               </h5>
-              <p class="block font-sans text-lg h-auto font-light leading-relaxed text-gray-700 antialiased">
+              <p class="block text-lg h-full font-light leading-relaxed text-gray antialiased overflow-hidden text-ellipsis">
                 {{ $blog->content }}
               </p>
             </div>
+
           </div>
  
        @endforeach 

@@ -7,7 +7,7 @@
 <!-- add category -->
     <div class="m-auto w-3/4 text-md font-normal border border-gray border-opacity-20 p-12 rounded-xl shadow-xl bg-notwhite">
         <!-- Table 1: Service and Categories -->
-        <table class="min-w-full border-collapse border border-gray-300">
+        <table class="min-w-full border-collapse border border-gray-300 mb-2">
                 <thead>
                     <tr>
                         <th class="border border-gray px-6 py-4 text-center">Category Name</th>
@@ -75,7 +75,7 @@
     <div class="m-auto w-3/4 text-md font-normal border border-gray border-opacity-20 p-12 rounded-xl shadow-xl bg-notwhite">
 
             <!-- Table 2: Category and Subcategories -->
-            <table class="min-w-full border-collapse border border-gray-300">
+            <table class="min-w-full border-collapse border border-gray-300 mb-2">
                 <thead>
                     <tr>
                         <th class="border border-gray px-6 py-4 text-center">Category Name</th>

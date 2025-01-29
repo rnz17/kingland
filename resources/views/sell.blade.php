@@ -7,12 +7,14 @@
         <!-- Filters -->
             <div class="w-full md:w-1/4 p-4">
                 <form id="filters" action="{{ route('sell') }}" method="GET">
-                    <div class="mb-4">
-                        <label for="search" class="block text-lg font-medium text-gray-700">Search</label>
+                    
+                    <div class="mb-4 relative">
+                        <label for="search" class="block text-lg font-medium w-1/4 text-gray-700">Search</label>
+                        <marquee class="absolute top-0 right-0 w-3/4 text-md text-gray">Use search bar and filters to find what you need</marquee>
                         <input type="text" id="search" name="search" class="mt-1 block w-full p-2 border border-gray rounded-md shadow-sm focus:ring-blue focus:border-blue sm:text-sm" placeholder="Search products...">
                     </div>
                     <label for="servCat" class="block text-lg font-medium text-gray-700">Category</label>
-                    <div class="flex flex-col mb-4 rounded-lg overflow-hidden gap-y-2 text-md">
+                    <div class="flex flex-col mb-4 rounded-lg overflow-hidden gap-y-1 text-md">
                         @foreach($filters as $item)
                             <div class="flex items-center border border-gray border-opacity-50 rounded-lg overflow-hidden">
                                 <button type="button" onclick="toggleDropdown('catDD{{ $item->id }}', 'img{{ $item->id }}')" class="w-1/12 h-full relative bg-red-300" data-id="{{ $item->id }}">
@@ -20,9 +22,9 @@
                                     <img id="img{{ $item->id }}" src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2 transform rotate-90 duration-300">
                                 </button>
                                 <input class="ml-2 peer hidden" type="checkbox" id="filter_service_{{ $item->id }}" name="filters[]" value="{{ $item->id }}">
-                                <label class="pl-4 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_service_{{ $item->id }}">{{ $item->name }}</label>
+                                <label class="pl-4 w-full h-full peer-checked:bg-lightblue" for="filter_service_{{ $item->id }}">{{ $item->name }}</label>
                             </div>
-                            <div id="catDD{{ $item->id }}" class="h-0 flex flex-col gap-y-2 overflow-hidden transition-all duration-500">
+                            <div id="catDD{{ $item->id }}" class="h-0 flex flex-col gap-y-1 overflow-hidden transition-all duration-500">
                                 @foreach($item->category as $subitem)
                                     <div class="flex items-center m-auto mr-0 w-11/12 border border-gray border-opacity-50 rounded-lg overflow-hidden">
                                         <button type="button" onclick="toggleDropdown('subcatDD{{ $subitem->id }}', 'subimg{{ $subitem->id }}')" class="w-1/12 h-full relative bg-red-300" data-id="{{ $subitem->id }}">
@@ -30,13 +32,13 @@
                                             <img id="subimg{{ $subitem->id }}" src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2 transform rotate-90 duration-500">
                                         </button>
                                         <input class="ml-2 peer hidden" type="checkbox" id="filter_category_{{ $subitem->id }}" name="filters[]" value="cat{{ $subitem->id }}">
-                                        <label class="pl-4 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_category_{{ $subitem->id }}">{{ $subitem->name }}</label>
+                                        <label class="pl-4 w-full h-full peer-checked:bg-lightblue" for="filter_category_{{ $subitem->id }}">{{ $subitem->name }}</label>
                                     </div>
-                                    <div id="subcatDD{{ $subitem->id }}" class="h-0 flex flex-col gap-y-2 overflow-hidden transition-all duration-500">
+                                    <div id="subcatDD{{ $subitem->id }}" class="h-0 flex flex-col gap-y-1 overflow-hidden transition-all duration-500">
                                         @foreach($subitem->subcategories as $subcatitem)
                                             <div class="flex items-center m-auto mr-0 w-5/6 border border-gray border-opacity-50 rounded-lg overflow-hidden">
                                                 <input class="ml-2 peer hidden" type="checkbox" id="filter_subcategory_{{ $subcatitem->id }}" name="filters[]" value="sub{{ $subcatitem->id }}">
-                                                <label class="pl-12 py-1 w-full h-full peer-checked:bg-lightblue" for="filter_subcategory_{{ $subcatitem->id }}">{{ $subcatitem->name }}</label>
+                                                <label class="pl-12 w-full h-full peer-checked:bg-lightblue" for="filter_subcategory_{{ $subcatitem->id }}">{{ $subcatitem->name }}</label>
                                             </div>
                                         @endforeach
                                     </div>
@@ -69,6 +71,7 @@
                 
             </div>
             
+        <!-- modal -->
             <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center md:p-4">
                 <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 rounded-lg overflow-hidden transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2 h-auto bg-white shadow-2xl p-8 rounded">
                     <div id="modCont">
@@ -170,7 +173,7 @@ function toggleDropdown(divID, imgID) {
                 }
             }
 
-            var content = `<img src="{{ asset('storage/images/products/${item.code}.png') }}" class="w-1/2 my-4 shadow-md mx-auto">
+            var content = `<img src="{{ asset('storage/images/products/${item.code}.png') }}" class="max-h-[30vh] my-4 shadow-md mx-auto">
                     <div class="items-center">
                         <div class="flex w-full border-b border-black border-opacity-50">
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Item:</h1>
@@ -189,7 +192,11 @@ function toggleDropdown(divID, imgID) {
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.subcategory.name}<h1>
                         </div>
                         <div class="flex w-full border-b border-black border-opacity-50">
-                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">pcs_unit:</h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Unit of Measure:</h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.unit}<h1>
+                        </div>
+                        <div class="flex w-full border-b border-black border-opacity-50">
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Pieces per unit:</h1>
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.pcs_unit}<h1>
                         </div>
 

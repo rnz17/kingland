@@ -37,4 +37,16 @@ class BlogController extends Controller
         return redirect()->route('blogEditor')->with('success', 'Blog post created successfully!');
     }
 
+    public function show($id)
+    {
+        $blog = Blog::findOrFail($id);  // Find the blog by id
+
+        // Pass the blog data to the view
+        return view('blog', [
+            'image_url' => $blog->image_url,
+            'title' => $blog->title,
+            'content' => $blog->content,
+        ]);
+    }
+
 }

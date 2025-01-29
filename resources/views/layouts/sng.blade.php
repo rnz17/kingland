@@ -3,7 +3,7 @@
 
     @include('partials.nav')
 
-    <main>
+    <main class="mb-32">
         <div class="flex w-full h-[92vh] -mb-32">
             <button onclick="toggleHIDE('sngOpt')" class="absolute z-50 left-6 top-16">
                 <img src="/images/burger.png" alt="nav" class="lg:hidden w-10">

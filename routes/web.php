@@ -3,7 +3,6 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -15,6 +14,10 @@ use Illuminate\Http\Request;
 // CLIENT PAGES
     Route::get('/', [ProductController::class, 'home'])->name('home');
     Route::view('/history', 'history')->name('history');
+    Route::view('/contact', 'contact')->name('contact');
+    Route::view('/pvp', 'pvp')->name('pvp');
+
+    Route::get('/cont/{id}', [BlogController::class, 'show'])->name('blog.show');
     
     
     // story

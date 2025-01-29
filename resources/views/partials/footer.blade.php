@@ -6,7 +6,7 @@
     <div class="w-full lg:w-2/3 flex justify-around text-xl">
 
         <div class="flex flex-col font-semibold text-gray text-center">
-            <h3 class="font-bold text-black text-xl mb-2">Contact Us</h3>
+            <h3 class="font-bold text-black text-xl mb-2"><a href="{{ route('contact')}}" class="underline">Contact Us</a></h3>
             <a href="#" class="copyLink text-lg hover:scale-x-105 duration-200" data-text="09999913432">09999913432</a>
             <a href="#" class="copyLink text-lg hover:scale-x-105 duration-200" data-text="09564572521">09564572521</a>
         </div>
@@ -15,8 +15,7 @@
             <h3 class="font-bold text-black text-xl mb-2">Our Company</h3>
             <a href="{{ '/founders' }}" class="text-lg hover:scale-x-105 duration-200">Leaders</a>
             <a href="{{ '/sng' }}" class="text-lg hover:scale-x-105 duration-200">Structure and Governance</a>
-            <a href="#" class="text-lg hover:scale-x-105 duration-200"></a>
-            <a href="#" class="text-lg hover:scale-x-105 duration-200"></a>
+            <a href="{{ '/pvp' }}" class="text-lg hover:scale-x-105 duration-200">Purpose, Values, and Principles</a>
         </div>
 
     </div>
