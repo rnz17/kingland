@@ -12,7 +12,7 @@
     </div>
 
     <!-- CHART -->
-    <div class="block mt-44">
+    <div class="block mt-44 mb-32">
         <!-- FIRST ROW -->
         <div class="flex flex-wrap">
             <!-- CARD CONTAINER -->

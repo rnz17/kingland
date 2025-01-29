@@ -4,7 +4,7 @@
 
     @include('partials.nav')
 
-    <main class="">
+    <main class=" mb-32">
         <!-- static bg for error workaround -->
         <div class="w-full h-[86vh] bg-cover bg-center" style="background-image: url('/images/kingland/sample3.jpg');">
             <div class="w-full h-full bg-gradient-to-r from-transparent from-1% via-tblack via-99% to-transparent">

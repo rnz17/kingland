@@ -2,7 +2,7 @@
 <body>
     @include('partials.nav')
 
-    <main>
+    <main class=" mb-32">
         <div class="block">
             <div class="flex w-full py-16">
                 <div class="m-auto flex flex-wrap w-full">

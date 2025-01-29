@@ -17,7 +17,7 @@
         
             <div class="flex flex-wrap w-[32%]">
             <label class="w-full pl-4 mb-2" for="name">Image<span class="text-red-500 pl-1">*</span></label>
-                <input id="fileInput" class="m-auto w-full pl-24" type="file" accept="image/*" name="image">
+                <input id="fileInput" class="m-auto w-full pl-24" type="file" accept="image/*" name="image" required>
             </div>
 
             <div class="flex flex-wrap w-[32%]">

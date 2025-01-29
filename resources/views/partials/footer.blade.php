@@ -1,4 +1,5 @@
-<div class="absolute -z-10 mt-32 lg:flex w-full bg-lightblue h-auto px-8 lg:px-0 py-8 pb-12 shadow-inner">
+
+<div class="absolute -z-10 lg:flex w-full bg-lightblue h-auto px-8 lg:px-0 py-24 shadow-inner">
     <div class="w-full lg:w-1/3 flex px-4 pb-12 lg:py-0">
         <img src="{{ asset('images/kingland/logo_wide.png') }}" class="w-full m-auto">
     </div>

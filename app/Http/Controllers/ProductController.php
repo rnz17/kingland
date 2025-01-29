@@ -128,16 +128,16 @@ class ProductController extends Controller
             'supplier' => 'required',
             'spec' => 'required',
             'unit' => 'required',
-            'pcs_unit' => 'required',
-            'unit_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'value_ratio' => 'nullable',
+            'pcs_unit' => 'required|numeric|between:0,999999.99',
+            'unit_price' => 'required|numeric|between:0,999999.99',
+            'value_ratio' => 'nullable|numeric|between:0,999999.99',
             'status' => 'nullable',
-            'available' => 'nullable',
-            'needed' => 'nullable',
-            'to_buy' => 'nullable',
-            'low_alert' => 'nullable',
+            'available' => 'nullable|numeric|between:0,999999.99',
+            'needed' => 'nullable|numeric|between:0,999999.99',
+            'to_buy' => 'nullable|numeric|between:0,999999.99',
+            'low_alert' => 'nullable|numeric|between:0,999999.99',
             'prod_note' => 'nullable',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Add validation for the image
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048', // Add validation for the image
         ]);
     
         // Check if an image was uploaded
@@ -148,7 +148,7 @@ class ProductController extends Controller
             $fileName = $request->input('code') . '.' . $image->getClientOriginalExtension();
     
             // Move the uploaded image to the public folder
-            $image->move(public_path('storage/images/products'), $fileName);
+            $imagePath = $image->storeAs('images/products', $fileName, 'public');
         }
     
         // Create the product record without the image URL field (since it's not being saved in the database)

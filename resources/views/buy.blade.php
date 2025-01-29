@@ -2,17 +2,15 @@
 
 @include('partials.nav')
 
-@include('partials.contact')
-
-    <div class="relative block mx-auto my-6 w-[88vw] h-[86vh] overflow-auto border-2 border-darkblue shadow-xl">
+    <div class="relative block mx-auto my-6 w-[88vw] h-[86vh] overflow-auto border-2 border-darkblue shadow-xl  mb-32">
         <table class="w-full text-sm text-left rtl:text-right">
             <thead class="text-xs uppercase bg-lightblue">
                 <tr>
-                @foreach ($columns as $column)
-                    <th scope="col" class="border border-black px-6 py-3 text-left text-xs font-bold text-textblue uppercase tracking-wider text-center">
-                        {{ $column }}
-                    </th>
-                @endforeach
+                    @foreach ($columns as $column)
+                        <th scope="col" class="border border-black px-6 py-3 text-xs font-bold text-textblue uppercase tracking-wider text-center">
+                            {{ $column }}
+                        </th>
+                    @endforeach
                 </tr>
             </thead>
             <tbody>
