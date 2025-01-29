@@ -18,27 +18,24 @@
                 <tbody>
                     @foreach($serv as $service)
                         @if($service->category->isNotEmpty())
-                            <tr>
-                                <td class="border border-gray px-6 py-4 text-center">
-                                    {{ $service->name }}
-                                </td>
-                                <td class="border border-gray px-6 py-4 text-center">
-                                    @foreach($service->category as $category)
+                            @foreach($service->category as $category)
+                                <tr>
+                                    <td class="border border-gray px-6 py-4 text-center">
+                                        {{ $service->name }}
+                                    </td>
+                                    <td class="border border-gray px-6 py-4 text-center">
                                         <p>{{ $category->name }}</p>
-                                    @endforeach
-                                </td>
-                                <td class="border border-gray px-6 py-4 text-center">
-                                    <!-- Delete Category -->
-                                    <button>
-
-                                    </button>
-                                    <form action="{{ route('category.delete', $category->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="border border-gray px-6 py-4 text-center">
+                                        <!-- Delete Category -->
+                                        <form action="{{ route('category.delete', $category->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         @endif
                     @endforeach
                 </tbody>
@@ -89,25 +86,24 @@
                 <tbody>
                     @foreach($categories as $category)
                         @if($category->subcategories->isNotEmpty())
-                            <tr>
-                                <td class="border border-gray px-6 py-4 text-center">
-                                    {{ $category->name }}
-                                </td>
-                                <td class="border border-gray px-6 py-4 text-center">
-                                    @foreach($category->subcategories as $subcategory)
+                            @foreach($category->subcategories as $subcategory)
+                                <tr>
+                                    <td class="border border-gray px-6 py-4 text-center">
+                                        {{ $category->name }}
+                                    </td>
+                                    <td class="border border-gray px-6 py-4 text-center">
                                         <p>{{ $subcategory->name }}</p>
-                                    @endforeach
-                                </td>
-                                <td class="border border-gray px-6 py-4 text-center">
-                                    <!-- Delete Category -->
-                                    <button>
-                                    <form action="{{ route('subcategory.delete', $subcategory->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="border border-gray px-6 py-4 text-center">
+                                        <!-- Delete Category -->
+                                        <form action="{{ route('subcategory.delete', $subcategory->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         @endif
                     @endforeach
                 </tbody>
