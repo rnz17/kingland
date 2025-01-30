@@ -199,7 +199,6 @@
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-4 md:pl-20">Pieces per unit:</h1>
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.pcs_unit}<h1>
                         </div>
-
                     </div>`;
 
             

@@ -66,8 +66,14 @@
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="unit">Unit</label>
                 <select class="rounded-lg m-auto w-3/4" id="unit" name="unit" required>
+                    
+                <option value="{{ $item->unit }}">{{ $item->unit }}</option>
+                
                 @foreach($units as $unit)
+                    @if($unit == $item->unit)
+                    @else
                         <option value="{{ $unit }}">{{ $unit }}</option>
+                    @endif
                 @endforeach
                 </select>
             </div>
