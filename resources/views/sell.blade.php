@@ -5,8 +5,8 @@
     <main class="flex w-full mx-auto pb-32">
 
         <!-- Filters -->
-            <div class="w-full md:w-1/4 p-4">
-                <form id="filters" action="{{ route('sell') }}" method="GET">
+            <div id="filters" class="absolute md:relative bg-white z-40 h-full md:h-auto w-full md:w-1/4 p-4">
+                <form id="filt" action="{{ route('sell') }}" method="GET">
                     
                     <div class="mb-4 relative">
                         <label for="search" class="block text-lg font-medium w-1/4 text-gray-700">Search</label>
@@ -73,7 +73,7 @@
             
         <!-- modal -->
             <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center md:p-4">
-                <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 rounded-lg overflow-hidden transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2 h-auto bg-white shadow-2xl p-8 rounded">
+                <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 rounded-lg overflow-hidden transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2 h-full md:h-auto bg-white shadow-2xl p-8 rounded">
                     <div id="modCont">
 
                     </div>
@@ -93,23 +93,23 @@
 
 </body>
 <script>
-// Toggle visibility of the dropdown and rotate the button icon
-function toggleDropdown(divID, imgID) {
-    const div = document.getElementById(divID);
-    const img = document.getElementById(imgID);
-    const isClosed = div.classList.contains('h-0');
-    
-    // Toggle the class to open/close the dropdown
-    if (isClosed) {
-        div.classList.remove('h-0');
-        img.classList.remove('rotate-90');
-        localStorage.setItem(divID, 'open');  // Save the open state
-    } else {
-        div.classList.add('h-0');
-        img.classList.add('rotate-90');
-        localStorage.setItem(divID, 'closed');  // Save the closed state
-    }
-}
+    // Toggle visibility of the dropdown and rotate the button icon
+        function toggleDropdown(divID, imgID) {
+            const div = document.getElementById(divID);
+            const img = document.getElementById(imgID);
+            const isClosed = div.classList.contains('h-0');
+            
+            // Toggle the class to open/close the dropdown
+            if (isClosed) {
+                div.classList.remove('h-0');
+                img.classList.remove('rotate-90');
+                localStorage.setItem(divID, 'open');  // Save the open state
+            } else {
+                div.classList.add('h-0');
+                img.classList.add('rotate-90');
+                localStorage.setItem(divID, 'closed');  // Save the closed state
+            }
+        }
 
     function clearFilters() {
         // Reset the search input
@@ -122,7 +122,7 @@ function toggleDropdown(divID, imgID) {
         });
 
         // Submit the form to reset the filters
-        document.getElementById('filters').submit();
+        document.getElementById('filt').submit();
     }
 
 
@@ -173,30 +173,30 @@ function toggleDropdown(divID, imgID) {
                 }
             }
 
-            var content = `<img src="{{ asset('storage/images/products/${item.code}.png') }}" class="max-h-[30vh] my-4 shadow-md mx-auto">
+            var content = `<img src="{{ asset('storage/images/products/${item.code}.png') }}" class="max-h-[15vh] md:max-h-[30vh] my-4 shadow-md mx-auto">
                     <div class="items-center">
                         <div class="flex w-full border-b border-black border-opacity-50">
-                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Item:</h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-4 md:pl-20">Item:</h1>
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.name}<h1>
                         </div>
                         <div class="flex w-full border-b border-black border-opacity-50">
-                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Item Code:</h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-4 md:pl-20">Item Code:</h1>
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.code}<h1>
                         </div>
                         <div class="flex w-full border-b border-black border-opacity-50">
-                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Service Category:</h1>
-                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.service.name}; ${item.category.name}<h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-4 md:pl-20">Item Specifications:</h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.spec}<h1>
                         </div>
                         <div class="flex w-full border-b border-black border-opacity-50">
-                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Item Category:</h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-4 md:pl-20">Item Category:</h1>
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.subcategory.name}<h1>
                         </div>
                         <div class="flex w-full border-b border-black border-opacity-50">
-                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Unit of Measure:</h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-4 md:pl-20">Unit of Measure:</h1>
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.unit}<h1>
                         </div>
                         <div class="flex w-full border-b border-black border-opacity-50">
-                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-20">Pieces per unit:</h1>
+                            <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-left pl-4 md:pl-20">Pieces per unit:</h1>
                             <h1 class="text-md md:text-xl font-medium py-4 m-auto md:mx-auto w-1/2 text-center">${item.pcs_unit}<h1>
                         </div>
 

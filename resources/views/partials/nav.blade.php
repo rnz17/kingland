@@ -81,10 +81,10 @@
         <div class="flex m-auto lg:hidden h-full w-1/3 p-2 mr-0">
             @if (Str::contains(request()->path(), ['sell']))
                 <button id="burger" onclick="toggleFilter()" class="m-auto md:hidden h-full">
-                    <img src="{{ asset('images/products/placeholder.png') }}" class="m-auto h-1/2">
+                    <h1 class="text-lightgray font-semibold">Filters</h1>
                 </button>
                 <button onclick="toggleBasket()" class="m-auto md:hidden h-full">
-                    <img src="{{ asset('images/products/placeholder.png') }}" class="m-auto h-1/2">
+                    <img src="{{ asset('images/nav/burger_square.png') }}" class="m-auto h-1/2">
                 </button>
             @endif
         </div>
@@ -121,7 +121,7 @@
 
             @if (Str::contains(request()->path(), ['sell']))
                 <button onclick="toggleBasket()" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 ">
-                    <img src="{{ asset('images/products/placeholder.png') }}" class="m-auto h-1/2">
+                    <img src="{{ asset('images/nav/burger_square.png') }}" class="m-auto h-1/2">
                 </button>
             @endif
         </div>
