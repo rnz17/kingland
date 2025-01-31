@@ -96,27 +96,8 @@ use Illuminate\Http\Request;
     });
 
 // ADMIN DASHBOARD
+
     Route::get('/register', function () {return view('auth.register');})->name('register');
-
-    Route::get('/dashboard', [ServiceController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-    
-    Route::get('/dashboard/editProd', [ServiceController::class, 'showItemByCode'])->name('editProduct');
-
-    Route::get('/createProduct', [ProductController::class, 'index'] )->name('createProduct');
-    Route::post('/createProduct', [ProductController::class, 'store'])->name('createProduct.store');
-
-
-    Route::get('/editProduct', [ServiceController::class, 'showItemByCode'] )->name('editProduct');
-    Route::post('/editProduct', [ProductController::class, 'update'])->name('editProduct.update');
-    Route::delete('/editProduct', [ProductController::class, 'delete'])->name('editProduct.delete');
-
-    Route::get('/categories', [CategoryController::class, 'categories'] )->name('editCategories');
-
-    Route::post('/categories', [CategoryController::class, 'store'] )->name('store.category');
-
-    Route::delete('/categories/category/{id}', [CategoryController::class, 'deleteCategory'])->name('category.delete');
-    Route::delete('/categories/subcategory/{id}', [CategoryController::class, 'deleteSubcategory'])->name('subcategory.delete');
-
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -124,21 +105,32 @@ use Illuminate\Http\Request;
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
+    Route::get('/dashboard', [ServiceController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
     
-    Route::get('/announcements', [AnnouncementController::class, 'index'] )->name('announcements');
-    Route::post('/announcements', [AnnouncementController::class, 'store'] )->name('announcements.store');
-    Route::delete('/announcements', [AnnouncementController::class, 'delete'] )->name('announcements.delete');
+    
+    Route::view('/dashboard/blog','dashboard.blog')->name('blogEditor');
+    Route::post('/dashboard/blog', [BlogController::class, 'store'])->name('blogs.store');
+    
+    Route::get('/dashboard/createProduct', [ProductController::class, 'index'] )->name('createProduct');
+    Route::post('/dashboard/createProduct', [ProductController::class, 'store'])->name('createProduct.store');
+    
+    Route::get('/dashboard/editProd', [ServiceController::class, 'showItemByCode'])->name('editProduct');
+    Route::post('/dashboard/editProduct', [ProductController::class, 'update'])->name('editProduct.update');
+    Route::delete('/dashboard/editProduct', [ProductController::class, 'delete'])->name('editProduct.delete');
 
+    Route::get('/dashboard/categories', [CategoryController::class, 'categories'] )->name('editCategories');
+    Route::post('/dashboard/categories', [CategoryController::class, 'store'] )->name('store.category');
+    Route::delete('/dashboard/categories/category/{id}', [CategoryController::class, 'deleteCategory'])->name('category.delete');
+    Route::delete('/dashboard/categories/subcategory/{id}', [CategoryController::class, 'deleteSubcategory'])->name('subcategory.delete');
+
+    Route::get('/dashboard/announcements', [AnnouncementController::class, 'index'] )->name('announcements');
+    Route::post('/dashboard/announcements', [AnnouncementController::class, 'store'] )->name('announcements.store');
+    Route::delete('/dashboard/announcements', [AnnouncementController::class, 'delete'] )->name('announcements.delete');
+
+    Route::get('/dashboard/requests', [ProfileController::class, 'viewReqs'] )->name('requests');
+    Route::put('/dashboard/users/{id}/admit', [ProfileController::class, 'admit'])->name('users.admit');
+    Route::delete('/dashboard/users/{id}/reject', [ProfileController::class, 'reject'])->name('users.reject');
 // OTHERS
-
-    // REQUESTS ROUTES
-        
-        Route::get('/requests', [ProfileController::class, 'viewReqs'] )->name('requests');
-
-        Route::put('/users/{id}/admit', [ProfileController::class, 'admit'])->name('users.admit');
-        Route::delete('/users/{id}/reject', [ProfileController::class, 'reject'])->name('users.reject');
-
-
     // EMAIL ROUTES
 
         Route::get('/email/verify', function () {
@@ -159,11 +151,6 @@ use Illuminate\Http\Request;
             return back()->with('message', 'Verification link sent!');
         })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-    // BLOG ROUTES
-
-        Route::view('/blog','dashboard.blog')->name('blogEditor');
-
-        Route::post('/blog', [BlogController::class, 'store'])->name('blogs.store');
 
 
         require __DIR__.'/auth.php';

@@ -40,7 +40,6 @@
         </div>
 
 
-
         <button onclick="toggleHIDE('profile')" class="flex mx-auto my-0 p-4 items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-30">
             <img src="{{ asset('images/nav/profile_fill.png') }}" class="h-full m-auto">
         </button>

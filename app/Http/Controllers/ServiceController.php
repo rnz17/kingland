@@ -68,6 +68,8 @@ class ServiceController extends Controller
         // Fetch the products based on the query
         $products = $query->get();
 
+        $products = $products->sortBy('code');
+
         $services = Service::all();
         $cat = Category::all();
         $subcat = Subcategory::all();

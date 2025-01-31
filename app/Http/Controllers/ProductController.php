@@ -126,6 +126,7 @@ class ProductController extends Controller
             'category_id' => 'required|integer',
             'subcategory_id' => 'required|integer',
             'supplier' => 'required',
+            'brand' => 'nullable',
             'spec' => 'required',
             'unit' => 'required',
             'pcs_unit' => 'required|numeric|between:0,999999.99',
@@ -166,16 +167,19 @@ class ProductController extends Controller
     {
 
         // Get the code from the form input
-        $code = $request->input('code');  // Use input() for form data
+        $id = $request->input('id');  // Use input() for form data
+
 
         // Validate the incoming request data
         $data = $request->validate([
+            'id' => 'required',
             'code' => 'required',
             'name' => 'required',
             'service_id' => 'required|integer|between:1,9',
             'category_id' => 'required|integer',
             'subcategory_id' => 'required|integer',
             'supplier' => 'required',
+            'brand' => 'nullable',
             'spec' => 'required',
             'unit' => 'required',
             'pcs_unit' => 'nullable',
@@ -191,7 +195,7 @@ class ProductController extends Controller
 
         // Find the product by code
         try {
-            $product = Product::where('code', $code)->firstOrFail();
+            $product = Product::where('id', $id)->firstOrFail();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return redirect()->route('dashboard')->with('error', 'Product not found.');
         }

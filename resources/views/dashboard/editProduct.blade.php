@@ -7,7 +7,8 @@
         <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('editProduct.update') }}">
             @csrf
             @method('POST')
-        <div class="flex flex-wrap w-[32%]">
+            <input type="hidden" value="{{ $item->id }}" name="id">
+            <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="code">Code</label>
                 <input onblur="checkCode(value)" class="rounded-lg m-auto w-3/4"  value="{{ $item->code }}" type="text" id="code" name="code" required>
             </div>
@@ -51,6 +52,11 @@
                             <option value="{{ $opt->id }}">{{ $opt->name }}</option>
                     @endforeach 
                 </select>
+            </div>
+        
+            <div class="flex flex-wrap w-[32%]">
+                <label class="w-full pl-4 mb-2" for="brand">Brand</label>
+                <input class="rounded-lg m-auto w-3/4" value="{{ $item->brand }}" type="text" id="brand" name="brand" required>
             </div>
         
             <div class="flex flex-wrap w-[32%]">
