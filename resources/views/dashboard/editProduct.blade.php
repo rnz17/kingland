@@ -35,7 +35,8 @@
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="category">Main Category</label>
                 <select class="rounded-lg m-auto w-3/4" id="category_id" name="category_id" required>
-                    <option value="{{ $item->category_id }}">{{ $cat->where('id',$item->category_id)->first()->name }}</option>
+                    <option value="{{ $item->category_id }}">{{ $cat->where('id', $item->category_id)->first()?->name ?? 'No category' }}
+                    </option>
 
                     @foreach($cat->reject(fn($opt) => $opt->id === $item->category_id) as $opt)
                             <option value="{{ $opt->id }}">{{ $opt->name }}</option>
@@ -46,7 +47,7 @@
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="category">Item Category</label>
                 <select class="rounded-lg m-auto w-3/4" id="subcategory_id" name="subcategory_id" required>
-                <option value="{{ $item->subcategory_id }}">{{ $subcat->where('id',$item->subcategory_id)->first()->name }}</option>
+                <option value="{{ $item->subcategory_id }}">{{ $subcat->where('id',$item->subcategory_id)->first()->name ?? 'No category' }}</option>
 
                     @foreach($subcat->reject(fn($opt) => $opt->id === $item->category_id) as $opt)
                             <option value="{{ $opt->id }}">{{ $opt->name }}</option>

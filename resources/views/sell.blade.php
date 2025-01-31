@@ -57,7 +57,7 @@
             <div class="flex flex-wrap justify-center gap-[2vw] w-full h-[90vh] overflow-y-scroll md:w-5/6 p-4">
                 @if (count($products) > 0)
                     @foreach($products as $product)
-                        <button id="{{ $product->code }}" class="openModalBtn cursor-pointer relative group text-center p-4 w-full md:w-[15vw] h-32 md:h-[35vh] border border-black rounded-md hover:shadow-md hover:transform hover:scale-[1.05] duration-300">
+                        <button id="{{ $product->code }}" class="openModalBtn cursor-pointer relative group text-center p-4 w-full md:w-[15vw] h-32 md:h-[35vh] min-w-32 min-h-[350px] border border-black rounded-md hover:shadow-md hover:transform hover:scale-[1.05] duration-300">
                             <div class="flex md:block w-full h-full duration-300 overflow-hidden">
                                 <img class="block m-auto md:mx-auto h-1/2 mb-6" src="{{ asset('storage/images/products/'. $product->code .'.png') }}" alt="Item image">
                                 <h1 class="m-auto w-3/4 text-md font-medium md:mt-16">{{$product->name}}</h1>
@@ -72,8 +72,8 @@
             </div>
             
         <!-- modal -->
-            <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center md:p-4">
-                <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 rounded-lg overflow-hidden transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2 h-full md:h-auto bg-white shadow-2xl p-8 rounded">
+            <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center sm:p-4 z-50">
+                <div class="relative block left-1/2 top-1/2 border border-gray border-opacity-50 rounded-lg overflow-hidden transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2 h-full sm:h-auto bg-white shadow-2xl p-8 rounded">
                     <div id="modCont">
 
                     </div>
