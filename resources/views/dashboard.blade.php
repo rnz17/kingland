@@ -29,8 +29,8 @@
     </div>
 
     <!-- table -->
-    <div class="relative block mx-auto my-6 w-[99%] h-[86vh] overflow-auto border-2 border-darkblue shadow-xl">
-        <table class="w-full text-sm text-left rtl:text-right text-gray">
+    <div class="relative block mx-auto my-6 w-[99%] h-[83vh] overflow-auto border-2 border-darkblue shadow-xl">
+        <table id="table" class="w-full text-sm text-left rtl:text-right text-gray">
             <thead class="text-xs text-notwhite uppercase bg-lightgray">
                 <tr>
                     <th scope="col" class="border border-black px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-center">
@@ -70,7 +70,18 @@
             </tbody>
         </table>
     </div>
+    <div class="w-full flex flex-col pb-32">
+        <button class="m-auto bg-green-400 rounded-xl px-4 py-1" onclick="exportTableToExcel('table', 'productList')">Download Excel</button>
+    </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
-
+<script>
+    function exportTableToExcel(tableID, filename = '') {
+        alert('file will be saved as productList.xlsx');
+        let table = document.getElementById(tableID);
+        let wb = XLSX.utils.table_to_book(table, { sheet: "Sheet1" });
+        XLSX.writeFile(wb, filename + ".xlsx");
+    }
+</script>
 
