@@ -45,7 +45,7 @@
             </div>
         
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="brand">Brand</label>
+                <label class="w-full pl-4 mb-2" for="brand">Brand<span class="text-red-500 pl-1">*</span></label>
                 <input class="rounded-lg m-auto w-3/4" type="text" id="brand" name="brand" required>
             </div>
 
