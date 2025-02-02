@@ -196,9 +196,4 @@ class ServiceController extends Controller
         return view('sell', compact('products', 'filters', 'marq'));
     }
     
-    
-
-
-    
-
 }

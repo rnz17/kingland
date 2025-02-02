@@ -115,7 +115,7 @@ use Illuminate\Http\Request;
     Route::post('/dashboard/createProduct', [ProductController::class, 'store'])->name('createProduct.store');
     
     Route::get('/dashboard/editProd', [ServiceController::class, 'showItemByCode'])->name('editProduct');
-    Route::post('/dashboard/editProduct', [ProductController::class, 'update'])->name('editProduct.update');
+    Route::put('/dashboard/editProduct', [ProductController::class, 'update'])->name('editProduct.update');
     Route::delete('/dashboard/editProduct', [ProductController::class, 'delete'])->name('editProduct.delete');
 
     Route::get('/dashboard/categories', [CategoryController::class, 'categories'] )->name('editCategories');

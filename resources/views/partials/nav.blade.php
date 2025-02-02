@@ -120,7 +120,7 @@
 
             @if (Str::contains(request()->path(), ['sell']))
                 <button onclick="toggleBasket()" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 ">
-                    <img src="{{ asset('images/nav/burger_square.png') }}" class="m-auto h-1/2">
+                    <img src="{{ asset('images/nav/basket.png') }}" class="m-auto h-1/2">
                 </button>
             @endif
         </div>
@@ -167,7 +167,7 @@
                 </div>
                 <h1 class="m-auto">Inquiry Basket</h1>
                 <button onclick="toggleBasket()" class="w-16">
-                    <img src="{{ asset('images/products/placeholder.png') }}" class="m-auto h-1/2">
+                    <img src="{{ asset('images/nav/basket.png') }}" class="m-auto h-1/2">
                 </button>
             </div>
             <div id="basketCont" class="block border-y border-gray border-opacity-50">

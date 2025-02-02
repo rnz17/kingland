@@ -2,23 +2,30 @@
 
 @include('partials.nav')
 
-<div class="flex w-full pt-12">
+<div class="flex w-full py-12">
+
     <div class="m-auto w-3/4 text-md font-normal border border-gray border-opacity-20 p-12 rounded-xl shadow-xl bg-notwhite">
-        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('editProduct.update') }}">
+        <h1 class="text-3xl font-semibold">{{ $item->name }}</h1>
+        @if(asset('storage/images/products/'.$item->code.'.png'))
+            <img src="{{ asset('storage/images/products/'.$item->code.'.png') }}" class="h-auto max-w-[300px] m-auto py-2">
+        @endif
+        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('editProduct.update') }}" enctype="multipart/form-data">
             @csrf
-            @method('POST')
+            @method('PUT')
             <input type="hidden" value="{{ $item->id }}" name="id">
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="code">Code</label>
+                <label class="w-full pl-4 m-auto mb-2" for="code">Code</label>
                 <input onblur="checkCode(value)" class="rounded-lg m-auto w-3/4"  value="{{ $item->code }}" type="text" id="code" name="code" required>
             </div>
         <!-- hide -->
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="name">Name</label>
+                <label class="w-full pl-4 m-auto mb-2" for="name">Name</label>
                 <input class="rounded-lg m-auto w-3/4" value="{{ $item->name }}" type="text" id="name" name="name" required>
             </div>
         
             <div class="flex flex-wrap w-[32%]">
+                    <label class="w-full pl-4 mb-2" for="name">Image<span class="text-red-500 pl-1">*</span><span class="text-lightgray pl-1 text-sm">Upload new file to change image</span></label>
+                    <input id="fileInput" class="m-auto w-full pl-24" type="file" accept="image/*" name="image">
             </div>
 
             <div class="flex flex-wrap w-[32%]">

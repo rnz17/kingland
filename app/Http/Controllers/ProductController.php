@@ -8,6 +8,8 @@ use App\Models\Service;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Blog;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
@@ -162,19 +164,15 @@ class ProductController extends Controller
         }
     }
     
-
     public function update(Request $request)
     {
-
-        // Get the code from the form input
-        $id = $request->input('id');  // Use input() for form data
-
-
-        // Validate the incoming request data
+        $id = $request->input('id');
+    
         $data = $request->validate([
             'id' => 'required',
             'code' => 'required',
             'name' => 'required',
+            'image' => 'nullable|image|max:3048', // Ensure image validation
             'service_id' => 'required|integer|between:1,9',
             'category_id' => 'required|integer',
             'subcategory_id' => 'required|integer',
@@ -192,20 +190,39 @@ class ProductController extends Controller
             'low_alert' => 'nullable',
             'prod_note' => 'nullable'
         ]);
-
-        // Find the product by code
+    
         try {
             $product = Product::where('id', $id)->firstOrFail();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return redirect()->route('dashboard')->with('error', 'Product not found.');
         }
+    
+        // Handle the image update
+        if ($request->hasFile('image')) {
+            $code = $data['code'];    
+            // Delete existing images with the same code (regardless of extension)
+            $existingImages = Storage::files('/images/products/');
+            foreach ($existingImages as $file) {
+                if (pathinfo($file, PATHINFO_FILENAME) == $code) {
+                    $file = str_replace('public/','', $file);
+                    Storage::delete($file);
+                }
+            }
 
-        // Update the product with new values
+    
+            // Store the new image with the correct filename and original extension
+            $image = $request->file('image');
+
+            $fileName = $request->input('code'). '.' . $image->getClientOriginalExtension();
+
+            $imagePath = $image->storeAs('images/products', $fileName, 'public');
+        }
+    
         $product->update($data);
-
-        // Redirect to the dashboard with a success message
+    
         return redirect(route('dashboard'))->with('success', 'Product updated successfully.');
     }
+    
 
     public function delete(Request $request)
     {
