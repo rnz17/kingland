@@ -61,9 +61,9 @@ use Illuminate\Http\Request;
             return view('founders.cmo');
         });
 
-        Route::get('/cso', function () {
-            return view('founders.cso');
-        });
+        // Route::get('/cso', function () {
+        //     return view('founders.cso');
+        // });
 
         Route::get('/vpms', function () {
             return view('founders.vpms');

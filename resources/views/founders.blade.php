@@ -185,16 +185,16 @@
             </div>
             <!-- CARD CONTAINER END -->
             <!-- CARD CONTAINER -->
-            <div class="flex w-3/4 lg:w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
-                <!-- CARD -->
+            <!-- <div class="flex w-3/4 lg:w-1/2 h-auto relative items-center justify-center mx-auto max-w-[225px]">
+                CARD
                 <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
-                    <!-- IMAGE CONTAINER -->
+                    IMAGE CONTAINER
                     <div class="text-gray-500 group-hover:scale-105 transition-all">
                         <div class="w-48 h-48 rounded-full bg-red-300 border-4 border-black overflow-hidden">
                             <img src="{{ asset('images/founders/mark.jpg') }}" class="w-full h-full object-cover object-center">
                         </div>
                     </div>
-                    <!-- TEXTS CONTAINER -->
+                    TEXTS CONTAINER
                     <div class="group-hover:pb-10 transition-all duration-500 delay-200">
                         <h1 class="font-semibold text-gray-700 text-2xl">Mark Seno</h1>
                         <p class="text-gray-500 text-lg">Chief Strategy Officer</p>
@@ -208,7 +208,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- CARD CONTAINER END -->
         </div>
     </div>
