@@ -108,8 +108,11 @@ use Illuminate\Http\Request;
     Route::get('/dashboard', [ServiceController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
     
     
-    Route::view('/dashboard/blog','dashboard.blog')->name('blogEditor');
+    Route::get('/dashboard/blog', [BlogController::class, 'index'])->name('blogs');
     Route::post('/dashboard/blog', [BlogController::class, 'store'])->name('blogs.store');
+    Route::get('/dashboard/blog/{id}', [BlogController::class, 'edit'])->name('blogs.edit');
+    Route::put('/dashboard/blog/{id}', [BlogController::class, 'update'])->name('blogs.update');
+    Route::delete('/dashboard/blog/{id}', [BlogController::class, 'delete'])->name('blogs.delete');
     
     Route::get('/dashboard/createProduct', [ProductController::class, 'index'] )->name('createProduct');
     Route::post('/dashboard/createProduct', [ProductController::class, 'store'])->name('createProduct.store');

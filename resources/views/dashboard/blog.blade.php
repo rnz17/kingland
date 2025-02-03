@@ -2,9 +2,39 @@
 
 @include('partials.nav')
 
+<div class="m-auto w-3/4 bg-notwhite p-12 mt-12">
+    <table class="min-w-full border-collapse border border-gray-300 mb-2">
+        <thead>
+            <tr>
+                <th class="border border-gray px-6 py-4 text-center w-3/4">Blog Title</th>
+                <th class="border border-gray px-6 py-4 text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($blogs as $blog)
+                <tr>
+                    <td class="border border-gray px-6 py-4 text-center">
+                        <p>{{ $blog->title }}</p>
+                    </td>
+                    <td class="border border-gray px-6 py-4 text-center">
+                        <div class="flex flex-wrap">
+                            <a href="{{ route('blogs.edit', $blog->id) }}" class="m-auto px-2 py-1 bg-lightblue text-white rounded">Edit</a>
+                            <form action="{{ route('blogs.delete', ['id' => $blog->id]) }}" method="POST"class="m-auto">
+                                @csrf
+                                @method('DELETE')
+                                <button class="px-2 py-1 bg-red-500 text-white rounded" type="submit">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
-
-<form action="/blog" method="POST" enctype="multipart/form-data">
+<form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="flex w-full py-12 px-2">
         <div class="m-auto w-3/4 h-auto">
