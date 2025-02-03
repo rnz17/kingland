@@ -8,7 +8,7 @@
     @if($image_url)
     <img src="{{ asset('storage/' . $image_url) }}" alt="Blog Image" class="m-auto w-1/2 rounded-xl border border-gray mb-16 shadow-xl">
     @endif
-    <div class="text-justify tracking-wide leading-loose text-lg">
+    <div class="text-justify tracking-wide leading-loose text-lg whitespace-pre-line">
         {!! $content !!}
     </div>
 </div>
