@@ -47,7 +47,7 @@
     </nav>
 
     <div id="profile" class="absolute hidden flex flex-wrap right-0 top-20 bg-notwhite z-40 w-56">
-        <a href="{{ route('profile.edit') }}" class="py-4 text-center w-full text-lg">{{ Auth::user()->name }}</a>
+        <a href="{{ route('profile.edit') }}" class="py-4 text-center w-full text-lg">{{ Auth::check() ? Auth::user()->name : 'Null please re-login' }}</a>
         <form method="POST" action="{{ route('logout') }}" class="w-full">
             @csrf
         <button type="submit" class="py-4 text-center w-full text-lg h-full flex items-center justify-center">Log out</button>
