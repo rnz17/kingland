@@ -52,7 +52,7 @@
 
             <!-- Blog Content Text -->
                 <div class="relativeblock mb-4 w-full">
-                    <textarea name="content" id="content" class="w-full h-60 border p-4 text-xl" placeholder="Write your blog content here..." required></textarea>
+                    <textarea name="content" id="content" class="w-full h-60 border p-4 text-xl" placeholder="Write your blog content here..."></textarea>
                 </div>
                 
             <!-- Submit Button -->
@@ -74,11 +74,22 @@
 
 </body>
 
-<!-- Include the Quill library -->
-<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+<script src="/tinymce/tinymce.min.js"></script>
+
 
 <script>
-    
+
+    tinymce.init({
+        selector: '#content',
+        plugins: 'lists link image code',
+        toolbar: 'bold italic underline | bullist numlist | link image code',
+        height: 300,
+        skin: "oxide",
+        content_css: "default",
+        icons: "default",
+        license_key: 'gpl'  // Add this line to remove the evaluation mode warning
+    });
+
     // Image Input 
         const fileInput = document.getElementById('fileInput');
         const preview = document.getElementById('preview');

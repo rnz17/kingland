@@ -58,9 +58,9 @@
                 </a>
 
               </h5>
-              <p class="block text-lg h-full font-light leading-relaxed text-gray antialiased overflow-hidden text-ellipsis">
-                {{ $blog->content }}
-              </p>
+              <div class="block text-lg h-full font-light leading-relaxed text-gray antialiased overflow-hidden text-ellipsis whitespace-pre-line">
+                {!! $blog->content !!}
+              </div>
             </div>
 
           </div>
