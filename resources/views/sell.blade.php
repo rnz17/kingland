@@ -58,9 +58,13 @@
                 @if (count($products) > 0)
                     @foreach($products as $product)
                         <button id="{{ $product->code }}" class="openModalBtn cursor-pointer relative group text-center p-4 w-full md:w-[15vw] h-32 md:h-[35vh] min-w-32 min-h-[350px] border border-black rounded-md hover:shadow-md hover:transform hover:scale-[1.05] duration-300">
-                            <div class="flex md:block w-full h-full duration-300 overflow-hidden">
-                                <img class="block m-auto md:mx-auto h-1/2 w-1/2 md:w-auto" src="{{ asset('storage/images/products/'. $product->code .'.png') }}" alt="Item image">
-                                <h1 class="m-auto w-3/4 text-md font-medium md:mt-16">{{$product->name}}</h1>
+                            <div class="flex flex-col md:block w-full h-full duration-300 overflow-hidden">
+                                <div class="flex h-1/2">
+                                    <img class="block max-h-full max-w-full m-auto md:mx-auto md:w-auto" src="{{ asset('storage/images/products/'. $product->code .'.png') }}" alt="Item image">
+                                </div>
+                                <div class="flex h-1/2">
+                                    <h1 class="m-auto w-3/4 text-md font-medium md:mt-16">{{$product->name}}</h1>
+                                </div>
                             </div>
                         </button>
                     @endforeach
