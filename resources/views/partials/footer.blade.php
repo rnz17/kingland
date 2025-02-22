@@ -23,6 +23,8 @@
     </div>
 </div>
 
+<script src="//code.tidio.co/nwuy8rcrbg4lga42vs2eeu6jbhsbmzps.js" async></script>
+
 <script>
     // Select all links with the class "copyLink"
     const copyLinks = document.querySelectorAll(".copyLink");
