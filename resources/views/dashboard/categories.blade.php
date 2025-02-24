@@ -28,7 +28,7 @@
                                     </td>
                                     <td class="border border-gray px-6 py-4 text-center">
                                         <!-- Delete Category -->
-                                        <form action="{{ route('category.delete', $category->id) }}" method="POST" style="display:inline;">
+                                        <form action="{{ route('categories.category.delete', $category->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded">Delete</button>
@@ -42,7 +42,7 @@
             </table>
 
         <h1 class="text-4xl pb-4 font-semibold">Add Category</h1>
-        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('store.category') }}">
+        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('categories.store') }}">
             @csrf
 
             <input type="hidden" name="type" value="category">
@@ -96,7 +96,7 @@
                                     </td>
                                     <td class="border border-gray px-6 py-4 text-center">
                                         <!-- Delete Category -->
-                                        <form action="{{ route('subcategory.delete', $subcategory->id) }}" method="POST" style="display:inline;">
+                                        <form action="{{ route('categories.subcategory.delete', $subcategory->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded">Delete</button>
@@ -109,7 +109,7 @@
                 </tbody>
             </table>
     <h1 class="text-4xl pb-4 font-semibold">Add Sub-Category</h1>
-        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('store.category') }}">
+        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('categories.store') }}">
             @csrf
 
         <input type="hidden" name="type" value="subcategory">

@@ -46,13 +46,13 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->route('editCategories')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 
     public function deleteSubcategory($id)
     {
         $subcategory = Subcategory::findOrFail($id);
         $subcategory->delete();
-        return redirect()->route('editCategories')->with('success', 'Subcategory deleted successfully.');
+        return redirect()->route('categories.index')->with('success', 'Subcategory deleted successfully.');
     }
 }

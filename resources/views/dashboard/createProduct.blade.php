@@ -3,7 +3,7 @@
 @include('partials.nav')
 <div class="flex w-full pt-12">
     <div class="m-auto w-3/4 text-md font-normal border border-gray border-opacity-20 p-12 py-24 rounded-xl shadow-xl bg-notwhite">
-        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('createProduct.store') }}" enctype="multipart/form-data">
+        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('products.create') }}" enctype="multipart/form-data">
             @csrf
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="code">Code<span class="text-red-500 pl-1">*</span></label>

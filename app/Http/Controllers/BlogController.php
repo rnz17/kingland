@@ -47,7 +47,7 @@ class BlogController extends Controller
 
         // Redirect to a page (or return a success message)
         echo "<script>alert('Blog post created successfully!');</script>";
-        return redirect()->route('blogs')->with('success', 'Blog post created successfully!');
+        return redirect()->route('blogs.index')->with('success', 'Blog post created successfully!');
     }
 
     public function edit($id){
@@ -72,7 +72,7 @@ class BlogController extends Controller
         try {
             $blog = Blog::where('id', $id)->firstOrFail();
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return redirect()->route('blogs')->with('error', 'Product not found.');
+            return redirect()->route('blogs.index')->with('error', 'Product not found.');
         }
 
         // Handle the image update
@@ -103,7 +103,7 @@ class BlogController extends Controller
             ]);
 
 
-        return redirect(route('blogs'))->with('success', 'Blog updated successfully.');
+        return redirect(route('blogs.index'))->with('success', 'Blog updated successfully.');
     }
 
     public function show($id)
@@ -126,7 +126,7 @@ class BlogController extends Controller
 
         $blog->delete();
         
-        return redirect(route('blogs'))->with('success', 'Blog deleted successfully.');
+        return redirect(route('blogs.index'))->with('success', 'Blog deleted successfully.');
     }
 
 

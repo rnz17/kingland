@@ -1,4 +1,4 @@
-@if (Str::contains(request()->path(), ['dashboard', 'announcement','profile','createProduct','editProduct','blog', 'requests', 'categories']))
+@if (Str::contains(request()->path(), ['dashboard']))
     <nav id="nav" class="fixed z-50 flex h-20 duration-500 bg-white w-full shadow-xl">
 
         
@@ -11,7 +11,7 @@
 
         <!-- / for root but no / for other views -->
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-            <a href="{{ route('home') }}" class="text-center w-full text-lg">Home</a>
+            <a href="{{ route('inquiries.index') }}" class="text-center w-full text-lg">Inquiries</a>
         </div>
 
         
@@ -20,23 +20,23 @@
         </div>
         
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-            <a href="{{ route('announcements') }}" class="text-center w-full text-lg">Announcements</a>
+            <a href="{{ route('announcements.index') }}" class="text-center w-full text-lg">Announcements</a>
         </div>
         
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-            <a href="{{ route('editCategories') }}" class="text-center w-full text-lg">Categories</a>
+            <a href="{{ route('categories.index') }}" class="text-center w-full text-lg">Categories</a>
         </div>
 
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400">
-            <a href="{{ route('createProduct') }}" class="text-center w-full text-lg">Add Product</a>
+            <a href="{{ route('products.create') }}" class="text-center w-full text-lg">Add Product</a>
         </div>
 
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400">
-            <a href="{{ route('blogs') }}" class="text-center w-full text-lg">Blogs</a>
+            <a href="{{ route('blogs.index') }}" class="text-center w-full text-lg">Blogs</a>
         </div>
 
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400">
-            <a href="{{ route('requests') }}" class="text-center w-full text-lg">Requests</a>
+            <a href="{{ route('users.requests') }}" class="text-center w-full text-lg">Requests</a>
         </div>
 
 

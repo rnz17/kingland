@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\ConcernController;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -105,34 +106,57 @@ use Illuminate\Http\Request;
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-    Route::get('/dashboard', [ServiceController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-    
-    
-    Route::get('/dashboard/blog', [BlogController::class, 'index'])->name('blogs');
-    Route::post('/dashboard/blog', [BlogController::class, 'store'])->name('blogs.store');
-    Route::get('/dashboard/blog/{id}', [BlogController::class, 'edit'])->name('blogs.edit');
-    Route::put('/dashboard/blog/{id}', [BlogController::class, 'update'])->name('blogs.update');
-    Route::delete('/dashboard/blog/{id}', [BlogController::class, 'delete'])->name('blogs.delete');
-    
-    Route::get('/dashboard/createProduct', [ProductController::class, 'index'] )->name('createProduct');
-    Route::post('/dashboard/createProduct', [ProductController::class, 'store'])->name('createProduct.store');
-    
-    Route::get('/dashboard/editProd', [ServiceController::class, 'showItemByCode'])->name('editProduct');
-    Route::put('/dashboard/editProduct', [ProductController::class, 'update'])->name('editProduct.update');
-    Route::delete('/dashboard/editProduct', [ProductController::class, 'delete'])->name('editProduct.delete');
+    Route::middleware(['auth', 'verified'])->group(function () {
+        Route::get('/dashboard', [ServiceController::class, 'dashboard'])->name('dashboard');
+        
+        // Inquiries Routes
+        Route::prefix('/dashboard/inquiries')->name('inquiries.')->group(function () {
+            Route::get('/', [ConcernController::class, 'index'])->name('index');
+            Route::post('/', [ConcernController::class, 'store'])->name('store');
+            Route::put('/{id}', [ConcernController::class, 'update'])->name('update');
+        });
 
-    Route::get('/dashboard/categories', [CategoryController::class, 'categories'] )->name('editCategories');
-    Route::post('/dashboard/categories', [CategoryController::class, 'store'] )->name('store.category');
-    Route::delete('/dashboard/categories/category/{id}', [CategoryController::class, 'deleteCategory'])->name('category.delete');
-    Route::delete('/dashboard/categories/subcategory/{id}', [CategoryController::class, 'deleteSubcategory'])->name('subcategory.delete');
-
-    Route::get('/dashboard/announcements', [AnnouncementController::class, 'index'] )->name('announcements');
-    Route::post('/dashboard/announcements', [AnnouncementController::class, 'store'] )->name('announcements.store');
-    Route::delete('/dashboard/announcements', [AnnouncementController::class, 'delete'] )->name('announcements.delete');
-
-    Route::get('/dashboard/requests', [ProfileController::class, 'viewReqs'] )->name('requests');
-    Route::put('/dashboard/users/{id}/admit', [ProfileController::class, 'admit'])->name('users.admit');
-    Route::delete('/dashboard/users/{id}/reject', [ProfileController::class, 'reject'])->name('users.reject');
+        // Blog Routes
+        Route::prefix('/dashboard/blog')->name('blogs.')->group(function () {
+            Route::get('/', [BlogController::class, 'index'])->name('index');
+            Route::post('/', [BlogController::class, 'store'])->name('store');
+            Route::get('/{id}', [BlogController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [BlogController::class, 'update'])->name('update');
+            Route::delete('/{id}', [BlogController::class, 'delete'])->name('delete');
+        });
+        
+        // Product Routes
+        Route::prefix('/dashboard/products')->name('products.')->group(function () {
+            Route::get('/create', [ProductController::class, 'index'])->name('create');
+            Route::post('/create', [ProductController::class, 'store'])->name('store');
+            Route::get('/edit', [ServiceController::class, 'showItemByCode'])->name('edit');
+            Route::put('/edit', [ProductController::class, 'update'])->name('update');
+            Route::delete('/edit', [ProductController::class, 'delete'])->name('delete');
+        });
+        
+        // Category Routes
+        Route::prefix('/dashboard/categories')->name('categories.')->group(function () {
+            Route::get('/', [CategoryController::class, 'categories'])->name('index');
+            Route::post('/', [CategoryController::class, 'store'])->name('store');
+            Route::delete('/category/{id}', [CategoryController::class, 'deleteCategory'])->name('category.delete');
+            Route::delete('/subcategory/{id}', [CategoryController::class, 'deleteSubcategory'])->name('subcategory.delete');
+        });
+        
+        // Announcement Routes
+        Route::prefix('/dashboard/announcements')->name('announcements.')->group(function () {
+            Route::get('/', [AnnouncementController::class, 'index'])->name('index');
+            Route::post('/', [AnnouncementController::class, 'store'])->name('store');
+            Route::delete('/', [AnnouncementController::class, 'delete'])->name('delete');
+        });
+        
+        // User Requests Routes
+        Route::prefix('/dashboard/users')->name('users.')->group(function () {
+            Route::get('/requests', [ProfileController::class, 'viewReqs'])->name('requests');
+            Route::put('/{id}/admit', [ProfileController::class, 'admit'])->name('admit');
+            Route::delete('/{id}/reject', [ProfileController::class, 'reject'])->name('reject');
+        });
+    });
+    
 // OTHERS
     // EMAIL ROUTES
 

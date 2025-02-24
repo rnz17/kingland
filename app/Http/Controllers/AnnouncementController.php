@@ -25,7 +25,7 @@ class AnnouncementController extends Controller
 
         $stored = Announcement::create($content);
 
-        return redirect(route('announcements'))->with('success', 'Content added successfully.');
+        return redirect(route('announcements.index'))->with('success', 'Content added successfully.');
     }
 
     public function delete(Request $request)
@@ -37,6 +37,6 @@ class AnnouncementController extends Controller
         $content->delete();
 
         // Redirect with a success message
-        return redirect(route('announcements'))->with('success', 'Content deleted successfully.');
+        return redirect(route('announcements.index'))->with('success', 'Content deleted successfully.');
     }
 }

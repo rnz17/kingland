@@ -9,7 +9,7 @@
         @if(asset('storage/images/products/'.$item->code.'.png'))
             <img src="{{ asset('storage/images/products/'.$item->code.'.png') }}" class="h-auto max-w-[300px] m-auto py-2">
         @endif
-        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('editProduct.update') }}" enctype="multipart/form-data">
+        <form class="w-full flex flex-wrap gap-x-2 gap-y-4" method="post" action="{{ route('products.update') }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <input type="hidden" value="{{ $item->id }}" name="id">
@@ -148,7 +148,7 @@
 
                 </div>
                 <div class="mx-auto w-1/4">
-                <form action="{{ route('editProduct.delete', ['code' => $item->code]) }}" method="POST">
+                <form action="{{ route('products.delete', ['code' => $item->code]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="left-full w-full border border-gray bg-red-300 px-6 py-0 rounded-lg hover:scale-105 duration-500" type="submit">
