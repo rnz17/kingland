@@ -23,6 +23,7 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail($id);
         $user->admin_verified_at = now(); // Set current timestamp
+        $user->email_verified_at = now(); // Set current timestamp
         $user->save();
 
         return redirect()->back()->with('success', 'User admitted successfully!');
