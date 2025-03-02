@@ -8,7 +8,7 @@
             <div class="flex w-full text-center overflow-y-auto">
 
                 <div class="w-1/6 m-auto ml-0 min-w-32">
-                    <input type="text" name="search" placeholder="Search..." class="w-full p-1 max-h-12 border rounded-md">
+                    <input type="text" name="search" placeholder="Search product name..." class="w-full p-1 max-h-12 border rounded-md">
                 </div>
     
                 <div class="flex flex-grid justify-center ">

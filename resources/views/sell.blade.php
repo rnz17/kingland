@@ -11,7 +11,7 @@
                     <div class="mb-4 relative">
                         <label for="search" class="block text-lg font-medium w-1/4 text-gray-700">Search</label>
                         <marquee class="absolute top-0 right-0 w-3/4 text-md text-gray">Use search bar and filters to find what you need</marquee>
-                        <input type="text" id="search" name="search" class="mt-1 block w-full p-2 border border-gray rounded-md shadow-sm focus:ring-blue focus:border-blue sm:text-sm" placeholder="Search products...">
+                        <input type="text" id="search" name="search" class="mt-1 block w-full p-2 border border-gray rounded-md shadow-sm focus:ring-blue focus:border-blue sm:text-sm" placeholder="Search product name...">
                     </div>
                     <label for="servCat" class="block text-lg font-medium text-gray-700">Category</label>
                     <div class="flex flex-col mb-4 rounded-lg overflow-hidden gap-y-1 text-md">
