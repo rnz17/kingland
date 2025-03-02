@@ -108,7 +108,9 @@ use Illuminate\Http\Request;
 
     Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/dashboard', [ServiceController::class, 'dashboard'])->name('dashboard');
-        
+        Route::post('/dashboard/update-hidden', [ProductController::class, 'updateHidden'])->name('update.hidden');
+
+
         // Inquiries Routes
         Route::prefix('/dashboard/inquiries')->name('inquiries.')->group(function () {
             Route::get('/', [ConcernController::class, 'index'])->name('index');

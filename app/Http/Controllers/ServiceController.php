@@ -192,6 +192,8 @@ class ServiceController extends Controller
                 $category->subcategories = $subcategories->where('category_id', $category->id)->values();
             });
         });
+
+        $products = $products->where('hidden', 0);
     
         // Load announcements
         $marq = Announcement::all();

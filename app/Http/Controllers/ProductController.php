@@ -248,4 +248,17 @@ class ProductController extends Controller
     }
     
 
+    public function updateHidden(Request $request){
+        $request->validate([
+            'code' => 'required|exists:products,code',
+            'hidden' => 'required|boolean'
+        ]);
+    
+        $product = Product::where('code', $request->code)->first();
+        $product->hidden = $request->hidden;
+        $product->save();
+    
+        return response()->json(['message' => 'Hidden status updated successfully.']);
+    }
+
 }

@@ -57,6 +57,14 @@
                                         {{ $services->where('id',$value)->first()->name }}
                                     @elseif($key == 'category_id')
                                         {{ $cat->where('id', $value)->first()?->name }}
+                                    @elseif($key == 'hidden')
+                                    <input type="checkbox" 
+                                        id="hidden_checkbox_{{ $product->code }}" 
+                                        name="hidden_status_{{ $product->code }}" 
+                                        class="hidden-checkbox rounded-sm" 
+                                        data-product-code="{{ $product->code }}" 
+                                        {{ $product->hidden ? 'checked' : '' }}>
+
                                     @elseif($key == 'subcategory_id')
                                         {{ $subcat->where('id', $value)->first()?->name }}
                                     @else
@@ -75,6 +83,34 @@
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<!-- Add this inside your <head> tag or just before closing </body> tag -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".hidden-checkbox").on("change", function() {
+            let productCode = $(this).data("product-code");
+            let hiddenStatus = $(this).is(":checked") ? 1 : 0;
+
+            $.ajax({
+                url: "{{ route('update.hidden') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    code: productCode,
+                    hidden: hiddenStatus
+                },
+                success: function(response) {
+                    console.log(response.message);
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
 
 <script>
     function exportTableToExcel(tableID, filename = '') {
