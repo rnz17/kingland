@@ -170,6 +170,7 @@
         btn.addEventListener('click', () => {
             const products = @json($products);
             var code = btn.id;
+            console.log(products);
             for (let product of products){
                 if (product.code == code){
                     item = product;
