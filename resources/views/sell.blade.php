@@ -168,7 +168,7 @@
         // Open modal when any button with the 'openModalBtn' class is clicked
         openModalBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const products = @json($products);
+            var products = @json($products);
             var code = btn.id;
             products = Object.values(products);
             console.log(products);
