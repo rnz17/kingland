@@ -32,7 +32,7 @@
             </div>
 
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="category">Service Category</label>
+                <label class="w-full pl-4 mb-2" for="service_id">Service Category</label>
                 <select class="rounded-lg m-auto w-3/4" id="service_id" name="service_id" required>
                     <option value="{{ $item->service_id }}">{{ $services->where('id',$item->service_id)->first()->name }}</option>
 
@@ -43,7 +43,7 @@
             </div>
 
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="category">Main Category</label>
+                <label class="w-full pl-4 mb-2" for="category_id">Main Category</label>
                 <select class="rounded-lg m-auto w-3/4" id="category_id" name="category_id" required>
                     <option value="{{ $item->category_id }}">{{ $cat->where('id', $item->category_id)->first()?->name ?? 'No category' }}
                     </option>
@@ -55,7 +55,7 @@
             </div>
 
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="category">Item Category</label>
+                <label class="w-full pl-4 mb-2" for="subcategory_id">Item Category</label>
                 <select class="rounded-lg m-auto w-3/4" id="subcategory_id" name="subcategory_id" required>
                 <option value="{{ $item->subcategory_id }}">{{ $subcat->where('id',$item->subcategory_id)->first()->name ?? 'No category' }}</option>
 

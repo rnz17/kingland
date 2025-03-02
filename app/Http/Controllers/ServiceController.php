@@ -193,7 +193,15 @@ class ServiceController extends Controller
             });
         });
 
-        $products = $products->where('hidden', 0);
+        $products = $products->where('hidden', 0)->sortBy([
+            ['service_id', 'asc'],
+            ['category_id', 'asc'],
+            ['subcategory_id', 'asc'],
+            ['code', 'asc']
+        ]);
+    
+
+
     
         // Load announcements
         $marq = Announcement::all();

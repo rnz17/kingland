@@ -24,7 +24,7 @@
             </div>
 
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-1" for="category">Service Category<span class="text-red-500 pl-1">*</span></label>
+                <label class="w-full pl-4 mb-1" for="service_id">Service Category<span class="text-red-500 pl-1">*</span></label>
                 <select class="rounded-lg m-auto w-3/4" id="service_id" name="service_id" required onchange="serviceDD(this.value)">
                     <option value="">Select a service category</option>
                     @foreach($services as $service)
@@ -34,14 +34,14 @@
             </div>
 
             <div id="category2" class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="category">Main Category<span class="text-red-500 pl-1">*</span></label>
+                <label class="w-full pl-4 mb-2" for="category_id">Main Category<span class="text-red-500 pl-1">*</span></label>
                 <select class="rounded-lg m-auto w-3/4" id="category_id" name="category_id" required onchange="mainDD(this.value)">
                     <option value="">Select an option</option>
                 </select>
             </div>
 
             <div id="category3" class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="category">Item Category<span class="text-red-500 pl-1">*</span></label>
+                <label class="w-full pl-4 mb-2" for="subcategory_id">Item Category<span class="text-red-500 pl-1">*</span></label>
                 <select class="rounded-lg m-auto w-3/4" id="subcategory_id" name="subcategory_id" required>
                     <option value="">Select an option</option>
                 </select>
