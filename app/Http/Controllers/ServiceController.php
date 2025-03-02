@@ -142,38 +142,42 @@ class ServiceController extends Controller
 
         // Apply filters from the checkboxes
         if (isset($request->filters) && !empty($request->filters)) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 // Handle filters based on service_id
-                $serviceFilters = collect($request->filters)->filter(function($filter) {
-                    return strpos($filter, 'cat') === 0 && strpos($filter, 'subcat') === 0;
+                $serviceFilters = collect($request->filters)->filter(function ($filter) {
+                    return strpos($filter, 'cat') === false && strpos($filter, 'sub') === false;
                 })->values();
+        
                 if ($serviceFilters->isNotEmpty()) {
                     $q->whereIn('service_id', $serviceFilters);
-                    dd($q);
                 }
+        
                 // Handle filters based on category_id
-                $categoryFilters = collect($request->filters)->filter(function($filter) {
+                $categoryFilters = collect($request->filters)->filter(function ($filter) {
                     return strpos($filter, 'cat') !== false;
                 })->values();
+        
                 if ($categoryFilters->isNotEmpty()) {
-                    $categoryIds = collect($categoryFilters)->map(function($filter) {
+                    $categoryIds = $categoryFilters->map(function ($filter) {
                         return str_replace('cat', '', $filter);  // Remove 'cat' prefix
                     });
                     $q->whereIn('category_id', $categoryIds);
                 }
-    
+        
                 // Handle filters based on subcategory_id
-                $subcategoryFilters = collect($request->filters)->filter(function($filter) {
+                $subcategoryFilters = collect($request->filters)->filter(function ($filter) {
                     return strpos($filter, 'sub') !== false;
                 })->values();
+        
                 if ($subcategoryFilters->isNotEmpty()) {
-                    $subcategoryIds = collect($subcategoryFilters)->map(function($filter) {
-                        return str_replace('sub', '', $filter);  // Remove 'subcat' prefix
+                    $subcategoryIds = $subcategoryFilters->map(function ($filter) {
+                        return str_replace('sub', '', $filter);  // Remove 'sub' prefix
                     });
                     $q->whereIn('subcategory_id', $subcategoryIds);
                 }
             });
         }
+        
     
         // Get products with eager loading for related service, category, and subcategory models
         $products = $query->with(['service', 'category', 'subcategory'])->get();
