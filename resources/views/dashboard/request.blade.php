@@ -54,6 +54,7 @@
             </thead>
             <tbody>
                 @foreach($users as $user)
+                    @if($user->name !== Auth()->user()->name)
                     <tr>
                         <td class="text-center border px-4 py-2">{{ $user->name }}</td>
                         <td class="text-center border px-4 py-2">{{ $user->email }}</td>
@@ -66,6 +67,16 @@
                             </form>
                         </td>
                     </tr>
+                    @else
+                    <tr class="bg-lightblue">
+                        <td class="text-center border px-4 py-2">{{ $user->name }}</td>
+                        <td class="text-center border px-4 py-2">{{ $user->email }}</td>
+                        <td class="text-center border px-4 py-2">{{ $user->email_verified_at }}</td>
+                        <td class="text-center border px-4 py-2">
+
+                        </td>
+                    </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
