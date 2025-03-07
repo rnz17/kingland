@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
+use App\Models\ProductLog;
 use App\Models\Announcement;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -53,6 +54,9 @@ class ServiceController extends Controller
         // Start building the query for products
         $query = Product::query();
 
+
+        $logs = ProductLog::all();
+
         // Apply search filter if provided
         if (isset($request->search) && ($request->search !== NULL)) {
             $query->where('name', 'like', '%' . $request->search . '%');
@@ -75,7 +79,7 @@ class ServiceController extends Controller
         $subcat = Subcategory::all();
 
         // Pass the columns, products, and filters to the view
-        return view('dashboard', compact('columns', 'products', 'filters', 'services', 'cat', 'subcat'));
+        return view('dashboard', compact('columns', 'products', 'filters', 'services', 'cat', 'subcat', 'logs'));
     }
 
     public function showItemByCode(Request $request)

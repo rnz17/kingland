@@ -15,7 +15,13 @@ class ProfileController extends Controller
 
     public function viewReqs(){
         $requests = User::whereNull('admin_verified_at')->get();
-        return view('dashboard.request', ['requests' => $requests]);
+        $users = User::whereNotNull('admin_verified_at')->get();
+
+
+        return view('dashboard.request', 
+            ['requests' => $requests],
+            ['users' => $users]
+        );
     }
 
     // Admit user (set admin_verified_at timestamp)

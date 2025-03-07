@@ -11,12 +11,12 @@
                     <input type="text" name="search" placeholder="Search product name..." class="w-full p-1 max-h-12 border rounded-md">
                 </div>
     
-                <div class="flex flex-grid justify-center ">
+                <div class="grid grid-cols-4 gap-x-0 gap-y-1 justify-center items-center">
                     @foreach($filters as $filter)
-                    <div class="flex flex-wrap m-auto text-center items-center py-4 px-4">
-                        <input type="checkbox" id="{{ $filter->id }}" class="m-auto border rounded-md" name="category[]" value="{{ $filter->id }}">
-                        <label for="{{ $filter->id }}" class="pl-2 text-sm font-medium">{{ $filter->name }}</label>
-                    </div>
+                        <div class="flex flex-col gap-x-2 items-center justify-center p-2">
+                            <input type="checkbox" id="{{ $filter->id }}" class="border rounded-md">
+                            <label for="{{ $filter->id }}" class="text-[0.82vw] font-medium">{{ $filter->name }}</label>
+                        </div>
                     @endforeach
                 </div>
                 
@@ -81,6 +81,49 @@
     <div class="w-full flex flex-col pb-32">
         <button class="m-auto bg-green-400 rounded-xl px-4 py-1" onclick="exportTableToExcel('table', 'productList')">Download Excel</button>
     </div>
+
+    <!-- logs -->
+    <h1 class="ml-12 font-semibold text-2xl">Action Logs (Product related)</h1>
+    <div class="relative block mx-auto my-6 w-[99%] h-auto overflow-auto border-2 border-darkblue shadow-xl">
+        <table id="table" class="w-full text-sm text-left rtl:text-right text-gray">
+            <thead class="text-xs text-notwhite uppercase bg-lightgray">
+                <tr>
+                    <th scope="col" class="border border-black px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-center">
+                        Product Code
+                    </th>
+                    <th scope="col" class="border border-black px-6 py-1 text-left text-xs font-medium uppercase tracking-wider text-center">
+                        Action
+                    </th>
+                    <th scope="col" class="border border-black px-6 py-1 text-left text-xs font-medium uppercase tracking-wider text-center">
+                        Old Value
+                    </th>
+                    <th scope="col" class="border border-black px-6 py-1 text-left text-xs font-medium uppercase tracking-wider text-center">
+                        New Value
+                    </th>
+                    <th scope="col" class="border border-black px-6 py-1 text-left text-xs font-medium uppercase tracking-wider text-center">
+                        Action By
+                    </th>
+                    <th scope="col" class="border border-black px-6 py-1 text-left text-xs font-medium uppercase tracking-wider text-center">
+                        Time
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($logs as $log)
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
+                        <td class="border border-black p-2 truncate">{{ $log->product_code }}</td>
+                        <td class="border border-black p-2 truncate">{{ ucfirst($log->action) }}</td>
+                        <td class="text-left w-[50vw] border border-black p-2 truncate">{{ json_encode($log->old_values) }}</td>
+                        <td class="text-left w-[50vw] border border-black p-2 truncate">{{ json_encode($log->new_values) }}</td>
+                        <td class="border border-black p-2 truncate">{{ $log->user->name ?? 'Unknown' }}</td>
+                        <td class="border border-black p-2 truncate">{{ $log->created_at }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
