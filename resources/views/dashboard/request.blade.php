@@ -73,7 +73,7 @@
                         <td class="text-center border px-4 py-2">{{ $user->email }}</td>
                         <td class="text-center border px-4 py-2">{{ $user->email_verified_at }}</td>
                         <td class="text-center border px-4 py-2">
-
+                            This is you
                         </td>
                     </tr>
                     @endif
