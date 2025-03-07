@@ -122,96 +122,65 @@ class ServiceController extends Controller
     }
 
     public function filAndModal(Request $request)
-    {
-        // dd($request);
-    
-        // Get all services
-        $filters = Service::all();
-    
-        // Get categories related to services
-        $categories = Category::whereIn('service_id', $filters->pluck('id'))->get();
-    
-        // Get subcategories related to categories
-        $subcategories = Subcategory::whereIn('category_id', $categories->pluck('id'))->get();
-    
-        // Build the query for products
-        $query = Product::query();
-    
-        // Apply search filter if present
-        if (isset($request->search) && !empty($request->search)) {
-            $query->where('name', 'like', '%' . $request->search . '%');
-        }
-    
-        // dd($request);
+{
+    // Get all services
+    $filters = Service::all();
 
-        // Apply filters from the checkboxes
-        if (isset($request->filters) && !empty($request->filters)) {
-            $query->where(function ($q) use ($request) {
-                // Handle filters based on service_id
-                $serviceFilters = collect($request->filters)->filter(function ($filter) {
-                    return strpos($filter, 'cat') === false && strpos($filter, 'sub') === false;
-                })->values();
-        
-                if ($serviceFilters->isNotEmpty()) {
-                    $q->whereIn('service_id', $serviceFilters);
-                }
-        
-                // Handle filters based on category_id
-                $categoryFilters = collect($request->filters)->filter(function ($filter) {
-                    return strpos($filter, 'cat') !== false;
-                })->values();
-        
-                if ($categoryFilters->isNotEmpty()) {
-                    $categoryIds = $categoryFilters->map(function ($filter) {
-                        return str_replace('cat', '', $filter);  // Remove 'cat' prefix
-                    });
-                    $q->whereIn('category_id', $categoryIds);
-                }
-        
-                // Handle filters based on subcategory_id
-                $subcategoryFilters = collect($request->filters)->filter(function ($filter) {
-                    return strpos($filter, 'sub') !== false;
-                })->values();
-        
-                if ($subcategoryFilters->isNotEmpty()) {
-                    $subcategoryIds = $subcategoryFilters->map(function ($filter) {
-                        return str_replace('sub', '', $filter);  // Remove 'sub' prefix
-                    });
-                    $q->whereIn('subcategory_id', $subcategoryIds);
-                }
-            });
-        }
-        
-    
-        // Get products with eager loading for related service, category, and subcategory models
-        $products = $query->with(['service', 'category', 'subcategory'])->get();
-    
-        // Merge categories and subcategories into products
-        $products->each(function($product) use ($categories, $subcategories) {
-            // Get categories for this product's service
-            $product->categories = $categories->where('service_id', $product->service_id)->values();
-    
-            // Get subcategories for each category
-            $product->categories->each(function($category) use ($subcategories) {
-                $category->subcategories = $subcategories->where('category_id', $category->id)->values();
-            });
-        });
+    // Get categories related to services
+    $categories = Category::whereIn('service_id', $filters->pluck('id'))->get();
 
-        $products = $products->where('hidden', 0)->sortBy([
-            ['service_id', 'asc'],
-            ['category_id', 'asc'],
-            ['subcategory_id', 'asc'],
-            ['code', 'asc']
-        ]);
-    
+    // Get subcategories related to categories
+    $subcategories = Subcategory::whereIn('category_id', $categories->pluck('id'))->get();
 
+    // Build the query for products
+    $query = Product::query();
 
-    
-        // Load announcements
-        $marq = Announcement::all();
-    
-        // Return the view with the filtered products and other data
-        return view('sell', compact('products', 'filters', 'marq'));
+    // Apply search filter if present
+    if (!empty($request->search)) {
+        $query->where('name', 'like', '%' . $request->search . '%');
     }
+
+    // Apply filters from checkboxes
+    if (!empty($request->filters)) {
+        $query->where(function ($q) use ($request) {
+            // Service filters
+            $serviceFilters = collect($request->filters)->reject(fn($f) => strpos($f, 'cat') !== false || strpos($f, 'sub') !== false)->values();
+            if ($serviceFilters->isNotEmpty()) {
+                $q->whereIn('service_id', $serviceFilters);
+            }
+
+            // Category filters
+            $categoryFilters = collect($request->filters)->filter(fn($f) => strpos($f, 'cat') !== false)->values();
+            if ($categoryFilters->isNotEmpty()) {
+                $categoryIds = $categoryFilters->map(fn($f) => str_replace('cat', '', $f));
+                $q->whereIn('category_id', $categoryIds);
+            }
+
+            // Subcategory filters
+            $subcategoryFilters = collect($request->filters)->filter(fn($f) => strpos($f, 'sub') !== false)->values();
+            if ($subcategoryFilters->isNotEmpty()) {
+                $subcategoryIds = $subcategoryFilters->map(fn($f) => str_replace('sub', '', $f));
+                $q->whereIn('subcategory_id', $subcategoryIds);
+            }
+        });
+    }
+
+    // Apply sorting and pagination
+    $products = $query
+        ->where('hidden', 0)
+        ->orderBy('service_id', 'asc')
+        ->orderBy('category_id', 'asc')
+        ->orderBy('subcategory_id', 'asc')
+        ->orderBy('code', 'asc')
+        ->with(['service', 'category', 'subcategory'])
+        ->paginate(50);
+
+    // Load announcements
+    $marq = Announcement::all();
+
+    // Return view with pagination links
+    return view('sell', compact('products', 'filters', 'marq'));
+}
+
     
 }

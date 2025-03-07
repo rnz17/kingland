@@ -54,7 +54,12 @@
             </div>
 
         <!-- Product Display -->
-            <div class="flex flex-wrap justify-center gap-[2vw] w-full h-[90vh] overflow-y-scroll md:w-5/6 p-4">
+        <div class="flex flex-col w-5/6">
+            <div class="pt-6 px-12">
+                {{ $products->links('vendor.pagination.tailwind') }}
+
+            </div>
+            <div class="m-auto flex flex-wrap justify-center gap-[2vw] w-full h-auto p-4">
                 @if (count($products) > 0)
                     @foreach($products as $product)
                         <button id="{{ $product->code }}" class="openModalBtn cursor-pointer relative group text-center p-4 w-full md:w-[15vw] h-32 md:h-[35vh] min-w-32 min-h-[350px] border border-black rounded-md hover:shadow-md hover:transform hover:scale-[1.05] duration-300">
@@ -74,6 +79,11 @@
 
                 
             </div>
+            <div class="pt-6 px-12">
+                {{ $products->links('vendor.pagination.tailwind') }}
+
+            </div>
+        </div>
             
         <!-- modal -->
             <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center sm:p-4 z-50">
