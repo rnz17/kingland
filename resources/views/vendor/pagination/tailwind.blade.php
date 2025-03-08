@@ -12,6 +12,8 @@
                 </a>
             @endif
 
+                <h1 class="font-bold text-gray m-auto">Page {{ $paginator->currentPage() }} out of {{ $paginator->lastPage() }}</h1>
+
             @if ($paginator->hasMorePages())
                 <a href="{{ $paginator->nextPageUrl() }}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray dark:text-gray-300 dark:focus:border-blue dark:active:bg-gray-700 dark:active:text-gray-300">
                     {!! __('pagination.next') !!}

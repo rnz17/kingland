@@ -55,7 +55,9 @@ class ServiceController extends Controller
         $query = Product::query();
 
 
-        $logs = ProductLog::all();
+        $logs = ProductLog::orderByDesc('id')->get();
+
+
 
         // Apply search filter if provided
         if (isset($request->search) && ($request->search !== NULL)) {

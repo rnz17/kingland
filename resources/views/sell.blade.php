@@ -5,7 +5,7 @@
     <main class="flex w-full mx-auto pb-32">
 
         <!-- Filters -->
-            <div id="filters" class="absolute md:relative bg-white z-40 h-full md:h-auto w-full md:w-1/4 p-4">
+            <div id="filters" class="hidden absolute md:relative bg-white z-40 h-full md:h-auto w-full md:w-1/4 p-4">
                 <form id="filt" action="{{ route('sell') }}" method="GET">
                     
                     <div class="mb-4 relative">
@@ -54,8 +54,8 @@
             </div>
 
         <!-- Product Display -->
-        <div class="flex flex-col w-5/6">
-            <div class="pt-6 px-12">
+        <div class="flex flex-col w-full md:w-5/6">
+            <div class="pt-6 px-4 md:px-12">
                 {{ $products->links('vendor.pagination.tailwind') }}
 
             </div>
@@ -79,7 +79,7 @@
 
                 
             </div>
-            <div class="pt-6 px-12">
+            <div class="pt-6 px-4 md:px-12">
                 {{ $products->links('vendor.pagination.tailwind') }}
 
             </div>

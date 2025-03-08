@@ -84,7 +84,7 @@
 
     <!-- logs -->
     <h1 class="ml-12 font-semibold text-2xl">Action Logs (Product related)</h1>
-    <div class="relative block mx-auto my-6 w-[99%] h-auto overflow-auto border-2 border-darkblue shadow-xl">
+    <div class="relative block mx-auto my-6 w-[99%] h-auto overflow-auto border-2 border-darkblue shadow-xl mb-32">
         <table id="table" class="w-full text-sm text-left rtl:text-right text-gray">
             <thead class="text-xs text-notwhite uppercase bg-lightgray">
                 <tr>
@@ -114,8 +114,8 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
                         <td class="border border-black p-2 truncate">{{ $log->product_code }}</td>
                         <td class="border border-black p-2 truncate">{{ ucfirst($log->action) }}</td>
-                        <td class="text-left w-[50vw] border border-black p-2 truncate">{{ json_encode($log->old_values) }}</td>
-                        <td class="text-left w-[50vw] border border-black p-2 truncate">{{ json_encode($log->new_values) }}</td>
+                        <td class="text-left border border-black p-2 px-6">{{ json_encode($log->old_values, JSON_PRETTY_PRINT) }}</td>
+                        <td class="text-left border border-black p-2 px-6">{{ json_encode($log->new_values, JSON_PRETTY_PRINT) }}</td>
                         <td class="border border-black p-2 truncate">{{ $log->user->name ?? 'Unknown' }}</td>
                         <td class="border border-black p-2 truncate">{{ $log->created_at }}</td>
                     </tr>

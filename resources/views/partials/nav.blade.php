@@ -80,7 +80,7 @@
         <div class="flex m-auto lg:hidden h-full w-1/3 p-2 mr-0">
             @if (Str::contains(request()->path(), ['sell']))
                 <button id="burger" onclick="toggleFilter()" class="m-auto md:hidden h-full">
-                    <h1 class="text-lightgray font-semibold">Filters</h1>
+                    <h1 class="text-gray font-semibold">Filters</h1>
                 </button>
                 <button onclick="toggleBasket()" class="m-auto md:hidden h-full">
                     <img src="{{ asset('images/nav/burger_square.png') }}" class="m-auto h-1/2">
