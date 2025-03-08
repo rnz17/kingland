@@ -5,7 +5,7 @@
     <main class="flex w-full mx-auto pb-32">
 
         <!-- Filters -->
-            <div id="filters" class="hidden absolute md:relative bg-white z-40 h-full md:h-auto w-full md:w-1/4 p-4">
+            <div id="filters" class="hidden md:block absolute md:relative bg-white z-40 h-full md:h-auto w-full md:w-1/4 p-4">
                 <form id="filt" action="{{ route('sell') }}" method="GET">
                     
                     <div class="mb-4 relative">
@@ -16,7 +16,7 @@
                     <label for="servCat" class="block text-lg font-medium text-gray-700">Category</label>
                     <div class="flex flex-col mb-4 rounded-lg overflow-hidden gap-y-1 text-md">
                         @foreach($filters as $item)
-                            <div class="flex items-center border border-gray border-opacity-50 rounded-lg overflow-hidden">
+                            <div class="flex items-center py-2 md:py-0 border border-gray border-opacity-50 rounded-lg overflow-hidden">
                                 <button type="button" onclick="toggleDropdown('catDD{{ $item->id }}', 'img{{ $item->id }}')" class="w-1/12 h-full relative bg-red-300" data-id="{{ $item->id }}">
                                     <img src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2">
                                     <img id="img{{ $item->id }}" src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2 transform rotate-90 duration-300">
@@ -26,7 +26,7 @@
                             </div>
                             <div id="catDD{{ $item->id }}" class="h-0 flex flex-col gap-y-1 overflow-hidden transition-all duration-500">
                                 @foreach($item->category as $subitem)
-                                    <div class="flex items-center m-auto mr-0 w-11/12 border border-gray border-opacity-50 rounded-lg overflow-hidden">
+                                    <div class="flex items-center py-2 md:py-0 m-auto mr-0 w-11/12 border border-gray border-opacity-50 rounded-lg overflow-hidden">
                                         <button type="button" onclick="toggleDropdown('subcatDD{{ $subitem->id }}', 'subimg{{ $subitem->id }}')" class="w-1/12 h-full relative bg-red-300" data-id="{{ $subitem->id }}">
                                             <img src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2">
                                             <img id="subimg{{ $subitem->id }}" src="{{ asset('images/nav/dd1.png') }}" class="top-0 left-0 transform -translate-y-1/2 absolute w-1/2 ml-2 transform rotate-90 duration-500">
@@ -36,7 +36,7 @@
                                     </div>
                                     <div id="subcatDD{{ $subitem->id }}" class="h-0 flex flex-col gap-y-1 overflow-hidden transition-all duration-500">
                                         @foreach($subitem->subcategories as $subcatitem)
-                                            <div class="flex items-center m-auto mr-0 w-5/6 border border-gray border-opacity-50 rounded-lg overflow-hidden">
+                                            <div class="flex items-center py-2 md:py-0 m-auto mr-0 w-5/6 border border-gray border-opacity-50 rounded-lg overflow-hidden">
                                                 <input class="ml-2 peer hidden" type="checkbox" id="filter_subcategory_{{ $subcatitem->id }}" name="filters[]" value="sub{{ $subcatitem->id }}">
                                                 <label class="pl-12 w-full h-full peer-checked:bg-lightblue" for="filter_subcategory_{{ $subcatitem->id }}">{{ $subcatitem->name }}</label>
                                             </div>
@@ -55,10 +55,12 @@
 
         <!-- Product Display -->
         <div class="flex flex-col w-full md:w-5/6">
+            <!-- pagination -->
             <div class="pt-6 px-4 md:px-12">
                 {{ $products->links('vendor.pagination.tailwind') }}
-
             </div>
+            
+            <!-- products -->
             <div class="m-auto flex flex-wrap justify-center gap-[2vw] w-full h-auto p-4">
                 @if (count($products) > 0)
                     @foreach($products as $product)
@@ -79,9 +81,10 @@
 
                 
             </div>
+
+            <!-- pagination -->
             <div class="pt-6 px-4 md:px-12">
                 {{ $products->links('vendor.pagination.tailwind') }}
-
             </div>
         </div>
             
