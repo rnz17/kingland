@@ -184,7 +184,8 @@
             var products = @json($products);
             var code = btn.id;
             products = Object.values(products);
-            console.log(products);
+            products = products[1];
+            // console.log('products:',products[1]);
             for (let product of products){
                 if (product.code == code){
                     item = product;
@@ -248,7 +249,7 @@
     // email
         function sendEmail(type) {
             var recipient = "raabanilla@kingland.ph";
-            console.log(type);
+            // console.log(type);
             if(type === 'item'){
                 
                 var subject = `Product Inquiry: ${item.name}`;
@@ -306,7 +307,7 @@
             </div>`;
             
             if (itemCodes.includes(item.code)){
-                console.log(`Item: ${item.code} is already in basket`);
+                // console.log(`Item: ${item.code} is already in basket`);
             }else{
                 basketCont.innerHTML += content;
                 itemCodes.push(item.code);
