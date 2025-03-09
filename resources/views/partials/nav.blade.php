@@ -61,14 +61,14 @@
     </div>
 @else
     <nav id="nav" class="fixed z-50 flex h-20 duration-500 bg-white w-full shadow-xl z-50">
-        <!-- mobile only -->
+        <!-- mobile only Logo -->
         <div class="flex m-auto lg:hidden h-full w-1/3 p-2 ml-0">
             <button onclick="toggleHIDE('dashboard')" class="h-1/2 m-auto ml-2">
                 <img src="{{ asset('images/nav/dd_square.png') }}" class="h-full">
             </button>
         </div>
 
-        <!-- mob and desk -->
+        <!-- mob and desk Logo -->
         <div class="flex m-auto lg:ml-0 h-full py-2 w-1/3 lg:w-1/4">
             <a href="{{ route('home') }}" class="h-full w-full m-auto lg:pl-2">
                 <img src="{{ asset('images/kingland/logo.png') }}" class="h-full m-auto lg:hidden">
@@ -76,7 +76,7 @@
             </a>
         </div>
 
-        <!-- mobile only -->
+        <!-- mobile only Nav Button -->
         <div class="flex m-auto lg:hidden h-full w-1/3 p-2 mr-0">
             @if (Str::contains(request()->path(), ['sell']))
                 <button id="burger" onclick="toggleFilter()" class="m-auto md:hidden h-full">
@@ -88,6 +88,7 @@
             @endif
         </div>
 
+        <!-- Nav Buttons -->
         <div class="hidden lg:flex w-3/4">
             <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
                 <a href="{{ '/' }}" class="text-center w-full text-lg">Home</a>
