@@ -82,8 +82,8 @@
                 <button id="burger" onclick="toggleFilter()" class="m-auto md:hidden h-full">
                     <h1 class="text-gray font-semibold">Filters</h1>
                 </button>
-                <button onclick="toggleBasket()" class="m-auto md:hidden h-full">
-                    <img src="{{ asset('images/nav/burger_square.png') }}" class="m-auto h-1/2">
+                <button onclick="toggleBasket()" class="m-auto mr-2 lg:hidden h-full">
+                    <img src="{{ asset('images/nav/basket.png') }}" class="m-auto h-1/2">
                 </button>
             @endif
         </div>
