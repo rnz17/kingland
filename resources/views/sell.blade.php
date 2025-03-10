@@ -98,12 +98,6 @@
                                             <h1 class="m-auto mr-0 text-xs text-right">{{ $product->brand }}</h1>
                                         </div>
                                     @endif
-                                    @if(!empty($product->unit_price))
-                                        <div class="flex w-full px-6 opacity-80 mb-2">
-                                            <h1 class="m-auto ml-0 text-xs text-left">Price</h1>
-                                            <h1 class="m-auto mr-0 text-xs text-right">{{ $product->unit_price }}</h1>
-                                        </div>
-                                    @endif
                                     @if(!empty($product->pcs_unit))
                                         <div class="flex w-full px-6 opacity-80 mb-2">
                                             <h1 class="m-auto ml-0 text-xs text-left">Pieces/Pack</h1>
