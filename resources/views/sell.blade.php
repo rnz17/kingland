@@ -83,40 +83,46 @@
                             </div>
                             
                             <!-- Back Side -->
-                            <div class="absolute w-full h-auto min-h-[19rem] bg-[#131A35] text-[#FDFDFD] border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] p-2">
-                                <div class="flex m-auto mt-0 w-full h-1/6 overflow-hidden">
+                            <div class="absolute w-full h-auto min-h-[19rem] bg-[#131A35] text-[#FDFDFD] border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] px-1 py-2">
+                                <div class="flex m-auto mt-0 w-full h-1/6 overflow-hidden px-1">
                                     <img src="{{ asset('storage/images/products/'. $product->code .'.png') }}" class="m-auto w-auto h-auto max-w-[7.5rem] max-h-[7rem]">
                                     <div class="flex w-1/2">
                                         <h1 class="m-auto text-xs text-ellipsis opacity-90 px-1">{{ $product->name }}</h1>
                                     </div>
                                 </div>
                                 
-                                <div class="flex flex-col m-auto w-full h-5/6 mt-4">
+                                <div class="flex flex-col m-auto w-full h-full mt-4 px-2">
                                     @if(!empty($product->brand))
-                                        <div class="m-auto flex w-3/4 px-6 opacity-80 mb-2">
-                                            <h1 class="m-auto ml-0 text-xs text-left">Brand:</h1>
-                                            <h1 class="m-auto mr-0 text-xs text-right">{{ $product->brand }}</h1>
+                                        <div class="m-auto flex w-full px-0 opacity-80 mb-2">
+                                            <div class="w-1/2">
+                                                <h1 class="m-auto ml-0 text-xs text-left">Brand:</h1>
+                                            </div>
+                                            <h1 class="m-auto ml-0 text-xs text-right">{{ $product->brand }}</h1>
                                         </div>
                                     @endif
                                     @if(!empty($product->unit))
-                                        <div class="m-auto flex w-3/4 px-6 opacity-80 mb-2">
-                                            <h1 class="m-auto ml-0 text-xs text-left">UOM:</h1>
-                                            <h1 class="m-auto mr-0 text-xs text-right">{{ $product->unit }}</h1>
+                                        <div class="m-auto flex w-full px-0 opacity-80 mb-2">
+                                            <div class="w-1/2">
+                                                <h1 class="m-auto ml-0 text-xs text-left">UOM:</h1>
+                                            </div>
+                                            <h1 class="m-auto ml-0 text-xs text-right">{{ $product->unit }}</h1>
                                         </div>
                                     @endif
                                     @if(!empty($product->pcs_unit))
-                                        <div class="m-auto flex w-3/4 px-6 opacity-80 mb-2">
-                                            <h1 class="m-auto ml-0 text-xs text-left">QTY / UOM:</h1>
-                                            <h1 class="m-auto mr-0 text-xs text-right">{{ $product->pcs_unit }}</h1>
+                                        <div class="m-auto flex w-full px-0 opacity-80 mb-2">
+                                            <div class="w-1/2">
+                                                <h1 class="m-auto ml-0 text-xs text-left">QTY / UOM:</h1>
+                                            </div>
+                                            <h1 class="m-auto ml-0 text-xs text-right">{{ $product->pcs_unit }}</h1>
                                         </div>
                                     @endif
                                     @if(!empty($product->spec))
-                                        <div class="flex flex-col w-full px-6 opacity-80">
+                                        <div class="flex flex-col w-full px-0 opacity-80">
                                             <div class="w-full text-center mb-1">
                                                 <h1 class="m-auto text-xs">Specifications:</h1>
                                             </div>
-                                            <div class="w-full p-4 overflow-hidden">
-                                                <h1 class="ml-2 text-xs break-words whitespace-normal">
+                                            <div class="w-full py-1 px-2 overflow-hidden">
+                                                <h1 class="text-xs break-words whitespace-normal">
                                                     {!! $product->spec !!}
                                                 </h1>
                                             </div>
