@@ -77,11 +77,11 @@
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="spec">Specification</label>
-                <input class="rounded-lg m-auto w-3/4" value="{{ $item->spec }}" type="text" id="spec" name="spec" required>
+                <textarea name="spec" id="spec" class="rounded-lg m-auto w-3/4">{{ $item->spec }}</textarea>
             </div>
 
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="unit">Unit</label>
+                <label class="w-full pl-4 mb-2" for="unit">UOM</label>
                 <select class="rounded-lg m-auto w-3/4" id="unit" name="unit" required>
                     
                 <option value="{{ $item->unit }}">{{ $item->unit }}</option>
@@ -97,7 +97,7 @@
 
         
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="pcs_unit">Pieces per Unit</label>
+                <label class="w-full pl-4 mb-2" for="pcs_unit">QTY / UOM</label>
                 <input class="rounded-lg m-auto w-3/4" value="{{ $item->pcs_unit }}" type="text" id="pcs_unit" name="pcs_unit">
             </div>
         
@@ -167,3 +167,20 @@
 
     </div>
 </div>
+
+<script src="/tinymce/tinymce.min.js"></script>
+
+<script>
+
+    tinymce.init({
+        selector: '#spec',
+        plugins: 'lists link',
+        toolbar: 'bold italic underline | bullist numlist | link image code',
+        height: 300,
+        skin: "oxide",
+        content_css: "default",
+        icons: "default",
+        license_key: 'gpl'  // Add this line to remove the evaluation mode warning
+    });
+
+</script>

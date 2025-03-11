@@ -69,11 +69,11 @@
 
                 @foreach($products as $product)    
                     <!-- extend card test -->
-                    <div class="group w-[16rem] h-[19rem] hover:scale-125 transform hover:-translate-x-2 hover:z-40 [perspective:1000px] duration-500">
+                    <div class="group w-[16rem] h-[19rem] hover:scale-125 transform hover:-translate-x-2  hover:z-40 [perspective:1000px] duration-500">
                         <div class="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
 
                             <!-- Front Side -->
-                            <div class="absolute w-full h-full bg-white border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden]">
+                            <div class="absolute w-full h-[19rem] bg-white border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden]">
                                 <div class="flex h-2/3 w-full p-2">
                                     <img src="{{ asset('storage/images/products/'. $product->code .'.png') }}" class="m-auto w-auto h-auto max-w-[15rem] max-h-full">
                                 </div>
@@ -83,41 +83,49 @@
                             </div>
                             
                             <!-- Back Side -->
-                            <div class="absolute w-full h-full bg-white border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] p-2">
+                            <div class="absolute w-full h-auto min-h-[19rem] bg-[#131A35] text-[#FDFDFD] border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] p-2">
                                 <div class="flex m-auto mt-0 w-full h-1/6 overflow-hidden">
-                                    <img src="{{ asset('storage/images/products/'. $product->code .'.png') }}" class="m-auto w-auto h-auto max-w-[7.5rem] max-h-full">
+                                    <img src="{{ asset('storage/images/products/'. $product->code .'.png') }}" class="m-auto w-auto h-auto max-w-[7.5rem] max-h-[7rem]">
                                     <div class="flex w-1/2">
-                                        <h1 class="m-auto text-xs text-ellipsis opacity-90">{{ $product->name }}</h1>
+                                        <h1 class="m-auto text-xs text-ellipsis opacity-90 px-1">{{ $product->name }}</h1>
                                     </div>
                                 </div>
                                 
                                 <div class="flex flex-col m-auto w-full h-5/6 mt-4">
                                     @if(!empty($product->brand))
-                                        <div class="flex w-full px-6 opacity-80 mb-2">
-                                            <h1 class="m-auto ml-0 text-xs text-left">Brand</h1>
+                                        <div class="m-auto flex w-3/4 px-6 opacity-80 mb-2">
+                                            <h1 class="m-auto ml-0 text-xs text-left">Brand:</h1>
                                             <h1 class="m-auto mr-0 text-xs text-right">{{ $product->brand }}</h1>
                                         </div>
                                     @endif
+                                    @if(!empty($product->unit))
+                                        <div class="m-auto flex w-3/4 px-6 opacity-80 mb-2">
+                                            <h1 class="m-auto ml-0 text-xs text-left">UOM:</h1>
+                                            <h1 class="m-auto mr-0 text-xs text-right">{{ $product->unit }}</h1>
+                                        </div>
+                                    @endif
                                     @if(!empty($product->pcs_unit))
-                                        <div class="flex w-full px-6 opacity-80 mb-2">
-                                            <h1 class="m-auto ml-0 text-xs text-left">Pieces/Pack</h1>
+                                        <div class="m-auto flex w-3/4 px-6 opacity-80 mb-2">
+                                            <h1 class="m-auto ml-0 text-xs text-left">QTY / UOM:</h1>
                                             <h1 class="m-auto mr-0 text-xs text-right">{{ $product->pcs_unit }}</h1>
                                         </div>
                                     @endif
                                     @if(!empty($product->spec))
                                         <div class="flex flex-col w-full px-6 opacity-80">
-                                            <div class="w-full text-left mb-1">
-                                                <h1 class="m-auto ml-0 text-xs">Specifications</h1>
+                                            <div class="w-full text-center mb-1">
+                                                <h1 class="m-auto text-xs">Specifications:</h1>
                                             </div>
-                                            <div class="w-full text-justify">
-                                                <h1 class="m-auto ml-4 text-xs">{{ $product->spec }}</h1>
+                                            <div class="w-full p-4 overflow-hidden">
+                                                <h1 class="ml-2 text-xs break-words whitespace-normal">
+                                                    {!! $product->spec !!}
+                                                </h1>
                                             </div>
                                         </div>
                                     @endif
 
                                     <div class="m-auto mb-0 flex w-full py-4">
-                                        <button onclick="sendEmail('item','{{ $product->code }}')" class="m-auto text-xs bg-lightblue px-2 py-1 rounded-lg">Inquire</button>
-                                        <button onclick="addToBasket('{{ $product->code }}')" class="m-auto text-xs bg-green-300 px-2 py-1 rounded-lg">Add to Basket</button>
+                                        <button onclick="sendEmail('item','{{ $product->code }}')" class="m-auto text-xs text-[#131A35] bg-lightblue px-2 py-1 rounded-lg">Inquire</button>
+                                        <button onclick="addToBasket('{{ $product->code }}')" class="m-auto text-xs text-[#131A35] bg-green-300 px-2 py-1 rounded-lg">Add to Basket</button>
                                     </div>
                                     
                                 </div>

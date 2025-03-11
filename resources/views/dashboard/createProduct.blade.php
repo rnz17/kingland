@@ -49,21 +49,22 @@
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="brand">Brand<span class="text-red-500 pl-1">*</span></label>
-                <input class="rounded-lg m-auto w-3/4" type="text" id="brand" name="brand" required>
+                <input class="mt-0 rounded-lg m-auto w-3/4" type="text" id="brand" name="brand" required>
             </div>
 
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="supplier">Supplier<span class="text-red-500 pl-1">*</span></label>
-                <input class="rounded-lg m-auto w-3/4" type="text" id="supplier" name="supplier" required>
+                <input class="mt-0 rounded-lg m-auto w-3/4" type="text" id="supplier" name="supplier" required>
             </div>
         
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="spec">Specification<span class="text-red-500 pl-1">*</span></label>
-                <input class="rounded-lg m-auto w-3/4" type="text" id="spec" name="spec" required>
+
+                <textarea name="spec" id="spec" class="rounded-lg m-auto w-3/4" placeholder=""></textarea>
             </div>
 
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="unit">Unit<span class="text-red-500 pl-1">*</span></label>
+                <label class="w-full pl-4 mb-2" for="unit">UOM<span class="text-red-500 pl-1">*</span></label>
                 <select class="rounded-lg m-auto w-3/4" id="unit" name="unit" required>
                 @foreach($units as $unit)
                         <option value="{{ $unit }}">{{ $unit }}</option>
@@ -73,7 +74,7 @@
 
         
             <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="pcs_unit">Pieces per Unit<span class="text-red-500 pl-1">*</span></label>
+                <label class="w-full pl-4 mb-2" for="pcs_unit">QTY / UOM<span class="text-red-500 pl-1">*</span></label>
                 <input class="rounded-lg m-auto w-3/4" type="text" id="pcs_unit" name="pcs_unit">
             </div>
         
@@ -124,7 +125,21 @@
     </div>
 </div>
 </body>
+
+<script src="/tinymce/tinymce.min.js"></script>
+
 <script>
+
+    tinymce.init({
+        selector: '#spec',
+        plugins: 'lists link',
+        toolbar: 'bold italic underline | bullist numlist | link image code',
+        height: 300,
+        skin: "oxide",
+        content_css: "default",
+        icons: "default",
+        license_key: 'gpl'  // Add this line to remove the evaluation mode warning
+    });
 
     // dropdown
         var cat = @json($cat); // Main categories

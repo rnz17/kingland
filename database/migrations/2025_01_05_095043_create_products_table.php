@@ -16,7 +16,7 @@ return new class extends Migration
         $table->string('code');
         $table->string('name');
         $table->string('supplier')->nullable(); // Nullable if supplier might be NULL
-        $table->text('spec');
+        $table->longText('spec');
         $table->enum('unit', ['piece', 'box', 'can', 'set', 'bundle', 'pack', 'pouch']);
         $table->integer('pcs_unit');
         $table->decimal('unit_price', 8, 2);
