@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ConcernController;
+use App\Http\Controllers\SupplierController;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -115,6 +116,13 @@ use Illuminate\Http\Request;
         Route::prefix('/dashboard/inquiries')->name('inquiries.')->group(function () {
             Route::get('/', [ConcernController::class, 'index'])->name('index');
             Route::post('/', [ConcernController::class, 'store'])->name('store');
+            Route::put('/{id}', [ConcernController::class, 'update'])->name('update');
+        });
+
+        // Supplier Routes
+        Route::prefix('/dashboard/suppliers')->name('suppliers.')->group(function () {
+            Route::get('/', [SupplierController::class, 'index'])->name('index');
+            Route::post('/', [SupplierController::class, 'store'])->name('store');
             Route::put('/{id}', [ConcernController::class, 'update'])->name('update');
         });
 

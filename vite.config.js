@@ -12,5 +12,6 @@ export default defineConfig({
         host: 'kmci.local', // Use your custom domain
         port: 5173,         // Optional, choose the port you want to use
         https: false,       // Set to true if using HTTPS (requires SSL configuration)
+        strictPort: true
     },
 });

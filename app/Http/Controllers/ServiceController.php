@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\ProductLog;
+use App\Models\Supplier;
+use App\Models\Price;
 use App\Models\Announcement;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -89,7 +91,11 @@ class ServiceController extends Controller
         $services = Service::all();
         $cat = Category::all();
         $subcat = Subcategory::all();
+        $suppliers = Supplier::all();
         $code = $request->query('code'); //get code from URL
+        
+
+
 
         
         // Properly execute the raw query to get ENUM values
@@ -116,11 +122,15 @@ class ServiceController extends Controller
         // Assuming Product is your model
         $item = Product::where('code', $code)->first(); //compare $code into code from model:Product
 
+        $prices = Price::where('product_id',$item->id)->get();
+
+        // dd($prices);
+
         if (!$item) {
             return response()->json(['message' => 'Product not found'], 404);
         }
 
-        return view('dashboard.editProduct', compact('item','services','cat','subcat','units'));
+        return view('dashboard.editProduct', compact('item','services', 'suppliers', 'cat','subcat','units', 'prices'));
     }
 
     public function filAndModal(Request $request)

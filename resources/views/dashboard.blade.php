@@ -67,6 +67,8 @@
 
                                     @elseif($key == 'subcategory_id')
                                         {{ $subcat->where('id', $value)->first()?->name }}
+                                    @elseif($key == 'spec')
+                                        {!! $value !!}
                                     @else
                                         {{ $value }}
                                     @endif

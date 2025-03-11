@@ -52,15 +52,30 @@
                 <input class="mt-0 rounded-lg m-auto w-3/4" type="text" id="brand" name="brand" required>
             </div>
 
-            <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="supplier">Supplier<span class="text-red-500 pl-1">*</span></label>
-                <input class="mt-0 rounded-lg m-auto w-3/4" type="text" id="supplier" name="supplier" required>
+            <div class="flex flex-col w-[100%] my-2">
+                <label class="w-full pl-4 mb-2">Suppliers & Prices<span class="text-red-500 pl-1">*</span></label>
+                <div id="supplier-container" class="m-auto w-3/4">
+                    <div class="supplier-row flex gap-2 mb-2">
+                        <select class="m-auto rounded-lg w-1/3 p-2 border" name="supplier_id[]" required>
+                            <option value="" disabled selected>Select a Supplier</option>
+                            @foreach($suppliers as $supplier)
+                                <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                            @endforeach
+                        </select>
+                        <input class="m-auto rounded-lg w-1/3 p-2 border" type="text" name="price[]" placeholder="Enter price" required>
+                        <button type="button" class="remove-supplier bg-red-500 text-white px-3 py-1 rounded">X</button>
+                    </div>
+                </div>
+                <button type="button" id="add-supplier" class="m-auto w-1/6 mt-2 bg-blue text-white px-4 py-2 rounded">Add Supplier</button>
             </div>
-        
-            <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="spec">Specification<span class="text-red-500 pl-1">*</span></label>
 
-                <textarea name="spec" id="spec" class="rounded-lg m-auto w-3/4" placeholder=""></textarea>
+        
+            <div class="flex flex-wrap w-full">
+                <label class="w-full pl-4 mb-2" for="spec">Specification<span class="text-red-500 pl-1">*</span></label>
+                
+                <div class="m-auto w-3/4">
+                    <textarea name="spec" id="spec" class="rounded-lg m-auto" placeholder=""></textarea required>
+                </div>
             </div>
 
             <div class="flex flex-wrap w-[32%]">
@@ -76,11 +91,6 @@
             <div class="flex flex-wrap w-[32%]">
                 <label class="w-full pl-4 mb-2" for="pcs_unit">QTY / UOM<span class="text-red-500 pl-1">*</span></label>
                 <input class="rounded-lg m-auto w-3/4" type="text" id="pcs_unit" name="pcs_unit">
-            </div>
-        
-            <div class="flex flex-wrap w-[32%]">
-                <label class="w-full pl-4 mb-2" for="unit_price">Unit Price<span class="text-red-500 pl-1">*</span></label>
-                <input class="rounded-lg m-auto w-3/4" type="text" id="unit_price" name="unit_price" required pattern="^\d+(\.\d{1,2})?$">
             </div>
         
             <div class="flex flex-wrap w-[32%]">
@@ -204,4 +214,33 @@
             }
         }
 
+    document.getElementById('add-supplier').addEventListener('click', function () {
+        let container = document.getElementById('supplier-container');
+        let row = document.createElement('div');
+        row.className = 'supplier-row flex gap-2 mb-2';
+
+        row.innerHTML = `
+            <select class="m-auto rounded-lg w-1/3 p-2 border" name="supplier_id[]" required>
+                <option value="" disabled selected>Select a Supplier</option>
+                @foreach($suppliers as $supplier)
+                    <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                @endforeach
+            </select>
+            <input class="m-auto rounded-lg w-1/3 p-2 border" type="text" name="price[]" placeholder="Enter price" required>
+            <button type="button" class="remove-supplier bg-red-500 text-white px-3 py-1 rounded">X</button>
+        `;
+
+        container.appendChild(row);
+
+        row.querySelector('.remove-supplier').addEventListener('click', function () {
+            row.remove();
+        });
+    });
+
+    document.addEventListener('click', function (event) {
+        if (event.target.classList.contains('remove-supplier')) {
+            event.target.closest('.supplier-row').remove();
+        }
+    });
 </script>
+

@@ -8,6 +8,8 @@ use App\Models\Service;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Blog;
+use App\Models\Price;
+use App\Models\Supplier;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -57,6 +59,7 @@ class ProductController extends Controller
         $cat = Category::all();
         $subcat = Subcategory::all();
         $products = Product::all();
+        $suppliers = Supplier::all();
 
         // Properly execute the raw query to get ENUM values
         $enumValues = DB::select("SHOW COLUMNS FROM products WHERE Field = 'unit'");
@@ -85,7 +88,8 @@ class ProductController extends Controller
             'services' => $services,
             'cat' => $cat,
             'subcat' => $subcat,
-            'units' => $units
+            'units' => $units,
+            'suppliers' => $suppliers
         ]);
     }
 
@@ -127,12 +131,10 @@ class ProductController extends Controller
             'service_id' => 'required|integer|between:1,9',
             'category_id' => 'required|integer',
             'subcategory_id' => 'required|integer',
-            'supplier' => 'required',
             'brand' => 'nullable',
             'spec' => 'required',
             'unit' => 'required',
             'pcs_unit' => 'required|numeric|between:0,999999.99',
-            'unit_price' => 'required|numeric|between:0,999999.99',
             'value_ratio' => 'nullable|numeric|between:0,999999.99',
             'status' => 'nullable',
             'available' => 'nullable|numeric|between:0,999999.99',
@@ -156,6 +158,22 @@ class ProductController extends Controller
     
         // Create the product record without the image URL field (since it's not being saved in the database)
         $newProduct = Product::create($data);
+
+        // Insert multiple suppliers and prices
+        if ($newProduct && $request->has('supplier_id') && $request->has('price')) {
+            $suppliers = $request->input('supplier_id');
+            $prices = $request->input('price');
+
+            foreach ($suppliers as $index => $supplier_id) {
+                if (!empty($supplier_id) && isset($prices[$index])) {
+                    Price::create([
+                        'supplier_id' => $supplier_id,
+                        'product_id' => $newProduct->id,
+                        'price' => $prices[$index],
+                    ]);
+                }
+            }
+        }
     
         if ($newProduct) {
             return redirect()->route('dashboard')->with('success', 'Product created successfully.');
@@ -164,9 +182,14 @@ class ProductController extends Controller
         }
     }
     
+    
+    
     public function update(Request $request)
     {
         $id = $request->input('id');
+
+        // dd($request);
+
     
         $data = $request->validate([
             'id' => 'required',
@@ -176,20 +199,21 @@ class ProductController extends Controller
             'service_id' => 'required|integer|between:1,9',
             'category_id' => 'required|integer',
             'subcategory_id' => 'required|integer',
-            'supplier' => 'required',
             'brand' => 'nullable',
             'spec' => 'required',
             'unit' => 'required',
             'pcs_unit' => 'nullable',
-            'unit_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'value_ratio' => 'nullable',
             'status' => 'nullable',
             'available' => 'nullable',
             'needed' => 'nullable',
             'to_buy' => 'nullable',
             'low_alert' => 'nullable',
-            'prod_note' => 'nullable'
+            'prod_note' => 'nullable',
+            'supplier_id' => 'required|array', // Ensure multiple supplier IDs are passed
+            'price' => 'required|array', // Ensure multiple prices are passed
         ]);
+
     
         try {
             $product = Product::where('id', $id)->firstOrFail();
@@ -204,24 +228,62 @@ class ProductController extends Controller
             $existingImages = Storage::files('/images/products/');
             foreach ($existingImages as $file) {
                 if (pathinfo($file, PATHINFO_FILENAME) == $code) {
-                    $file = str_replace('public/','', $file);
+                    $file = str_replace('public/', '', $file);
                     Storage::delete($file);
                 }
             }
-
     
             // Store the new image with the correct filename and original extension
             $image = $request->file('image');
-
-            $fileName = $request->input('code'). '.' . $image->getClientOriginalExtension();
-
+            $fileName = $request->input('code') . '.' . $image->getClientOriginalExtension();
             $imagePath = $image->storeAs('images/products', $fileName, 'public');
         }
     
+        // Retrieve current prices for this product
+        $existingPrices = Price::where('product_id', $product->id)->get()->keyBy('supplier_id'); // Key by supplier_id for easy lookup
+    
+        // Loop through new prices from the request
+        foreach ($request->supplier_id as $index => $supplier_id) {
+            $priceValue = $request->price[$index];
+    
+            if (isset($existingPrices[$supplier_id])) {
+                // If supplier already exists, update if price has changed
+                if ($existingPrices[$supplier_id]->price != $priceValue) {
+                    $existingPrices[$supplier_id]->update([
+                        'price' => $priceValue,
+                    ]);
+                }
+                // Remove from existingPrices to track which ones were updated
+                unset($existingPrices[$supplier_id]);
+            } else {
+                // If supplier does not exist, create a new price entry
+                Price::create([
+                    'product_id' => $product->id,
+                    'supplier_id' => $supplier_id,
+                    'price' => $priceValue,
+                ]);
+            }
+        }
+    
+        // Optional: Remove old prices that were not included in the new request
+        // If you want to keep old prices, remove this part
+        if ($existingPrices->isNotEmpty()) {
+            Price::whereIn('id', $existingPrices->pluck('id'))->delete();
+        }
+
+
+
+
+        unset($data['supplier_id'], $data['price']);
+
+
+        // Update the product
         $product->update($data);
+
     
         return redirect(route('dashboard'))->with('success', 'Product updated successfully.');
     }
+        
     
 
     public function delete(Request $request)

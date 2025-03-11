@@ -32,41 +32,23 @@
         </div>
       </div>
     <!-- BLOG -->
-     <div class="flex w-full">
-       <div class="m-auto text-center py-12">
-         <h1 class="text-3xl text-darkblue tracking-wider font-bold">Our Latest Stories</h1>
-       </div>
-     </div>
-      <div class="m-auto flex flex-wrap py-12 w-full gap-x-0">
-        @foreach($blogs as $blog) 
-          <div class="relative flex pb-4 mx-auto mb-24 w-[95%] max-h-[30vh] hover:max-h-[40vh] lg:w-[45%] flex-col rounded-xl bg-gradient-to-br from-white to-notwhite bg-clip-border border border-lightgray border-opacity-10 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
-            @if($blog->image_url)
-              <div class="relative mx-4 -mt-6 h-64 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 opacity-90">
-                </div>
-                <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] animate-pulse">
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <img src="{{ asset('storage/' . $blog->image_url) }}" class="w-full">
-                </div>
-              </div>
-            @endif
-            <div class="p-6 @if(!$blog->image_url) m-auto @endif overflow-hidden">
-              <h5 class="mb-2 block text-2xl font-semibold leading-snug tracking-normal text-gray antialiased group-hover:text-blue transition-colors duration-300">
-                <a href="{{ route('blog.show', $blog->id) }}" class="text-blue underline">
-                  {{ $blog->title }}
-                </a>
+      <!-- header -->
+        <div class="flex w-full text-center py-12">
+            <h1 class="m-auto text-3xl text-darkblue tracking-wider font-bold">Our Latest Stories</h1>
+        </div>
 
-              </h5>
-              <div class="block text-lg h-full font-light leading-relaxed text-gray antialiased overflow-hidden text-ellipsis whitespace-pre-line">
-                {!! $blog->content !!}
+      <!-- Blog container -->
+        <div class="m-auto flex flex-wrap py-12 w-full gap-x-0 mt-[6vw]">
+
+          <!-- card container -->
+            <div class="m-auto flex bg-notwhite w-1/4 h-[35vh] shadow-xl bg-red-300">
+              <div class="m-auto flex bg-red-200 rounded-2xl">
+
               </div>
             </div>
+          <!-- card end -->
 
-          </div>
- 
-       @endforeach 
-     </div>
+        </div>
     
     <!-- SERVICE REDIRECT -->
       <div class="flex mb-32">
