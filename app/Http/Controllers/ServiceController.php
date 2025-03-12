@@ -62,8 +62,14 @@ class ServiceController extends Controller
 
 
         // Apply search filter if provided
-        if (isset($request->search) && ($request->search !== NULL)) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+        if (!empty($request->search)) {
+            $keywords = explode(' ', $request->search); // Split search term into words
+            $query->where(function ($q) use ($keywords) {
+                foreach ($keywords as $word) {
+                    $q->orWhere('name', 'like', '%' . $word . '%')
+                      ->orWhere('code', 'like', '%' . $word . '%');
+                }
+            });
         }
 
         // Apply category filter if provided
