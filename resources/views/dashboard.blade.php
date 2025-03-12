@@ -30,7 +30,7 @@
     </div>
 
     <!-- table -->
-    <div class="relative block mx-auto my-6 w-[95%] h-[80vh] overflow-auto border-2 border-darkblue shadow-xl">
+    <div class="relative block mx-auto my-6 w-[95%] h-auto max-h-[80vh] overflow-auto border-2 border-darkblue shadow-xl">
         <table id="table" class="w-full text-sm text-left rtl:text-right text-gray">
             <thead class="text-xs text-textblue uppercase bg-notwhite">
                 <tr>
