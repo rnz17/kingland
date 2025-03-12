@@ -69,7 +69,7 @@ class ServiceController extends Controller
         // Apply category filter if provided
         if (isset($request->category) && ($request->category !== NULL)) {
             $query->whereHas('category', function ($q) use ($request) {
-                $q->where('category_id', $request->category);
+                $q->where('service_id', $request->category);
             });
         }
 

@@ -2,7 +2,9 @@
 
 @include('partials.nav')
 
-<div class="w-full flex flex-col p-24">
+
+@include('partials.dashopt')
+<div class="w-full bg-lightergray flex flex-col p-24">
     <div class="m-auto w-3/4">
         <table class="w-full text-sm text-left rtl:text-right border border-black text-gray-500">
             <thead class="text-xs text uppercase bg-notwhite">
@@ -15,11 +17,11 @@
                     </th>
             </thead>
             <tbody>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
                     <tr>
                         @if($contents->count() >= 0)
                             @foreach($contents as $content)
-                            <tr>
+                            <tr class="bg-white">
                                 <td class="text-center p-1 border border-gray-300">
                                     {{ $content->content }}
                                 </td>

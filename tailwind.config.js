@@ -36,6 +36,7 @@ export default {
                 cyan: '#00FFFF',
                 darkcyan: '#00CCCC',
                 lightgray: '#656568',
+                lightergray: 'rgb(179, 179, 179)',
                 tlightgray: 'rgba(77, 77, 77, 0.5)',
                 gray: '#353435',
                 darkgray: '#3A3A3A',
@@ -47,6 +48,10 @@ export default {
                 'sample2': "url('/images/kingland/sample2.jpg')",
                 'sample3': "url('/images/kingland/sample3.jpg')",
             },
+            boxShadow: {
+                'inner-dash': 'inset 0px -2px 12px rgba(54, 54, 54, 0.15)',
+                'outer-dash': '0px -4px 12px rgba(54, 54, 54, 0.15)',
+            }
         },
     },
 

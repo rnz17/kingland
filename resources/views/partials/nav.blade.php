@@ -8,31 +8,17 @@
                 <img src="{{ asset('images/kingland/logo.png') }}" class="h-full block lg:hidden" >
             </a>
         </div>
-
-        <!-- / for root but no / for other views -->
-        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-            <a href="{{ route('inquiries.index') }}" class="text-center w-full text-lg">Inquiries</a>
-        </div>
-
         
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
             <a href="{{ route('dashboard') }}" class="text-center w-full text-lg">Dashboard</a>
         </div>
 
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-            <a href="{{ route('suppliers.index') }}" class="text-center w-full text-lg">Suppliers</a>
-        </div>
-        
-        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-            <a href="{{ route('announcements.index') }}" class="text-center w-full text-lg">Announcements</a>
-        </div>
-        
-        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-            <a href="{{ route('categories.index') }}" class="text-center w-full text-lg">Categories</a>
+            <a href="{{ route('inquiries.index') }}" class="text-center w-full text-lg">Inquiries</a>
         </div>
 
-        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400">
-            <a href="{{ route('products.create') }}" class="text-center w-full text-lg">Add Product</a>
+        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
+            <a href="{{ route('suppliers.index') }}" class="text-center w-full text-lg">Suppliers</a>
         </div>
 
         <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400">

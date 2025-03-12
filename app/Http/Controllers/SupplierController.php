@@ -14,7 +14,13 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers = Supplier::all();
-        $prices = Price::with(['supplier', 'product'])->get();
+        $prices = Price::with(['supplier', 'product'])
+        ->orderBy('product_id', 'asc')  // Order by product first
+        ->orderBy('price', 'asc')       // Then order by price
+        ->get();
+
+
+
         return view('dashboard.suppliers', compact(['prices', 'suppliers']));
     }
 

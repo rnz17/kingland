@@ -1,7 +1,9 @@
 @include('partials.head')
 @include('partials.nav')
 
-<div class="flex flex-col gap-y-12 w-full pt-12">
+@include('partials.dashopt')
+
+<div class="flex flex-col bg-lightergray gap-y-12 w-full py-12">
 <!-- edit modal -->
 
 <!-- add category -->
