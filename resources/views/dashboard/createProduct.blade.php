@@ -71,10 +71,10 @@
 
         
             <div class="flex flex-wrap w-full">
-                <label class="w-full pl-4 mb-2" for="spec">Specification<span class="text-red-500 pl-1">*</span></label>
+                <label class="w-full pl-4 mb-2" for="spec">Specification<span class="text-red-500 pl-1">*BG color is for card visualization</span></label>
                 
                 <div class="m-auto w-3/4">
-                    <textarea name="spec" id="spec" class="rounded-lg m-auto" placeholder=""></textarea required>
+                    <textarea name="spec" id="spec" class="rounded-lg m-auto" placeholder="Insert Specification"></textarea required>
                 </div>
             </div>
 
@@ -145,7 +145,11 @@
         plugins: 'lists link',
         toolbar: 'bold italic underline | bullist numlist | link image code',
         height: 300,
-        skin: "oxide",
+        content_style: `
+        body { background-color:rgb(19, 26, 53); color: #FDFDFD; }
+        ::placeholder { color: #FDFDFD; opacity: 0.6; } /* Placeholder color */
+        */* Ensure all text is white */
+        `,
         content_css: "default",
         icons: "default",
         license_key: 'gpl'  // Add this line to remove the evaluation mode warning

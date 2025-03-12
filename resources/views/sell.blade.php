@@ -241,7 +241,7 @@
             // console.log(type);
             if(type === 'item'){
                 
-                var subject = `Product Inquiry: ${item.name}`;
+                var subject = `Request for Quotation: ${item.name}`;
                 var body = `Item Code: ${item.code}\nItem Name: ${item.name}\nItem Quantity:{Please add Order Quantity}`;
     
                 var mailtoLink = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(recipient) + 
@@ -256,6 +256,7 @@
                 if(basket.length >= 2){
 
                     var body = `List of items:\n`;
+                    var subject = `Request for Quotation`;
 
                     var i = 1;
                     for (item of basket){
@@ -273,7 +274,7 @@
 
                 }else{
 
-                    var subject = `Product Inquiry: ${item.name}`;
+                    var subject = `Request for Quotation: ${item.name}`;
                     var body = `Item Code: ${item.code}\nItem Name: ${item.name}\nItem Quantity:{Please add Order Quantity}`;
         
                     var mailtoLink = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(recipient) + 

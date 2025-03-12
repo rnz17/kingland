@@ -82,8 +82,8 @@
         </table>
     </div>
     <div class="w-full flex flex-wrap pb-32">
-        <button class="m-auto bg-lightblue rounded-xl px-4 py-1" onclick="exportTableToExcel('table', 'productList')">Download Excel</button>
-        <a href="{{ route('products.create') }}" class="m-auto bg-green-400 rounded-xl px-4 py-1">Add Product</a>
+        <button class="m-auto bg-lightblue rounded-xl px-4 py-1 font-semibold" onclick="exportTableToExcel('table', 'productList')">Download Excel</button>
+        <a href="{{ route('products.create') }}" class="m-auto bg-green-200 rounded-xl px-4 py-1 font-semibold">Add Product</a>
     </div>
     <!-- logs -->
         <h1 class="ml-12 font-semibold text-2xl">Action Logs (Product related)</h1>
