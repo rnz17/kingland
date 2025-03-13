@@ -54,7 +54,7 @@
               </div>
 
               <div class="flex flex-col w-full h-auto overflow-hidden p-6 {{ $blog->image_url ? 'group-hover:p-2' : 'group-hover:p-6' }}">
-                <div class="flex h-full group-hover:h-1/3 overflow-hidden duration-500">
+                <div class="flex h-full group-hover:h-1/3 overflow-hidden duration-500 mb-2">
                   <h2 class="m-auto font-bold text-lg text-blue underline">{{ $blog->title }}</h2>
                 </div>
                 <div class="h-12 overflow-hidden group-hover:h-full duration-500 {{ $blog->image_url ? 'px-2 text-left' : 'px-6 text-justify' }}">
