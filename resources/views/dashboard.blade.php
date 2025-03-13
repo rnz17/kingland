@@ -32,12 +32,12 @@
     <!-- table -->
     <div class="relative block mx-auto my-6 w-[95%] h-auto max-h-[80vh] overflow-auto border-2 border-darkblue shadow-xl">
         <table id="table" class="w-full text-sm text-left rtl:text-right text-gray">
-            <thead class="text-xs text-textblue uppercase bg-notwhite">
+            <thead class="relative sticky top-0 text-xs text-textblue uppercase bg-lightergray z-40">
                 <tr>
-                    <th scope="col" class="border border-black px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-center">
+                    <th scope="col" class="sticky left-0 border border-black px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-center">
                     </th>
                 @foreach ($columns as $column)
-                    <th scope="col" class="border border-black px-6 py-1 text-left text-xs font-medium uppercase tracking-wider text-center">
+                    <th scope="col" class="{{ $column === 'code' ? 'sticky left-14 bg-lightergray' : '' }} border border-black px-6 py-1 text-left text-xs font-medium uppercase tracking-wider text-center">
                         {{ $column }}
                     </th>
                 @endforeach
@@ -47,13 +47,13 @@
                 <tr class="bg-white border-b">
                     @foreach ($products as $product)
                         <tr>
-                            <td class="border bg-notwhite border-gray px-3 py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
+                            <td class="sticky left-0 border bg-lightergray border-gray px-3 py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
                                 <a href="{{ url('dashboard/products/edit') . '?code=' . $product->code }}" class="bg-blue text-xs text-white rounded-lg py-1 px-2">
                                     Edit
                                 </a>
                             </td>
                             @foreach ($product->toArray() as $key => $value)
-                                <td class="border bg-notwhite border-gray px-3 py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
+                                <td class="{{ $key === 'code' ? 'sticky left-14 bg-lightergray' : 'bg-notwhite' }} border border-gray px-3 py-1 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
                                     @if($key == 'service_id')
                                         {{ $services->where('id',$value)->first()->name }}
                                     @elseif($key == 'category_id')
@@ -89,7 +89,7 @@
         <h1 class="ml-12 font-semibold text-2xl">Action Logs (Product related)</h1>
         <div class="relative block mx-auto my-6 w-[95%] h-[80vh] overflow-auto border-2 border-darkblue shadow-xl mb-32">
             <table id="table" class="w-full text-sm text-left rtl:text-right text-gray">
-                <thead class="text-xs text-notwhite uppercase bg-lightgray">
+                <thead class="sticky top-0 text-xs text-notwhite uppercase bg-lightgray">
                     <tr>
                         <th scope="col" class="border border-black px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-center">
                             Product Code
@@ -117,8 +117,20 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
                             <td class="border border-black p-2 truncate">{{ $log->product_code }}</td>
                             <td class="border border-black p-2 truncate">{{ ucfirst($log->action) }}</td>
-                            <td class="text-left border border-black p-2 px-6">{{ json_encode($log->old_values, JSON_PRETTY_PRINT) }}</td>
-                            <td class="text-left border border-black p-2 px-6">{{ json_encode($log->new_values, JSON_PRETTY_PRINT) }}</td>
+                            <td class="text-left border border-black p-2 px-6">
+                                @if(!empty($log->old_values)) 
+                                    @foreach($log->old_values as $key => $value)
+                                        <p>{{ $key }}: {!! $value !!}</p>
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td class="text-left border border-black p-2 px-6">
+                                @if(!empty($log->new_values)) 
+                                    @foreach($log->new_values as $key => $value)
+                                        <p>{{ $key }}: {!! $value !!}</p>
+                                    @endforeach
+                                @endif
+                            </td>
                             <td class="border border-black p-2 truncate">{{ $log->user->name ?? 'Unknown' }}</td>
                             <td class="border border-black p-2 truncate">{{ $log->created_at }}</td>
                         </tr>
