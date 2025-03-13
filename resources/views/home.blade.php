@@ -32,41 +32,44 @@
         </div>
       </div>
     <!-- BLOG -->
-    <div class="flex w-full">
-       <div class="m-auto text-center py-12">
-         <h1 class="text-3xl text-darkblue tracking-wider font-bold">Our Latest Stories</h1>
-       </div>
-     </div>
-      <div class="m-auto flex flex-wrap py-12 w-full gap-x-0">
-        @foreach($blogs as $blog) 
-          <div class="relative flex pb-4 mx-auto mb-24 w-[95%] max-h-[30vh] hover:max-h-[40vh] lg:w-[45%] flex-col rounded-xl bg-gradient-to-br from-white to-notwhite bg-clip-border border border-lightgray border-opacity-10 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
-            @if($blog->image_url)
-              <div class="relative mx-4 -mt-6 h-64 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 opacity-90">
-                </div>
-                <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] animate-pulse">
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <img src="{{ asset('storage/' . $blog->image_url) }}" class="w-full">
-                </div>
-              </div>
-            @endif
-            <div class="p-6 @if(!$blog->image_url) m-auto @endif overflow-hidden">
-              <h5 class="mb-2 block text-2xl font-semibold leading-snug tracking-normal text-gray antialiased group-hover:text-blue transition-colors duration-300">
-                <a href="{{ route('blog.show', $blog->id) }}" class="text-blue underline">
-                  {{ $blog->title }}
-                </a>
-
-              </h5>
-              <div class="block text-lg h-full font-light leading-relaxed text-gray antialiased overflow-hidden text-ellipsis whitespace-pre-line">
-                {!! $blog->content !!}
-              </div>
-            </div>
-
+      <!-- blog header -->
+        <div class="flex w-full">
+          <div class="m-auto text-center py-12">
+            <h1 class="text-3xl text-darkblue tracking-wider font-bold">Our Latest Stories</h1>
           </div>
- 
-       @endforeach 
-     </div>
+        </div>
+
+      <!-- Card Container -->
+        <div class="m-auto pl-[5vw] flex flex-wrap pt-12 pb-16 w-full gap-x-28 gap-y-12">
+
+          <!-- Cards -->
+          @foreach($blogs as $blog)
+          <a href="{{ route('blog.show', $blog->id) }}"  class="m-auto">
+            <div class="group m-auto flex h-auto w-[32vw] hover:w-[41vw] min-w-[28rem] max-w-[39rem] aspect-[36/15] bg-notwhite border-2 border-gray border-opacity-20 shadow-xl duration-500 rounded-lg">
+            <!-- w-[39rem] -->
+              <div class="my-auto {{ $blog->image_url ? '' : 'hidden' }} relative h-full w-auto aspect-[1/2] flex justify-center items-center">
+                  <div class="absolute h-full aspect-square bg-lightblue border-2 border-textblue rounded-full left-0 transform -translate-x-1/2 overflow-hidden shadow-xl">
+                    <img src="{{ asset('storage/' . $blog->image_url) }}" class="h-full"></img>
+                  </div>
+              </div>
+
+              <div class="flex flex-col w-full h-auto overflow-hidden p-6 group-hover:p-2">
+                <div class="flex h-full group-hover:h-1/3 overflow-hidden duration-500">
+                  <h2 class="m-auto font-bold text-lg text-blue underline">{{ $blog->title }}</h2>
+                </div>
+                <div class="h-12 overflow-hidden group-hover:h-full duration-500 {{ $blog->image_url ? 'px-2 text-left' : 'px-6 text-justify' }}">
+                  <p class="m-auto text-gray-700 text-base">
+                      {!! $blog->content !!}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </a>
+          @endforeach
+
+
+        </div>
     
     <!-- SERVICE REDIRECT -->
       <div class="flex mb-32">
