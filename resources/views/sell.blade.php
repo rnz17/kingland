@@ -69,7 +69,7 @@
 
                 @foreach($products as $product)    
                     <!-- extend card test -->
-                    <div class="group w-[16rem] h-[19rem] hover:scale-125 transform hover:-translate-x-2  hover:z-40 [perspective:1000px] duration-500">
+                    <div class="group w-[16rem] h-[19rem] hover:scale-125 transform hover:-translate-x-2  hover:z-50 [perspective:1000px] duration-500">
                         <div class="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
 
                             <!-- Front Side -->

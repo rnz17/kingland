@@ -40,32 +40,34 @@
         </div>
 
       <!-- Card Container -->
-        <div class="m-auto pl-[5vw] flex flex-wrap pt-12 pb-16 w-full gap-x-28 gap-y-12">
+        <div class="m-auto flex flex-wrap pb-16 w-full gap-y-4 gap-x-2 px-24">
 
           <!-- Cards -->
           @foreach($blogs as $blog)
-          <a href="{{ route('blog.show', $blog->id) }}"  class="m-auto">
-            <div class="group m-auto flex h-auto w-[32vw] hover:w-[41vw] min-w-[28rem] max-w-[39rem] aspect-[36/15] bg-notwhite border-2 border-gray border-opacity-20 shadow-xl duration-500 rounded-lg">
-            <!-- w-[39rem] -->
-              <div class="my-auto {{ $blog->image_url ? '' : 'hidden' }} relative h-full w-auto aspect-[1/2] flex justify-center items-center">
-                  <div class="absolute h-full aspect-square bg-lightblue border-2 border-textblue rounded-full left-0 transform -translate-x-1/2 overflow-hidden shadow-xl">
-                    <img src="{{ asset('storage/' . $blog->image_url) }}" class="h-full"></img>
+            <div class="card group pt-44 m-auto mt-0 hover:z-50 duration-500">
+              <a href="{{ route('blog.show', $blog->id) }}"  class="m-auto mt-0">
+                <div class="m-auto flex flex-col w-[23vw] h-auto min-h-[26rem] bg-notwhite border-2 border-gray border-opacity-20 shadow-xl duration-500 rounded-lg">
+                <!-- image -->
+                  <div class="mx-auto relative h-auto w-full aspect-[2/1] transform flex justify-center items-center">
+                      <div class="flex absolute w-full group-hover:w-[150%] aspect-square group-hover:aspect-video bg-lightblue border-2 border-textblue rounded-full bottom-0 group-hover:rounded-lg overflow-hidden shadow-xl duration-500 ease-out">
+                        <img src="{{ $blog->image_url ? asset('storage/' . $blog->image_url) : asset('images/kingland/logo.png') }}" class="w-full h-full object-cover"></img>
+                      </div>
                   </div>
-              </div>
 
-              <div class="flex flex-col w-full h-auto overflow-hidden p-6 {{ $blog->image_url ? 'group-hover:p-2' : 'group-hover:p-6' }}">
-                <div class="flex h-full group-hover:h-1/3 overflow-hidden duration-500 mb-2">
-                  <h2 class="m-auto font-bold text-lg text-blue underline">{{ $blog->title }}</h2>
-                </div>
-                <div class="h-12 overflow-hidden group-hover:h-full duration-500 {{ $blog->image_url ? 'px-2 text-left' : 'px-6 text-justify' }}">
-                  <p class="m-auto text-gray-700 text-base">
-                      {!! $blog->content !!}
-                  </p>
-                </div>
-              </div>
+                  <div class="flex flex-col w-full h-64 overflow-hidden p-2">
+                    <div class="flex h-1/3 group-hover:h-full overflow-hidden duration-500 mb-2">
+                      <h2 class="m-auto font-bold text-lg text-blue underline">{{ $blog->title }}</h2>
+                    </div>
+                    <div class="h-full overflow-hidden duration-500">
+                      <p class="m-auto text-gray-700 text-base">
+                          {!! $blog->content !!}
+                      </p>
+                    </div>
+                  </div>
 
+                </div>
+              </a>
             </div>
-          </a>
           @endforeach
 
 
@@ -75,12 +77,12 @@
       <div class="flex mb-32">
 
         <button class="m-auto relative inline-flex items-center justify-center px-8 py-2.5 overflow-hidden tracking-tighter text-white bg-transparent rounded-md group">
-          <span class="absolute w-0 h-0 transition-all duration-1000 ease-out bg-darkblue group-hover:w-[27vw] group-hover:h-[27vw]"></span>
+          <span class="absolute w-0 h-0 transition-all duration-1000 ease-out bg-darkbluespan>
           <span class="absolute top-0 right-0 w-12 h-[50vh] -mr-3">
           </span>
           <span class="absolute inset-0 w-full h-[50vh] -mt-1 rounded-lg opacity-30 bg-transparent">
           </span>
-          <a href="{{ route('services') }}"><span class="relative text-3xl text-textblue group-hover:text-white tracking-widest duration-300 text-decoration underline font-bold">
+          <a href="{{ route('services') }}"><span class="relative text-3xl text-textblueking-widest duration-300 text-decoration underline font-bold">
             Services Offered
           </span></a>
         </button>
@@ -92,6 +94,32 @@
 @include('partials.footer')
 
 </body>
+
+<script>
+  const cards = document.querySelectorAll(".card");
+  const nav = document.getElementById("nav");
+
+  cards.forEach((card) => {
+    card.addEventListener("mouseover", function () {
+      cards.forEach((c) => {
+        if (c !== this) {
+          c.style.opacity = "0.5"; // Reduce opacity of other cards
+          c.style.filter = "blur(5px)"; // Apply blur effect
+          nav.style.filter = "blur(5px)"; // Apply blur effect
+        }
+      });
+    });
+
+    card.addEventListener("mouseout", function () {
+      cards.forEach((c) => {
+        c.style.opacity = "1"; // Reset opacity when mouse leaves
+        c.style.filter = "none"; // Apply blur effect
+        nav.style.filter = "none"; // Apply blur effect
+      });
+    });
+  });
+
+</script>
 
 <script>
 
