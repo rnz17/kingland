@@ -40,22 +40,22 @@
         </div>
 
       <!-- Card Container -->
-        <div class="m-auto flex flex-wrap pb-16 w-full gap-y-4 gap-x-2 px-24">
+        <div class="m-auto flex flex-wrap pb-16 w-full gap-y-2 lg:gap-y-4 gap-x-2 lg:px-24">
 
           <!-- Cards -->
           @foreach($blogs as $blog)
-            <div class="card group pt-44 m-auto mt-0 hover:z-50 duration-500">
+            <div class="card group pt-48 lg:pt-44 m-auto mt-0 hover:z-50 duration-500">
               <a href="{{ route('blog.show', $blog->id) }}"  class="m-auto mt-0">
-                <div class="m-auto flex flex-col w-[23vw] h-auto min-h-[26rem] bg-notwhite border-2 border-gray border-opacity-20 shadow-xl duration-500 rounded-lg">
+                <div class="m-auto flex flex-col w-5/6 md:w-5/12 lg:w-[23vw] h-auto min-h-[26rem] bg-notwhite border-2 border-gray border-opacity-20 shadow-xl duration-500 rounded-lg">
                 <!-- image -->
                   <div class="mx-auto relative h-auto w-full aspect-[2/1] transform flex justify-center items-center">
-                      <div class="flex absolute w-full group-hover:w-[150%] aspect-square group-hover:aspect-video bg-lightblue border-2 border-textblue rounded-full bottom-0 group-hover:rounded-lg overflow-hidden shadow-xl duration-500 ease-out">
+                      <div class="flex absolute w-full lg:group-hover:w-[150%] aspect-video lg:aspect-square lg:group-hover:aspect-video bg-lightblue border-2 border-textblue rounded-lg lg:rounded-full bottom-0 lg:group-hover:rounded-lg overflow-hidden shadow-xl duration-500 ease-out">
                         <img src="{{ $blog->image_url ? asset('storage/' . $blog->image_url) : asset('images/kingland/logo.png') }}" class="w-full h-full object-cover"></img>
                       </div>
                   </div>
 
                   <div class="flex flex-col w-full h-64 overflow-hidden p-2">
-                    <div class="flex h-1/3 group-hover:h-full overflow-hidden duration-500 mb-2">
+                    <div class="flex h-1/3 lg:group-hover:h-full overflow-hidden duration-500 mb-2">
                       <h2 class="m-auto font-bold text-lg text-blue underline">{{ $blog->title }}</h2>
                     </div>
                     <div class="h-full overflow-hidden duration-500">
