@@ -9,34 +9,44 @@
             </a>
         </div>
         
-        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-            <a href="{{ route('dashboard') }}" class="text-center w-full text-lg">Dashboard</a>
-        </div>
+        <a href="{{ route('dashboard') }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+            <div class="w-full">
+                Dashboard
+            </div>
+        </a>
 
-        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-            <a href="{{ route('inquiries.index') }}" class="text-center w-full text-lg">Inquiries</a>
-        </div>
+        <a href="{{ route('inquiries.index') }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+            <div class="w-full">
+                Inquiries
+            </div>
+        </a>
 
-        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400">
-            <a href="{{ route('blogs.index') }}" class="text-center w-full text-lg">Blogs</a>
-        </div>
+        <a href="{{ route('blogs.index') }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+            <div class="w-full">
+                Blogs
+            </div>
+        </a>
 
-        <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue border-b-2 border-green-400">
-            <a href="{{ route('users.requests') }}" class="text-center w-full text-lg">Requests</a>
-        </div>
+        <a href="{{ route('users.requests') }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+            <div class="w-full">
+                Requests
+            </div>
+        </a>
 
 
-        <button onclick="toggleHIDE('profile')" class="flex mx-auto my-0 p-4 items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-30">
+        <button onclick="toggleHIDE('profile')" class="flex mx-auto my-0 p-4 items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue-30">
             <img src="{{ asset('images/nav/profile_fill.png') }}" class="h-full m-auto">
         </button>
         
     </nav>
 
     <div id="profile" class="absolute hidden flex flex-wrap right-0 top-20 bg-notwhite z-40 w-56">
-        <a href="{{ route('profile.edit') }}" class="py-4 text-center w-full text-lg">{{ Auth::check() ? Auth::user()->name : 'Null please re-login' }}</a>
+        <a href="{{ route('profile.edit') }}" class="py-4 flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+            {{ Auth::check() ? Auth::user()->name : 'Null please re-login' }}</a>
         <form method="POST" action="{{ route('logout') }}" class="w-full">
             @csrf
-        <button type="submit" class="py-4 text-center w-full text-lg h-full flex items-center justify-center">Log out</button>
+        <button type="submit" class="py-4 flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg h
+        -full flex items-center justify-center">Log out</button>
         </form>
     </div>
     
@@ -76,9 +86,11 @@
 
         <!-- Nav Buttons -->
         <div class="hidden lg:flex w-3/4">
-            <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-                <a href="{{ '/' }}" class="text-center w-full text-lg">Home</a>
-            </div>
+            <a href="{{ '/' }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+                <div class="w-full">
+                    <h1 class="text-center">Home</h1>
+                </div>        
+            </a>
             
             <div class="block group/dd mx-auto my-0 py-auto items-center w-32 overflow-hidden">
             
@@ -92,21 +104,27 @@
 
             </div>
 
-            <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
-                <a href="{{ '/services' }}" class="text-center w-full text-lg">What we Offer</a>
-            </div>
+            <a href="{{ '/services' }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+                <div class="w-full">
+                    What we Offer
+                </div>
+            </a>
 
 
-            <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration">
-                <a href="{{ '/sell' }}" class="text-center w-full text-lg">What we Sell</a>
-            </div>
+            <a href="{{ '/sell' }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+                <div class="w-full">
+                    What we Sell
+                </div>
+            </a>
 
-            <div class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration">
-                <a href="{{ '/buy' }}" class="text-center w-full text-lg">What we Buy</a>
-            </div>
+            <a href="{{ '/buy' }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+                <div class="w-full">
+                    What we Buy
+                </div>
+            </a>
 
             @if (Str::contains(request()->path(), ['sell']))
-                <button onclick="toggleBasket()" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue hover:border-b-2 hover:border-blue duration-300 ">
+                <button onclick="toggleBasket()" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">
                     <img src="{{ asset('images/nav/basket.png') }}" class="m-auto h-1/2">
                 </button>
             @endif
