@@ -40,13 +40,13 @@
         </div>
 
       <!-- Card Container -->
-        <div class="m-auto flex flex-wrap pb-16 w-full gap-y-2 lg:gap-y-4 gap-x-2 lg:px-24">
+        <div class="m-auto flex flex-wrap pb-16 w-full gap-y-2 lg:gap-y-4 gap-x-2 lg:px-36">
 
           <!-- Cards -->
           @foreach($blogs as $blog)
             <div class="card group pt-48 lg:pt-44 m-auto mt-0 hover:z-50 duration-500">
               <a href="{{ route('blog.show', $blog->id) }}"  class="m-auto mt-0">
-                <div class="m-auto flex flex-col w-5/6 md:w-5/12 lg:w-[23vw] h-auto min-h-[26rem] bg-notwhite border-2 border-gray border-opacity-20 shadow-xl duration-500 rounded-lg">
+                <div class="m-auto flex flex-col w-5/6 md:w-5/12 lg:w-[18vw] h-auto min-h-[26rem] hover:scale-105 bg-notwhite border-2 border-gray border-opacity-20 shadow-sm group-hover:shadow-xl duration-500 rounded-lg">
                 <!-- image -->
                   <div class="mx-auto relative h-auto w-full aspect-[2/1] transform flex justify-center items-center">
                       <div class="flex absolute w-full lg:group-hover:w-[150%] aspect-video lg:aspect-square lg:group-hover:aspect-video bg-lightblue border-2 border-textblue rounded-lg lg:rounded-full bottom-0 lg:group-hover:rounded-lg overflow-hidden shadow-xl duration-500 ease-out">
@@ -105,7 +105,6 @@
         if (c !== this) {
           c.style.opacity = "0.5"; // Reduce opacity of other cards
           c.style.filter = "blur(5px)"; // Apply blur effect
-          nav.style.filter = "blur(5px)"; // Apply blur effect
         }
       });
     });
@@ -114,7 +113,6 @@
       cards.forEach((c) => {
         c.style.opacity = "1"; // Reset opacity when mouse leaves
         c.style.filter = "none"; // Apply blur effect
-        nav.style.filter = "none"; // Apply blur effect
       });
     });
   });
