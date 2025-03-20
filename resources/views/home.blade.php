@@ -1,7 +1,7 @@
 @include('partials.head')
     @include('partials.nav')
     <!-- SLIDESHOW -->
-      <div class="relative h-[50vh] flex overflow-hidden bg-white">
+      <div class="relative h-[50vh] flex overflow-hidden bg-lightblue">
         @if ($images->isNotEmpty())
             @foreach($images as $index => $item)
                 <div 
@@ -12,7 +12,7 @@
             @endforeach
         @else
             <div 
-                class="m-auto w-[95%] h-[95%] bg-cover bg-contain bg-no-repeat"
+                class="w-full h-full bg-fill bg-center bg-contain bg-no-repeat"
                 style="background-image: url('{{ asset('images/kingland/text_color.png') }}');">
             </div>
         @endif
