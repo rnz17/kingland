@@ -10,6 +10,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ConcernController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SlideController;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -124,6 +125,15 @@ use Illuminate\Http\Request;
             Route::get('/', [SupplierController::class, 'index'])->name('index');
             Route::post('/', [SupplierController::class, 'store'])->name('store');
             Route::put('/{id}', [ConcernController::class, 'update'])->name('update');
+        });
+
+        Route::prefix('/dashboard/carousel')->name('carousel.')->group(function () {
+            Route::get('/', [SlideController::class, 'index'])->name('index');
+            Route::post('/store', [SlideController::class, 'store'])->name('store');
+            Route::post('/update-order', [SlideController::class, 'updateOrder'])->name('updateOrder');
+            Route::delete('/delete/{id}', [SlideController::class, 'destroy'])->name('destroy');
+
+
         });
 
         // Blog Routes

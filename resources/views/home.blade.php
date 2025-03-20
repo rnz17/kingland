@@ -1,16 +1,22 @@
 @include('partials.head')
     @include('partials.nav')
     <!-- SLIDESHOW -->
-      <div class="relative h-[50vh] flex overflow-hidden bg-blue">
+      <div class="relative h-[50vh] flex overflow-hidden bg-white">
+        @if ($images->isNotEmpty())
+            @foreach($images as $index => $item)
+                <div 
+                    class="absolute left-1/2 top-1/2 w-full h-[50vh] transform -translate-x-1/2 -translate-y-1/2 duration-1000 ease-linear bg-cover bg-center opacity-0 transition-opacity"
+                    style="background-image: url('{{ asset('storage/' . $item->fileName) }}');"
+                    data-index="{{ $index }}">
+                </div>
+            @endforeach
+        @else
+            <div 
+                class="m-auto w-[95%] h-[95%] bg-cover bg-contain bg-no-repeat"
+                style="background-image: url('{{ asset('images/kingland/text_color.png') }}');">
+            </div>
+        @endif
 
-        <div id="img1" class="absolute left-1/2 top-1/2 active h-[50vh] w-full transform -translate-x-1/2 -translate-y-1/2 duration-1000 ease-linear bg-cover bg-center z-10 opacity-100" style="background-image: url('/images/kingland/sample1.jpg');">
-        </div>
-        <div id="img2" class="absolute left-1/2 top-1/2 h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-20 opacity-0" style="background-image: url('/images/kingland/sample2.jpg');">
-        </div>
-        <div id="img3" class="absolute left-1/2 top-1/2 h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-20 opacity-0" style="background-image: url('/images/kingland/sample2.jpg');">
-        </div>
-        <div id="img4" class="absolute left-1/2 top-1/2 h-0 w-full m-auto transform -translate-x-1/2 -translate-y-1/2  duration-1000 ease-linear bg-cover bg-center z-30 opacity-0" style="background-image: url('/images/kingland/sample3.jpg');">
-        </div>
 
       </div>
     <!-- PARTNERS (HIDDEN) -->
@@ -120,82 +126,27 @@
 </script>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let slides = document.querySelectorAll("[data-index]");
+        let currentIndex = 0;
+        let slideInterval = 3000; // Change slide every 3 seconds
 
-  // carousel
-    const img1 = document.getElementById('img1');
-    const img2 = document.getElementById('img2');
-    const img3 = document.getElementById('img3');
-    const img4 = document.getElementById('img4');
-    const arr = [img1,img2,img3,img4];
-
-    function changeImg() {
-      console.log("change image!!");
-      var current;
-      var next;
-
-      for(let img of arr){
-        if(img.classList.contains('active')){
-          current = arr.indexOf(img);
-          next = (current + 1) % arr.length;
-          img.classList.remove('active');
-          arr[next].classList.add('active');
-          break
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === index ? "1" : "0";
+                slide.style.zIndex = i === index ? "10" : "5";
+            });
         }
-      }
 
-      if(next == 0){
-        arr[0].classList.add('z-40');
-      }else if((next !== 0) || (current !== 0)){
-        arr[0].classList.remove('z-40');
-      }
-
-      setTimeout(() => {
-        arr[next].classList.add('active');
-        arr[next].classList.add('h-[50vh]');
-        arr[next].classList.add('opacity-100');
-        arr[next].classList.remove('h-0');
-        arr[next].classList.remove('opacity-0');
-      }, 1000);
-
-
-      setTimeout(() => {
-        arr[current].classList.remove('active');
-        arr[current].classList.remove('h-[50vh]');
-        arr[current].classList.remove('opacity-100');
-        arr[current].classList.add('h-0');
-        arr[current].classList.add('opacity-0');
-        
-      }, 2000);
-
-    }
-
-    function handleScrollAndFocus() {
-      if (window.scrollY <= 799 && document.hasFocus()) {
-        if (!window.intervalId) {
-          window.intervalId = setInterval(changeImg, 5000);
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
         }
-      } else {
-        if (window.intervalId) {
-          clearInterval(window.intervalId);
-          window.intervalId = null;
-        }
-      }
-    }
 
-    // Event listener for scrolling
-    window.addEventListener('scroll', handleScrollAndFocus);
-
-    // Event listeners for focus and blur
-    window.addEventListener('blur', function () {
-      if (window.intervalId) {
-        clearInterval(window.intervalId);
-        window.intervalId = null;
-      }
+        // Initialize first slide
+        showSlide(currentIndex);
+        setInterval(nextSlide, slideInterval);
     });
-
-    window.addEventListener('focus', handleScrollAndFocus);
-
-
-
 </script>
+
 </html>

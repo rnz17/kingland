@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Service;
+use App\Models\Slide;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Blog;
@@ -21,6 +22,7 @@ class ProductController extends Controller
     {
         $filters = Service::all();
         $products = Product::all();
+        $images = Slide::all();
         $blogs = Blog::orderBy('id', 'desc')->get();
 
         // Properly execute the raw query to get ENUM values
@@ -49,7 +51,8 @@ class ProductController extends Controller
             'products' => $products,
             'filters' => $filters,
             'units' => $units,
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'images' => $images
         ]);
     }
 
