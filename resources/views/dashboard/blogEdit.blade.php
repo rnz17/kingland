@@ -35,7 +35,7 @@
             <!-- Blog Content Text -->
                 <div class="relativeblock mb-4 w-full">
                     <label for="Content">Content</label>
-                    <textarea name="content" id="content" class="w-full h-60 border p-4 text-xl" required>{{ $blog->content }}</textarea>
+                    <textarea name="content" id="content" class="w-full h-60 border p-4 text-xl" required>{!! $blog->content !!}</textarea>
                 </div>
                 
             <!-- Submit Button -->
@@ -54,3 +54,47 @@
         </div>
     </div>
 </form>
+
+<script src="/tinymce/tinymce.min.js"></script>
+
+
+<script>
+
+    tinymce.init({
+        selector: '#content',
+        plugins: 'lists link image code',
+        toolbar: 'bold italic underline | bullist numlist | link image code',
+        height: 300,
+        skin: "oxide",
+        content_css: "default",
+        icons: "default",
+        license_key: 'gpl'  // Add this line to remove the evaluation mode warning
+    });
+
+    // Image Input 
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+
+        fileInput.addEventListener('change', function() {
+            const file = fileInput.files[0];
+
+            if (file) {
+                // Create a FileReader object to read the file
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // Set the src of the image to the result from FileReader
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // Show the image
+                };
+
+                // Read the file as a data URL (base64 encoded string)
+                reader.readAsDataURL(file);
+                fileInput.classList.add('hidden')
+            } else {
+                
+                preview.classList.add('hidden') // Hide the image if no file is selected
+            }
+        });
+
+</script>

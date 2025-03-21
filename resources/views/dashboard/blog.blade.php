@@ -52,7 +52,7 @@
 
             <!-- Blog Content Text -->
                 <div class="relativeblock mb-4 w-full">
-                    <textarea name="content" id="content" class="w-full h-60 border p-4 text-xl" placeholder="Write your blog content here..."></textarea>
+                    `<textarea name="content" id="content" class="w-full h-60 border p-4 text-xl" placeholder="Write your blog content here..."></textarea>`
                 </div>
                 
             <!-- Submit Button -->
