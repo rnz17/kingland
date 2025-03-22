@@ -201,6 +201,21 @@
             });
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Scroll to saved position on page load
+        const scrollPosition = localStorage.getItem('scrollPosition');
+        if (scrollPosition) {
+            window.scrollTo(0, scrollPosition);
+            localStorage.removeItem('scrollPosition'); // Clear after scrolling
+        }
+    });
+
+    // Save scroll position before the page unloads
+    window.addEventListener('beforeunload', function() {
+        localStorage.setItem('scrollPosition', window.scrollY);
+    });
+
 </script>
 
 <script>
