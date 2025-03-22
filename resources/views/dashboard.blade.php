@@ -98,7 +98,7 @@
                     <div class="m-auto flex w-2/3">
                         <form method="POST" action="{{ route('update.price') }}" class="flex w-full">
                             @csrf
-                            <input type="hidden" name="id" value="{{ $product->category_id }}">
+                            <input type="hidden" name="id" value="{{ $item->id }}">
                             <input 
                                 type="range" 
                                 id="{{ $item->name }}" 
