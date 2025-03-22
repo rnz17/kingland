@@ -19,7 +19,7 @@
                         <tr>
                             @foreach ($product->toArray() as $key => $value)
                                 <td class="border border-gray px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center text-wrap">
-                                    {{ $value }}
+                                    {!! $value !!}
                                 </td>
                             @endforeach
                         </tr>

@@ -58,6 +58,7 @@ class ServiceController extends Controller
 
 
         $logs = ProductLog::orderByDesc('id')->get();
+        
 
 
 
@@ -86,10 +87,11 @@ class ServiceController extends Controller
 
         $services = Service::all();
         $cat = Category::all();
+        $ascCat = Category::orderBy('service_id')->get();
         $subcat = Subcategory::all();
 
         // Pass the columns, products, and filters to the view
-        return view('dashboard', compact('columns', 'products', 'filters', 'services', 'cat', 'subcat', 'logs'));
+        return view('dashboard', compact('columns', 'products', 'filters', 'services', 'cat', 'subcat', 'logs', 'ascCat'));
     }
 
     public function showItemByCode(Request $request)
@@ -143,6 +145,8 @@ class ServiceController extends Controller
     {
         // Get all services
         $filters = Service::all();
+
+        $prices = Price::all();
 
         // Get categories related to services
         $categories = Category::whereIn('service_id', $filters->pluck('id'))->get();
@@ -203,7 +207,7 @@ class ServiceController extends Controller
         $marq = Announcement::all();
 
         // Return view with pagination links
-        return view('sell', compact('products', 'filters', 'marq'));
+        return view('sell', compact('products', 'filters', 'marq', 'prices'));
     }
 
     

@@ -111,6 +111,8 @@ use Illuminate\Http\Request;
     Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/dashboard', [ServiceController::class, 'dashboard'])->name('dashboard');
         Route::post('/dashboard/update-hidden', [ProductController::class, 'updateHidden'])->name('update.hidden');
+        Route::post('/dashboard/update-unit-price', [ProductController::class, 'updatePrice'])->name('update.price');
+
 
 
         // Inquiries Routes
@@ -125,6 +127,8 @@ use Illuminate\Http\Request;
             Route::get('/', [SupplierController::class, 'index'])->name('index');
             Route::post('/', [SupplierController::class, 'store'])->name('store');
             Route::put('/{id}', [ConcernController::class, 'update'])->name('update');
+            Route::post('/update-avail', [SupplierController::class, 'updateAvail'])->name('update.avail');
+
         });
 
         Route::prefix('/dashboard/carousel')->name('carousel.')->group(function () {

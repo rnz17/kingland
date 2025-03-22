@@ -35,4 +35,18 @@ class SupplierController extends Controller
         return redirect()->route('suppliers.index')->with('success', 'Supplier added successfully!');
     }
 
+    public function updateAvail(Request $request){
+        $request->validate([
+            'id' => 'required|exists:prices,id',
+            'avail' => 'required|boolean'
+        ]);
+    
+        $price = Price::find($request->id);
+        $price->available = $request->avail;
+        $price->save();
+    
+        return response()->json(['message' => 'Availability updated successfully.']);
+    }
+    
+
 }

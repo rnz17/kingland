@@ -11,6 +11,7 @@
         <table class="w-full bg-white shadow-md rounded-lg mb-12">
             <thead class="bg-gray-200">
                 <tr>
+                    <th class="p-3 text-left">Availability</th>
                     <th class="p-3 text-left">Supplier</th>
                     <th class="p-3 text-left">Product</th>
                     <th class="p-3 text-left">Price</th>
@@ -19,6 +20,16 @@
             <tbody>
                 @foreach($prices as $price)
                 <tr class="border-t">
+                    <td class="p-3">
+                        <input 
+                            type="checkbox" 
+                            id="avail_checkbox_{{ $price->id }}" 
+                            name="avail_status_{{ $price->id }}" 
+                            class="avail-checkbox rounded-sm" 
+                            data-price-id="{{ $price->id }}" 
+                            {{ $price->available ? 'checked' : '' }}
+                        >
+                    </td>
                     <td class="p-3">{{ $price->supplier->name }}</td>
                     <td class="p-3">{{ $price->product->name }}</td>
                     <td class="p-3">{{ number_format($price->price, 2) }}</td>
@@ -44,3 +55,30 @@
     </div>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".avail-checkbox").on("change", function() {
+            let priceID = $(this).data("price-id");
+            let availStatus = $(this).is(":checked") ? 1 : 0;
+
+            $.ajax({
+                url: "{{ route('suppliers.update.avail') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: priceID,
+                    avail: availStatus
+                },
+                success: function(response) {
+                    console.log(response.message);
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>

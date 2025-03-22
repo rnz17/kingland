@@ -58,97 +58,116 @@
             </div>
 
         <!-- Product Display -->
-        <div class="flex flex-col w-full md:w-5/6">
-            <!-- pagination -->
-            <div class="pt-6 px-4 md:px-12">
-                {{ $products->links('vendor.pagination.tailwind') }}
-            </div>
-            
-            <!-- products -->
-            <div class="m-auto flex flex-wrap gap-[2vw] justify-center items-center w-full h-auto p-4">
+            <div class="flex flex-col w-full md:w-5/6">
+                <!-- pagination -->
+                    <div class="pt-6 px-4 md:px-12">
+                        {{ $products->links('vendor.pagination.tailwind') }}
+                    </div>
+                
+                <!-- products -->
+                <div class="m-auto flex flex-wrap gap-[2vw] justify-center items-center w-full h-auto p-4">
 
-                @foreach($products as $product)    
-                    <!-- extend card test -->
-                    <div class="group w-[16rem] h-[19rem] hover:scale-125 transform hover:-translate-x-2  hover:z-50 [perspective:1000px] duration-500">
-                        <div class="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    @foreach($products as $product)    
+                        <!-- extend card test -->
+                        <div class="group w-[16rem] h-[19rem] hover:scale-125 transform hover:-translate-x-2  hover:z-50 [perspective:1000px] duration-500">
+                            <div class="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
 
-                            <!-- Front Side -->
-                            <div class="absolute w-full h-[19rem] bg-white border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden]">
-                                <div class="flex h-2/3 w-full p-2">
-                                    <img src="{{ asset('storage/images/products/'. $product->code .'.png') }}" class="m-auto w-auto h-auto max-w-[15rem] max-h-full">
-                                </div>
-                                <div class="flex h-1/3 w-full m-auto p-2 text-center">
-                                    <h1 class="m-auto text-base opacity-90">{{ $product->name }}</h1>
-                                </div>
-                            </div>
-                            
-                            <!-- Back Side -->
-                            <div class="absolute w-full h-auto min-h-[19rem] bg-[#131A35] text-[#FDFDFD] border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] px-1 py-2">
-                                <div class="flex m-auto mt-0 w-full h-1/6 overflow-hidden px-1">
-                                    <img src="{{ asset('storage/images/products/'. $product->code .'.png') }}" class="m-auto w-auto h-auto max-w-[7.5rem] max-h-[7rem]">
-                                    <div class="flex w-1/2">
-                                        <h1 class="m-auto text-xs text-ellipsis opacity-90 px-1">{{ $product->name }}</h1>
+                                <!-- Front Side -->
+                                <div class="absolute w-full h-[19rem] bg-white border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden]">
+                                    <div class="flex h-2/3 w-full p-2">
+                                        <img src="{{ asset('storage/images/products/'. $product->code .'.png') }}" class="m-auto w-auto h-auto max-w-[15rem] max-h-full">
+                                    </div>
+                                    <div class="flex h-1/3 w-full m-auto p-2 text-center">
+                                        <h1 class="m-auto text-base opacity-90">{{ $product->name }}</h1>
                                     </div>
                                 </div>
                                 
-                                <div class="flex flex-col m-auto w-full h-full mt-4 px-2">
-                                    @if(!empty($product->brand))
-                                        <div class="m-auto flex w-full px-0 opacity-80 mb-2">
-                                            <div class="w-1/2">
-                                                <h1 class="m-auto ml-0 text-xs text-left">Brand:</h1>
-                                            </div>
-                                            <h1 class="m-auto ml-0 text-xs text-right">{{ $product->brand }}</h1>
+                                <!-- Back Side -->
+                                <div class="absolute w-full h-auto min-h-[19rem] bg-[#131A35] text-[#FDFDFD] border border-gray border-opacity-10 flex flex-col items-center justify-center text-2xl shadow-xl rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] px-1 py-2">
+                                    <div class="flex m-auto mt-0 w-full h-1/6 overflow-hidden px-1">
+                                        <img src="{{ asset('storage/images/products/'. $product->code .'.png') }}" class="m-auto w-auto h-auto max-w-[7.5rem] max-h-[7rem]">
+                                        <div class="flex w-1/2">
+                                            <h1 class="m-auto text-xs text-ellipsis opacity-90 px-1">{{ $product->name }}</h1>
                                         </div>
-                                    @endif
-                                    @if(!empty($product->unit))
-                                        <div class="m-auto flex w-full px-0 opacity-80 mb-2">
-                                            <div class="w-1/2">
-                                                <h1 class="m-auto ml-0 text-xs text-left">UOM:</h1>
-                                            </div>
-                                            <h1 class="m-auto ml-0 text-xs text-right">{{ $product->unit }}</h1>
-                                        </div>
-                                    @endif
-                                    @if(!empty($product->pcs_unit))
-                                        <div class="m-auto flex w-full px-0 opacity-80 mb-2">
-                                            <div class="w-1/2">
-                                                <h1 class="m-auto ml-0 text-xs text-left">QTY / UOM:</h1>
-                                            </div>
-                                            <h1 class="m-auto ml-0 text-xs text-right">{{ $product->pcs_unit }}</h1>
-                                        </div>
-                                    @endif
-                                    @if(!empty($product->spec))
-                                        <div class="flex flex-col w-full px-0 opacity-80">
-                                            <div class="w-full text-center mb-1">
-                                                <h1 class="m-auto text-xs">Specifications:</h1>
-                                            </div>
-                                            <div class="w-full py-1 px-2 overflow-hidden">
-                                                <h1 class="text-xs break-words whitespace-normal">
-                                                    {!! $product->spec !!}
-                                                </h1>
-                                            </div>
-                                        </div>
-                                    @endif
-
-                                    <div class="m-auto mb-0 flex w-full py-4">
-                                        <button onclick="sendEmail('item','{{ $product->code }}')" class="m-auto text-xs text-[#131A35] bg-lightblue px-2 py-1 rounded-lg">Inquire</button>
-                                        <button onclick="addToBasket('{{ $product->code }}')" class="m-auto text-xs text-[#131A35] bg-green-300 px-2 py-1 rounded-lg">Add to Basket</button>
                                     </div>
                                     
-                                </div>
+                                    <div class="flex flex-col m-auto w-full h-full mt-4 px-2">
+                                        @php
+                                            // Filter prices matching the product_id and get the min price
+                                            $minPrice = $prices->where('product_id', $product->id)
+                                                ->where('available', '!=', 0)
+                                                ->min('price');
 
+                                            // Calculate the price with a 27% margin
+                                            $prodPrice = $minPrice ? $minPrice * (1 + ($product->unit_price / 100)) : null;
+                                        @endphp
+
+                                        @if($prodPrice)
+                                        <div class="m-auto flex w-full px-0 opacity-80 mb-2">
+                                                <div class="w-1/2">
+                                                    <h1 class="m-auto ml-0 text-xs text-left">Price:<span class="ml-0 font-thin opacity-80">(w/ VAT)</span></h1>
+                                                </div>
+                                                <h1 class="m-auto ml-0 text-xs text-right">{{ $prodPrice }}</h1>
+                                            </div>
+                                        @endif
+
+                                        @if(!empty($product->brand))
+                                            <div class="m-auto flex w-full px-0 opacity-80 mb-2">
+                                                <div class="w-1/2">
+                                                    <h1 class="m-auto ml-0 text-xs text-left">Brand:</h1>
+                                                </div>
+                                                <h1 class="m-auto ml-0 text-xs text-right">{{ $product->brand }}</h1>
+                                            </div>
+                                        @endif
+                                        @if(!empty($product->unit))
+                                            <div class="m-auto flex w-full px-0 opacity-80 mb-2">
+                                                <div class="w-1/2">
+                                                    <h1 class="m-auto ml-0 text-xs text-left">UOM:</h1>
+                                                </div>
+                                                <h1 class="m-auto ml-0 text-xs text-right">{{ $product->unit }}</h1>
+                                            </div>
+                                        @endif
+                                        @if(!empty($product->pcs_unit))
+                                            <div class="m-auto flex w-full px-0 opacity-80 mb-2">
+                                                <div class="w-1/2">
+                                                    <h1 class="m-auto ml-0 text-xs text-left">QTY / UOM:</h1>
+                                                </div>
+                                                <h1 class="m-auto ml-0 text-xs text-right">{{ $product->pcs_unit }}</h1>
+                                            </div>
+                                        @endif
+                                        @if(!empty($product->spec))
+                                            <div class="flex flex-col w-full px-0 opacity-80">
+                                                <div class="w-full text-center mb-1">
+                                                    <h1 class="m-auto text-xs">Specifications:</h1>
+                                                </div>
+                                                <div class="w-full py-1 px-2 overflow-hidden">
+                                                    <h1 class="text-xs break-words whitespace-normal">
+                                                        {!! $product->spec !!}
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        <div class="m-auto mb-0 flex w-full py-4">
+                                            <button onclick="sendEmail('item','{{ $product->code }}')" class="m-auto text-xs text-[#131A35] bg-lightblue px-2 py-1 rounded-lg">Inquire</button>
+                                            <button onclick="addToBasket('{{ $product->code }}')" class="m-auto text-xs text-[#131A35] bg-green-300 px-2 py-1 rounded-lg">Add to Basket</button>
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
+                    @endforeach
+
+                    
+                </div>
+
+                <!-- pagination -->
+                    <div class="pt-6 px-4 md:px-12">
+                        {{ $products->links('vendor.pagination.tailwind') }}
                     </div>
-                @endforeach
-
-                
             </div>
-
-            <!-- pagination -->
-            <div class="pt-6 px-4 md:px-12">
-                {{ $products->links('vendor.pagination.tailwind') }}
-            </div>
-        </div>
 
     </main>
 

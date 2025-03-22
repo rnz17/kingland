@@ -185,8 +185,6 @@ class ProductController extends Controller
         }
     }
     
-    
-    
     public function update(Request $request)
     {
         $id = $request->input('id');
@@ -287,6 +285,26 @@ class ProductController extends Controller
         return redirect(route('dashboard'))->with('success', 'Product updated successfully.');
     }
         
+    public function updatePrice(Request $request)
+    {
+        // Validate the input
+        $request->validate([
+            'id' => 'required|exists:products,category_id',
+            'value' => 'required|numeric|min:1|max:100',
+        ]);
+
+        try {
+            // Update all products with the given category_id
+            Product::where('category_id', $request->id)
+                ->update(['unit_price' => $request->value]);
+
+            // Return success response
+            return back()->with('success', 'All products in this category were updated successfully!');
+        } catch (\Exception $e) {
+            // Handle any errors
+            return back()->with('error', 'Failed to update unit prices.');
+        }
+    }
     
 
     public function delete(Request $request)
