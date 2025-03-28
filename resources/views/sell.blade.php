@@ -105,7 +105,7 @@
                                         @if($prodPrice)
                                         <div class="m-auto flex w-full px-0 opacity-80 mb-2">
                                                 <div class="w-1/2">
-                                                    <h1 class="m-auto ml-0 text-xs text-left">Price:<span class="ml-0 font-thin opacity-80">(w/ VAT)</span></h1>
+                                                    <h1 class="m-auto ml-0 text-xs text-left">Price:<span class="ml-0 font-thin opacity-80">(VAT Incl.)</span></h1>
                                                 </div>
                                                 <h1 class="m-auto ml-0 text-xs text-right">{{ $prodPrice }}</h1>
                                             </div>
