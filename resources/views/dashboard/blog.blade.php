@@ -18,7 +18,7 @@
                     </td>
                     <td class="border border-gray px-6 py-4 text-center">
                         <div class="flex flex-wrap">
-                            <a href="{{ route('blogs.edit', $blog->id) }}" class="m-auto px-2 py-1 bg-lightblue text-white rounded">Edit</a>
+                            <a href="{{ route('service.edit', $blog->id) }}" class="m-auto px-2 py-1 bg-lightblue text-white rounded">Edit</a>
                             <form action="{{ route('blogs.delete', ['id' => $blog->id]) }}" method="POST"class="m-auto">
                                 @csrf
                                 @method('DELETE')
@@ -82,7 +82,7 @@
     tinymce.init({
         selector: '#content',
         plugins: 'lists link image code',
-        toolbar: 'bold italic underline | bullist numlist | link image code',
+        toolbar: 'fontsize forecolor backcolor | bold italic underline | bullist numlist | link image code',
         height: 300,
         skin: "oxide",
         content_css: "default",

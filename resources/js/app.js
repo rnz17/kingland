@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tinymce.init({
         selector: '#content',
         plugins: 'lists link image code',
-        toolbar: 'bold italic underline | bullist numlist | link image code',
+        toolbar: 'fontsize forecolor backcolor | bold italic underline | bullist numlist | link image code',
         height: 300
     });
 });

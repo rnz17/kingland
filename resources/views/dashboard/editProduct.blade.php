@@ -189,7 +189,7 @@
     tinymce.init({
         selector: '#spec',
         plugins: 'lists link',
-        toolbar: 'bold italic underline | bullist numlist | link image code',
+        toolbar: 'fontsize forecolor backcolor | bold italic underline | bullist numlist | link image code',
         height: 300,
         skin: "oxide",
         content_css: "default",

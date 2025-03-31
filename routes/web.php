@@ -122,6 +122,16 @@ use Illuminate\Http\Request;
             Route::put('/{id}', [ConcernController::class, 'update'])->name('update');
         });
 
+        // Service Routes
+        Route::prefix('/dashboard/service')->name('service.')->group(function () {
+            Route::get('/', [OfferController::class, 'index'])->name('index');
+
+            Route::get('/{id}', [OfferController::class, 'edit'])->name('edit');
+
+            Route::put('/{id}', [OfferController::class, 'update'])->name('update');
+            
+        });
+
         // Supplier Routes
         Route::prefix('/dashboard/suppliers')->name('suppliers.')->group(function () {
             Route::get('/', [SupplierController::class, 'index'])->name('index');

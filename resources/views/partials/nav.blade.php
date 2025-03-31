@@ -27,6 +27,12 @@
             </div>
         </a>
 
+        <a href="{{ route('service.index') }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+            <div class="w-full">
+                What we offer
+            </div>
+        </a>
+
         <a href="{{ route('users.requests') }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
             <div class="w-full">
                 Requests
@@ -117,11 +123,26 @@
                 </div>
             </a>
 
-            <a href="{{ '/buy' }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
+            <!-- temporarily replace by next sibling (Our Company) -->
+            <!-- <a href="{{ '/buy' }}" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue text-center text-lg">
                 <div class="w-full">
                     What we Buy
                 </div>
-            </a>
+            </a> -->
+
+            <div class="block group/dd mx-auto my-0 py-auto items-center w-64 overflow-visible">
+            
+                <div class="relative transform top-1/2 -translate-y-1/2 text-lg w-full text-center group-hover/dd:opacity-0 group-hover/dd:translate-y-[200%] duration-500">Our Company</div>
+
+                <div class="relative flex flex-col transform w-full h-full text-center group-hover/dd:opacity-100 -translate-y-[200%] group-hover/dd:-translate-y-[3vh] opacity-0 duration-500">
+
+                    <a href="{{ '/founders' }}" class="w-full text-base text-clip text-nowrap hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Leaders</a>
+                    <a href="{{ '/sng' }}" class="w-full text-base text-clip text-nowrap hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Structure and Governance</a>
+                    <a href="{{ '/pvp' }}" class="w-full text-base text-clip text-nowrap hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Purpose, Values, and Principles</a>
+                    
+                </div>
+
+            </div>
 
             @if (Str::contains(request()->path(), ['sell']))
                 <button onclick="toggleBasket()" class="flex mx-auto my-0 p-auto items-center hover:text-textblue w-32 border-b-2 border-transparent hover:border-blue">

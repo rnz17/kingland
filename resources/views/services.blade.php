@@ -5,14 +5,14 @@
 
     <!-- Services modal -->
       <div id="modal" class="hidden fixed z-20 top-0 left-0 h-screen w-screen bg-transparent justify-center backdrop-blur-md items-center p-4">
-            <div class="relative flex flex-col left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-5/6 lg:w-1/2 h-auto bg-white shadow-2xl p-8 rounded-xl">
+            <div class="relative flex flex-col left-1/2 top-1/2 border border-gray border-opacity-50 transform -translate-x-1/2 -translate-y-1/2 w-5/6 lg:w-2/3 max-h-[95vh] h-auto bg-notwhite shadow-2xl p-8 rounded-xl">
                 <img id="modalImg" src="" class="w-1/6 my-4 mx-auto">
                 <div class="flex w-full">
                   <h1 id="modalContTitle" class="m-auto w-auto text-4xl p-4 font-bold text-center">
                   </h1>
                 </div>
-                <div class="flex w-full">
-                  <p id="modalContText" class="m-auto w-2/3 text-xl py-4 font-semibold text-center">
+                <div class="flex w-full h-1/3 overflow-y-auto overflow-x-hidden shadow-[inset_0_0px_10px_rgba(120,120,120,0.5)] rounded-lg p-2">
+                  <p id="modalContText" class="m-auto">
                   </p>
                 </div>
                 <button id="" onclick="redirect(this.id)" class="redirect m-auto w-1/3 mt-2 py-2 bg-lightblue text-white rounded-md">See Products</button>
@@ -36,7 +36,7 @@
                       <img src="{{ asset('images/services/' . $filter->id . '.png') }}" class="h-full m-auto" alt="{{ $filter->name }} icon">
                     </div>
                     <div class="block z-10 px-0 transition-all duration-500">
-                      <h1 id="{{ $filter->id }}" class="text-2xl font-semibold">{{ $filter->name }}</h1>
+                      <h1 id="{{ $filter->id }}Title" class="text-2xl font-semibold">{{ $filter->name }}</h1>
                       <h1 id="{{ $filter->id }}Text" class="hidden">{{ $filter->descriptions }}</h1>
                       <button id="{{ $filter->id }}" class="openModalBtn block w-32 h-0 group-hover:h-10 text-transparent bg-blue group-hover:text-white rounded-md mt-4 duration-300 mx-auto">
                         Learn More
@@ -68,11 +68,12 @@
 
         modal.classList.remove('hidden');
         nav.classList.add('hidden');
+
         modalImg.src = `{{ asset('images/services/${btn.id}.png') }}`;
-        var title = document.getElementById(`${btn.id}`); 
+        var title = document.getElementById(`${btn.id}Title`); 
         var content = document.getElementById(`${btn.id}Text`); 
         modalContTitle.innerHTML = title.innerHTML;
-        modalContText.innerHTML = content.innerHTML;
+        modalContText.innerHTML = content.innerText;
       });
     });
 
