@@ -152,7 +152,7 @@
         `,
         content_css: "default",
         icons: "default",
-        license_key: 'gpl'  // Add this line to remove the evaluation mode warning
+        license_key: 'gpl'  // Add this line to remove the evaluation mode warning.
     });
 
     // dropdown
