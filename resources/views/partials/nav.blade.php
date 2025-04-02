@@ -135,8 +135,7 @@
                 <div class="relative transform top-1/2 -translate-y-1/2 text-lg w-full text-center group-hover/dd:opacity-0 group-hover/dd:translate-y-[200%] duration-500">Our Company</div>
 
                 <div class="relative flex flex-col transform w-full h-full text-center group-hover/dd:opacity-100 -translate-y-[200%] group-hover/dd:-translate-y-[3vh] opacity-0 duration-500">
-
-                    <a href="{{ '/founders' }}" class="w-full text-base text-clip text-nowrap hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Leaders</a>
+                    
                     <a href="{{ '/sng' }}" class="w-full text-base text-clip text-nowrap hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Structure and Governance</a>
                     <a href="{{ '/pvp' }}" class="w-full text-base text-clip text-nowrap hover:text-textblue hover:scale-105 hover:scale-x-110 duration-300">Purpose, Values, and Principles</a>
                     
