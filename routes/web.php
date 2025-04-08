@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
     Route::view('/history', 'history')->name('history');
     Route::view('/contact', 'contact')->name('contact');
     Route::view('/pvp', 'pvp')->name('pvp');
+    Route::view('/privacy', 'privacy')->name('PrivacyPolicy');
 
     Route::get('/cont/{id}', [BlogController::class, 'show'])->name('blog.show');
     

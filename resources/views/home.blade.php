@@ -1,11 +1,11 @@
 @include('partials.head')
     @include('partials.nav')
     <!-- SLIDESHOW -->
-      <div class="relative h-[50vh] flex overflow-hidden bg-lightblue">
+      <div class="relative h-[78vh] flex overflow-hidden bg-lightblue">
         @if ($images->isNotEmpty())
             @foreach($images as $index => $item)
                 <div 
-                    class="absolute left-1/2 top-1/2 w-full h-[50vh] transform -translate-x-1/2 -translate-y-1/2 duration-1000 ease-linear bg-cover bg-center opacity-0 transition-opacity"
+                    class="absolute left-1/2 top-1/2 w-full h-[78vh] transform -translate-x-1/2 -translate-y-1/2 duration-1000 ease-linear bg-cover bg-center opacity-0 transition-opacity"
                     style="background-image: url('{{ asset('storage/' . $item->fileName) }}');"
                     data-index="{{ $index }}">
                 </div>
@@ -97,6 +97,7 @@
     
     
     
+@include('partials.policy')
 @include('partials.footer')
 
 </body>

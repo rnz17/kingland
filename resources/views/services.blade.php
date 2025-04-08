@@ -26,7 +26,7 @@
             <h1 class="font-black text-darkblue tracking-wide text-4xl">OUR SERVICES</h1>
             <h1 class="mt-2 font-medium text-darkblue text-2xl">Services and Products we provide</h1>
             <!-- card container -->
-              <div class="flex flex-wrap justify-center items-center gap-20 mt-20"> 
+              <div class="flex flex-wrap justify-center items-center gap-20 mt-20 px-6"> 
               
               @foreach($filters as $filter)
                 <!-- card -->
