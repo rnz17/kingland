@@ -19,7 +19,7 @@
 
 
       </div>
-    <!-- PARTNERS (HIDDEN) -->
+    <!-- PARTNERS(HIDDEN) -->
       <div class="hidden flex flex-col py-12">
         <h1 class="m-auto text-3xl text-darkblue tracking-wider font-bold">Our Partners</h1>
         <div class="flex flex-wrap py-32 gap-y-12">
