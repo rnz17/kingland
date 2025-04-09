@@ -58,7 +58,7 @@
             </div>
 
         <!-- Product Display -->
-            <div class="flex flex-col w-full md:w-5/6">
+            <div class="flex flex-col w-full md:w-5/6 min-h-[80vh]">
                 <!-- pagination -->
                     <div class="pt-6 px-4 md:px-12">
                         {{ $products->links('vendor.pagination.tailwind') }}
