@@ -171,7 +171,7 @@
             </div>
 
             <div class="flex">
-                <a href="{{ route('buy') }}" class="text-center w-full py-4 active:bg-darkblue active:text-white">What we Buy</a>
+                <a href="{{ route('contact') }}" class="text-center w-full py-4 bg-blue text-white active:bg-white active:text-textblue">Contact Us</a>
             </div>
 
 
