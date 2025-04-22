@@ -29,6 +29,7 @@
             </form>
         </div>
 
+    <!-- add prod button -->
         <div class="w-full flex flex-wrap my-12">
             <button class="m-auto bg-lightblue rounded-xl px-4 py-1 font-semibold" onclick="exportTableToExcel('table', 'productList')">Download Excel</button>
             <a href="{{ route('products.create') }}" class="m-auto bg-green-200 rounded-xl px-4 py-1 font-semibold">Add Product</a>
