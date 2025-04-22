@@ -29,6 +29,11 @@
             </form>
         </div>
 
+        <div class="w-full flex flex-wrap my-12">
+            <button class="m-auto bg-lightblue rounded-xl px-4 py-1 font-semibold" onclick="exportTableToExcel('table', 'productList')">Download Excel</button>
+            <a href="{{ route('products.create') }}" class="m-auto bg-green-200 rounded-xl px-4 py-1 font-semibold">Add Product</a>
+        </div>
+
     <!-- table -->
         <div class="relative block mx-auto my-6 w-full h-auto max-h-[80vh] overflow-auto border-2 border-darkblue shadow-xl">
             <table id="table" class="w-full text-sm text-left rtl:text-right text-gray">
@@ -80,10 +85,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="w-full flex flex-wrap mb-16">
-            <button class="m-auto bg-lightblue rounded-xl px-4 py-1 font-semibold" onclick="exportTableToExcel('table', 'productList')">Download Excel</button>
-            <a href="{{ route('products.create') }}" class="m-auto bg-green-200 rounded-xl px-4 py-1 font-semibold">Add Product</a>
         </div>
 
     <!-- PRICE CALCULATION -->
