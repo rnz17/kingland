@@ -158,6 +158,13 @@ class ProductController extends Controller
             // Move the uploaded image to the public folder
             $imagePath = $image->storeAs('images/products', $fileName, 'public');
         }
+        
+        // get unit_price based on category_id
+        $container = Product::where('category_id', $data['category_id'])->first();
+
+        $data['unit_price'] = $container->unit_price ?? 20;
+
+
     
         // Create the product record without the image URL field (since it's not being saved in the database)
         $newProduct = Product::create($data);
